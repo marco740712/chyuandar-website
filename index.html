@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>詮達旅行社 CHYUAN DAR TRAVEL ｜ 用心規劃 ‧ 一路相伴</title>
+<meta name="description" content="詮達旅行社企業有限公司 — 台南在地深耕的旅遊專家，提供國內外團體旅遊、機票、自由行、郵輪、客製化行程規劃。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#06101F;
+  --navy-900:#0A1A33;
+  --navy-800:#0E2447;
+  --navy-700:#15315E;
+  --navy-600:#1E437A;
+  --gold-500:#C9A961;
+  --gold-400:#D9BE7A;
+  --gold-300:#E6CF95;
+  --gold-100:#F4E8C9;
+  --gray-50:#F7F6F3;
+  --gray-100:#EEEDE8;
+  --gray-200:#D9D7CF;
+  --gray-400:#9A988F;
+  --gray-600:#5C5A53;
+  --gray-800:#2A2926;
+  --line:rgba(201,169,97,.25);
+  --line-strong:rgba(201,169,97,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif TC","Cormorant Garamond",serif;
+  background:var(--gray-50);
+  color:var(--navy-900);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.sans{font-family:"Inter","Noto Serif TC",sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* ============== TOP BAR ============== */
+.topbar{
+  background:var(--navy-950);
+  color:var(--gray-200);
+  font-size:12.5px;
+  letter-spacing:.08em;
+}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;max-width:1280px;margin:0 auto}
+.topbar a{margin-left:18px;color:var(--gold-300)}
+.topbar a:hover{color:var(--gold-100)}
+
+/* ============== HEADER ============== */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,26,51,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:14px;color:#fff}
+.brand-logo{
+  height:52px;width:auto;
+  filter:brightness(0) invert(1);
+  transition:.3s;
+}
+.brand:hover .brand-logo{filter:brightness(0) saturate(100%) invert(78%) sepia(28%) saturate(560%) hue-rotate(2deg) brightness(92%) contrast(88%)}
+.brand-mark{
+  width:46px;height:46px;border:1.5px solid var(--gold-400);
+  display:grid;place-items:center;color:var(--gold-400);
+  font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;letter-spacing:.04em;
+}
+.brand-name{font-family:"Cormorant Garamond",serif;font-size:22px;letter-spacing:.18em;color:#fff}
+.brand-sub{display:block;font-family:"Noto Serif TC",serif;font-size:11px;letter-spacing:.4em;color:var(--gold-300);margin-top:2px}
+.menu{display:flex;gap:34px;font-family:"Inter",sans-serif;font-size:14px;letter-spacing:.12em;color:#E9E6DE}
+.menu a{position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--gold-400);transform:scaleX(0);transition:transform .3s}
+.menu a:hover::after{transform:scaleX(1)}
+.cta{
+  font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.15em;
+  padding:10px 22px;border:1px solid var(--gold-400);color:var(--gold-300);
+  transition:.25s;
+}
+.cta:hover{background:var(--gold-500);color:var(--navy-900)}
+
+/* ============== HERO ============== */
+.hero{
+  position:relative;
+  min-height:88vh;
+  background:
+    linear-gradient(135deg,rgba(6,16,31,.78) 0%,rgba(14,36,71,.55) 60%,rgba(6,16,31,.85) 100%),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=80') center/cover;
+  color:#fff;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:24px;border:1px solid rgba(201,169,97,.35);pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;padding:0 32px;max-width:1280px;margin:0 auto;width:100%}
+.eyebrow{
+  font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.5em;color:var(--gold-300);
+  display:inline-flex;align-items:center;gap:14px;margin-bottom:28px;text-transform:uppercase;
+}
+.eyebrow::before,.eyebrow::after{content:"";width:42px;height:1px;background:var(--gold-400)}
+.hero h1{
+  font-family:"Noto Serif TC",serif;font-weight:400;
+  font-size:clamp(40px,5.6vw,76px);line-height:1.18;letter-spacing:.04em;
+  margin-bottom:22px;
+}
+.hero h1 em{font-style:normal;color:var(--gold-300);font-weight:500}
+.hero p.lead{
+  font-family:"Cormorant Garamond",serif;font-size:22px;font-style:italic;
+  color:#E9E6DE;max-width:620px;margin-bottom:46px;letter-spacing:.02em;
+}
+.hero-actions{display:flex;gap:18px;flex-wrap:wrap}
+.btn-primary{
+  font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.2em;
+  padding:16px 36px;background:var(--gold-500);color:var(--navy-900);
+  transition:.25s;text-transform:uppercase;
+}
+.btn-primary:hover{background:var(--gold-300)}
+.btn-ghost{
+  font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.2em;
+  padding:16px 36px;border:1px solid rgba(255,255,255,.4);color:#fff;
+  transition:.25s;text-transform:uppercase;
+}
+.btn-ghost:hover{border-color:var(--gold-400);color:var(--gold-300)}
+
+.hero-meta{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  border-top:1px solid rgba(201,169,97,.25);
+  background:rgba(6,16,31,.55);
+  backdrop-filter:blur(6px);
+}
+.hero-meta-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1280px;margin:0 auto}
+.meta-cell{padding:26px 32px;border-right:1px solid rgba(201,169,97,.18);color:#fff}
+.meta-cell:last-child{border-right:none}
+.meta-num{font-family:"Cormorant Garamond",serif;font-size:34px;color:var(--gold-300);letter-spacing:.05em}
+.meta-label{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.25em;color:var(--gray-200);text-transform:uppercase;margin-top:4px}
+
+/* ============== SECTION COMMON ============== */
+section{padding:120px 0;position:relative}
+.sec-head{text-align:center;margin-bottom:70px}
+.sec-eyebrow{
+  font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.5em;color:var(--gold-500);
+  display:inline-flex;align-items:center;gap:12px;text-transform:uppercase;
+}
+.sec-eyebrow::before,.sec-eyebrow::after{content:"";width:30px;height:1px;background:var(--gold-500)}
+.sec-title{
+  font-family:"Noto Serif TC",serif;font-weight:400;
+  font-size:clamp(32px,4vw,48px);color:var(--navy-900);
+  margin-top:16px;letter-spacing:.06em;
+}
+.sec-sub{
+  font-family:"Cormorant Garamond",serif;font-style:italic;
+  font-size:18px;color:var(--gray-600);margin-top:14px;
+}
+
+/* ============== ABOUT ============== */
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.about-visual{position:relative}
+.about-visual img{height:560px;width:100%;object-fit:cover}
+.about-visual::before{
+  content:"";position:absolute;inset:-22px -22px 22px 22px;border:1px solid var(--gold-500);z-index:-1;
+}
+.about-badge{
+  position:absolute;bottom:-30px;right:-30px;
+  background:var(--navy-900);color:#fff;
+  padding:28px 36px;border:1px solid var(--gold-500);
+}
+.about-badge .num{font-family:"Cormorant Garamond",serif;font-size:48px;color:var(--gold-400);letter-spacing:.04em}
+.about-badge .lbl{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gray-200);text-transform:uppercase;margin-top:4px}
+.about-text h3{
+  font-family:"Noto Serif TC",serif;font-weight:400;
+  font-size:38px;line-height:1.35;color:var(--navy-900);margin-bottom:28px;letter-spacing:.04em;
+}
+.about-text h3 span{color:var(--gold-500)}
+.about-text p{color:var(--gray-600);margin-bottom:18px;font-size:16.5px}
+.about-points{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.about-point{padding:22px;border:1px solid var(--line);background:var(--gray-50)}
+.about-point .ico{font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--gold-500)}
+.about-point h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:16px;color:var(--navy-800);margin:6px 0 6px;letter-spacing:.06em}
+.about-point p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-600);line-height:1.7;margin:0}
+
+/* ============== SERVICES ============== */
+.services{
+  background:linear-gradient(180deg,var(--navy-900) 0%,var(--navy-800) 100%);
+  color:#fff;
+}
+.services .sec-title{color:#fff}
+.services .sec-sub{color:var(--gray-200)}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.svc-card{padding:46px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.3s;background:rgba(255,255,255,.02)}
+.svc-card:nth-child(4n){border-right:none}
+.svc-card:nth-last-child(-n+4){border-bottom:none}
+.svc-card:hover{background:rgba(201,169,97,.06)}
+.svc-num{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold-400);letter-spacing:.3em}
+.svc-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:22px;color:#fff;margin:22px 0 12px;letter-spacing:.06em}
+.svc-card p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-200);line-height:1.8}
+.svc-arrow{margin-top:24px;font-size:18px;color:var(--gold-400);letter-spacing:.2em}
+
+/* ============== PRODUCTS ============== */
+.products{background:var(--gray-50)}
+.filters{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin-bottom:50px;font-family:"Inter",sans-serif}
+.filter-group{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.15em;color:var(--gray-600)}
+.filter-group .lbl{color:var(--navy-800);font-weight:500}
+.chip{padding:8px 18px;border:1px solid var(--gray-200);color:var(--gray-600);background:#fff;cursor:pointer;transition:.2s;font-size:12.5px;letter-spacing:.12em}
+.chip:hover{border-color:var(--gold-500);color:var(--navy-800)}
+.chip.active{background:var(--navy-900);color:var(--gold-300);border-color:var(--navy-900)}
+
+.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.tour-card{background:#fff;border:1px solid var(--gray-100);transition:.3s;position:relative;overflow:hidden}
+.tour-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px -20px rgba(10,26,51,.25);border-color:var(--gold-400)}
+.tour-img{position:relative;height:260px;overflow:hidden}
+.tour-img img{height:100%;width:100%;object-fit:cover;transition:.6s}
+.tour-card:hover .tour-img img{transform:scale(1.06)}
+.tour-tag{
+  position:absolute;top:18px;left:18px;
+  background:var(--navy-900);color:var(--gold-300);
+  padding:6px 14px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.2em;
+}
+.tour-source{
+  position:absolute;top:18px;right:18px;
+  background:rgba(255,255,255,.92);color:var(--navy-800);
+  padding:6px 12px;font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.15em;
+}
+.tour-body{padding:28px}
+.tour-meta{display:flex;gap:12px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.18em;color:var(--gray-400);text-transform:uppercase;margin-bottom:14px}
+.tour-meta span{position:relative;padding-right:12px}
+.tour-meta span:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;width:3px;height:3px;background:var(--gold-500);border-radius:50%;transform:translateY(-50%)}
+.tour-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:20px;color:var(--navy-900);line-height:1.45;margin-bottom:18px;min-height:58px;letter-spacing:.03em}
+.tour-foot{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid var(--gray-100);padding-top:18px;margin-top:18px}
+.price{font-family:"Cormorant Garamond",serif}
+.price .lbl{display:block;font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.25em;color:var(--gray-400);text-transform:uppercase;margin-bottom:4px}
+.price .val{font-size:32px;color:var(--navy-900);font-weight:600}
+.price .val em{font-style:normal;color:var(--gold-500);font-size:16px;margin-right:2px}
+.tour-link{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.2em;color:var(--gold-500);padding-bottom:2px;border-bottom:1px solid var(--gold-500);text-transform:uppercase}
+
+/* ============== NEWS ============== */
+.news{background:#fff}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.news-item{display:grid;grid-template-columns:140px 1fr;gap:28px;padding:34px 28px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.25s;cursor:pointer}
+.news-item:nth-child(2n){border-right:none}
+.news-item:hover{background:var(--gray-50)}
+.news-date{font-family:"Cormorant Garamond",serif;border-right:1px solid var(--gold-400);padding-right:20px}
+.news-date .d{font-size:42px;color:var(--navy-900);letter-spacing:.02em;line-height:1}
+.news-date .m{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold-500);margin-top:8px;text-transform:uppercase}
+.news-content .cat{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.25em;color:var(--gold-500);text-transform:uppercase;margin-bottom:8px}
+.news-content h5{font-family:"Noto Serif TC",serif;font-weight:500;font-size:18px;color:var(--navy-900);line-height:1.5;margin-bottom:6px;letter-spacing:.03em}
+.news-content p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-600);line-height:1.7}
+
+/* ============== CONTACT ============== */
+.contact{
+  background:
+    linear-gradient(180deg,rgba(6,16,31,.96),rgba(14,36,71,.96)),
+    url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=2000&q=80') center/cover fixed;
+  color:#fff;
+}
+.contact .sec-title{color:#fff}
+.contact .sec-sub{color:var(--gray-200)}
+.branch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-bottom:60px}
+.branch{
+  border:1px solid var(--line-strong);padding:38px 32px;background:rgba(255,255,255,.03);
+  backdrop-filter:blur(4px);transition:.3s;position:relative;
+}
+.branch::before{
+  content:"";position:absolute;top:0;left:0;width:30px;height:30px;
+  border-top:2px solid var(--gold-400);border-left:2px solid var(--gold-400);
+}
+.branch::after{
+  content:"";position:absolute;bottom:0;right:0;width:30px;height:30px;
+  border-bottom:2px solid var(--gold-400);border-right:2px solid var(--gold-400);
+}
+.branch:hover{background:rgba(201,169,97,.06);transform:translateY(-4px)}
+.branch .label{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.4em;color:var(--gold-400);text-transform:uppercase}
+.branch h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:24px;color:#fff;margin:14px 0 22px;letter-spacing:.06em}
+.branch ul{list-style:none;font-family:"Inter",sans-serif;font-size:13.5px;color:var(--gray-200);line-height:2.2}
+.branch ul li{display:flex;gap:14px;align-items:flex-start;border-bottom:1px dashed rgba(201,169,97,.18);padding:8px 0}
+.branch ul li:last-child{border-bottom:none}
+.branch ul li .k{color:var(--gold-300);min-width:42px;font-size:12px;letter-spacing:.15em}
+.branch ul li .v{color:#fff;flex:1}
+
+.contact-cta{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:0;
+  border:1px solid var(--gold-500);
+}
+.contact-cta-left{padding:50px 48px;background:rgba(6,16,31,.6)}
+.contact-cta-left h3{font-family:"Noto Serif TC",serif;font-weight:400;font-size:32px;color:#fff;margin-bottom:16px;letter-spacing:.05em}
+.contact-cta-left p{color:var(--gray-200);font-family:"Inter",sans-serif;font-size:14px;line-height:1.9}
+.contact-cta-right{padding:50px 48px;background:var(--gold-500);color:var(--navy-900);display:flex;flex-direction:column;justify-content:center}
+.contact-cta-right .lbl{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase}
+.contact-cta-right .tel{font-family:"Cormorant Garamond",serif;font-size:48px;font-weight:600;margin:10px 0;letter-spacing:.04em}
+.contact-cta-right .email{font-family:"Inter",sans-serif;font-size:14px;letter-spacing:.05em}
+
+/* ============== FOOTER ============== */
+footer{background:var(--navy-950);color:var(--gray-200);padding:70px 0 30px;font-family:"Inter",sans-serif}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(201,169,97,.2)}
+.footer-brand .brand-name{color:#fff;font-size:24px}
+.footer-brand p{margin-top:16px;font-size:13px;line-height:1.8;color:var(--gray-200)}
+.footer-col h6{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.3em;color:var(--gold-400);text-transform:uppercase;margin-bottom:20px}
+.footer-col ul{list-style:none;font-size:13.5px;line-height:2.2}
+.footer-col ul li{color:var(--gray-200)}
+.footer-col ul li a:hover{color:var(--gold-300)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;color:var(--gray-400);letter-spacing:.08em}
+.footer-bot .social a{margin-left:14px;color:var(--gold-300)}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width:980px){
+  .menu{display:none}
+  .hero-meta-inner{grid-template-columns:repeat(2,1fr)}
+  .meta-cell:nth-child(2n){border-right:none}
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .about-visual img{height:420px}
+  .about-points{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-card:nth-child(4n){border-right:1px solid var(--line)}
+  .svc-card:nth-child(2n){border-right:none}
+  .svc-card:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
+  .svc-card:nth-last-child(-n+2){border-bottom:none}
+  .tour-grid{grid-template-columns:1fr 1fr}
+  .news-grid{grid-template-columns:1fr}
+  .news-item{border-right:none}
+  .branch-grid{grid-template-columns:1fr}
+  .contact-cta{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:600px){
+  .container{padding:0 20px}
+  section{padding:80px 0}
+  .tour-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{border-right:none!important}
+  .footer-grid{grid-template-columns:1fr}
+  .topbar-inner{flex-direction:column;gap:6px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner sans">
+    <span>週一至週五 09:00 – 18:00 ｜ 國定假日休息</span>
+    <span>
+      <a href="#contact">06-265-7888</a>
+      <a href="/cdn-cgi/l/email-protection#e6858e9f938788c8828794a68b9587c88e8f888392c8888392"><span class="__cf_email__" data-cfemail="791a11000c1817571d180b39140a18571110171c0d57171c0d">[email&#160;protected]</span></a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a href="#" class="brand">
+      <img src="logo.jpg" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+    </a>
+    <nav class="menu">
+      <a href="#about">關於詮達</a>
+      <a href="#services">服務項目</a>
+      <a href="#products">熱門行程</a>
+      <a href="#news">最新消息</a>
+      <a href="#contact">門市據點</a>
+    </nav>
+    <a href="#contact" class="cta">立即諮詢</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">SINCE 1995 ‧ TAINAN</span>
+    <h1>讓世界的風景<br/>成為您的<em>下一段故事</em></h1>
+    <p class="lead">Crafting journeys that linger ─ 三十年深耕台南，<br/>用心規劃每一場值得收藏的旅行。</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">探索行程</a>
+      <a href="#contact" class="btn-ghost">預約諮詢</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-inner sans">
+      <div class="meta-cell"><div class="meta-num">30+</div><div class="meta-label">Years of Trust</div></div>
+      <div class="meta-cell"><div class="meta-num">3</div><div class="meta-label">Branches in Tainan</div></div>
+      <div class="meta-cell"><div class="meta-num">120+</div><div class="meta-label">Destinations</div></div>
+      <div class="meta-cell"><div class="meta-num">50,000+</div><div class="meta-label">Happy Travelers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">ABOUT US</span>
+      <h2 class="sec-title">關 於 詮 達</h2>
+      <p class="sec-sub">A Story of Trust, Crafted Over Three Decades</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80" alt="travel">
+        <div class="about-badge sans">
+          <div class="num">30</div>
+          <div class="lbl">Years of Service</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>用心規劃每一段旅程，<br/><span>陪您走過每一處風景</span></h3>
+        <p>詮達旅行社企業有限公司紮根台南，從金華路本店出發，陸續於歸仁、海佃設立分公司，並加入「旅天下加盟體系」，整合上游資源，為在地旅人提供更完整的選擇。</p>
+        <p>我們不只是賣行程，而是傾聽您的期待，把每一場旅行打磨成獨一無二的回憶。從機票、簽證到客製化團體，皆由經驗豐富的領隊與業務一條龍服務。</p>
+        <div class="about-points sans">
+          <div class="about-point"><div class="ico">01</div><h4>在地深耕</h4><p>三十年台南經驗，熟悉在地旅客的需求與習慣。</p></div>
+          <div class="about-point"><div class="ico">02</div><h4>資源整合</h4><p>串聯雄獅、旅天下等品牌行程，比較一次到位。</p></div>
+          <div class="about-point"><div class="ico">03</div><h4>專人服務</h4><p>專屬業務全程協助，從出發前到歸國後。</p></div>
+          <div class="about-point"><div class="ico">04</div><h4>三間門市</h4><p>金華本店、歸仁、海佃，鄰近您家就近諮詢。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow" style="color:var(--gold-400)">OUR SERVICES</span>
+      <h2 class="sec-title">服 務 項 目</h2>
+      <p class="sec-sub">One-stop Travel Solutions, Tailored for You</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num sans">— 01</div><h4>團體旅遊</h4><p>嚴選國內外品牌團，含日韓、東南亞、歐美、紐澳長線。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 02</div><h4>自由行 ‧ 機+酒</h4><p>機票、訂房、接送一次搞定，自由規劃不打折。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 03</div><h4>國際機票</h4><p>各大航空票務代訂，商務艙艙位即時查詢。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 04</div><h4>簽證代辦</h4><p>美簽、申根、東南亞落地簽諮詢與送件服務。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 05</div><h4>郵輪旅遊</h4><p>麗星、公主、皇家加勒比 — 海上度假首選。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 06</div><h4>客製團體</h4><p>家族旅行、員工旅遊、進香團，量身打造行程。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 07</div><h4>國內旅遊</h4><p>離島、東部、賞花賞楓、溫泉美食一日深度。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 08</div><h4>訂房 ‧ 接送</h4><p>全球四星五星訂房、機場接送、租車服務。</p><div class="svc-arrow sans">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">FEATURED TOURS</span>
+      <h2 class="sec-title">熱 門 行 程</h2>
+      <p class="sec-sub">資料由 Google Sheet 即時同步 ‧ 點擊前往原始頁面</p>
+    </div>
+
+    <div class="filters">
+      <div class="filter-group">
+        <span class="lbl">地區</span>
+        <span class="chip active" data-region="all">全部</span>
+        <span class="chip" data-region="日本">日本</span>
+        <span class="chip" data-region="韓國">韓國</span>
+        <span class="chip" data-region="東南亞">東南亞</span>
+        <span class="chip" data-region="歐洲">歐洲</span>
+        <span class="chip" data-region="美洲">美洲</span>
+        <span class="chip" data-region="國內">國內</span>
+      </div>
+      <div class="filter-group">
+        <span class="lbl">類型</span>
+        <span class="chip active" data-type="all">全部</span>
+        <span class="chip" data-type="團體">團體</span>
+        <span class="chip" data-type="自由行">自由行</span>
+        <span class="chip" data-type="郵輪">郵輪</span>
+        <span class="chip" data-type="機+酒">機+酒</span>
+      </div>
+    </div>
+
+    <div class="tour-grid" id="tourGrid"></div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">LATEST NEWS</span>
+      <h2 class="sec-title">最 新 消 息</h2>
+      <p class="sec-sub">Stay Updated with Our Latest Offers & Announcements</p>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow" style="color:var(--gold-400)">FIND US</span>
+      <h2 class="sec-title">門 市 據 點</h2>
+      <p class="sec-sub">Three Branches in Tainan, Always Close to You</p>
+    </div>
+    <div class="branch-grid sans" id="branchGrid"></div>
+
+    <div class="contact-cta">
+      <div class="contact-cta-left">
+        <h3>規劃下一場旅行？</h3>
+        <p>無論是蜜月、家族旅遊、員工旅遊或長者進香團，<br/>歡迎致電或來信，由專人為您量身規劃最適合的行程。</p>
+      </div>
+      <div class="contact-cta-right sans">
+        <div class="lbl">Total Service Hotline</div>
+        <div class="tel">06-265-7888</div>
+        <div class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0c6f6475796d6222686d7e4c617f6d22646562697822626978">[email&#160;protected]</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="詮達旅遊" style="height:54px;width:auto;filter:brightness(0) invert(1);margin-bottom:18px">
+        <p>詮達旅行社企業有限公司<br/>
+        紮根台南三十年的旅遊夥伴，<br/>
+        旅天下加盟體系成員。</p>
+      </div>
+      <div class="footer-col">
+        <h6>SITE MAP</h6>
+        <ul>
+          <li><a href="#about">關於詮達</a></li>
+          <li><a href="#services">服務項目</a></li>
+          <li><a href="#products">熱門行程</a></li>
+          <li><a href="#news">最新消息</a></li>
+          <li><a href="#contact">門市據點</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>SERVICES</h6>
+        <ul>
+          <li>團體旅遊</li>
+          <li>自由行 / 機+酒</li>
+          <li>國際機票</li>
+          <li>簽證代辦</li>
+          <li>客製團體</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>CONTACT</h6>
+        <ul>
+          <li>06-265-7888</li>
+          <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="22414a5b57434c0c464350624f51430c4a4b4c47560c4c4756">[email&#160;protected]</a></li>
+          <li>台南市南區金華路二段 425 號</li>
+          <li><a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" style="color:var(--gold-300)">加入 LINE 官方帳號 →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal sans" style="display:flex;flex-wrap:wrap;gap:24px;padding-top:24px;font-size:12px;color:var(--gray-400);letter-spacing:.08em">
+      <span>統一編號：12919292</span>
+      <span>交通部觀光署旅行業註冊編號：715600</span>
+      <span>品保協會會員</span>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 CHYUAN DAR TRAVEL CO., LTD. All Rights Reserved.</span>
+      <span class="social">
+        <a href="#">FACEBOOK</a>
+        <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">LINE</a>
+        <a href="#">GOOGLE MAP</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   詮達旅遊網站 — Google Sheet 動態資料載入
+   ------------------------------------------------------------
+   👉 部署 Google Apps Script 後，把網址貼到下方 SHEET_API：
+   👉 取得方式：Apps Script → 部署 → 新增部署作業 → 類型:Web App
+                → 存取權限: 任何人 → 部署後複製「網路應用程式網址」
+   ============================================================ */
+const SHEET_API = ""; // ← 例如 "https://script.google.com/macros/s/AKfycbycRbHhyCKjIyvcjBA_LCwi27o2wOjuJA4cCWagpjLFBDzoPoyqKcUyNSZjY8nlHipabA/exec"
+
+/* ====== Fallback 範例資料（API 不可用時顯示） ====== */
+const FALLBACK = {
+  tours: [
+    {地區:"日本",類型:"團體",標題:"日本東北賞楓 ‧ 奧入瀨溪 ‧ 八甲田山纜車 8 日",天數:"8 天 7 夜",出發:"10/15 出發",價格:78900,主圖網址:"https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1200&q=80",來源:"雄獅",連結:"#"},
+    {地區:"日本",類型:"自由行",標題:"大阪自由行 ‧ 環球影城 ‧ 京都和服體驗 5 日",天數:"5 天 4 夜",出發:"每週出發",價格:25800,主圖網址:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
+    {地區:"歐洲",類型:"團體",標題:"瑞士冰河列車 ‧ 少女峰 ‧ 馬特洪峰深度 10 日",天數:"10 天 8 夜",出發:"09/22 出發",價格:168000,主圖網址:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",來源:"雄獅",連結:"#"},
+    {地區:"韓國",類型:"團體",標題:"首爾 ‧ 釜山雙城 ‧ 海雲台 ‧ 樂天世界 6 日",天數:"6 天 5 夜",出發:"08/10 出發",價格:32800,主圖網址:"https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
+    {地區:"東南亞",類型:"自由行",標題:"峇里島 ‧ Villa 私人泳池 ‧ 烏布秘境 5 日",天數:"5 天 4 夜",出發:"每日出發",價格:23900,主圖網址:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",來源:"雄獅",連結:"#"},
+    {地區:"美洲",類型:"郵輪",標題:"阿拉斯加冰河灣 ‧ 公主郵輪內艙房 9 日",天數:"9 天 8 夜",出發:"07/05 出發",價格:128000,主圖網址:"https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
+  ],
+  news: [
+    {日期:"2026-05-28",分類:"促銷活動",標題:"暑期日本機票早鳥優惠 ─ 大阪、東京 7,800 元起",內容摘要:"長榮、星宇直飛，數量有限請洽各門市業務。",連結:""},
+    {日期:"2026-05-22",分類:"出團公告",標題:"2026 京都賞楓 11 月梯次正式開賣",內容摘要:"嵐山、清水寺、東福寺三大名景一次走遍，限量 16 人小團。",連結:""},
+    {日期:"2026-05-15",分類:"公司公告",標題:"端午連假各門市營業時間調整公告",內容摘要:"6/19-6/22 全門市休息，急件請洽 LINE 官方帳號。",連結:""},
+    {日期:"2026-05-08",分類:"旅遊資訊",標題:"歐洲申根簽 2026 新制：ETIAS 上路須知",內容摘要:"赴歐自由行旅客請提前 96 小時申請 ETIAS 電子授權。",連結:""},
+  ],
+  branches: [
+    {名稱:"金華本店",標籤:"Head Office",地址:"702 台南市南區金華路二段 425 號",電話:"(06) 265-7888",傳真:"(06) 265-7058",營業時間:"週一至週五 09:00 – 18:00","Google Map 連結":""},
+    {名稱:"歸仁分公司",標籤:"Branch No.1",地址:"711 台南市歸仁區中山路二段 175 號",電話:"(06) 239-8787",傳真:"(06) 239-6767",營業時間:"週一至週五 10:00 – 19:00","Google Map 連結":""},
+    {名稱:"海佃分公司",標籤:"Branch No.2",地址:"709 台南市安南區海佃路一段 203 號",電話:"(06) 250-2818",傳真:"(06) 250-0818",營業時間:"週一至週五 10:30 – 19:30","Google Map 連結":""},
+  ]
+};
+
+let DATA = FALLBACK;
+let regionF = "all", typeF = "all";
+
+/* ====== 載入 Sheet 資料 ====== */
+async function loadData(){
+  if(!SHEET_API) return; // 還沒設定 API 就用 fallback
+  try{
+    const res = await fetch(SHEET_API, {cache:"no-store"});
+    const json = await res.json();
+    DATA = {
+      tours:    (json.tours    && json.tours.length)    ? json.tours    : FALLBACK.tours,
+      news:     (json.news     && json.news.length)     ? json.news     : FALLBACK.news,
+      branches: (json.branches && json.branches.length) ? json.branches : FALLBACK.branches,
+    };
+  }catch(err){
+    console.warn("Sheet API 載入失敗，使用 fallback 資料：", err);
+  }
+}
+
+/* ====== 渲染：行程 ====== */
+function renderTours(){
+  const grid = document.getElementById('tourGrid');
+  const list = DATA.tours
+    .filter(t => (regionF==="all"||t.地區===regionF) && (typeF==="all"||t.類型===typeF))
+    .sort((a,b)=>(a.排序||999)-(b.排序||999));
+  grid.innerHTML = list.map(t=>`
+    <a class="tour-card" href="${t.連結||'#'}" target="_blank" rel="noopener">
+      <div class="tour-img">
+        <img src="${t.主圖網址}" alt="${t.標題}" onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80'">
+        <span class="tour-tag">${t.地區||''}</span>
+        ${t.來源?`<span class="tour-source">${t.來源}</span>`:''}
+      </div>
+      <div class="tour-body">
+        <div class="tour-meta"><span>${t.類型||''}</span><span>${t.天數||''}</span><span>${t.出發||''}</span></div>
+        <h4>${t.標題||''}</h4>
+        <div class="tour-foot">
+          <div class="price">
+            <span class="lbl">From</span>
+            <span class="val"><em>NT$</em>${Number(t.價格||0).toLocaleString()}</span>
+          </div>
+          <span class="tour-link">查看 →</span>
+        </div>
+      </div>
+    </a>
+  `).join('') || `<p style="grid-column:1/-1;text-align:center;color:var(--gray-600);padding:60px;font-family:Inter">沒有符合條件的行程</p>`;
+}
+
+/* ====== 渲染：最新消息 ====== */
+function renderNews(){
+  const grid = document.getElementById('newsGrid');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  grid.innerHTML = DATA.news.slice(0,8).map(n=>{
+    const d = new Date(n.日期);
+    const day = isNaN(d)?'—':String(d.getDate()).padStart(2,'0');
+    const my  = isNaN(d)?'':`${months[d.getMonth()]} ${d.getFullYear()}`;
+    return `
+    <div class="news-item">
+      <div class="news-date"><div class="d">${day}</div><div class="m">${my}</div></div>
+      <div class="news-content">
+        <div class="cat">${n.分類||''}</div>
+        <h5>${n.連結?`<a href="${n.連結}" target="_blank" rel="noopener">${n.標題||''}</a>`:(n.標題||'')}</h5>
+        <p>${n.內容摘要||''}</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ====== 渲染：門市據點 ====== */
+function renderBranches(){
+  const grid = document.getElementById('branchGrid');
+  grid.innerHTML = DATA.branches.map(b=>`
+    <div class="branch">
+      <div class="label">${b.標籤||''}</div>
+      <h4>${(b.名稱||'').split('').join(' ')}</h4>
+      <ul>
+        <li><span class="k">地址</span><span class="v">${b.地址||''}</span></li>
+        <li><span class="k">電話</span><span class="v">${b.電話||''}</span></li>
+        ${b.傳真?`<li><span class="k">傳真</span><span class="v">${b.傳真}</span></li>`:''}
+        <li><span class="k">時間</span><span class="v">${b.營業時間||''}</span></li>
+        ${b["Google Map 連結"]?`<li><span class="k">地圖</span><span class="v"><a href="${b["Google Map 連結"]}" target="_blank" style="color:var(--gold-300);text-decoration:underline">Google Map 導航 →</a></span></li>`:''}
+      </ul>
+    </div>
+  `).join('');
+}
+
+/* ====== 篩選器 ====== */
+function bindFilters(){
+  document.querySelectorAll('.chip').forEach(c=>{
+    c.addEventListener('click',()=>{
+      if(c.dataset.region){
+        document.querySelectorAll('[data-region]').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active'); regionF=c.dataset.region;
+      }
+      if(c.dataset.type){
+        document.querySelectorAll('[data-type]').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active'); typeF=c.dataset.type;
+      }
+      renderTours();
+    });
+  });
+}
+
+/* ====== 啟動 ====== */
+(async()=>{
+  await loadData();
+  renderTours();
+  renderNews();
+  renderBranches();
+  bindFilters();
+})();
+</script>
+</body>
+</html>
