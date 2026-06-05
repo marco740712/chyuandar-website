@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>關於詮達 ｜ 詮達旅行社 CHYUAN DAR TRAVEL</title>
+<meta name="description" content="詮達旅行社企業有限公司 — 台南在地深耕三十年的旅遊夥伴。了解我們的故事、服務理念與三間門市。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#06101F;--navy-900:#0A1A33;--navy-800:#0E2447;
+  --gold-500:#C9A961;--gold-400:#D9BE7A;--gold-300:#E6CF95;
+  --gray-50:#F7F6F3;--gray-100:#EEEDE8;--gray-200:#D9D7CF;
+  --gray-400:#9A988F;--gray-600:#5C5A53;
+  --line:rgba(201,169,97,.25);--line-strong:rgba(201,169,97,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Serif TC","Cormorant Garamond",serif;background:var(--gray-50);color:var(--navy-900);line-height:1.7;-webkit-font-smoothing:antialiased}
+.sans{font-family:"Inter","Noto Serif TC",sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy-950);color:var(--gray-200);font-size:12.5px;letter-spacing:.08em}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;max-width:1280px;margin:0 auto}
+.topbar a{margin-left:18px;color:var(--gold-300)}
+
+/* ── HEADER ── */
+header.site{position:sticky;top:0;z-index:50;background:rgba(10,26,51,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:14px;color:#fff}
+.brand-logo{height:52px;width:auto;filter:brightness(0) invert(1)}
+.menu{display:flex;gap:34px;font-family:"Inter",sans-serif;font-size:14px;letter-spacing:.12em;color:#E9E6DE}
+.menu a{position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--gold-400);transform:scaleX(0);transition:transform .3s}
+.menu a:hover::after,.menu a.active::after{transform:scaleX(1)}
+.menu a.active{color:var(--gold-300)}
+.cta{font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.15em;padding:10px 22px;border:1px solid var(--gold-400);color:var(--gold-300);transition:.25s}
+.cta:hover{background:var(--gold-500);color:var(--navy-900)}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  position:relative;
+  padding:110px 0 90px;
+  background:
+    linear-gradient(135deg,rgba(6,16,31,.88) 0%,rgba(14,36,71,.75) 100%),
+    url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2400&q=80') center/cover;
+  color:#fff;text-align:center;
+}
+.page-hero::before{content:"";position:absolute;inset:20px;border:1px solid rgba(201,169,97,.3);pointer-events:none}
+.page-eyebrow{font-family:"Inter",sans-serif;font-size:11.5px;letter-spacing:.5em;color:var(--gold-300);display:inline-flex;align-items:center;gap:14px;margin-bottom:22px;text-transform:uppercase}
+.page-eyebrow::before,.page-eyebrow::after{content:"";width:38px;height:1px;background:var(--gold-400)}
+.page-hero h1{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(36px,5vw,64px);letter-spacing:.06em;margin-bottom:16px}
+.page-hero h1 em{font-style:normal;color:var(--gold-300)}
+.page-hero p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--gray-200);max-width:540px;margin:0 auto}
+
+/* ── STORY ── */
+.story{background:#fff;padding:100px 0}
+.story-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.story-visual{position:relative}
+.story-visual img{height:540px;width:100%;object-fit:cover}
+.story-visual::before{content:"";position:absolute;inset:-20px -20px 20px 20px;border:1px solid var(--gold-500);z-index:-1}
+.story-badge{position:absolute;bottom:-28px;right:-28px;background:var(--navy-900);color:#fff;padding:24px 32px;border:1px solid var(--gold-500)}
+.story-badge .num{font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--gold-400);letter-spacing:.04em}
+.story-badge .lbl{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gray-200);text-transform:uppercase;margin-top:4px}
+.story-text h2{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.35;color:var(--navy-900);margin-bottom:24px;letter-spacing:.04em}
+.story-text h2 span{color:var(--gold-500)}
+.story-text p{color:var(--gray-600);margin-bottom:18px;font-size:16px;font-family:"Noto Serif TC",serif}
+
+/* ── POINTS ── */
+.points-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.point{padding:20px;border:1px solid var(--line);background:var(--gray-50)}
+.point .ico{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold-500)}
+.point h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:15.5px;color:var(--navy-800);margin:6px 0 5px;letter-spacing:.06em}
+.point p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-600);line-height:1.7;margin:0}
+
+/* ── SERVICES ── */
+.services{padding:100px 0;background:linear-gradient(180deg,var(--navy-900) 0%,var(--navy-800) 100%);color:#fff}
+.sec-head{text-align:center;margin-bottom:60px}
+.sec-eyebrow{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.5em;color:var(--gold-500);display:inline-flex;align-items:center;gap:12px;text-transform:uppercase}
+.sec-eyebrow::before,.sec-eyebrow::after{content:"";width:30px;height:1px;background:var(--gold-500)}
+.sec-title{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(28px,3.5vw,44px);color:var(--navy-900);margin-top:14px;letter-spacing:.06em}
+.services .sec-title{color:#fff}
+.services .sec-sub{color:var(--gray-200)}
+.sec-sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--gray-600);margin-top:12px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.svc-card{padding:40px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.3s;background:rgba(255,255,255,.02)}
+.svc-card:nth-child(4n){border-right:none}
+.svc-card:nth-last-child(-n+4){border-bottom:none}
+.svc-card:hover{background:rgba(201,169,97,.06)}
+.svc-num{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold-400);letter-spacing:.3em}
+.svc-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:20px;color:#fff;margin:20px 0 10px;letter-spacing:.06em}
+.svc-card p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-200);line-height:1.8}
+.svc-arrow{margin-top:20px;font-size:18px;color:var(--gold-400);letter-spacing:.2em}
+
+/* ── BACK CTA ── */
+.back-cta{padding:72px 0;background:var(--gray-50);text-align:center}
+.back-cta p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--gray-600);margin-bottom:28px}
+.btn-back{display:inline-flex;align-items:center;gap:10px;font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.2em;padding:15px 36px;background:var(--navy-900);color:var(--gold-300);transition:.25s;text-transform:uppercase}
+.btn-back:hover{background:var(--navy-800)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-950);color:var(--gray-200);padding:50px 0 24px;font-family:"Inter",sans-serif}
+.footer-simple{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-bottom:24px;border-bottom:1px solid rgba(201,169,97,.2);margin-bottom:20px}
+.footer-simple .brand-name{font-family:"Cormorant Garamond",serif;font-size:20px;letter-spacing:.18em;color:#fff}
+.footer-links{display:flex;gap:24px;font-size:13.5px}
+.footer-links a{color:var(--gray-200)}
+.footer-links a:hover{color:var(--gold-300)}
+.footer-bot{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-400);letter-spacing:.08em;flex-wrap:wrap;gap:8px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .menu{display:none}
+  .story-grid{grid-template-columns:1fr;gap:60px}
+  .story-visual img{height:380px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-card:nth-child(4n){border-right:1px solid var(--line)}
+  .svc-card:nth-child(2n){border-right:none}
+  .svc-card:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
+  .svc-card:nth-last-child(-n+2){border-bottom:none}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  .story{padding:72px 0}
+  .points-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{border-right:none!important}
+  .topbar-inner{flex-direction:column;gap:6px;font-size:11px}
+  .footer-simple{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner sans">
+    <span>週一至週五 09:00 – 18:00 ｜ 國定假日休息</span>
+    <span>
+      <a href="tel:0626578880">06-265-7888</a>
+      <a href="mailto:chyuan.dar@msa.hinet.net">chyuan.dar@msa.hinet.net</a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <img src="logo.jpg" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+    </a>
+    <nav class="menu">
+      <a href="about.html" class="active">關於詮達</a>
+      <a href="index.html#products">熱門行程</a>
+      <a href="index.html#news">最新消息</a>
+      <a href="index.html#contact">門市據點</a>
+    </nav>
+    <a href="index.html#contact" class="cta">立即諮詢</a>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="page-eyebrow">ABOUT US</span>
+    <h1>關 於 <em>詮 達</em></h1>
+    <p>A Story of Trust, Crafted Over Three Decades</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80" alt="旅行">
+        <div class="story-badge sans">
+          <div class="num">30</div>
+          <div class="lbl">Years of Service</div>
+        </div>
+      </div>
+      <div class="story-text">
+        <h2>用心規劃每一段旅程，<br/><span>陪您走過每一處風景</span></h2>
+        <p>詮達旅行社企業有限公司自 1995 年紮根台南，從金華路本店出發，陸續於歸仁、海佃設立分公司，並加入「旅天下加盟體系」，整合上游資源，為在地旅人提供更完整的選擇。</p>
+        <p>我們不只是賣行程，而是傾聽您的期待，把每一場旅行打磨成獨一無二的回憶。從機票、簽證到客製化團體，皆由經驗豐富的領隊與業務一條龍服務。</p>
+        <p>三十年來，我們陪著台南的家庭、長者、新婚夫妻走過世界每個角落，這份信任，是詮達最深的驕傲。</p>
+        <div class="points-grid sans">
+          <div class="point"><div class="ico">01</div><h4>在地深耕</h4><p>三十年台南經驗，熟悉在地旅客的需求與習慣。</p></div>
+          <div class="point"><div class="ico">02</div><h4>資源整合</h4><p>串聯旅天下品牌行程，比較一次到位。</p></div>
+          <div class="point"><div class="ico">03</div><h4>專人服務</h4><p>專屬業務全程協助，從出發前到歸國後。</p></div>
+          <div class="point"><div class="ico">04</div><h4>三間門市</h4><p>金華本店、歸仁、海佃，鄰近您家就近諮詢。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow" style="color:var(--gold-400)">OUR SERVICES</span>
+      <h2 class="sec-title">服 務 項 目</h2>
+      <p class="sec-sub">One-stop Travel Solutions, Tailored for You</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num sans">— 01</div><h4>團體旅遊</h4><p>嚴選國內外品牌團，含日韓、東南亞、歐美、紐澳長線。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 02</div><h4>自由行 ‧ 機+酒</h4><p>機票、訂房、接送一次搞定，自由規劃不打折。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 03</div><h4>國際機票</h4><p>各大航空票務代訂，商務艙艙位即時查詢。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 04</div><h4>簽證代辦</h4><p>美簽、申根、東南亞落地簽諮詢與送件服務。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 05</div><h4>郵輪旅遊</h4><p>麗星、公主、皇家加勒比 — 海上度假首選。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 06</div><h4>客製團體</h4><p>家族旅行、員工旅遊、進香團，量身打造行程。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 07</div><h4>國內旅遊</h4><p>離島、東部、賞花賞楓、溫泉美食一日深度。</p><div class="svc-arrow sans">→</div></div>
+      <div class="svc-card"><div class="svc-num sans">— 08</div><h4>訂房 ‧ 接送</h4><p>全球四星五星訂房、機場接送、租車服務。</p><div class="svc-arrow sans">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK CTA -->
+<div class="back-cta">
+  <div class="container">
+    <p>想找到適合您的行程？回到首頁探索最新旅遊商品。</p>
+    <a href="index.html#products" class="btn-back">← 探索行程</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-simple">
+      <div>
+        <img src="logo.jpg" alt="詮達旅遊" style="height:44px;width:auto;filter:brightness(0) invert(1);margin-bottom:10px">
+        <p style="font-size:13px;color:var(--gray-200)">詮達旅行社企業有限公司 ‧ 旅天下加盟體系成員</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">首頁</a>
+        <a href="index.html#products">熱門行程</a>
+        <a href="index.html#contact">門市據點</a>
+        <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" style="color:var(--gold-300)">LINE</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 CHYUAN DAR TRAVEL CO., LTD. All Rights Reserved.</span>
+      <span>統一編號：12919292 ｜ 觀光署旅行業：715600</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
