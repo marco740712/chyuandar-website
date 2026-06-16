@@ -129,46 +129,45 @@ section{padding:100px 0;position:relative}
 .sec-title{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(28px,3.5vw,44px);color:var(--navy-900);margin-top:14px;letter-spacing:.06em}
 .sec-sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--gray-600);margin-top:12px}
 
-/* ── PRODUCTS ── */
+/* ── PRODUCTS（旅遊商品方塊） ── */
 .products{background:var(--gray-50)}
-.filters{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-bottom:48px;font-family:"Inter",sans-serif}
-.filter-group{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.15em;color:var(--gray-600)}
-.filter-group .lbl{color:var(--navy-800);font-weight:500}
-.chip{padding:7px 16px;border:1px solid var(--gray-200);color:var(--gray-600);background:#fff;cursor:pointer;transition:.2s;font-size:12.5px;letter-spacing:.12em}
-.chip:hover{border-color:var(--gold-500);color:var(--navy-800)}
-.chip.active{background:var(--navy-900);color:var(--gold-300);border-color:var(--navy-900)}
-.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.tour-card{background:#fff;border:1px solid var(--gray-100);transition:.3s;position:relative;overflow:hidden}
-.tour-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px -18px rgba(10,26,51,.22);border-color:var(--gold-400)}
-.tour-img{position:relative;height:240px;overflow:hidden}
-.tour-img img{height:100%;width:100%;object-fit:cover;transition:.6s}
-.tour-card:hover .tour-img img{transform:scale(1.06)}
-.tour-tag{position:absolute;top:16px;left:16px;background:var(--navy-900);color:var(--gold-300);padding:5px 13px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.2em}
-.tour-source{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.92);color:var(--navy-800);padding:5px 11px;font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.15em}
-.tour-body{padding:24px}
-.tour-meta{display:flex;gap:10px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.18em;color:var(--gray-400);text-transform:uppercase;margin-bottom:12px}
-.tour-meta span{position:relative;padding-right:10px}
-.tour-meta span:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;width:3px;height:3px;background:var(--gold-500);border-radius:50%;transform:translateY(-50%)}
-.tour-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;color:var(--navy-900);line-height:1.45;margin-bottom:16px;min-height:54px;letter-spacing:.03em}
-.tour-foot{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid var(--gray-100);padding-top:16px;margin-top:16px}
-.price{font-family:"Cormorant Garamond",serif}
-.price .lbl{display:block;font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.25em;color:var(--gray-400);text-transform:uppercase;margin-bottom:3px}
-.price .val{font-size:30px;color:var(--navy-900);font-weight:600}
-.price .val em{font-style:normal;color:var(--gold-500);font-size:15px;margin-right:2px}
-.tour-link{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.2em;color:var(--gold-500);padding-bottom:2px;border-bottom:1px solid var(--gold-500);text-transform:uppercase}
 
-/* ── NEWS ── */
-.news{background:#fff}
-.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
-a.news-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.25s;color:inherit}
-.news-item:nth-child(2n){border-right:none}
-.news-item:hover{background:var(--gray-50)}
-.news-date{font-family:"Cormorant Garamond",serif;border-right:1px solid var(--gold-400);padding-right:18px}
-.news-date .d{font-size:38px;color:var(--navy-900);letter-spacing:.02em;line-height:1}
-.news-date .m{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold-500);margin-top:6px;text-transform:uppercase}
-.news-content .cat{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.25em;color:var(--gold-500);text-transform:uppercase;margin-bottom:6px}
-.news-content h5{font-family:"Noto Serif TC",serif;font-weight:500;font-size:17px;color:var(--navy-900);line-height:1.5;margin-bottom:5px;letter-spacing:.03em}
-.news-content p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-600);line-height:1.7}
+/* LINE 橫幅 */
+.more-banner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  background:linear-gradient(120deg,var(--navy-900) 0%,var(--navy-700) 100%);
+  border:1px solid var(--gold-500);
+  padding:30px 36px;
+  margin-bottom:44px;
+  transition:.25s;
+}
+.more-banner:hover{background:linear-gradient(120deg,var(--navy-800) 0%,var(--navy-600) 100%)}
+.more-banner-text{display:flex;flex-direction:column;gap:6px;min-width:0}
+.more-banner-text strong{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;color:#fff;letter-spacing:.05em}
+.more-banner-text em{font-style:italic;font-family:"Cormorant Garamond",serif;font-size:15px;color:var(--gold-300);line-height:1.6}
+.more-banner-btn{
+  flex-shrink:0;font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.18em;
+  background:#06C755;color:#fff;padding:13px 26px;white-space:nowrap;transition:.2s;
+}
+.more-banner:hover .more-banner-btn{background:#05a847}
+
+/* 地區方塊（每列三個） */
+.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.region-card{
+  display:flex;flex-direction:column;gap:14px;
+  background:#fff;border:1px solid var(--gray-100);
+  padding:36px 30px;
+  transition:.3s;position:relative;overflow:hidden;
+}
+.region-card::before{
+  content:"";position:absolute;top:0;left:0;width:0;height:3px;background:var(--gold-500);transition:.35s;
+}
+.region-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px -18px rgba(10,26,51,.18);border-color:var(--gold-400)}
+.region-card:hover::before{width:100%}
+.region-tag{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold-500);text-transform:uppercase}
+.region-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:24px;color:var(--navy-900);letter-spacing:.06em}
+.region-arrow{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.15em;color:var(--navy-700);transition:.25s}
+.region-card:hover .region-arrow{color:var(--gold-500)}
 
 /* ── CONTACT ── */
 .contact{
@@ -225,9 +224,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 @media (max-width:980px){
   .menu{display:none}
   .about-strip-inner{flex-direction:column;align-items:flex-start;gap:24px}
-  .tour-grid{grid-template-columns:1fr 1fr}
-  .news-grid{grid-template-columns:1fr}
-  .news-item{border-right:none}
+  .region-grid{grid-template-columns:1fr 1fr}
   .branch-grid{grid-template-columns:1fr}
   .contact-bar{flex-direction:column;align-items:flex-start;padding:28px 32px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
@@ -235,11 +232,13 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 @media (max-width:600px){
   .container{padding:0 20px}
   section{padding:72px 0}
-  .tour-grid{grid-template-columns:1fr}
+  .region-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .topbar-inner{flex-direction:column;gap:6px;font-size:11px}
   .contact-bar{padding:24px 20px}
   .contact-bar-info{gap:24px}
+  .more-banner{flex-direction:column;align-items:flex-start}
+  .more-banner-btn{width:100%;text-align:center}
 }
 </style>
 </head>
@@ -264,8 +263,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
     </a>
     <nav class="menu">
       <a href="about.html">關於詮達</a>
-      <a href="#products">熱門行程</a>
-      <a href="#news">最新消息</a>
+      <a href="#products">查看更多旅遊商品</a>
       <a href="#contact">門市據點</a>
     </nav>
     <a href="#contact" class="cta">立即諮詢</a>
@@ -299,48 +297,56 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="container">
-    <div class="sec-head">
-      <span class="sec-eyebrow">FEATURED TOURS</span>
-      <h2 class="sec-title">熱 門 行 程</h2>
-      <p class="sec-sub">資料每日自動同步旅天下商品 ‧ 點擊可直接向詮達旅行社訂購</p>
-    </div>
+    <a class="more-banner" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">
+      <span class="more-banner-text">
+        <strong>查看更多旅遊商品</strong>
+        <em>「有您喜歡的產品，請洽客服人員即可享有優惠價格」</em>
+      </span>
+      <span class="more-banner-btn">LINE 諮詢 →</span>
+    </a>
 
-    <div class="filters">
-      <div class="filter-group">
-        <span class="lbl">地區</span>
-        <span class="chip active" data-region="all">全部</span>
-        <span class="chip" data-region="日本">日本</span>
-        <span class="chip" data-region="韓國">韓國</span>
-        <span class="chip" data-region="東南亞">東南亞</span>
-        <span class="chip" data-region="歐洲">歐洲</span>
-        <span class="chip" data-region="中東亞非">中東亞非</span>
-        <span class="chip" data-region="美加">美加</span>
-        <span class="chip" data-region="大洋洲">大洋洲</span>
-        <span class="chip" data-region="國內旅遊">國內旅遊</span>
-      </div>
-      <div class="filter-group">
-        <span class="lbl">類型</span>
-        <span class="chip active" data-type="all">全部</span>
-        <span class="chip" data-type="團體">團體</span>
-        <span class="chip" data-type="自由行">自由行</span>
-        <span class="chip" data-type="郵輪">郵輪</span>
-        <span class="chip" data-type="機票">機票</span>
-      </div>
+    <div class="region-grid">
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega" target="_blank" rel="noopener">
+        <span class="region-tag">JAPAN</span>
+        <h4>日本旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/korea/index?fr=cg1355mega" target="_blank" rel="noopener">
+        <span class="region-tag">KOREA</span>
+        <h4>韓國旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/southeastasia/index?fr=cg1333mega" target="_blank" rel="noopener">
+        <span class="region-tag">SOUTHEAST ASIA</span>
+        <h4>東南亞旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/europe/index?fr=cg4812mega" target="_blank" rel="noopener">
+        <span class="region-tag">EUROPE</span>
+        <h4>歐洲旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/middleeast/index?fr=cg4831mega" target="_blank" rel="noopener">
+        <span class="region-tag">MIDDLE EAST &amp; AFRICA</span>
+        <h4>中東亞非旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/northamerica/index?fr=cg5095mega" target="_blank" rel="noopener">
+        <span class="region-tag">AMERICAS</span>
+        <h4>美加旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/oceania/index?fr=cg5119mega" target="_blank" rel="noopener">
+        <span class="region-tag">OCEANIA</span>
+        <h4>大洋洲旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
+      <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/taiwan/index?fr=cg7908mega" target="_blank" rel="noopener">
+        <span class="region-tag">TAIWAN</span>
+        <h4>國內旅遊</h4>
+        <span class="region-arrow">查看行程 →</span>
+      </a>
     </div>
-
-    <div class="tour-grid" id="tourGrid"></div>
-  </div>
-</section>
-
-<!-- NEWS -->
-<section class="news" id="news">
-  <div class="container">
-    <div class="sec-head">
-      <span class="sec-eyebrow">LATEST NEWS</span>
-      <h2 class="sec-title">最 新 消 息</h2>
-      <p class="sec-sub">Stay Updated with Our Latest Offers &amp; Announcements</p>
-    </div>
-    <div class="news-grid" id="newsGrid"></div>
   </div>
 </section>
 
@@ -383,7 +389,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo-gold.png" alt="詮達旅遊" style="height:50px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px">
+        <img src="logo-gold.png" alt="詮達旅遊" style="height:50px;width:auto;margin-bottom:16px">
         <p>詮達旅行社企業有限公司<br/>
         紮根台南三十年的旅遊夥伴，<br/>
         旅天下加盟體系成員。</p>
@@ -392,8 +398,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
         <h6>SITE MAP</h6>
         <ul>
           <li><a href="about.html">關於詮達</a></li>
-          <li><a href="#products">熱門行程</a></li>
-          <li><a href="#news">最新消息</a></li>
+          <li><a href="#products">查看更多旅遊商品</a></li>
           <li><a href="#contact">門市據點</a></li>
         </ul>
       </div>
@@ -433,24 +438,10 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 </footer>
 
 <script>
-/* ── 請將 Apps Script 部署網址貼到這裡 ── */
+/* ── 請將 Apps Script 部署網址貼到這裡（用於門市據點資訊同步） ── */
 const SHEET_API = ""; // ← "https://script.google.com/macros/s/.../exec"
 
 const FALLBACK = {
-  tours: [
-    {地區:"日本",類型:"團體",標題:"日本東北賞楓 ‧ 奧入瀨溪 ‧ 八甲田山纜車 8 日",天數:"8 天 7 夜",出發:"10/15 出發",價格:78900,主圖網址:"https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega"},
-    {地區:"日本",類型:"自由行",標題:"大阪自由行 ‧ 環球影城 ‧ 京都和服體驗 5 日",天數:"5 天 4 夜",出發:"每週出發",價格:25800,主圖網址:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega"},
-    {地區:"歐洲",類型:"團體",標題:"瑞士冰河列車 ‧ 少女峰 ‧ 馬特洪峰深度 10 日",天數:"10 天 8 夜",出發:"09/22 出發",價格:168000,主圖網址:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/europe/index?fr=cg4812mega"},
-    {地區:"韓國",類型:"團體",標題:"首爾 ‧ 釜山雙城 ‧ 海雲台 ‧ 樂天世界 6 日",天數:"6 天 5 夜",出發:"08/10 出發",價格:32800,主圖網址:"https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/korea/index?fr=cg1355mega"},
-    {地區:"東南亞",類型:"自由行",標題:"峇里島 ‧ Villa 私人泳池 ‧ 烏布秘境 5 日",天數:"5 天 4 夜",出發:"每日出發",價格:23900,主圖網址:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/southeastasia/index?fr=cg1333mega"},
-    {地區:"美加",類型:"郵輪",標題:"阿拉斯加冰河灣 ‧ 公主郵輪 9 日",天數:"9 天 8 夜",出發:"07/05 出發",價格:128000,主圖網址:"https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/northamerica/index?fr=cg5095mega"},
-  ],
-  news: [
-    {日期:"2026-05-28",分類:"促銷活動",標題:"暑期日本機票早鳥優惠 ─ 大阪、東京 7,800 元起",內容摘要:"長榮、星宇直飛，數量有限請洽各門市業務。",連結:""},
-    {日期:"2026-05-22",分類:"出團公告",標題:"2026 京都賞楓 11 月梯次正式開賣",內容摘要:"嵐山、清水寺、東福寺三大名景一次走遍，限量 16 人小團。",連結:""},
-    {日期:"2026-05-15",分類:"公司公告",標題:"端午連假各門市營業時間調整公告",內容摘要:"6/19-6/22 全門市休息，急件請洽 LINE 官方帳號。",連結:""},
-    {日期:"2026-05-08",分類:"旅遊資訊",標題:"歐洲申根簽 2026 新制：ETIAS 上路須知",內容摘要:"赴歐自由行旅客請提前 96 小時申請 ETIAS 電子授權。",連結:""},
-  ],
   branches: [
     {名稱:"金華本店",標籤:"Head Office",地址:"702 台南市南區金華路二段 425 號",電話:"(06) 265-7888",傳真:"(06) 265-7058",營業時間:"週一至週五 09:00 – 18:00","Google Map 連結":""},
     {名稱:"歸仁分公司",標籤:"Branch No.1",地址:"711 台南市歸仁區中山路二段 175 號",電話:"(06) 239-8787",傳真:"(06) 239-6767",營業時間:"週一至週五 10:00 – 19:00","Google Map 連結":""},
@@ -459,7 +450,6 @@ const FALLBACK = {
 };
 
 let DATA = FALLBACK;
-let regionF = "all", typeF = "all";
 
 async function loadData(){
   if(!SHEET_API) return;
@@ -467,59 +457,9 @@ async function loadData(){
     const res = await fetch(SHEET_API, {cache:"no-store"});
     const json = await res.json();
     DATA = {
-      tours:    (json.tours    && json.tours.length)    ? json.tours    : FALLBACK.tours,
-      news:     (json.news     && json.news.length)     ? json.news     : FALLBACK.news,
       branches: (json.branches && json.branches.length) ? json.branches : FALLBACK.branches,
     };
   }catch(err){ console.warn("Sheet API 載入失敗，使用 fallback 資料：", err); }
-}
-
-function renderTours(){
-  const grid = document.getElementById('tourGrid');
-  const list = DATA.tours
-    .filter(t => (regionF==="all"||t.地區===regionF) && (typeF==="all"||t.類型===typeF))
-    .sort((a,b)=>(a.排序||999)-(b.排序||999));
-  grid.innerHTML = list.map(t=>`
-    <a class="tour-card" href="${t.連結||'#'}" target="_blank" rel="noopener">
-      <div class="tour-img">
-        <img src="${t.主圖網址}" alt="${t.標題}" onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80'">
-        <span class="tour-tag">${t.地區||''}</span>
-        ${t.來源?`<span class="tour-source">${t.來源}</span>`:''}
-      </div>
-      <div class="tour-body">
-        <div class="tour-meta"><span>${t.類型||''}</span><span>${t.天數||''}</span><span>${t.出發||''}</span></div>
-        <h4>${t.標題||''}</h4>
-        <div class="tour-foot">
-          <div class="price">
-            <span class="lbl">From</span>
-            <span class="val"><em>NT$</em>${Number(t.價格||0).toLocaleString()}</span>
-          </div>
-          <span class="tour-link">查看 →</span>
-        </div>
-      </div>
-    </a>
-  `).join('') || `<p style="grid-column:1/-1;text-align:center;color:var(--gray-600);padding:60px;font-family:Inter">沒有符合條件的行程</p>`;
-}
-
-function renderNews(){
-  const grid = document.getElementById('newsGrid');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  grid.innerHTML = DATA.news.slice(0,8).map(n=>{
-    const d = new Date(n.日期);
-    const day = isNaN(d)?'—':String(d.getDate()).padStart(2,'0');
-    const my  = isNaN(d)?'':`${months[d.getMonth()]} ${d.getFullYear()}`;
-    const href = n.連結 || '#contact';
-    const isExternal = n.連結 && n.連結.startsWith('http');
-    return `
-    <a class="news-item" href="${href}" ${isExternal?'target="_blank" rel="noopener"':''}>
-      <div class="news-date"><div class="d">${day}</div><div class="m">${my}</div></div>
-      <div class="news-content">
-        <div class="cat">${n.分類||''}</div>
-        <h5>${n.標題||''}</h5>
-        <p>${n.內容摘要||''}</p>
-      </div>
-    </a>`;
-  }).join('');
 }
 
 function renderBranches(){
@@ -539,28 +479,9 @@ function renderBranches(){
   `).join('');
 }
 
-function bindFilters(){
-  document.querySelectorAll('.chip').forEach(c=>{
-    c.addEventListener('click',()=>{
-      if(c.dataset.region){
-        document.querySelectorAll('[data-region]').forEach(x=>x.classList.remove('active'));
-        c.classList.add('active'); regionF=c.dataset.region;
-      }
-      if(c.dataset.type){
-        document.querySelectorAll('[data-type]').forEach(x=>x.classList.remove('active'));
-        c.classList.add('active'); typeF=c.dataset.type;
-      }
-      renderTours();
-    });
-  });
-}
-
 (async()=>{
   await loadData();
-  renderTours();
-  renderNews();
   renderBranches();
-  bindFilters();
 })();
 </script>
 </body>
