@@ -57,8 +57,8 @@ header.site{
 }
 .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1280px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:14px;color:#fff}
-.brand-logo{height:52px;width:auto;filter:brightness(0) invert(1);transition:.3s}
-.brand:hover .brand-logo{filter:brightness(0) saturate(100%) invert(78%) sepia(28%) saturate(560%) hue-rotate(2deg) brightness(92%) contrast(88%)}
+.brand-logo{height:52px;width:auto;transition:.3s}
+.brand:hover .brand-logo{opacity:.85}
 .brand-name{font-family:"Cormorant Garamond",serif;font-size:22px;letter-spacing:.18em;color:#fff}
 .brand-sub{display:block;font-family:"Noto Serif TC",serif;font-size:11px;letter-spacing:.4em;color:var(--gold-300);margin-top:2px}
 .menu{display:flex;gap:34px;font-family:"Inter",sans-serif;font-size:14px;letter-spacing:.12em;color:#E9E6DE}
@@ -160,7 +160,7 @@ section{padding:100px 0;position:relative}
 /* ── NEWS ── */
 .news{background:#fff}
 .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
-.news-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.25s;cursor:pointer}
+a.news-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.25s;color:inherit}
 .news-item:nth-child(2n){border-right:none}
 .news-item:hover{background:var(--gray-50)}
 .news-date{font-family:"Cormorant Garamond",serif;border-right:1px solid var(--gold-400);padding-right:18px}
@@ -260,7 +260,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 <header class="site">
   <div class="nav">
     <a href="#" class="brand">
-      <img src="logo.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+      <img src="logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
     </a>
     <nav class="menu">
       <a href="about.html">關於詮達</a>
@@ -290,7 +290,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   <div class="about-strip-inner">
     <div class="about-strip-text">
       <h2>台南在地三十年，<span>旅天下加盟體系</span>成員</h2>
-      <p>詮達旅行社企業有限公司紮根台南，從金華路總公司出發，陸續於歸仁、海佃設立分公司。機票、簽證到客製化團體，由專業業務一條龍服務。</p>
+      <p>詮達旅行社企業有限公司紮根台南，從金華路本店出發，陸續於歸仁、海佃設立分公司。機票、簽證到客製化團體，由專業業務一條龍服務。</p>
     </div>
     <a href="about.html" class="about-strip-link">了解詮達 →</a>
   </div>
@@ -383,7 +383,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo.png" alt="詮達旅遊" style="height:50px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px">
+        <img src="logo-gold.png" alt="詮達旅遊" style="height:50px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px">
         <p>詮達旅行社企業有限公司<br/>
         紮根台南三十年的旅遊夥伴，<br/>
         旅天下加盟體系成員。</p>
@@ -438,12 +438,12 @@ const SHEET_API = ""; // ← "https://script.google.com/macros/s/.../exec"
 
 const FALLBACK = {
   tours: [
-    {地區:"日本",類型:"團體",標題:"日本東北賞楓 ‧ 奧入瀨溪 ‧ 八甲田山纜車 8 日",天數:"8 天 7 夜",出發:"10/15 出發",價格:78900,主圖網址:"https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
-    {地區:"日本",類型:"自由行",標題:"大阪自由行 ‧ 環球影城 ‧ 京都和服體驗 5 日",天數:"5 天 4 夜",出發:"每週出發",價格:25800,主圖網址:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
-    {地區:"歐洲",類型:"團體",標題:"瑞士冰河列車 ‧ 少女峰 ‧ 馬特洪峰深度 10 日",天數:"10 天 8 夜",出發:"09/22 出發",價格:168000,主圖網址:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
-    {地區:"韓國",類型:"團體",標題:"首爾 ‧ 釜山雙城 ‧ 海雲台 ‧ 樂天世界 6 日",天數:"6 天 5 夜",出發:"08/10 出發",價格:32800,主圖網址:"https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
-    {地區:"東南亞",類型:"自由行",標題:"峇里島 ‧ Villa 私人泳池 ‧ 烏布秘境 5 日",天數:"5 天 4 夜",出發:"每日出發",價格:23900,主圖網址:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
-    {地區:"美加",類型:"郵輪",標題:"阿拉斯加冰河灣 ‧ 公主郵輪 9 日",天數:"9 天 8 夜",出發:"07/05 出發",價格:128000,主圖網址:"https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"#"},
+    {地區:"日本",類型:"團體",標題:"日本東北賞楓 ‧ 奧入瀨溪 ‧ 八甲田山纜車 8 日",天數:"8 天 7 夜",出發:"10/15 出發",價格:78900,主圖網址:"https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega"},
+    {地區:"日本",類型:"自由行",標題:"大阪自由行 ‧ 環球影城 ‧ 京都和服體驗 5 日",天數:"5 天 4 夜",出發:"每週出發",價格:25800,主圖網址:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega"},
+    {地區:"歐洲",類型:"團體",標題:"瑞士冰河列車 ‧ 少女峰 ‧ 馬特洪峰深度 10 日",天數:"10 天 8 夜",出發:"09/22 出發",價格:168000,主圖網址:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/europe/index?fr=cg4812mega"},
+    {地區:"韓國",類型:"團體",標題:"首爾 ‧ 釜山雙城 ‧ 海雲台 ‧ 樂天世界 6 日",天數:"6 天 5 夜",出發:"08/10 出發",價格:32800,主圖網址:"https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/korea/index?fr=cg1355mega"},
+    {地區:"東南亞",類型:"自由行",標題:"峇里島 ‧ Villa 私人泳池 ‧ 烏布秘境 5 日",天數:"5 天 4 夜",出發:"每日出發",價格:23900,主圖網址:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/southeastasia/index?fr=cg1333mega"},
+    {地區:"美加",類型:"郵輪",標題:"阿拉斯加冰河灣 ‧ 公主郵輪 9 日",天數:"9 天 8 夜",出發:"07/05 出發",價格:128000,主圖網址:"https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=80",來源:"旅天下",連結:"https://travel.gounitravel.com/category/zh-tw/northamerica/index?fr=cg5095mega"},
   ],
   news: [
     {日期:"2026-05-28",分類:"促銷活動",標題:"暑期日本機票早鳥優惠 ─ 大阪、東京 7,800 元起",內容摘要:"長榮、星宇直飛，數量有限請洽各門市業務。",連結:""},
@@ -452,7 +452,7 @@ const FALLBACK = {
     {日期:"2026-05-08",分類:"旅遊資訊",標題:"歐洲申根簽 2026 新制：ETIAS 上路須知",內容摘要:"赴歐自由行旅客請提前 96 小時申請 ETIAS 電子授權。",連結:""},
   ],
   branches: [
-    {名稱:"總公司",標籤:"Head Office",地址:"702 台南市南區金華路二段 425 號",電話:"(06) 265-7888",傳真:"(06) 265-7058",營業時間:"週一至週五 09:00 – 18:00","Google Map 連結":""},
+    {名稱:"金華本店",標籤:"Head Office",地址:"702 台南市南區金華路二段 425 號",電話:"(06) 265-7888",傳真:"(06) 265-7058",營業時間:"週一至週五 09:00 – 18:00","Google Map 連結":""},
     {名稱:"歸仁分公司",標籤:"Branch No.1",地址:"711 台南市歸仁區中山路二段 175 號",電話:"(06) 239-8787",傳真:"(06) 239-6767",營業時間:"週一至週五 10:00 – 19:00","Google Map 連結":""},
     {名稱:"海佃分公司",標籤:"Branch No.2",地址:"709 台南市安南區海佃路一段 203 號",電話:"(06) 250-2818",傳真:"(06) 250-0818",營業時間:"週一至週五 10:30 – 19:30","Google Map 連結":""},
   ]
@@ -508,15 +508,17 @@ function renderNews(){
     const d = new Date(n.日期);
     const day = isNaN(d)?'—':String(d.getDate()).padStart(2,'0');
     const my  = isNaN(d)?'':`${months[d.getMonth()]} ${d.getFullYear()}`;
+    const href = n.連結 || '#contact';
+    const isExternal = n.連結 && n.連結.startsWith('http');
     return `
-    <div class="news-item">
+    <a class="news-item" href="${href}" ${isExternal?'target="_blank" rel="noopener"':''}>
       <div class="news-date"><div class="d">${day}</div><div class="m">${my}</div></div>
       <div class="news-content">
         <div class="cat">${n.分類||''}</div>
-        <h5>${n.連結?`<a href="${n.連結}" target="_blank" rel="noopener">${n.標題||''}</a>`:(n.標題||'')}</h5>
+        <h5>${n.標題||''}</h5>
         <p>${n.內容摘要||''}</p>
       </div>
-    </div>`;
+    </a>`;
   }).join('');
 }
 
