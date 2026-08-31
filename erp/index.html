@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>系統登入 ｜ 詮達旅行社 System Portal</title>
+<meta name="description" content="詮達旅行社企業有限公司 — 內部系統統一入口，請選擇欲使用之系統。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#06101F;--navy-900:#0A1A33;--navy-800:#0E2447;
+  --gold-500:#C9A961;--gold-400:#D9BE7A;--gold-300:#E6CF95;
+  --gray-50:#F7F6F3;--gray-100:#EEEDE8;--gray-200:#D9D7CF;
+  --gray-400:#9A988F;--gray-600:#5C5A53;
+  --line:rgba(201,169,97,.25);--line-strong:rgba(201,169,97,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Serif TC","Cormorant Garamond",serif;background:var(--gray-50);color:var(--navy-900);line-height:1.7;-webkit-font-smoothing:antialiased}
+.sans{font-family:"Inter","Noto Serif TC",sans-serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy-950);color:var(--gray-200);font-size:12.5px;letter-spacing:.08em}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:8px 32px;max-width:1280px;margin:0 auto}
+.topbar a{margin-left:18px;color:var(--gold-300)}
+
+/* ── HEADER ── */
+header.site{position:sticky;top:0;z-index:50;background:rgba(10,26,51,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:14px;color:#fff}
+.brand-logo{height:52px;width:auto;}
+.menu{display:flex;gap:34px;font-family:"Inter",sans-serif;font-size:14px;letter-spacing:.12em;color:#E9E6DE}
+.menu a{position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--gold-400);transform:scaleX(0);transition:transform .3s}
+.menu a:hover::after,.menu a.active::after{transform:scaleX(1)}
+.menu a.active{color:var(--gold-300)}
+.cta{font-family:"Inter",sans-serif;font-size:13px;letter-spacing:.15em;padding:10px 22px;border:1px solid var(--gold-400);color:var(--gold-300);transition:.25s}
+.cta:hover{background:var(--gold-500);color:var(--navy-900)}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  position:relative;
+  padding:110px 0 90px;
+  background:
+    linear-gradient(135deg,rgba(6,16,31,.88) 0%,rgba(14,36,71,.75) 100%),
+    url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2400&q=80') center/cover;
+  color:#fff;text-align:center;
+}
+.page-hero::before{content:"";position:absolute;inset:20px;border:1px solid rgba(201,169,97,.3);pointer-events:none}
+.page-eyebrow{font-family:"Inter",sans-serif;font-size:11.5px;letter-spacing:.5em;color:var(--gold-300);display:inline-flex;align-items:center;gap:14px;margin-bottom:22px;text-transform:uppercase}
+.page-eyebrow::before,.page-eyebrow::after{content:"";width:38px;height:1px;background:var(--gold-400)}
+.page-hero h1{font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(36px,5vw,64px);letter-spacing:.06em;margin-bottom:16px}
+.page-hero h1 em{font-style:normal;color:var(--gold-300)}
+.page-hero p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--gray-200);max-width:540px;margin:0 auto}
+
+/* ── SERVICES（本頁重用作系統卡片區） ── */
+.services{padding:100px 0;background:linear-gradient(180deg,var(--navy-900) 0%,var(--navy-800) 100%);color:#fff}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.svc-card{display:block;padding:40px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.3s;background:rgba(255,255,255,.02)}
+.svc-card:nth-child(3n){border-right:none}
+.svc-card:hover{background:rgba(201,169,97,.06)}
+.svc-num{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--gold-400);letter-spacing:.3em}
+.svc-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:20px;color:#fff;margin:20px 0 10px;letter-spacing:.06em}
+.svc-card p{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-200);line-height:1.8}
+.svc-arrow{margin-top:20px;font-size:18px;color:var(--gold-400);letter-spacing:.2em}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font-family:"Inter",sans-serif}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:44px;border-bottom:1px solid rgba(201,169,97,.2)}
+.footer-brand .brand-name{color:#fff;font-family:"Cormorant Garamond",serif;font-size:22px;letter-spacing:.18em}
+.footer-brand p{margin-top:14px;font-size:13px;line-height:1.8;color:var(--gray-200)}
+.footer-col h6{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.3em;color:var(--gold-400);text-transform:uppercase;margin-bottom:18px}
+.footer-col ul{list-style:none;font-size:13.5px;line-height:2.2}
+.footer-col ul li{color:var(--gray-200)}
+.footer-col ul li a:hover{color:var(--gold-300)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:12px;color:var(--gray-400);letter-spacing:.08em}
+.footer-bot .social a{margin-left:14px;color:var(--gold-300)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .menu{display:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-card:nth-child(3n){border-right:1px solid var(--line)}
+  .svc-card:nth-child(2n){border-right:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  .page-hero{padding:80px 0 60px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{border-right:none!important}
+  .topbar-inner{flex-direction:column;gap:6px;font-size:11px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner sans">
+    <span>週一至週五 09:00 – 18:00 ｜ 國定假日休息</span>
+    <span>
+      <a href="tel:0626578880">06-265-7888</a>
+      <a href="mailto:chyuan.dar@msa.hinet.net">chyuan.dar@msa.hinet.net</a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a href="../index.html" class="brand">
+      <img src="../logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+    </a>
+    <nav class="menu">
+      <a href="../about.html">關於詮達</a>
+      <a href="../index.html#products">熱門行程</a>
+      <a href="../index.html#contact">門市據點</a>
+    </nav>
+    <a href="../index.html#contact" class="cta">立即諮詢</a>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="page-eyebrow">SYSTEM PORTAL</span>
+    <h1>系 統 <em>登 入</em></h1>
+    <p>請選擇欲使用之系統。</p>
+  </div>
+</div>
+
+<!-- SYSTEM CARDS -->
+<section class="services">
+  <div class="container">
+    <div class="svc-grid">
+
+      <a class="svc-card" href="https://script.google.com/macros/s/AKfycbxfhwx4hxiik8mAxJXPrEazA04yWvicPW8C6nzQBB6Evh2SYuDpfJsOny5TjxnHaD-D/exec" target="_top">
+        <div class="svc-num sans">— 01</div>
+        <h4>ERP 管理系統</h4>
+        <p>訂單、客戶、財務與營運管理。</p>
+        <div class="svc-arrow sans">登入 →</div>
+      </a>
+
+      <a class="svc-card" href="https://script.google.com/macros/s/AKfycbxfhwx4hxiik8mAxJXPrEazA04yWvicPW8C6nzQBB6Evh2SYuDpfJsOny5TjxnHaD-D/exec?page=receiving-center" target="_top">
+        <div class="svc-num sans">— 02</div>
+        <h4>供應商服務</h4>
+        <p>文件收件與案件查詢。</p>
+        <div class="svc-arrow sans">登入 →</div>
+      </a>
+
+      <a class="svc-card" href="https://script.google.com/macros/s/AKfycbytl_wJ5QvdmE0xvEtqHlVoBFPqNgs-rYvr8jJaCmX9aX3dH5bN3LxjyGnNDpt52rqb/exec" target="_top">
+        <div class="svc-num sans">— 03</div>
+        <h4>護照辨識系統</h4>
+        <p>OCR 護照資料辨識。</p>
+        <div class="svc-arrow sans">登入 →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../logo-gold.png" alt="詮達旅遊" style="height:50px;width:auto;margin-bottom:16px">
+        <p>詮達旅行社企業有限公司<br/>
+        紮根台南三十年的旅遊夥伴，<br/>
+        旅天下加盟體系成員。</p>
+      </div>
+      <div class="footer-col">
+        <h6>SITE MAP</h6>
+        <ul>
+          <li><a href="../about.html">關於詮達</a></li>
+          <li><a href="../index.html#products">查看更多旅遊商品</a></li>
+          <li><a href="../index.html#contact">門市據點</a></li>
+          <li><a href="./" target="_top">系統登入</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>SERVICES</h6>
+        <ul>
+          <li>團體旅遊</li>
+          <li>自由行 / 機+酒</li>
+          <li>國際機票</li>
+          <li>簽證代辦</li>
+          <li>客製團體</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>CONTACT</h6>
+        <ul>
+          <li>06-265-7888</li>
+          <li>chyuan.dar@msa.hinet.net</li>
+          <li>台南市南區金華路二段 425 號</li>
+          <li><a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" style="color:var(--gold-300)">加入 LINE 官方帳號 →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal sans" style="display:flex;flex-wrap:wrap;gap:24px;padding-top:22px;font-size:12px;color:var(--gray-400);letter-spacing:.08em">
+      <span>統一編號：12919292</span>
+      <span>交通部觀光署旅行業註冊編號：715600</span>
+      <span>品保協會會員</span>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 CHYUAN DAR TRAVEL CO., LTD. All Rights Reserved.</span>
+      <span class="social">
+        <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">LINE</a>
+        <a href="../index.html#contact">GOOGLE MAP</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
