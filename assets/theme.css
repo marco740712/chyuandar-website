@@ -66,9 +66,8 @@ html .about-strip-text h2 span{color:var(--navy-800)}
 html .more-banner{background:linear-gradient(120deg,var(--navy-800) 0%,var(--navy-900) 100%);border-color:transparent}
 html .more-banner:hover{background:linear-gradient(120deg,var(--navy-700) 0%,var(--navy-800) 100%)}
 html .more-banner-text em{color:#F6E7C1}
-html .region-card::before,html .idea::before{background:var(--navy-800)}
-html .region-card:hover,html .idea:hover{border-color:var(--navy-700)}
-html .region-card:hover .region-arrow{color:var(--navy-800)}
+html .idea::before{background:var(--navy-800)}
+html .idea:hover{border-color:var(--navy-700)}
 html .month.now::after{color:#fff}
 html .idea-tags span{background:var(--sky-50);color:var(--navy-900)}
 html .guide-strip{background:var(--sky-50)}
@@ -134,8 +133,6 @@ html .about-strip-link{font-size:14px}
 html .sec-eyebrow{font-size:12px}
 html .sec-sub{font-size:18.5px}
 html .more-banner-text em{font-size:16.5px}
-html .region-tag{font-size:12.5px}
-html .region-arrow{font-size:14px}
 html .month{font-size:16px}
 html .month small{font-size:11px}
 html .season span{font-size:14px}

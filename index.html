@@ -189,23 +189,21 @@ section{padding:100px 0;position:relative}
 }
 .more-banner:hover .more-banner-btn{background:#05a847}
 
-/* 地區方塊（每列三個） */
-.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+/* 地區方塊：小張照片卡（每列四個），文字壓在照片上 */
+.region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .region-card{
-  display:flex;flex-direction:column;gap:14px;
-  background:#fff;border:1px solid var(--gray-100);
-  padding:36px 30px;
-  transition:.3s;position:relative;overflow:hidden;
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;
+  aspect-ratio:16/10;padding:18px 20px;color:#fff;background:#163E73;transition:.3s;
 }
-.region-card::before{
-  content:"";position:absolute;top:0;left:0;width:0;height:3px;background:var(--gold-500);transition:.35s;
-}
-.region-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px -18px rgba(10,26,51,.18);border-color:var(--gold-400)}
-.region-card:hover::before{width:100%}
-.region-tag{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold-500);text-transform:uppercase}
-.region-card h4{font-family:"Noto Serif TC",serif;font-weight:500;font-size:24px;color:var(--navy-900);letter-spacing:.06em}
-.region-arrow{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.15em;color:var(--navy-700);transition:.25s}
-.region-card:hover .region-arrow{color:var(--gold-500)}
+.region-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.region-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,51,0) 25%,rgba(10,26,51,.55) 60%,rgba(10,26,51,.88) 100%);transition:.3s}
+.region-card>*:not(.region-bg){position:relative;z-index:1}
+.region-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(10,26,51,.45)}
+.region-card:hover .region-bg{transform:scale(1.07)}
+.region-card:hover::after{background:linear-gradient(180deg,rgba(10,26,51,.1) 20%,rgba(10,26,51,.85) 100%)}
+.region-tag{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.85);text-transform:uppercase}
+.region-card h4{font-family:"Noto Serif TC",serif;font-weight:600;font-size:22px;color:#fff;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.region-arrow{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;letter-spacing:.1em;color:#F6E7C1}
 
 /* ── CONTACT ── */
 .contact{
@@ -264,7 +262,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 @media (max-width:980px){
   .menu{display:none}
   .about-strip-inner{flex-direction:column;align-items:flex-start;gap:24px}
-  .region-grid{grid-template-columns:1fr 1fr}
+  .region-grid{grid-template-columns:repeat(3,1fr)}
   .branch-grid{grid-template-columns:1fr}
   .contact-bar{flex-direction:column;align-items:flex-start;padding:28px 32px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
@@ -272,7 +270,11 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 @media (max-width:600px){
   .container{padding:0 20px}
   section{padding:72px 0}
-  .region-grid{grid-template-columns:1fr}
+  .region-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .region-card{padding:12px 14px}
+  .region-card h4{font-size:17px}
+  .region-tag{font-size:9.5px;letter-spacing:.15em}
+  .region-arrow{font-size:12px}
   .footer-grid{grid-template-columns:1fr}
   .topbar-inner{flex-direction:column;gap:6px;font-size:11px}
   .contact-bar{padding:24px 20px}
@@ -470,41 +472,49 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 
     <div class="region-grid">
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1669711676326-22fdc19fcb9b?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">JAPAN</span>
         <h4>日本旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/korea/index?fr=cg1355mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1762697569975-1eba4bc8dea5?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">KOREA</span>
         <h4>韓國旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/southeastasia/index?fr=cg1333mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1703508202823-9b3648ca4f18?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">SOUTHEAST ASIA</span>
         <h4>東南亞旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/europe/index?fr=cg4812mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1514729381455-b14e064f496a?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">EUROPE</span>
         <h4>歐洲旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/middleeast/index?fr=cg4831mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1628503218283-6ddeac69dfea?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">MIDDLE EAST &amp; AFRICA</span>
         <h4>中東亞非旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/northamerica/index?fr=cg5095mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1561134643-668f9057cce4?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">AMERICAS</span>
         <h4>美加旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/oceania/index?fr=cg5119mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1597131987104-9ca2013c9cdc?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">OCEANIA</span>
         <h4>大洋洲旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
       </a>
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/taiwan/index?fr=cg7908mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1571474004502-c1def214ac6d?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
         <span class="region-tag">TAIWAN</span>
         <h4>國內旅遊</h4>
         <span class="region-arrow">查看行程 →</span>
