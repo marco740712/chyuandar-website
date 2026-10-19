@@ -110,3 +110,12 @@ html .tab[aria-selected="true"]{border-bottom-color:var(--navy-800)}
 
 /* 頁尾：保留深藍收尾 */
 html footer{background:var(--navy-950)}
+
+/* 手機版上方資訊列：只留「防詐騙提醒｜電話」一行置中，營業時間與 Email 在頁面下方都看得到 */
+@media (max-width:600px){
+  html .topbar-inner{flex-direction:row;justify-content:center;gap:0;padding:9px 16px;font-size:13px}
+  html .topbar-inner>span:first-child{display:none}
+  html .topbar a[href^="mailto:"]{display:none}
+  html .topbar a{margin:0}
+  html .topbar a[href^="tel:"]::before{content:"｜";margin:0 12px;color:rgba(26,74,142,.35)}
+}
