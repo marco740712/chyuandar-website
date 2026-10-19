@@ -28,7 +28,7 @@
 <style>
 .mjump{position:sticky;top:var(--hdr,72px);z-index:5;background:var(--gray-50);padding:12px 0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
 .mjump::-webkit-scrollbar{display:none}
-.mjump a{flex:0 0 auto;min-width:64px;text-align:center;padding:8px 10px;border:1px solid var(--gray-200);background:#fff;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;color:var(--navy-800)}
+.mjump a{flex:1 0 64px;text-align:center;padding:8px 10px;border:1px solid var(--gray-200);background:#fff;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;color:var(--navy-800)}
 .mjump a small{display:block;font-size:10.5px;letter-spacing:.15em;color:#9AA6B5}
 .mjump a.now{background:var(--navy-800);border-color:var(--navy-800);color:#fff}
 .mjump a.now small{color:rgba(255,255,255,.75)}
@@ -56,7 +56,7 @@
 .dest-cta .go:hover{background:var(--navy-800);color:#fff}
 .dest-cta .ln{background:#06C755;color:#fff}
 @media (max-width:980px){.dest-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.dest-grid{grid-template-columns:1fr}.dest-body{padding:16px}}
+@media (max-width:600px){.mjump a{flex:0 0 64px}.dest-grid{grid-template-columns:1fr}.dest-body{padding:16px}}
 </style>
 </head>
 <body>
