@@ -253,17 +253,23 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 .month:hover{border-color:var(--gold-400)}
 .month[aria-selected="true"]{background:var(--navy-900);border-color:var(--navy-900);color:var(--gold-300)}
 .month[aria-selected="true"] small{color:var(--gold-100)}
-.month.now::after{content:"本月";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.1em;padding:1px 6px;background:var(--gold-500);color:var(--navy-900)}
+.month.now::after{content:"本月";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.1em;padding:1px 6px;background:var(--gold-500);color:var(--navy-900);white-space:nowrap;line-height:1.5}
 .season{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 .season h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:26px;letter-spacing:.06em}
-.season span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gold-500);letter-spacing:.1em}
-.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
-.idea{display:flex;flex-direction:column;gap:8px;padding:24px 22px;background:var(--gray-50);border:1px solid var(--gray-100);transition:.25s}
+.season span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gold-500);letter-spacing:.2em;text-transform:uppercase}
+.ideas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.idea{display:flex;flex-direction:column;gap:10px;padding:24px 22px 20px;background:var(--gray-50);border:1px solid var(--gray-100);transition:.25s;position:relative}
+.idea::before{content:"";position:absolute;top:0;left:0;width:0;height:3px;background:var(--gold-500);transition:.35s}
 .idea:hover{border-color:var(--gold-400);background:#fff;transform:translateY(-3px);box-shadow:0 16px 40px -18px rgba(10,26,51,.2)}
-.idea .ico{font-size:28px;line-height:1}
-.idea b{font-family:"Noto Serif TC",serif;font-weight:500;font-size:17px;letter-spacing:.04em;line-height:1.5}
-.idea .go{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.15em;color:var(--navy-700);margin-top:auto}
-.idea:hover .go{color:var(--gold-500)}
+.idea:hover::before{width:100%}
+.idea-top{display:flex;align-items:center;gap:10px}
+.idea-top .ico{font-size:24px;line-height:1}
+.idea-top b{font-family:"Noto Serif TC",serif;font-weight:600;font-size:18px;letter-spacing:.04em}
+.idea p{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;line-height:1.75;color:var(--gray-800);flex:1}
+.idea-tags{display:flex;flex-wrap:wrap;gap:6px}
+.idea-tags span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:12px;padding:3px 10px;background:var(--gold-100);color:var(--navy-800);border-radius:999px}
+.idea .go{align-self:flex-start;margin-top:4px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;letter-spacing:.08em;padding:8px 16px;border:1px solid var(--navy-800);color:var(--navy-800);transition:.2s}
+.idea:hover .go{background:var(--navy-900);color:var(--gold-300);border-color:var(--navy-900)}
 .cal-cta{display:flex;justify-content:center;margin-top:36px}
 
 /* ── 行前指南入口 ── */
@@ -276,15 +282,16 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 .guide-link small{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gray-600)}
 
 @media (max-width:980px){
+  .ideas{grid-template-columns:1fr 1fr}
   .months{display:flex;overflow-x:auto;padding-top:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .months::-webkit-scrollbar{display:none}
   .month{flex:0 0 64px}
   .guide-links{grid-template-columns:1fr 1fr}
 }
 @media (max-width:600px){
-  .ideas{grid-template-columns:1fr 1fr;gap:12px}
-  .idea{padding:18px 16px}
-  .idea b{font-size:15px}
+  .ideas{grid-template-columns:1fr;gap:12px}
+  .idea{padding:18px 16px 16px}
+  .season h3{font-size:21px}
   .guide-strip{padding:56px 0}
   .guide-link{padding:20px 16px}
 }
@@ -593,49 +600,113 @@ const REGION = {
   middleeast:GU+"middleeast/index?fr=cg4831mega", americas:GU+"northamerica/index?fr=cg5095mega",
   oceania:GU+"oceania/index?fr=cg5119mega", taiwan:GU+"taiwan/index?fr=cg7908mega"
 };
-const SEASONS = [
-  {months:[1,2],   title:"寒假／過年", tag:"WINTER ESCAPE", ideas:[
-    {ico:"❄️", name:"日本北海道賞雪／合掌村", r:"japan"},
-    {ico:"⛷", name:"韓國滑雪", r:"korea"},
-    {ico:"🏝", name:"東南亞避寒（泰國／富國島）", r:"sea"}]},
-  {months:[3,4],   title:"春季花季", tag:"BLOSSOM SEASON", ideas:[
-    {ico:"🌸", name:"日本關東／關西賞櫻", r:"japan"},
-    {ico:"🌸", name:"韓國首爾櫻花季", r:"korea"},
-    {ico:"🌷", name:"荷蘭鬱金香季", r:"europe"}]},
-  {months:[5,6],   title:"初夏避暑", tag:"EARLY SUMMER", ideas:[
-    {ico:"🏰", name:"歐洲深度旅遊", r:"europe"},
-    {ico:"🎆", name:"澎湖花火節", r:"taiwan"},
-    {ico:"🏔", name:"黑部立山雪壁", r:"japan"}]},
-  {months:[7,8],   title:"暑假親子", tag:"FAMILY SUMMER", ideas:[
-    {ico:"🌊", name:"峇里島水上活動", r:"sea"},
-    {ico:"🏞", name:"美加國家公園", r:"americas"},
-    {ico:"🎢", name:"新加坡雙樂園", r:"sea"}]},
-  {months:[9,10],  title:"秋季賞楓", tag:"AUTUMN LEAVES", ideas:[
-    {ico:"🍁", name:"加拿大楓葉大道", r:"americas"},
-    {ico:"🍁", name:"日本東北／關西賞楓", r:"japan"},
-    {ico:"🍂", name:"南韓楓葉季", r:"korea"}]},
-  {months:[11,12], title:"跨年／極光", tag:"AURORA & HOLIDAYS", ideas:[
-    {ico:"🌌", name:"北歐極光", r:"europe"},
-    {ico:"🏙", name:"杜拜中東奢華遊", r:"middleeast"},
-    {ico:"🎄", name:"歐洲聖誕市集", r:"europe"},
-    {ico:"🏖", name:"關島／塞班島渡假", r:"oceania"}]}
+const LINE = "https://lin.ee/WuWR8hU";
+/* 每月 6 張卡片：國家、旗幟、特色主題、標籤、行程分類（r） */
+const MONTHS = [
+  {title:"深冬雪景與熱帶避寒", en:"Winter Snow & Tropical Escape", ideas:[
+    {f:"🇯🇵", n:"日本", t:"北海道銀白雪景、合掌村點燈季、銀山溫泉泡湯。", tags:["賞雪","溫泉"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"江原道滑雪度假村、首爾冬季燈飾慶典。", tags:["滑雪","燈飾"], r:"korea"},
+    {f:"🇹🇭", n:"泰國", t:"涼季最適合旅遊，曼谷、清邁、普吉島避寒度假。", tags:["避寒","海島"], r:"sea"},
+    {f:"🇻🇳", n:"越南", t:"富國島免簽避寒度假，南越胡志明市乾季氣候舒適。", tags:["避寒","免簽海島"], r:"sea"},
+    {f:"🇳🇿", n:"紐西蘭", t:"南半球夏季，蒂卡波湖看星空、戶外健行的最佳季節。", tags:["星空","健行"], r:"oceania"},
+    {f:"🇦🇹", n:"奧地利／瑞士", t:"阿爾卑斯山頂級滑雪場，與哈修塔特等雪景小鎮。", tags:["滑雪","雪景小鎮"], r:"europe"}]},
+  {title:"農曆春節、雪祭與極光", en:"Lunar New Year, Snow & Aurora", ideas:[
+    {f:"🇯🇵", n:"日本", t:"札幌雪祭、藏王樹冰、網走流冰破冰船、九州溫泉之旅。", tags:["雪祭","流冰"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"濟州島冬季山茶花季、江原道冰釣慶典。", tags:["山茶花","冰釣"], r:"korea"},
+    {f:"🇲🇾", n:"馬來西亞／新加坡", t:"春節節慶氛圍濃厚，沙巴避寒潛水。", tags:["春節","潛水"], r:"sea"},
+    {f:"🇮🇸", n:"冰島／北歐", t:"極光旺季、藍冰洞探險、狗拉雪橇（挪威、芬蘭）。", tags:["極光","冰洞"], r:"europe"},
+    {f:"🇨🇭", n:"瑞士", t:"搭冰河列車，欣賞壯麗的阿爾卑斯雪山景色。", tags:["冰河列車","雪景"], r:"europe"},
+    {f:"🇹🇷", n:"土耳其", t:"卡帕多奇亞雪景熱氣球、冬日古蹟巡禮。", tags:["熱氣球","古蹟"], r:"middleeast"}]},
+  {title:"初春賞櫻與異國慶典", en:"Early Blossoms & Festivals", ideas:[
+    {f:"🇯🇵", n:"日本", t:"九州、關西、關東各地櫻花陸續開花，春季祭典登場。", tags:["賞櫻","祭典"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"鎮海軍港節櫻花季（3 月底起），滿城櫻花隧道。", tags:["賞櫻","慶典"], r:"korea"},
+    {f:"🇳🇱", n:"荷蘭", t:"庫肯霍夫鬱金香公園開園，歐洲花園之春。", tags:["鬱金香","花園"], r:"europe"},
+    {f:"🇮🇳", n:"印度", t:"歡慶色彩節（Holi Festival），春季古蹟之旅。", tags:["色彩節","古蹟"], r:"middleeast"},
+    {f:"🇦🇺", n:"澳洲", t:"雪梨、墨爾本秋高氣爽，大洋路自駕與酒莊採收季。", tags:["自駕","酒莊"], r:"oceania"},
+    {f:"🇪🇬", n:"埃及", t:"春季氣溫適中（約 20–25 度），探索金字塔、搭尼羅河遊輪最佳時機。", tags:["金字塔","遊輪"], r:"middleeast"}]},
+  {title:"盛櫻盛開與泰國潑水節", en:"Full Bloom & Songkran", ideas:[
+    {f:"🇯🇵", n:"日本", t:"關東、關西櫻花滿開；立山黑部雪壁開山，東北、北陸接力賞櫻。", tags:["賞櫻","雪壁"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"首爾汝矣島櫻花季、慶州古都櫻花季。", tags:["賞櫻","古都"], r:"korea"},
+    {f:"🇹🇭", n:"泰國", t:"全泰國潑水節（Songkran）狂歡，慶祝泰國新年。", tags:["潑水節","節慶"], r:"sea"},
+    {f:"🇳🇱", n:"荷蘭／捷克", t:"荷蘭鬱金香花海盛開，布拉格復活節市集。", tags:["鬱金香","市集"], r:"europe"},
+    {f:"🇹🇷", n:"土耳其", t:"伊斯坦堡鬱金香節、棉堡與番紅花城春季輕旅行。", tags:["鬱金香","古城"], r:"middleeast"},
+    {f:"🇲🇦", n:"摩洛哥", t:"玫瑰谷花季開始，沙漠露營氣溫正舒適。", tags:["玫瑰","沙漠"], r:"middleeast"}]},
+  {title:"立山雪壁與初夏花海", en:"Snow Walls & Early Summer Flowers", ideas:[
+    {f:"🇯🇵", n:"日本", t:"黑部立山雪之大谷、富士芝櫻祭、北海道芝櫻與鬱金香。", tags:["雪壁","芝櫻"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"晨靜樹木園春花祭、釜山海雲台玫瑰節。", tags:["花季","海景"], r:"korea"},
+    {f:"🇫🇷", n:"法國／義大利", t:"南法普羅旺斯初夏景色，義大利阿瑪菲海岸氣候宜人。", tags:["南法","海岸"], r:"europe"},
+    {f:"🇺🇸", n:"美國", t:"黃石國家公園道路陸續開放、大峽谷春末好天氣，西岸舊金山與洛杉磯。", tags:["國家公園","美西"], r:"americas"},
+    {f:"🇻🇳", n:"越南", t:"峴港海水正藍、會安古鎮，巴拿山避暑。", tags:["海灘","古鎮"], r:"sea"},
+    {f:"🇳🇿", n:"紐西蘭", t:"南半球秋末，箭鎮（Arrowtown）金黃秋葉季。", tags:["秋葉","小鎮"], r:"oceania"}]},
+  {title:"繡球花季與薰衣草序幕", en:"Hydrangeas & Lavender", ideas:[
+    {f:"🇯🇵", n:"日本", t:"鎌倉、箱根繡球花（紫陽花）季，沖繩初夏海灘開海。", tags:["繡球花","海灘"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"濟州島繡球花季、南怡島夏日綠意森林。", tags:["繡球花","森林"], r:"korea"},
+    {f:"🇫🇷", n:"法國", t:"南法普羅旺斯薰衣草開始綻放，巴黎夏季折扣季開跑。", tags:["薰衣草","購物"], r:"europe"},
+    {f:"🇨🇭", n:"瑞士", t:"阿爾卑斯山健行季開跑，少女峰與馬特洪峰清晰可見。", tags:["健行","雪山"], r:"europe"},
+    {f:"🇭🇷", n:"克羅埃西亞", t:"十六湖國家公園水量最豐沛壯觀，亞得里亞海度假。", tags:["湖泊","海岸"], r:"europe"},
+    {f:"🇮🇩", n:"峇里島", t:"進入乾季，水上活動與 Villa 度假的最佳時期。", tags:["Villa","水上活動"], r:"sea"}]},
+  {title:"暑假親子與夏季祭典", en:"Family Summer & Festivals", ideas:[
+    {f:"🇯🇵", n:"日本", t:"北海道富良野薰衣草盛開、京都祇園祭、東京花火大會。", tags:["薰衣草","花火"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"保寧泥漿節、釜山海雲台水上活動。", tags:["泥漿節","海灘"], r:"korea"},
+    {f:"🇨🇦", n:"加拿大", t:"落磯山脈班夫國家公園，湖泊藍寶石美景最佳季節。", tags:["國家公園","湖泊"], r:"americas"},
+    {f:"🇲🇳", n:"蒙古", t:"那達慕大會（蒙古最大盛會），草原蒙古包體驗。", tags:["那達慕","草原"], r:"line"},
+    {f:"🇸🇬", n:"新加坡／馬來西亞", t:"暑假親子樂園遊，環球影城、樂高樂園。", tags:["親子","樂園"], r:"sea"},
+    {f:"🇱🇰", n:"斯里蘭卡", t:"佛牙節文化盛會，出海看鯨魚。", tags:["文化","賞鯨"], r:"middleeast"}]},
+  {title:"夏日海灘與高山避暑", en:"Beaches & Mountain Escapes", ideas:[
+    {f:"🇯🇵", n:"日本", t:"東北夏日祭典（睡魔祭、竿燈祭）、德島阿波舞祭、沖繩潛水。", tags:["夏祭","潛水"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"江陵、襄陽衝浪度假，首爾夏日夜生活。", tags:["衝浪","夜生活"], r:"korea"},
+    {f:"🇺🇸", n:"美加長線", t:"黃石國家公園、尼加拉瀑布、阿拉斯加郵輪賞冰川。", tags:["國家公園","郵輪"], r:"americas"},
+    {f:"🇨🇭", n:"瑞士／奧地利", t:"高山避暑，搭冰河列車觀光。", tags:["避暑","冰河列車"], r:"europe"},
+    {f:"🇹🇭", n:"泰國蘇美島", t:"泰國灣夏季乾季，避開風浪的度假首選海島。", tags:["海島","度假"], r:"sea"},
+    {f:"🇰🇪", n:"肯亞", t:"東非野生動物大遷徙，親眼看動物群渡過馬拉河。", tags:["動物大遷徙","獵遊"], r:"middleeast"}]},
+  {title:"初秋賞楓與金秋慶典", en:"Early Autumn & Harvest Festivals", ideas:[
+    {f:"🇯🇵", n:"日本", t:"北海道大雪山全日本最早紅葉開跑、飛驒高山秋季祭典（10 月初）。", tags:["紅葉","祭典"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"雪嶽山初楓，感受中秋節（秋夕）氛圍。", tags:["初楓","節慶"], r:"korea"},
+    {f:"🇩🇪", n:"德國", t:"慕尼黑啤酒節（Oktoberfest）9 月下旬熱烈開跑。", tags:["啤酒節","慶典"], r:"europe"},
+    {f:"🇨🇦", n:"加拿大", t:"加東楓葉大道（魁北克、蒙特婁）初楓紅葉。", tags:["楓葉","秋景"], r:"americas"},
+    {f:"🇨🇳", n:"中國", t:"九寨溝五彩池秋色、北疆喀納斯金秋白樺林。", tags:["秋色","自然奇景"], r:"line"},
+    {f:"🇮🇹", n:"義大利", t:"托斯卡尼葡萄採收季、威尼斯影展。", tags:["酒莊","影展"], r:"europe"}]},
+  {title:"盛秋楓紅與銀杏金黃", en:"Peak Foliage & Golden Ginkgo", ideas:[
+    {f:"🇯🇵", n:"日本", t:"立山黑部紅葉，東北、關東、關西各地紅葉與金黃銀杏大道。", tags:["紅葉","銀杏"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"首爾銀杏大道（景福宮、梨大）、內藏山賞楓名所。", tags:["銀杏","賞楓"], r:"korea"},
+    {f:"🇨🇦", n:"加拿大", t:"加東楓葉大道全盛期、阿岡昆省立公園秋景。", tags:["楓葉","國家公園"], r:"americas"},
+    {f:"🇺🇸", n:"美東", t:"波士頓、紐約中央公園秋意正濃，白山國家森林賞楓。", tags:["賞楓","城市"], r:"americas"},
+    {f:"🇪🇬", n:"埃及", t:"秋高氣爽，探索古埃及文明與帝王谷的最佳季節。", tags:["古文明","金字塔"], r:"middleeast"},
+    {f:"🇨🇿", n:"捷克／匈牙利", t:"布拉格與布達佩斯的金色秋天，多瑙河遊船。", tags:["秋景","遊船"], r:"europe"}]},
+  {title:"晚秋楓紅與極光序幕", en:"Late Foliage & Aurora Begins", ideas:[
+    {f:"🇯🇵", n:"日本", t:"京都夜楓點燈，關西、九州賞楓最後高潮。", tags:["夜楓","點燈"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"釜山金井山賞楓、慶州古都銀杏與楓葉。", tags:["賞楓","銀杏"], r:"korea"},
+    {f:"🇺🇸", n:"美國夏威夷", t:"感恩節購物季開跑，夏威夷避寒度假。", tags:["購物","海島"], r:"americas"},
+    {f:"🇦🇪", n:"杜拜／阿聯", t:"進入涼爽季節（約 20–28 度），奢華沙漠體驗。", tags:["奢華","沙漠"], r:"middleeast"},
+    {f:"🇳🇿", n:"紐西蘭", t:"南半球春末夏初，蒂卡波湖魯冰花海盛開。", tags:["魯冰花","湖景"], r:"oceania"},
+    {f:"🇫🇮", n:"北歐", t:"芬蘭、瑞典極光季展開，聖誕老人村雪景。", tags:["極光","聖誕"], r:"europe"}]},
+  {title:"跨年假期與聖誕燈飾", en:"Christmas Lights & New Year", ideas:[
+    {f:"🇯🇵", n:"日本", t:"東京、大阪聖誕點燈，滑雪場開場，跨年初詣祈福。", tags:["聖誕點燈","滑雪"], r:"japan"},
+    {f:"🇰🇷", n:"韓國", t:"江原道滑雪季正式展開，明洞、弘大聖誕燈飾。", tags:["滑雪","聖誕"], r:"korea"},
+    {f:"🇩🇪", n:"德國／法國／捷克", t:"歐洲傳統聖誕市集：紐倫堡、史特拉斯堡、布拉格。", tags:["聖誕市集","歐洲"], r:"europe"},
+    {f:"🇹🇭", n:"泰國／越南", t:"東南亞避寒勝地，曼谷與海島跨年煙火派對。", tags:["避寒","跨年"], r:"sea"},
+    {f:"🇦🇺", n:"澳洲", t:"雪梨港跨年國際級煙火秀，全球最早跨年的大城市之一。", tags:["跨年煙火","夏日"], r:"oceania"},
+    {f:"🇫🇮", n:"芬蘭", t:"羅瓦涅米聖誕老人村夢幻雪景，親自拜訪聖誕老人。", tags:["聖誕老人","雪景"], r:"europe"}]}
 ];
 const EN = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 const nowM = new Date().getMonth() + 1;
 const monthsEl = document.getElementById("months");
 monthsEl.innerHTML = EN.map((e,i) => `<button class="month${i+1===nowM?" now":""}" role="tab" data-m="${i+1}" aria-controls="seasonPanel">${i+1} 月<small>${e}</small></button>`).join("");
 function showMonth(m){
-  const s = SEASONS.find(x => x.months.includes(m));
+  const d = MONTHS[m - 1];
   monthsEl.querySelectorAll(".month").forEach(b => {
     const on = +b.dataset.m === m;
     b.setAttribute("aria-selected", on ? "true" : "false");
     b.tabIndex = on ? 0 : -1;
   });
-  document.getElementById("seasonTitle").textContent = `${s.months.join("–")} 月 ‧ ${s.title}`;
-  document.getElementById("seasonTag").textContent = s.tag;
-  document.getElementById("ideas").innerHTML = s.ideas.map(i => `
-    <a class="idea" href="${REGION[i.r]}" target="_blank" rel="noopener">
-      <span class="ico">${i.ico}</span><b>${i.name}</b><span class="go">查看行程 →</span>
+  document.getElementById("seasonTitle").textContent = `${m} 月 ‧ ${d.title}`;
+  document.getElementById("seasonTag").textContent = d.en;
+  document.getElementById("ideas").innerHTML = d.ideas.map(i => `
+    <a class="idea" href="${i.r === "line" ? LINE : REGION[i.r]}" target="_blank" rel="noopener">
+      <span class="idea-top"><span class="ico">${i.f}</span><b>${i.n}</b></span>
+      <p>${i.t}</p>
+      <span class="idea-tags">${i.tags.map(t => `<span>${t}</span>`).join("")}</span>
+      <span class="go">${i.r === "line" ? "LINE 詢問行程 →" : "查看行程 →"}</span>
     </a>`).join("");
 }
 monthsEl.addEventListener("click", e => { const b = e.target.closest(".month"); if(b) showMonth(+b.dataset.m); });
