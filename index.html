@@ -258,10 +258,14 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 .season h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:26px;letter-spacing:.06em}
 .season span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gold-500);letter-spacing:.2em;text-transform:uppercase}
 .ideas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.idea{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:24px 22px 20px;background:var(--gray-50);border:1px solid var(--gray-100);transition:.25s;position:relative}
+.idea{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:0 0 20px;overflow:hidden;background:var(--gray-50);border:1px solid var(--gray-100);transition:.25s;position:relative}
 .idea::before{content:"";position:absolute;top:0;left:0;width:0;height:3px;background:var(--gold-500);transition:.35s}
 .idea:hover{border-color:var(--gold-400);background:#fff;transform:translateY(-3px);box-shadow:0 16px 40px -18px rgba(10,26,51,.2)}
 .idea:hover::before{width:100%}
+.idea-img{display:block;margin:0 0 6px;aspect-ratio:5/3;overflow:hidden;background:var(--gray-100)}
+.idea-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.idea:hover .idea-img img{transform:scale(1.05)}
+.idea>*:not(.idea-img){margin-left:22px;margin-right:22px}
 .idea-top{display:flex;align-items:center;gap:10px}
 .idea-top .ico{font-size:24px;line-height:1}
 .idea-top b{font-family:"Noto Serif TC",serif;font-weight:600;font-size:18px;letter-spacing:.04em}
@@ -279,7 +283,10 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 @keyframes dlgIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .dlg-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border:none;background:var(--gray-50);font-size:16px;cursor:pointer;color:var(--navy-800)}
 .dlg-close:hover{background:var(--gray-100)}
-.dlg-body{padding:34px 32px 28px;border-top:4px solid var(--gold-500);font-family:"Inter","Noto Serif TC",sans-serif}
+.dlg-body{padding:0 32px 28px;font-family:"Inter","Noto Serif TC",sans-serif}
+.dlg-img{margin:0 -32px 22px;aspect-ratio:28/15;background:var(--gray-100);border-bottom:4px solid var(--gold-500)}
+.dlg-img img{width:100%;height:100%;object-fit:cover;display:block}
+.dlg-close{z-index:2;background:rgba(255,255,255,.9)!important}
 .dlg-month{font-size:12px;letter-spacing:.15em;color:var(--gold-500)}
 .dlg-body h3{display:flex;align-items:center;gap:10px;font-family:"Noto Serif TC",serif;font-weight:600;font-size:26px;letter-spacing:.04em;margin:6px 0 10px}
 .dlg-lead{font-size:15px;line-height:1.8;color:var(--gray-800)}
@@ -297,7 +304,8 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 .dlg-note{margin-top:14px;font-size:12px;color:var(--gray-400)}
 @media (max-width:600px){
   .idea-dlg{width:100%;max-width:none;max-height:88vh;margin:auto 0 0}
-  .dlg-body{padding:28px 20px 24px}
+  .dlg-body{padding:0 20px 24px}
+  .dlg-img{margin:0 -20px 18px}
   .dlg-body h3{font-size:22px}
 }
 .cal-cta{display:flex;justify-content:center;margin-top:36px}
@@ -320,7 +328,8 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 }
 @media (max-width:600px){
   .ideas{grid-template-columns:1fr;gap:12px}
-  .idea{padding:18px 16px 16px}
+  .idea{padding:0 0 16px}
+  .idea>*:not(.idea-img){margin-left:16px;margin-right:16px}
   .season h3{font-size:21px}
   .guide-strip{padding:56px 0}
   .guide-link{padding:20px 16px}
