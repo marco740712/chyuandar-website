@@ -1,0 +1,75 @@
+/* ── 共用：主選單下拉、手機選單、LINE 浮動按鈕（所有頁面共用） ── */
+
+/* 下拉選單（桌機 hover／鍵盤 focus 展開） */
+.menu{align-items:center}
+.menu-drop{position:relative}
+.menu-drop>a::before{content:"";position:absolute;left:-12px;right:-12px;top:100%;height:22px}
+.menu-drop>a .caret{display:inline-block;margin-left:6px;font-size:9px;transform:translateY(-1px);transition:transform .25s}
+.menu-drop:hover>a .caret,.menu-drop:focus-within>a .caret{transform:translateY(-1px) rotate(180deg)}
+.menu-drop-panel{
+  position:absolute;top:calc(100% + 18px);left:50%;
+  min-width:250px;padding:10px 0;
+  background:var(--navy-900);border:1px solid var(--line-strong);
+  box-shadow:0 24px 50px -16px rgba(0,0,0,.55);
+  opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:.22s;
+}
+.menu-drop:hover .menu-drop-panel,.menu-drop:focus-within .menu-drop-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.menu .menu-drop-panel a{display:block;padding:11px 24px;font-size:13.5px;letter-spacing:.08em;color:#E9E6DE;white-space:nowrap}
+.menu .menu-drop-panel a::after{display:none}
+.menu .menu-drop-panel a:hover{background:rgba(201,169,97,.1);color:var(--gold-300)}
+.menu .menu-drop-panel a small{display:block;font-size:11px;letter-spacing:.04em;color:var(--gray-400);margin-top:2px}
+.menu a.active{color:var(--gold-300)}
+
+/* 手機選單按鈕 */
+.nav-toggle{
+  display:none;width:44px;height:44px;margin-left:12px;
+  background:none;border:1px solid var(--line-strong);cursor:pointer;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--gold-300);transition:.25s}
+.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-open .nav-toggle span:nth-child(2){opacity:0}
+.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-right{display:flex;align-items:center}
+
+@media (max-width:980px){
+  .nav-toggle{display:flex}
+  .nav{position:relative}
+  .nav-open .menu{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    max-height:calc(100vh - 90px);overflow-y:auto;
+    background:var(--navy-950);border-top:1px solid var(--line);border-bottom:1px solid var(--line-strong);
+    padding:8px 0 16px;
+  }
+  .nav-open .menu>a,.nav-open .menu-drop>a{display:block;padding:14px 24px;font-size:15px;border-bottom:1px solid rgba(201,169,97,.12)}
+  .nav-open .menu a::after,.nav-open .menu-drop>a::before{display:none}
+  .nav-open .menu-drop>a .caret{display:none}
+  .nav-open .menu-drop-panel{
+    position:static;opacity:1;visibility:visible;transform:none;
+    min-width:0;padding:0 0 6px;background:none;border:none;box-shadow:none;
+  }
+  .nav-open .menu .menu-drop-panel a{padding:11px 24px 11px 44px;font-size:14px;white-space:normal}
+  .cta{padding:9px 14px;font-size:12px;letter-spacing:.1em}
+}
+@media (max-width:420px){
+  .nav{padding:14px 16px}
+  .brand-logo{height:42px}
+  .cta{display:none}
+}
+
+/* LINE 浮動按鈕 */
+.line-float{
+  position:fixed;right:22px;bottom:22px;z-index:60;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 22px;border-radius:999px;
+  background:#06C755;color:#fff;
+  font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;
+  box-shadow:0 12px 30px -8px rgba(6,199,85,.55);transition:.2s;
+}
+.line-float:hover{background:#05a847;transform:translateY(-2px)}
+@media (max-width:600px){
+  .line-float{left:16px;right:16px;bottom:14px;justify-content:center;padding:14px 18px}
+  body{padding-bottom:76px}
+}
+@media print{.line-float,.nav-toggle{display:none!important}}

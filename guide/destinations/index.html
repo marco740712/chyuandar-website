@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>目的地實用指南與飲食卡 ｜ 詮達旅行社 CHYUAN DAR TRAVEL</title>
+<meta name="description" content="日本、韓國、泰國、越南、歐洲的電壓插頭、小費、付款習慣、簽證與氣候一次看懂，另附日韓英特殊飲食點餐卡，可存手機出示給店家。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/nav.css">
+<style>
+/* 國家資訊 */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--gray-100)}
+.info{display:flex;gap:16px;padding:20px 4px;border-bottom:1px solid var(--gray-100)}
+.info:nth-child(odd){padding-right:24px}
+.info:nth-child(even){padding-left:24px;border-left:1px solid var(--gray-100)}
+.info.wide{grid-column:1/-1;padding-left:4px;border-left:none}
+.info .ico{flex:0 0 40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--gold-100);font-size:19px}
+.info b{display:block;font-family:"Inter","Noto Serif TC",sans-serif;font-size:12px;letter-spacing:.2em;color:var(--gold-500);font-weight:600;margin-bottom:4px}
+.info p{font-size:15px;line-height:1.8}
+.emergency{margin-top:28px;display:grid;grid-template-columns:1fr;gap:12px}
+.emergency-item{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 22px;background:var(--navy-900);color:#fff;border-left:3px solid var(--gold-500)}
+.emergency-item span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gray-200)}
+.emergency-item a{font-family:"Inter",sans-serif;font-size:18px;letter-spacing:.06em;color:var(--gold-300);font-weight:500}
+
+/* 飲食卡 */
+.food-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:36px;align-items:start}
+.food-pick{background:#fff;border:1px solid var(--gray-100);padding:28px 26px}
+.food-pick h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:18px;letter-spacing:.06em;margin-bottom:6px}
+.food-pick .hint{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gray-600);margin-bottom:18px}
+.food-pick .tabs{margin-bottom:18px}
+.pick{display:flex;gap:12px;align-items:flex-start;padding:12px 4px;border-bottom:1px dashed var(--gray-200);cursor:pointer;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px}
+.pick:last-of-type{border-bottom:none}
+.pick input{width:20px;height:20px;margin-top:3px;accent-color:var(--navy-800);flex:0 0 auto}
+.food-actions{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+
+.food-card{
+  background:#fff;border:2px solid var(--navy-900);padding:30px 28px 26px;position:relative;
+  box-shadow:0 24px 60px -28px rgba(10,26,51,.35);
+}
+.food-card::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold-400);pointer-events:none}
+.fc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--gold-400)}
+.fc-top .fc-badge{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.3em;color:var(--gold-500);text-transform:uppercase}
+.fc-top .fc-icon{font-size:30px;line-height:1}
+.fc-head{font-family:"Hiragino Sans","Apple SD Gothic Neo","Noto Sans JP","Noto Sans KR","Malgun Gothic","Inter",sans-serif;font-size:17px;line-height:1.6;color:var(--navy-900);margin-bottom:16px}
+.fc-list{list-style:none}
+.fc-list li{padding:14px 0;border-bottom:1px dashed var(--gray-200)}
+.fc-list li:last-child{border-bottom:none}
+.fc-list .fc-zh{display:block;font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:var(--gray-600);letter-spacing:.06em;margin-bottom:4px}
+.fc-list .fc-fl{display:block;font-family:"Hiragino Sans","Apple SD Gothic Neo","Noto Sans JP","Noto Sans KR","Malgun Gothic","Inter",sans-serif;font-size:22px;font-weight:700;line-height:1.5;color:#B3261E}
+.fc-empty{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gray-400);padding:18px 0}
+.fc-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--gold-400);display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:"Hiragino Sans","Apple SD Gothic Neo","Inter",sans-serif;font-size:14px;color:var(--navy-800)}
+.fc-foot small{font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.15em;color:var(--gray-400)}
+.food-status{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gray-600);min-height:20px}
+
+@media (max-width:980px){
+  .food-wrap{grid-template-columns:1fr}
+  .food-preview{order:-1}
+}
+@media (max-width:600px){
+  .info-grid{grid-template-columns:1fr}
+  .info:nth-child(odd),.info:nth-child(even){padding:18px 0;border-left:none}
+  .food-pick{padding:22px 18px}
+  .food-card{padding:24px 20px 20px}
+  .fc-list .fc-fl{font-size:20px}
+}
+@media print{
+  body.print-food .page-sec:not(#food){display:none!important}
+  body.print-food .food-pick,body.print-food #food .sec-head{display:none!important}
+  body.print-food .food-wrap{display:block}
+  body.print-food .food-card{box-shadow:none;max-width:520px;margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner sans">
+    <span>週一至週五 09:00 – 18:00 ｜ 國定假日休息</span>
+    <span>
+      <a href="tel:0626578880">06-265-7888</a>
+      <a href="mailto:chyuan.dar@msa.hinet.net">chyuan.dar@msa.hinet.net</a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+    </a>
+    <nav class="menu" id="siteMenu">
+      <a href="../../about/">關於詮達</a>
+      <div class="menu-drop">
+        <a href="../" class="active">出國行前指南<span class="caret">▼</span></a>
+        <div class="menu-drop-panel">
+          <a href="../visa/">護照與簽證代辦<small>護照、台胞證、各國簽證</small></a>
+          <a href="./">目的地實用指南<small>電壓、天氣、小費、飲食卡</small></a>
+          <a href="../checklist/">行前打包清單<small>可勾選・可下載 PDF</small></a>
+        </div>
+      </div>
+      <a href="../../faq/">常見問題</a>
+      <a href="../../index.html#products">旅遊商品</a>
+      <a href="../../index.html#contact">門市據點</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" class="cta">立即諮詢</a>
+      <button class="nav-toggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="../../index.html">首頁</a> ／ <a href="../">出國行前指南</a> ／ 目的地實用指南</div>
+    <span class="page-eyebrow">DESTINATION GUIDE</span>
+    <h1>目的地<em>實用指南</em></h1>
+    <p>電壓插頭、小費、付款習慣、入境規定與氣候，<br/>出發前看一眼，到當地不慌張。</p>
+  </div>
+</div>
+
+<!-- 模組 B：國家資訊 -->
+<section class="page-sec" id="countries">
+  <div class="container">
+    <div class="chips" role="tablist" aria-label="選擇目的地" data-hash>
+      <button class="chip" role="tab" id="c-jp" aria-controls="japan" aria-selected="true">🇯🇵 日本</button>
+      <button class="chip" role="tab" id="c-kr" aria-controls="korea">🇰🇷 韓國</button>
+      <button class="chip" role="tab" id="c-th" aria-controls="thailand">🇹🇭 泰國</button>
+      <button class="chip" role="tab" id="c-vn" aria-controls="vietnam">🇻🇳 越南</button>
+      <button class="chip" role="tab" id="c-eu" aria-controls="europe">🇪🇺 歐洲</button>
+    </div>
+
+    <div class="card" role="tabpanel" id="japan" aria-labelledby="c-jp">
+      <h3>日本</h3><span class="card-en">Japan</span>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>100V，雙平腳 A 型（台灣插頭可直接用）</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>刷卡普及，但傳統店家、路邊攤仍需備日圓現鈔</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>免簽（護照效期 6 個月以上）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>四季分明。6–7 月梅雨季、8–9 月留意颱風；冬季北海道、東北積雪，需厚外套與防滑鞋。</p></div></div>
+      </div>
+    </div>
+
+    <div class="card" role="tabpanel" id="korea" aria-labelledby="c-kr" hidden>
+      <h3>韓國</h3><span class="card-en">Korea</span>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙圓孔 F 型（需轉接頭）</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>高度電子支付，以信用卡、T-Money 卡為主，備少量韓元現鈔</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>免簽，出發前預先確認 K-ETA 最新規定</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>四季分明。冬季嚴寒，首爾常低於 0°C；7 月為雨季，夏季悶熱。</p></div></div>
+      </div>
+    </div>
+
+    <div class="card" role="tabpanel" id="thailand" aria-labelledby="c-th" hidden>
+      <h3>泰國</h3><span class="card-en">Thailand</span>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙平腳／雙圓孔通用</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>床頭與按摩需小費（約 20–100 泰銖）</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>準備泰銖現鈔，大型商場可刷卡</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>依最新免簽或電子簽政策辦理</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>全年炎熱。11–2 月乾季最舒適；5–10 月雨季，常有午後雷陣雨。</p></div></div>
+      </div>
+    </div>
+
+    <div class="card" role="tabpanel" id="vietnam" aria-labelledby="c-vn" hidden>
+      <h3>越南</h3><span class="card-en">Vietnam</span>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙平腳／雙圓孔通用</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>非強制；按摩、床頭可給約 20,000–50,000 越南盾</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>以越南盾現鈔為主，飯店與大型商場可刷卡</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>需辦理電子簽證（e-Visa），詮達可代辦</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>南北差異大。北越 12–2 月偏涼，約 15°C；中南越全年炎熱，5–10 月為雨季。</p></div></div>
+      </div>
+    </div>
+
+    <div class="card" role="tabpanel" id="europe" aria-labelledby="c-eu" hidden>
+      <h3>歐洲</h3><span class="card-en">Europe</span>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙圓頭 C／E／F 型（需轉接頭）</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>餐廳服務費多已含；床頭約 1–2 歐元</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡極普及，現金不必帶太多（防扒竊）</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>申根區免簽（護照效期 6 個月以上）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>夏季乾爽、日照長；冬季寒冷日短，北歐可低於 -10°C，需完整保暖裝備。</p></div></div>
+      </div>
+    </div>
+
+    <!-- 貼心提醒 -->
+    <div class="emergency">
+      <div class="emergency-item">
+        <span>🆘 外交部領事事務局 急難救助電話</span>
+        <a href="tel:+886800085095">+886-800-085-095</a>
+      </div>
+      <!-- 詮達 24HR 海外緊急服務專線：填好電話後，把下面這段的註解符號拿掉即可顯示
+      <div class="emergency-item">
+        <span>📞 詮達 24HR 海外緊急服務專線</span>
+        <a href="tel:請填電話">請填電話</a>
+      </div>
+      -->
+    </div>
+
+    <p class="updated">資料更新：2026 年 10 月 ‧ 各國規定時有調整，出發前請以官方公告為準</p>
+  </div>
+</section>
+
+<!-- 模組 C：特殊飲食卡 -->
+<section class="page-sec alt" id="food">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">DIETARY CARD</span>
+      <h2 class="sec-title">特殊飲食救援卡</h2>
+      <p class="sec-sub">勾選您的飲食需求，存到手機，點餐時直接出示給店家。</p>
+    </div>
+
+    <div class="food-wrap">
+      <div class="food-pick no-print">
+        <h3>① 選擇語言</h3>
+        <div class="tabs" role="tablist" aria-label="飲食卡語言" id="langTabs">
+          <button class="tab" role="tab" data-lang="ja" aria-selected="true">日本語</button>
+          <button class="tab" role="tab" data-lang="ko">한국어</button>
+          <button class="tab" role="tab" data-lang="en">English</button>
+        </div>
+        <h3>② 勾選飲食需求</h3>
+        <p class="hint">可複選，右側卡片會即時更新。</p>
+        <div id="picks"></div>
+        <div class="food-actions">
+          <button class="btn-line" type="button" id="saveImg">📱 免費下載圖片存手機</button>
+          <button class="btn-outline" type="button" id="printCard">🖨 下載 PDF／列印</button>
+          <div class="food-status" id="foodStatus" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="food-preview">
+        <div class="food-card" id="foodCard" aria-live="polite">
+          <div class="fc-top">
+            <span class="fc-badge">Dietary Card</span>
+            <span class="fc-icon">🍽</span>
+          </div>
+          <p class="fc-head" id="fcHead"></p>
+          <ul class="fc-list" id="fcList"></ul>
+          <div class="fc-foot">
+            <span id="fcThanks"></span>
+            <small>CHYUAN DAR TRAVEL</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE CTA -->
+<section class="page-sec">
+  <div class="container">
+    <div class="line-banner">
+      <div>
+        <strong>還有其他目的地想了解？</strong>
+        <span>台南門市專員一對一回覆，簽證、轉接頭、換匯都能問。</span>
+      </div>
+      <a class="btn-line" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
+    </div>
+  </div>
+</section>
+
+<!-- 其他行前指南 -->
+<section class="page-sec alt guide-links-sec">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">TRAVEL GUIDE</span>
+      <h2 class="sec-title">更多行前指南</h2>
+    </div>
+    <div class="guide-links">
+      <a class="guide-link" href="../visa/"><span class="ico">🛂</span><b>護照與簽證</b><small>證件文件、辦理天數</small></a>
+      <a class="guide-link current" href="./"><span class="ico">🌏</span><b>目的地實用指南</b><small>電壓、小費、飲食卡</small></a>
+      <a class="guide-link" href="../checklist/"><span class="ico">🧳</span><b>行前打包清單</b><small>可勾選・可下載</small></a>
+      <a class="guide-link" href="../../faq/"><span class="ico">💡</span><b>常見問題</b><small>訂金、小費、護照效期</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-simple">
+      <div>
+        <img src="../../logo-gold.png" alt="詮達旅遊" style="height:44px;width:auto;margin-bottom:10px">
+        <p style="font-size:13px;color:var(--gray-200)">詮達旅行社企業有限公司 ‧ 旅天下加盟體系成員</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../index.html">首頁</a>
+        <a href="../">出國行前指南</a>
+        <a href="../../faq/">常見問題</a>
+        <a href="../../index.html#contact">門市據點</a>
+        <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" style="color:var(--gold-300)">LINE</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 CHYUAN DAR TRAVEL CO., LTD. All Rights Reserved.</span>
+      <span>統一編號：12919292 ｜ 觀光署旅行業：715600</span>
+    </div>
+  </div>
+</footer>
+
+<a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
+
+<script src="../../assets/nav.js"></script>
+<script>
+/* ── 飲食卡內容（要新增句子，照格式加一行即可） ── */
+const FOOD = {
+  ja: {
+    head: "すみません、私は以下の食事制限があります。",
+    thanks: "ご協力ありがとうございます。",
+    items: [
+      {id:"beef",    zh:"我不吃牛肉",                 text:"牛肉が食べられません。"},
+      {id:"vegan",   zh:"我吃全素（不含高湯／蔥蒜）",   text:"私は厳格な菜食主義者です。肉・魚介類・出汁・ネギ・ニンニクは食べられません。"},
+      {id:"seafood", zh:"我對海鮮過敏",               text:"魚介類・甲殻類のアレルギーがあります。"}
+    ]
+  },
+  ko: {
+    head: "죄송하지만, 저는 아래 음식을 먹을 수 없어요.",
+    thanks: "감사합니다.",
+    items: [
+      {id:"beef",    zh:"我不吃牛肉",                 text:"저는 소고기를 못 먹어요."},
+      {id:"vegan",   zh:"我吃全素（不含高湯／蔥蒜）",   text:"저는 완전 채식주의자예요. 고기·해산물·육수·파·마늘을 못 먹어요."},
+      {id:"seafood", zh:"我對海鮮過敏",               text:"저는 해산물 알레르기가 있어요."}
+    ]
+  },
+  en: {
+    head: "Excuse me, please note my dietary needs:",
+    thanks: "Thank you for your help!",
+    items: [
+      {id:"beef",    zh:"我不吃牛肉",                 text:"I don't eat beef."},
+      {id:"vegan",   zh:"我吃全素（不含高湯／蔥蒜）",   text:"I am a strict vegetarian (no meat, seafood, broth, garlic, or onion)."},
+      {id:"seafood", zh:"我對海鮮過敏",               text:"I am allergic to seafood and shellfish."}
+    ]
+  }
+};
+
+let lang = "ja";
+const chosen = new Set(["beef"]);
+const picks = document.getElementById("picks");
+
+function renderPicks(){
+  picks.innerHTML = FOOD[lang].items.map(i => `
+    <label class="pick"><input type="checkbox" value="${i.id}" ${chosen.has(i.id)?"checked":""}><span>${i.zh}</span></label>
+  `).join("");
+}
+function renderCard(){
+  const d = FOOD[lang];
+  document.getElementById("fcHead").textContent = d.head;
+  document.getElementById("fcThanks").textContent = d.thanks;
+  const list = d.items.filter(i => chosen.has(i.id));
+  document.getElementById("fcList").innerHTML = list.length
+    ? list.map(i => `<li><span class="fc-zh">${i.zh}</span><span class="fc-fl" lang="${lang}">${i.text}</span></li>`).join("")
+    : `<li class="fc-empty">請在左側勾選至少一項飲食需求</li>`;
+}
+picks.addEventListener("change", e => {
+  if(e.target.checked) chosen.add(e.target.value); else chosen.delete(e.target.value);
+  renderCard();
+});
+/* 頁籤切換由 guide.js 處理，這裡只接收切換事件 */
+document.getElementById("langTabs").addEventListener("tabchange", e => {
+  lang = e.detail.dataset.lang;
+  renderPicks(); renderCard();
+});
+renderPicks(); renderCard();
+
+/* 存成圖片：手機優先用分享選單（可直接「儲存影像」），否則下載 PNG */
+const status = document.getElementById("foodStatus");
+function loadH2C(){
+  if(window.html2canvas) return Promise.resolve();
+  return new Promise((ok, fail) => {
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+    s.onload = ok; s.onerror = fail;
+    document.head.appendChild(s);
+  });
+}
+document.getElementById("saveImg").addEventListener("click", async () => {
+  status.textContent = "製作圖片中…";
+  try{
+    await loadH2C();
+    const canvas = await html2canvas(document.getElementById("foodCard"), {scale:3, backgroundColor:"#ffffff"});
+    const blob = await new Promise(r => canvas.toBlob(r, "image/png"));
+    const file = new File([blob], `詮達飲食卡-${lang}.png`, {type:"image/png"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      try{ await navigator.share({files:[file], title:"詮達飲食卡"}); status.textContent = "完成！"; return; }
+      catch(e){ if(e.name === "AbortError"){ status.textContent = ""; return; } }
+    }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = file.name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    status.textContent = "已下載圖片，也可以直接長按／截圖右側卡片保存。";
+  }catch(err){
+    status.textContent = "無法產生圖片，請直接截圖卡片保存。";
+  }
+});
+document.getElementById("printCard").addEventListener("click", () => {
+  document.body.classList.add("print-food");
+  window.print();
+});
+window.addEventListener("afterprint", () => document.body.classList.remove("print-food"));
+</script>
+<script src="../../assets/guide.js"></script>
+</body>
+</html>

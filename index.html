@@ -241,7 +241,55 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   .more-banner{flex-direction:column;align-items:flex-start}
   .more-banner-btn{width:100%;text-align:center}
 }
+
+/* ── 旅遊靈感月曆 ── */
+.calendar{background:#fff;border-top:1px solid var(--gray-100)}
+.months{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:36px;padding-top:10px}
+.month{
+  padding:14px 0;border:1px solid var(--gray-200);background:#fff;cursor:pointer;
+  font-family:"Inter",sans-serif;font-size:15px;color:var(--navy-800);transition:.2s;position:relative;
+}
+.month small{display:block;font-size:10px;letter-spacing:.15em;color:var(--gray-400);margin-top:2px}
+.month:hover{border-color:var(--gold-400)}
+.month[aria-selected="true"]{background:var(--navy-900);border-color:var(--navy-900);color:var(--gold-300)}
+.month[aria-selected="true"] small{color:var(--gold-100)}
+.month.now::after{content:"本月";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.1em;padding:1px 6px;background:var(--gold-500);color:var(--navy-900)}
+.season{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.season h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:26px;letter-spacing:.06em}
+.season span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gold-500);letter-spacing:.1em}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.idea{display:flex;flex-direction:column;gap:8px;padding:24px 22px;background:var(--gray-50);border:1px solid var(--gray-100);transition:.25s}
+.idea:hover{border-color:var(--gold-400);background:#fff;transform:translateY(-3px);box-shadow:0 16px 40px -18px rgba(10,26,51,.2)}
+.idea .ico{font-size:28px;line-height:1}
+.idea b{font-family:"Noto Serif TC",serif;font-weight:500;font-size:17px;letter-spacing:.04em;line-height:1.5}
+.idea .go{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.15em;color:var(--navy-700);margin-top:auto}
+.idea:hover .go{color:var(--gold-500)}
+.cal-cta{display:flex;justify-content:center;margin-top:36px}
+
+/* ── 行前指南入口 ── */
+.guide-strip{background:var(--gray-50);padding:80px 0}
+.guide-links{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.guide-link{display:flex;flex-direction:column;gap:6px;padding:26px 24px;background:#fff;border:1px solid var(--gray-100);transition:.25s}
+.guide-link:hover{border-color:var(--gold-400);transform:translateY(-3px);box-shadow:0 16px 40px -18px rgba(10,26,51,.2)}
+.guide-link .ico{font-size:26px}
+.guide-link b{font-family:"Noto Serif TC",serif;font-weight:500;font-size:17px;letter-spacing:.06em}
+.guide-link small{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--gray-600)}
+
+@media (max-width:980px){
+  .months{display:flex;overflow-x:auto;padding-top:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .months::-webkit-scrollbar{display:none}
+  .month{flex:0 0 64px}
+  .guide-links{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .ideas{grid-template-columns:1fr 1fr;gap:12px}
+  .idea{padding:18px 16px}
+  .idea b{font-size:15px}
+  .guide-strip{padding:56px 0}
+  .guide-link{padding:20px 16px}
+}
 </style>
+<link rel="stylesheet" href="assets/nav.css">
 </head>
 <body>
 
@@ -262,12 +310,24 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
     <a href="#" class="brand">
       <img src="logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
     </a>
-    <nav class="menu">
+    <nav class="menu" id="siteMenu">
       <a href="about/">關於詮達</a>
-      <a href="#products">查看更多旅遊商品</a>
+      <div class="menu-drop">
+        <a href="guide/">出國行前指南<span class="caret">▼</span></a>
+        <div class="menu-drop-panel">
+          <a href="guide/visa/">護照與簽證代辦<small>護照、台胞證、各國簽證</small></a>
+          <a href="guide/destinations/">目的地實用指南<small>電壓、天氣、小費、飲食卡</small></a>
+          <a href="guide/checklist/">行前打包清單<small>可勾選・可下載 PDF</small></a>
+        </div>
+      </div>
+      <a href="faq/">常見問題</a>
+      <a href="#products">旅遊商品</a>
       <a href="#contact">門市據點</a>
     </nav>
-    <a href="#contact" class="cta">立即諮詢</a>
+    <div class="nav-right">
+      <a href="#contact" class="cta">立即諮詢</a>
+      <button class="nav-toggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -351,6 +411,42 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   </div>
 </section>
 
+<!-- TRAVEL CALENDAR -->
+<section class="calendar" id="calendar">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">TRAVEL CALENDAR</span>
+      <h2 class="sec-title">旅 遊 靈 感 月 曆</h2>
+      <p class="sec-sub">Where to go, month by month ─ 每個月最適合去哪裡？</p>
+    </div>
+    <div class="months" role="tablist" aria-label="選擇月份" id="months"></div>
+    <div id="seasonPanel" role="tabpanel" aria-live="polite">
+      <div class="season"><h3 id="seasonTitle"></h3><span id="seasonTag"></span></div>
+      <div class="ideas" id="ideas"></div>
+    </div>
+    <div class="cal-cta">
+      <a class="more-banner-btn" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 LINE 詢問這個月的優惠行程 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVEL GUIDE -->
+<section class="guide-strip">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">TRAVEL GUIDE</span>
+      <h2 class="sec-title">出 國 行 前 指 南</h2>
+      <p class="sec-sub">從辦證件到打包行李，詮達幫您整理好每一步。</p>
+    </div>
+    <div class="guide-links">
+      <a class="guide-link" href="guide/visa/"><span class="ico">🛂</span><b>護照與簽證代辦</b><small>需要什麼文件、要等幾天</small></a>
+      <a class="guide-link" href="guide/destinations/"><span class="ico">🌏</span><b>目的地實用指南</b><small>電壓、小費、飲食卡</small></a>
+      <a class="guide-link" href="guide/checklist/"><span class="ico">🧳</span><b>行前打包清單</b><small>可勾選・可下載 PDF</small></a>
+      <a class="guide-link" href="faq/"><span class="ico">💡</span><b>常見問題</b><small>訂金、小費、護照效期</small></a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
@@ -399,6 +495,8 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
         <h6>SITE MAP</h6>
         <ul>
           <li><a href="about/">關於詮達</a></li>
+          <li><a href="guide/">出國行前指南</a></li>
+          <li><a href="faq/">常見問題</a></li>
           <li><a href="#products">查看更多旅遊商品</a></li>
           <li><a href="#contact">門市據點</a></li>
           <li><a href="erp/" target="_top">系統登入</a></li>
@@ -485,6 +583,67 @@ function renderBranches(){
   await loadData();
   renderBranches();
 })();
+
+/* ── 旅遊靈感月曆（要改內容，修改這裡即可） ── */
+const GU = "https://travel.gounitravel.com/category/zh-tw/";
+const REGION = {
+  japan:GU+"japan/index?fr=cg7033mega", korea:GU+"korea/index?fr=cg1355mega",
+  sea:GU+"southeastasia/index?fr=cg1333mega", europe:GU+"europe/index?fr=cg4812mega",
+  middleeast:GU+"middleeast/index?fr=cg4831mega", americas:GU+"northamerica/index?fr=cg5095mega",
+  oceania:GU+"oceania/index?fr=cg5119mega", taiwan:GU+"taiwan/index?fr=cg7908mega"
+};
+const SEASONS = [
+  {months:[1,2],   title:"寒假／過年", tag:"WINTER ESCAPE", ideas:[
+    {ico:"❄️", name:"日本北海道賞雪／合掌村", r:"japan"},
+    {ico:"⛷", name:"韓國滑雪", r:"korea"},
+    {ico:"🏝", name:"東南亞避寒（泰國／富國島）", r:"sea"}]},
+  {months:[3,4],   title:"春季花季", tag:"BLOSSOM SEASON", ideas:[
+    {ico:"🌸", name:"日本關東／關西賞櫻", r:"japan"},
+    {ico:"🌸", name:"韓國首爾櫻花季", r:"korea"},
+    {ico:"🌷", name:"荷蘭鬱金香季", r:"europe"}]},
+  {months:[5,6],   title:"初夏避暑", tag:"EARLY SUMMER", ideas:[
+    {ico:"🏰", name:"歐洲深度旅遊", r:"europe"},
+    {ico:"🎆", name:"澎湖花火節", r:"taiwan"},
+    {ico:"🏔", name:"黑部立山雪壁", r:"japan"}]},
+  {months:[7,8],   title:"暑假親子", tag:"FAMILY SUMMER", ideas:[
+    {ico:"🌊", name:"峇里島水上活動", r:"sea"},
+    {ico:"🏞", name:"美加國家公園", r:"americas"},
+    {ico:"🎢", name:"新加坡雙樂園", r:"sea"}]},
+  {months:[9,10],  title:"秋季賞楓", tag:"AUTUMN LEAVES", ideas:[
+    {ico:"🍁", name:"加拿大楓葉大道", r:"americas"},
+    {ico:"🍁", name:"日本東北／關西賞楓", r:"japan"},
+    {ico:"🍂", name:"南韓楓葉季", r:"korea"}]},
+  {months:[11,12], title:"跨年／極光", tag:"AURORA & HOLIDAYS", ideas:[
+    {ico:"🌌", name:"北歐極光", r:"europe"},
+    {ico:"🏙", name:"杜拜中東奢華遊", r:"middleeast"},
+    {ico:"🎄", name:"歐洲聖誕市集", r:"europe"},
+    {ico:"🏖", name:"關島／塞班島渡假", r:"oceania"}]}
+];
+const EN = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const nowM = new Date().getMonth() + 1;
+const monthsEl = document.getElementById("months");
+monthsEl.innerHTML = EN.map((e,i) => `<button class="month${i+1===nowM?" now":""}" role="tab" data-m="${i+1}" aria-controls="seasonPanel">${i+1} 月<small>${e}</small></button>`).join("");
+function showMonth(m){
+  const s = SEASONS.find(x => x.months.includes(m));
+  monthsEl.querySelectorAll(".month").forEach(b => {
+    const on = +b.dataset.m === m;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+  });
+  document.getElementById("seasonTitle").textContent = `${s.months.join("–")} 月 ‧ ${s.title}`;
+  document.getElementById("seasonTag").textContent = s.tag;
+  document.getElementById("ideas").innerHTML = s.ideas.map(i => `
+    <a class="idea" href="${REGION[i.r]}" target="_blank" rel="noopener">
+      <span class="ico">${i.ico}</span><b>${i.name}</b><span class="go">查看行程 →</span>
+    </a>`).join("");
+}
+monthsEl.addEventListener("click", e => { const b = e.target.closest(".month"); if(b) showMonth(+b.dataset.m); });
+showMonth(nowM);
+// 手機版月份列橫向捲到本月（不捲動整頁）
+const nowBtn = monthsEl.querySelector(".now");
+monthsEl.scrollLeft = nowBtn.offsetLeft - monthsEl.clientWidth / 2 + nowBtn.offsetWidth / 2;
 </script>
+<script src="assets/nav.js"></script>
+<a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
 </body>
 </html>
