@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="stylesheet" href="../../assets/nav.css">
 <style>
-.progress-box{position:sticky;top:89px;z-index:5;background:var(--gray-50);padding:14px 0 18px;margin-bottom:8px}
+.progress-box{position:sticky;top:var(--hdr,72px);z-index:5;background:var(--gray-50);padding:14px 0 18px;margin-bottom:8px}
 .progress-row{display:flex;justify-content:space-between;align-items:baseline;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;margin-bottom:8px}
 .progress-row b{font-size:20px;color:var(--navy-900)}
 .progress{height:8px;background:var(--gray-100);overflow:hidden}
@@ -46,12 +46,10 @@
 .print-title{display:none}
 
 @media (max-width:600px){
-  .progress-box{top:79px}
   .ck-head{padding:16px 18px}
   .ck-item{padding:14px 18px}
   .ck-actions>*{width:100%}
 }
-@media (max-width:420px){.progress-box{top:71px}}
 @media print{
   .progress-box{position:static}
   .print-title{display:block;font-family:"Noto Serif TC",serif;font-size:22px;margin-bottom:10px}

@@ -1,3 +1,11 @@
+/* 記錄頁首高度，讓黏在上方的區塊（打包進度、簽證搜尋列）剛好貼齊 */
+(function(){
+  var h = document.querySelector('header.site');
+  if(!h) return;
+  function set(){ document.documentElement.style.setProperty('--hdr', h.offsetHeight + 'px'); }
+  set(); window.addEventListener('resize', set);
+})();
+
 /* 手機選單開關（所有頁面共用） */
 (function(){
   var header = document.querySelector('header.site');

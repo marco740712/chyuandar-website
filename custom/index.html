@@ -38,10 +38,31 @@
 .flow div::before{counter-increment:f;content:counter(f);position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--gold-500);color:var(--navy-900);font-family:"Inter",sans-serif;font-weight:700}
 .flow b{display:block;font-family:"Noto Serif TC",serif;font-size:16px;color:var(--gold-300);margin-bottom:6px}
 .flow p{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13.5px;line-height:1.7;color:var(--gray-200)}
-.need{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
-.need span{padding:12px 14px;background:#fff;border:1px dashed var(--gold-400);font-family:"Inter","Noto Serif TC",sans-serif;font-size:14.5px}
 @media (max-width:980px){.who-grid{grid-template-columns:1fr 1fr}.svc{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr;gap:24px}}
-@media (max-width:600px){.who-grid{grid-template-columns:1fr}.need{grid-template-columns:1fr 1fr}}
+.iq{background:#fff;border:1px solid var(--gray-100);padding:32px 32px 28px;font-family:"Inter","Noto Serif TC",sans-serif}
+.iq fieldset{border:none;margin-bottom:22px}
+.iq legend{font-family:"Noto Serif TC",serif;font-weight:600;font-size:18px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--navy-900);width:100%}
+.iq .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.iq label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--navy-800);margin-bottom:4px}
+.iq label em{color:#B3261E;font-style:normal}
+.iq input,.iq select,.iq textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--gray-200);background:var(--gray-50);color:var(--navy-900);outline:none;width:100%;border-radius:0}
+.iq input:focus,.iq select:focus,.iq textarea:focus{border-color:var(--gold-500);background:#fff;box-shadow:0 0 0 3px rgba(201,169,97,.18)}
+.iq .hint{font-size:13px;color:var(--gray-600);margin:6px 0 12px}
+.iq .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.privacy{font-size:13px;line-height:1.8;color:var(--gray-600);background:var(--gray-50);padding:14px 16px;border-left:3px solid var(--gold-500)}
+.privacy b{display:block;color:var(--navy-900);margin-bottom:4px}
+.iq .agree{flex-direction:row;align-items:center;gap:10px;margin:14px 0 20px;font-size:14.5px;cursor:pointer}
+.iq .agree input{width:20px;height:20px;accent-color:var(--navy-800);flex:0 0 auto}
+.iq-submit{width:100%;font-size:16px;padding:16px}
+.iq-submit:disabled{opacity:.6;cursor:wait}
+.form-msg{margin-top:12px;font-size:14px;min-height:1em}
+.form-msg.err{color:#B3261E}.form-msg.ok{color:#1F7A3A}
+.iq-done{text-align:center;background:#fff;border:1px solid var(--gold-400);padding:44px 24px;font-family:"Inter","Noto Serif TC",sans-serif}
+.iq-done span{font-size:44px}
+.iq-done h3{font-family:"Noto Serif TC",serif;font-size:24px;margin:10px 0}
+.iq-done p{color:var(--gray-800);line-height:1.9}
+.iq-done a{color:var(--navy-700);text-decoration:underline}
+@media (max-width:600px){.who-grid{grid-template-columns:1fr}.iq{padding:22px 16px}.iq .row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -95,6 +116,7 @@
     <span class="page-eyebrow">CUSTOM TOURS</span>
     <h1>公司旅遊與<em>客製團體</em></h1>
     <p>人數、預算、天數由您決定，行程由詮達量身規劃。<br/>從報價、機票、住宿到領隊，一條龍幫您搞定。</p>
+    <a class="btn-primary" href="#inquiry" style="display:inline-block;margin-top:24px;font-family:Inter,sans-serif;font-size:14px;letter-spacing:.15em;padding:14px 32px;background:var(--gold-500);color:var(--navy-900)">填寫線上詢價單 →</a>
   </div>
 </div>
 
@@ -141,20 +163,75 @@
       <div><b>快樂出發</b><p>旅途中有問題隨時聯絡</p></div>
     </div>
 
-    <div style="margin-top:48px">
-      <h3 style="font-family:'Noto Serif TC',serif;font-weight:500;font-size:20px;text-align:center;margin-bottom:6px">詢價時先準備這些資訊，報價會更快更準</h3>
-      <div class="need">
-        <span>👥 人數（大人／小孩）</span>
-        <span>📅 預計出發日期</span>
-        <span>⏱ 旅遊天數</span>
-        <span>💰 每人預算</span>
-        <span>📍 想去的國家／地區</span>
-        <span>📝 特殊需求（素食、長輩、輪椅等）</span>
+  </div>
+</section>
+
+<section class="page-sec alt" id="inquiry">
+  <div class="container" style="max-width:860px">
+    <div class="sec-head">
+      <span class="sec-eyebrow">ONLINE INQUIRY</span>
+      <h2 class="sec-title">線上詢價單</h2>
+      <p class="sec-sub">填好送出後，台南門市專員會主動與您聯繫，免費規劃與報價。</p>
+    </div>
+
+    <form class="iq" id="inquiryForm" novalidate>
+      <fieldset>
+        <legend>① 您的聯絡方式</legend>
+        <div class="row2">
+          <label><span>姓名 <em>*</em></span><input name="name" autocomplete="name" required placeholder="例：王小明"></label>
+          <label>聯絡電話<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="例：0912-345-678"></label>
+          <label>LINE ID<input name="line" autocomplete="off" placeholder="方便的話也可以留 LINE ID"></label>
+          <label>Email<input name="email" type="email" autocomplete="email" placeholder="選填"></label>
+        </div>
+        <p class="hint">電話或 LINE ID 請至少留一項。</p>
+        <label>方便聯絡的時段
+          <select name="contactTime">
+            <option value="">都可以</option><option>平日白天</option><option>平日晚上</option><option>假日</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>② 旅遊需求</legend>
+        <div class="row2">
+          <label>團體類型
+            <select name="type">
+              <option value="">請選擇</option><option>公司員工旅遊／獎勵旅遊</option><option>家族旅遊</option><option>宗教參訪／進香團</option><option>學校／社團／同學會</option><option>退休族／銀髮旅遊</option><option>小團包團／主題旅遊</option><option>其他</option>
+            </select>
+          </label>
+          <label>人數<input name="people" inputmode="numeric" placeholder="例：大人 20、小孩 3"></label>
+          <label>預計出發<input name="date" placeholder="例：2027 年 3 月中"></label>
+          <label>旅遊天數<input name="days" placeholder="例：5 天 4 夜"></label>
+          <label>每人預算
+            <select name="budget">
+              <option value="">還不確定</option><option>2 萬以下</option><option>2–4 萬</option><option>4–6 萬</option><option>6–10 萬</option><option>10 萬以上</option>
+            </select>
+          </label>
+          <label>想去的地方<input name="dest" placeholder="例：日本北海道、國內花東"></label>
+        </div>
+        <label>其他需求<textarea name="note" rows="4" placeholder="例：有長輩同行、需要素食、想包含溫泉住宿…"></textarea></label>
+      </fieldset>
+
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="privacy">
+        <b>個人資料蒐集說明</b>
+        詮達旅行社企業有限公司蒐集您填寫的姓名、聯絡電話、LINE ID、Email 等資料，僅用於本次旅遊諮詢、報價與聯繫，不會提供給第三方作行銷使用。您可隨時聯絡我們查詢、更正或要求刪除您的資料；若不提供聯絡資料，我們將無法與您聯繫。
       </div>
+      <label class="agree"><input type="checkbox" id="agree"> 我已閱讀並同意上述個人資料蒐集說明</label>
+
+      <button type="submit" class="btn-navy iq-submit">送出詢價單</button>
+      <p class="form-msg" id="inquiryMsg" role="status"></p>
+    </form>
+
+    <div class="iq-done" id="inquiryDone" hidden>
+      <span>✅</span>
+      <h3>已收到您的詢價單！</h3>
+      <p>台南門市專員會在營業時間內盡快與您聯繫。<br/>急件也可以直接撥打 <a href="tel:0626578880">06-265-7888</a>。</p>
     </div>
 
     <div class="line-banner" style="margin-top:44px">
-      <div><strong>免費諮詢、免費報價</strong><span>把需求傳 LINE 給我們，台南門市專員為您規劃。</span></div>
+      <div><strong>不想填表？LINE 直接問也可以</strong><span>把需求傳 LINE 給我們，台南門市專員為您規劃。</span></div>
       <a class="btn-line" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
     </div>
   </div>
@@ -187,6 +264,7 @@
 
 <a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
 
+<script src="../assets/inquiry.js"></script>
 <script src="../assets/nav.js"></script>
 </body>
 </html>

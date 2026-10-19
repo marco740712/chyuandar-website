@@ -54,7 +54,7 @@
 }
 @media (max-width:420px){
   .nav{padding:14px 16px}
-  .brand-logo{height:42px}
+  .brand-logo{height:32px}
   .cta{display:none}
 }
 
