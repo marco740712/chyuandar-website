@@ -73,3 +73,18 @@
   body{padding-bottom:76px}
 }
 @media print{.line-float,.nav-toggle{display:none!important}}
+
+/* 回首頁／回頂端浮動按鈕（在 LINE 按鈕上方） */
+.fab{position:fixed;right:22px;bottom:96px;z-index:59;display:flex;flex-direction:column;gap:10px;opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s}
+.fab.show{opacity:1;visibility:visible;transform:none}
+.fab-btn{width:54px;height:54px;border-radius:50%;border:1px solid rgba(15,42,79,.12);background:rgba(255,255,255,.96);color:#1A4A8E;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;
+  box-shadow:0 8px 22px -8px rgba(15,42,79,.4);font-family:"Inter","Noto Serif TC",sans-serif;text-decoration:none;transition:.2s}
+.fab-btn span{font-size:17px;line-height:1;font-weight:600}
+.fab-btn small{font-size:11px;letter-spacing:.05em;line-height:1.2}
+.fab-btn:hover{background:#1A4A8E;color:#fff}
+@media (max-width:600px){
+  .fab{right:14px;bottom:80px;gap:8px}
+  .fab-btn{width:50px;height:50px}
+}
+@media print{.fab{display:none!important}}
