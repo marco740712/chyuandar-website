@@ -192,6 +192,21 @@ section{padding:100px 0;position:relative}
 }
 .more-banner:hover .more-banner-btn{background:#05a847}
 
+/* 高雄直飛寬版卡片 */
+.khh-card{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;min-height:170px;padding:30px 40px;margin-bottom:16px;color:#fff;background:#163E73;transition:.3s}
+.khh-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.khh-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,26,51,.85) 0%,rgba(10,26,51,.55) 55%,rgba(10,26,51,.2) 100%)}
+.khh-card>*:not(.khh-bg){position:relative;z-index:1}
+.khh-card:hover{box-shadow:0 20px 44px -18px rgba(10,26,51,.5)}
+.khh-card:hover .khh-bg{transform:scale(1.04)}
+.khh-text{display:flex;flex-direction:column;gap:6px}
+.khh-tag{font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.25em;color:#F6E7C1}
+.khh-text strong{font-family:"Noto Serif TC",serif;font-weight:600;font-size:clamp(22px,2.6vw,30px);letter-spacing:.05em}
+.khh-text em{font-style:normal;font-family:"Inter","Noto Serif TC",sans-serif;font-size:16px;color:rgba(255,255,255,.9)}
+.khh-btn{flex:0 0 auto;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;letter-spacing:.06em;padding:13px 24px;background:#C9A961;color:#0A1A33;font-weight:600;transition:.2s}
+.khh-card:hover .khh-btn{background:#F6E7C1}
+@media (max-width:600px){.khh-card{padding:22px 18px;min-height:0}.khh-text em{font-size:14.5px}.khh-btn{width:100%;text-align:center}}
+
 /* 地區方塊：小張照片卡（每列四個），文字壓在照片上 */
 .region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .region-card{
@@ -616,6 +631,16 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
       <span class="more-banner-btn">LINE 諮詢 →</span>
     </a>
 
+    <a class="khh-card" href="https://www.gounitravel.com/category/zh-tw/fromkaohsiung/index?fr=cg7033mega" target="_blank" rel="noopener">
+      <img class="khh-bg" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&h=500&q=70" alt="從高雄小港機場直飛出國" loading="lazy">
+      <span class="khh-text">
+        <span class="khh-tag">FROM KAOHSIUNG ‧ 南部出發</span>
+        <strong>✈️ 高雄小港直飛，免跑桃園！</strong>
+        <em>日本・韓國・東南亞熱門行程，從家門口輕鬆出發</em>
+      </span>
+      <span class="khh-btn">查看高雄直飛行程 →</span>
+    </a>
+
     <div class="region-grid">
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega" target="_blank" rel="noopener">
         <img class="region-bg" src="https://images.unsplash.com/photo-1669711676326-22fdc19fcb9b?auto=format&fit=crop&w=700&h=440&q=70" alt="" loading="lazy">
@@ -890,6 +915,7 @@ function renderBranches(){
   const cur = (window.CDT_MONTHS || [])[m - 1];
   const msgs = [
     cur ? `✈️ ${m} 月出發去哪玩？${cur.title}，${cur.ideas.slice(0,3).map(i => i.n).join("、")}正當季` : "✈️ 這個月去哪玩？LINE 問小幫手推薦當季行程",
+    "✈️ 不想跑桃園？高雄小港直飛行程，LINE 問小幫手",
     "💰 看到喜歡的行程？LINE 洽詢小幫手，享有優惠價格",
     "🛂 護照快到期了嗎？拍照傳 LINE，免費幫您檢查效期",
     "✈️ 機票價格天天變，把日期傳給我們，小幫手幫您找票",
