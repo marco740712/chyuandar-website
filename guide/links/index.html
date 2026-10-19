@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>常用連結：機場與交通 ｜ 詮達旅行社 CHYUAN DAR TRAVEL</title>
+<meta name="description" content="全台（含離島）機場官方網站與大眾運輸前往方式，台南、高雄、桃園、松山、台中、澎湖、金門、馬祖機場，以及高鐵、台鐵、捷運官網一次整理。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/nav.css">
+<style>
+.jump{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:8px}
+.jump a{padding:9px 18px;border:1px solid var(--gray-200);background:#fff;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;transition:.2s}
+.jump a:hover{border-color:var(--navy-900);background:var(--navy-900);color:var(--gold-300)}
+
+.group{margin-top:44px}
+.group-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:16px;border-bottom:2px solid var(--navy-900)}
+.group-head h2{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(20px,2.4vw,26px);letter-spacing:.06em}
+.group-head span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13.5px;color:var(--gray-600)}
+
+.airports{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.airport{background:#fff;border:1px solid var(--gray-100);padding:24px 24px 22px;display:flex;flex-direction:column;position:relative}
+.airport::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-500)}
+.airport.home{border-color:var(--gold-400);background:linear-gradient(180deg,#FFFBF0 0%,#fff 60%)}
+.ap-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ap-top b{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;letter-spacing:.04em;line-height:1.4}
+.ap-top small{display:block;font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:var(--gray-600);margin-top:2px}
+.code{flex:0 0 auto;font-family:"Inter",sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;padding:4px 10px;background:var(--navy-900);color:var(--gold-300)}
+.home-tag{display:inline-block;margin-top:6px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:11.5px;padding:2px 8px;background:var(--gold-500);color:var(--navy-900)}
+.how{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14.5px;line-height:1.8;color:var(--gray-800);flex:1}
+.how h4{font-size:12.5px;letter-spacing:.15em;color:var(--gold-500);font-weight:600;margin:12px 0 4px}
+.how h4:first-child{margin-top:0}
+.how ul{padding-left:18px}
+.how li{margin-bottom:4px}
+.how .st{font-weight:600;color:var(--navy-900)}
+.ap-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:12px 16px;border:1px solid var(--navy-800);color:var(--navy-800);font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;letter-spacing:.06em;transition:.2s}
+.ap-btn:hover{background:var(--navy-900);color:var(--gold-300)}
+
+.transit{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.t-link{display:flex;flex-direction:column;gap:4px;padding:18px 18px;background:#fff;border:1px solid var(--gray-100);transition:.2s}
+.t-link:hover{border-color:var(--gold-400);transform:translateY(-2px);box-shadow:0 14px 36px -18px rgba(10,26,51,.25)}
+.t-link .ico{font-size:22px}
+.t-link b{font-family:"Noto Serif TC",serif;font-weight:500;font-size:16px;letter-spacing:.04em}
+.t-link small{font-family:"Inter",sans-serif;font-size:12px;color:var(--gray-400);word-break:break-all}
+
+@media (max-width:980px){.transit{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.airports{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .airport{padding:20px 16px 18px}
+  .transit{gap:10px}
+  .t-link{padding:14px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner sans">
+    <span>週一至週五 09:00 – 18:00 ｜ 國定假日休息</span>
+    <span>
+      <a href="tel:0626578880">06-265-7888</a>
+      <a href="mailto:chyuan.dar@msa.hinet.net">chyuan.dar@msa.hinet.net</a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="nav">
+    <a href="../../index.html" class="brand">
+      <img src="../../logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+    </a>
+    <nav class="menu" id="siteMenu">
+      <a href="../../about/">關於詮達</a>
+      <div class="menu-drop">
+        <a href="../" class="active">出國行前指南<span class="caret">▼</span></a>
+        <div class="menu-drop-panel">
+          <a href="../visa/">護照與簽證代辦<small>護照、台胞證、各國簽證</small></a>
+          <a href="../destinations/">目的地實用指南<small>電壓、天氣、小費、飲食卡</small></a>
+          <a href="../checklist/">行前打包清單<small>可勾選・可下載 PDF</small></a>
+          <a href="./">常用連結<small>機場官網、交通方式</small></a>
+        </div>
+      </div>
+      <a href="../../faq/">常見問題</a>
+      <a href="../../index.html#products">旅遊商品</a>
+      <a href="../../index.html#contact">門市據點</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" class="cta">立即諮詢</a>
+      <button class="nav-toggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="siteMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="../../index.html">首頁</a> ／ <a href="../">出國行前指南</a> ／ 常用連結</div>
+    <span class="page-eyebrow">USEFUL LINKS</span>
+    <h1>機場與交通<em>常用連結</em></h1>
+    <p>全台（含離島）機場官網，以及搭大眾運輸怎麼到機場，<br/>出發當天不用再到處查。</p>
+  </div>
+</div>
+
+<section class="page-sec">
+  <div class="container" style="max-width:1000px">
+    <nav class="jump" aria-label="快速前往">
+      <a href="#south">在地與南部機場</a>
+      <a href="#north">北部與中部機場</a>
+      <a href="#islands">離島機場</a>
+      <a href="#transit">高鐵・台鐵・捷運・公車</a>
+    </nav>
+
+    <!-- 南部 -->
+    <div class="group" id="south">
+      <div class="group-head"><h2>在地與南部機場</h2><span>從台南出發最方便</span></div>
+      <div class="airports">
+
+        <div class="airport home">
+          <div class="ap-top">
+            <div><b>臺南航空站</b><small>台南機場</small><span class="home-tag">詮達在地</span></div>
+            <span class="code">TNN</span>
+          </div>
+          <div class="how">
+            <h4>從高鐵臺南站</h4>
+            <ul><li>搭 <span class="st">H31 高鐵接駁巴士</span> 直達機場，約 20–30 分鐘一班</li><li>或搭計程車，約 20 分鐘</li></ul>
+            <h4>從台南火車站／市區</h4>
+            <ul><li>搭 <span class="st">105 號公車</span>（經成功大學、台南火車站、新光三越新天地）</li></ul>
+            <h4>其他路線</h4>
+            <ul><li>紅 3、8046、高雄客運 239 等（班次較少，請先查時刻表）</li></ul>
+          </div>
+          <a class="ap-btn" href="https://www.tna.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>高雄國際機場</b><small>小港機場</small></div>
+            <span class="code">KHH</span>
+          </div>
+          <div class="how">
+            <h4>台南直達（最省事）</h4>
+            <ul><li>搭 <span class="st">台灣好行 111 臺南小港機場線</span>，從台南市區直達高雄機場，一天約 8 班</li></ul>
+            <h4>搭捷運</h4>
+            <ul>
+              <li>高雄捷運紅線 → <span class="st">R4 高雄國際機場站</span></li>
+              <li>2 號出口通往<b>國內線</b>，6 號出口通往<b>國際線</b></li>
+            </ul>
+            <h4>從台南搭車轉乘</h4>
+            <ul>
+              <li>台鐵：台南車站 → 高雄車站 → 捷運紅線往小港 → R4</li>
+              <li>高鐵：左營站 → 捷運紅線往小港 → R4（約 28 分鐘）</li>
+            </ul>
+          </div>
+          <a class="ap-btn" href="https://www.kia.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 北中部 -->
+    <div class="group" id="north">
+      <div class="group-head"><h2>北部與中部機場</h2></div>
+      <div class="airports">
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>臺灣桃園國際機場</b><small>第一／第二航廈</small></div>
+            <span class="code">TPE</span>
+          </div>
+          <div class="how">
+            <h4>從中南部搭高鐵（推薦）</h4>
+            <ul><li>高鐵桃園站 → 轉搭<span class="st">桃園機場捷運</span>（往台北方向）→ <span class="st">A12 第一航廈</span>或 <span class="st">A13 第二航廈</span>，約 15–20 分鐘</li></ul>
+            <h4>從台北市區</h4>
+            <ul><li><span class="st">A1 台北車站</span>搭機場捷運直達車，約 36–39 分鐘</li></ul>
+          </div>
+          <a class="ap-btn" href="https://www.taoyuan-airport.com/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>臺北松山機場</b><small>國內線、兩岸及短程國際線</small></div>
+            <span class="code">TSA</span>
+          </div>
+          <div class="how">
+            <h4>搭台北捷運</h4>
+            <ul><li>文湖線（棕線）→ <span class="st">BR13 松山機場站</span>，下車即到</li></ul>
+            <h4>從台北車站（高鐵／台鐵）</h4>
+            <ul><li>板南線（藍線）→ 忠孝復興站 → 轉文湖線（棕線）→ BR13 松山機場站</li></ul>
+          </div>
+          <a class="ap-btn" href="https://www.tsa.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>臺中國際機場</b><small>清泉崗機場</small></div>
+            <span class="code">RMQ</span>
+          </div>
+          <div class="how">
+            <h4>從高鐵臺中站</h4>
+            <ul><li>搭台中客運 <span class="st">156 路</span>直達機場</li></ul>
+            <h4>從台鐵臺中車站</h4>
+            <ul><li>搭 <span class="st">500 路</span>或 <span class="st">333 路</span>公車</li></ul>
+          </div>
+          <a class="ap-btn" href="https://www.tca.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 離島 -->
+    <div class="group" id="islands">
+      <div class="group-head"><h2>離島機場</h2></div>
+      <div class="airports">
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>澎湖馬公機場</b><small>澎湖航空站</small></div>
+            <span class="code">MZG</span>
+          </div>
+          <div class="how">
+            <ul>
+              <li>台灣好行 <span class="st">澎湖空港快線</span>：往返機場、馬公港與公車總站</li>
+              <li>澎湖縣公車：招呼站在航廈一樓出口左側，往返馬公市區</li>
+            </ul>
+          </div>
+          <a class="ap-btn" href="https://www.mkport.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>金門尚義機場</b><small>金門航空站</small></div>
+            <span class="code">KNH</span>
+          </div>
+          <div class="how">
+            <ul><li>搭金門縣公車 <span class="st">3 路</span>，往返金城與山外</li></ul>
+          </div>
+          <a class="ap-btn" href="https://www.kma.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+        <div class="airport">
+          <div class="ap-top">
+            <div><b>馬祖南竿／北竿機場</b><small>兩機場共用馬祖航空站官網</small></div>
+            <span class="code">LZN / MFK</span>
+          </div>
+          <div class="how">
+            <ul>
+              <li>南竿：搭島上公車（海線／山線）</li>
+              <li>北竿：搭北竿公車，或預約民宿接送</li>
+            </ul>
+          </div>
+          <a class="ap-btn" href="https://msa.gov.tw/" target="_blank" rel="noopener">前往官網 ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 交通系統 -->
+    <div class="group" id="transit">
+      <div class="group-head"><h2>高鐵・台鐵・捷運・公車官網</h2><span>查時刻表、訂票、即時動態</span></div>
+      <div class="transit">
+        <a class="t-link" href="https://www.thsrc.com.tw/" target="_blank" rel="noopener"><span class="ico">🚄</span><b>台灣高鐵</b><small>thsrc.com.tw</small></a>
+        <a class="t-link" href="https://www.railway.gov.tw/" target="_blank" rel="noopener"><span class="ico">🚆</span><b>台鐵</b><small>railway.gov.tw</small></a>
+        <a class="t-link" href="https://www.tymetro.com.tw/" target="_blank" rel="noopener"><span class="ico">✈️</span><b>桃園機場捷運</b><small>tymetro.com.tw</small></a>
+        <a class="t-link" href="https://www.metro.taipei/" target="_blank" rel="noopener"><span class="ico">🚇</span><b>台北捷運</b><small>metro.taipei</small></a>
+        <a class="t-link" href="https://www.krtc.com.tw/" target="_blank" rel="noopener"><span class="ico">🚇</span><b>高雄捷運</b><small>krtc.com.tw</small></a>
+        <a class="t-link" href="https://2384.tainan.gov.tw/" target="_blank" rel="noopener"><span class="ico">🚌</span><b>大台南公車動態</b><small>2384.tainan.gov.tw</small></a>
+        <a class="t-link" href="https://www.phpto.gov.tw/" target="_blank" rel="noopener"><span class="ico">⛴</span><b>澎湖縣公共車船處</b><small>phpto.gov.tw</small></a>
+        <a class="t-link" href="https://ebus.kinmen.gov.tw/" target="_blank" rel="noopener"><span class="ico">🚌</span><b>金門縣公共車船處</b><small>ebus.kinmen.gov.tw</small></a>
+      </div>
+    </div>
+
+    <p class="updated">資料更新：2026 年 10 月 ‧ 公車路線與班次可能調整，出發前請以各官網公告為準</p>
+  </div>
+</section>
+
+<!-- LINE CTA -->
+<section class="page-sec" style="padding-top:0">
+  <div class="container" style="max-width:1000px">
+    <div class="line-banner">
+      <div>
+        <strong>不知道怎麼到機場最方便？</strong>
+        <span>台南門市專員幫您規劃前往機場的交通方式。</span>
+      </div>
+      <a class="btn-line" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
+    </div>
+  </div>
+</section>
+
+<!-- 其他行前指南 -->
+<section class="page-sec alt guide-links-sec">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">TRAVEL GUIDE</span>
+      <h2 class="sec-title">更多行前指南</h2>
+    </div>
+    <div class="guide-links">
+      <a class="guide-link" href="../visa/"><span class="ico">🛂</span><b>護照與簽證</b><small>證件文件、辦理天數</small></a>
+      <a class="guide-link" href="../destinations/"><span class="ico">🌏</span><b>目的地實用指南</b><small>電壓、小費、飲食卡</small></a>
+      <a class="guide-link" href="../checklist/"><span class="ico">🧳</span><b>行前打包清單</b><small>可勾選・可下載</small></a>
+      <a class="guide-link" href="../../faq/"><span class="ico">💡</span><b>常見問題</b><small>訂金、小費、護照效期</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-simple">
+      <div>
+        <img src="../../logo-gold.png" alt="詮達旅遊" style="height:44px;width:auto;margin-bottom:10px">
+        <p style="font-size:13px;color:var(--gray-200)">詮達旅行社企業有限公司 ‧ 旅天下加盟體系成員</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../index.html">首頁</a>
+        <a href="../">出國行前指南</a>
+        <a href="./">常用連結</a>
+        <a href="../../faq/">常見問題</a>
+        <a href="../../index.html#contact">門市據點</a>
+        <a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" style="color:var(--gold-300)">LINE</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 CHYUAN DAR TRAVEL CO., LTD. All Rights Reserved.</span>
+      <span>統一編號：12919292 ｜ 觀光署旅行業：715600</span>
+    </div>
+  </div>
+</footer>
+
+<a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
+
+<script src="../../assets/nav.js"></script>
+</body>
+</html>
