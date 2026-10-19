@@ -1,0 +1,112 @@
+/* ── 全站配色：品牌晴空藍 ──
+   放在每頁最後載入，覆蓋原本的深藍金色主題。
+   主色取自詮達 Logo 的品牌藍；上方改淺色、頁尾保留深色收尾。 */
+:root{
+  --navy-950:#0F2A4F;   /* 頁尾等最深色 */
+  --navy-900:#163E73;   /* 主要文字、深色按鈕 */
+  --navy-800:#1A4A8E;   /* 品牌藍（Logo 色） */
+  --navy-700:#2459A6;
+  --navy-600:#3B6FB8;
+  --gray-50:#F6F9FC;    /* 頁面底色：帶一點藍的白 */
+  --gray-100:#E8EEF5;
+  --sky-50:#EEF4FB;     /* 淺藍區塊 */
+  --sky-100:#E1EBF7;
+  --line:rgba(26,74,142,.18);
+  --line-strong:rgba(201,169,97,.6);
+}
+
+/* 上方資訊列 */
+html .topbar{background:var(--sky-100);color:var(--navy-800)}
+html .topbar a{color:var(--navy-800);font-weight:500}
+html .topbar a:hover{color:var(--navy-950)}
+
+/* 頁首：白底、品牌藍 Logo */
+html header.site{background:rgba(255,255,255,.97);border-bottom:1px solid var(--gray-100);box-shadow:0 4px 20px -14px rgba(15,42,79,.35)}
+html .brand-logo{mix-blend-mode:multiply;height:48px;margin:-7px 0}
+html .menu{color:#2A2E35}
+html .menu a:hover,html .menu a.active{color:var(--navy-800)}
+html .menu a::after{background:var(--navy-800)}
+html .cta{border-color:var(--navy-800);color:var(--navy-800)}
+html .cta:hover{background:var(--navy-800);color:#fff}
+html .nav-toggle{border-color:var(--gray-100)}
+html .nav-toggle span{background:var(--navy-800)}
+html .menu-drop-panel{background:#fff;border-color:var(--gray-100);box-shadow:0 24px 50px -20px rgba(15,42,79,.35)}
+html .menu .menu-drop-panel a{color:#2A2E35}
+html .menu .menu-drop-panel a small{color:#7A8494}
+html .menu .menu-drop-panel a:hover{background:var(--sky-50);color:var(--navy-800)}
+@media (max-width:980px){
+  html .nav-open .menu{background:#fff;border-color:var(--gray-100)}
+  html .nav-open .menu>a,html .nav-open .menu-drop>a{border-color:var(--gray-100)}
+}
+@media (max-width:420px){ html .brand-logo{height:42px;margin:-6px 0} }
+
+/* 首頁大圖：遮罩變淡（照片由輪播帶入） */
+html .hero{background-color:#163E73}
+html .hero::before{border-color:rgba(255,255,255,.45);z-index:1}
+html .hero .eyebrow{color:#fff}
+html .hero .eyebrow::before,html .hero .eyebrow::after{background:#fff}
+html .hero h1 em{color:#F6E7C1}
+html .btn-primary{background:var(--navy-800);color:#fff}
+html .btn-primary:hover{background:var(--navy-950);color:#fff}
+
+/* 內頁標題區：遮罩變淡 */
+html .page-hero{background:
+  linear-gradient(135deg,rgba(15,42,79,.62) 0%,rgba(26,74,142,.40) 100%),
+  url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2400&q=80') center/cover}
+html .page-hero .crumbs a,html .page-hero .page-eyebrow{color:#F6E7C1}
+html .page-hero .page-eyebrow::before,html .page-hero .page-eyebrow::after{background:#F6E7C1}
+html .page-hero h1 em{color:#F6E7C1}
+
+/* 首頁輪播條 */
+html .promo{background:#F6EEDB;color:var(--navy-900)}
+html .promo-dots i.on{background:var(--navy-800)}
+
+/* 首頁各區塊 */
+html .about-strip-text h2 span{color:var(--navy-800)}
+html .more-banner{background:linear-gradient(120deg,var(--navy-800) 0%,var(--navy-900) 100%);border-color:transparent}
+html .more-banner:hover{background:linear-gradient(120deg,var(--navy-700) 0%,var(--navy-800) 100%)}
+html .more-banner-text em{color:#F6E7C1}
+html .region-card::before,html .idea::before{background:var(--navy-800)}
+html .region-card:hover,html .idea:hover{border-color:var(--navy-700)}
+html .region-card:hover .region-arrow{color:var(--navy-800)}
+html .month.now::after{color:#fff}
+html .idea-tags span{background:var(--sky-50);color:var(--navy-900)}
+html .guide-strip{background:var(--sky-50)}
+
+/* 門市據點：淺藍底白卡片 */
+html .contact{background:var(--sky-50);color:#2A2E35}
+html .contact .sec-title{color:var(--navy-900)}
+html .contact .sec-sub{color:#5C6470}
+html .contact .sec-eyebrow{color:var(--gold-500)!important}
+html .branch{background:#fff;border-color:var(--gray-100);box-shadow:0 12px 30px -20px rgba(15,42,79,.35)}
+html .branch:hover{background:#fff}
+html .branch::before,html .branch::after{border-color:var(--gold-500)}
+html .branch .label{color:var(--gold-500)}
+html .branch h4{color:var(--navy-900)}
+html .branch ul{color:#5C6470}
+html .branch ul li{border-color:var(--gray-100)}
+html .branch ul li .k{color:var(--gold-500)}
+html .branch ul li .v{color:#2A2E35}
+html .branch-map{border-color:var(--navy-800);color:var(--navy-800)}
+html .branch-map:hover{background:var(--navy-800);color:#fff}
+html .contact-bar{background:#fff;border-color:var(--gray-100);backdrop-filter:none}
+html .contact-bar-item .k{color:var(--gold-500)}
+html .contact-bar-item .v,html .contact-bar-item .v a{color:var(--navy-900)}
+html .contact-bar-item .v{font-family:"Inter","Noto Sans TC","PingFang TC",sans-serif;font-size:18px;font-weight:500;letter-spacing:.03em;font-variant-numeric:lining-nums tabular-nums}
+html .contact-bar-item .k{font-size:11px;letter-spacing:.3em}
+html .contact-bar-item .v a:hover{color:var(--navy-700)}
+html .btn-tel{background:var(--navy-800);color:#fff}
+html .btn-tel:hover{background:var(--navy-950)}
+
+/* 內頁元件 */
+html .btn-navy{background:var(--navy-800);color:#fff}
+html .btn-navy:hover{background:var(--navy-950)}
+html .line-banner{background:linear-gradient(120deg,var(--navy-800) 0%,var(--navy-900) 100%);border-color:transparent}
+html .line-banner span{color:#F6E7C1}
+html .page-sec.alt{background:#fff}
+html .guide-link.current{background:var(--sky-50);border-color:var(--navy-700)}
+html .chip[aria-pressed="true"],html .chip[aria-selected="true"]{color:#fff}
+html .tab[aria-selected="true"]{border-bottom-color:var(--navy-800)}
+
+/* 頁尾：保留深藍收尾 */
+html footer{background:var(--navy-950)}

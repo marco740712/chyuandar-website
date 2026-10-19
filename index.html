@@ -84,14 +84,25 @@ header.site{
 .hero{
   position:relative;
   min-height:90vh;
-  background:
-    linear-gradient(135deg,rgba(6,16,31,.78) 0%,rgba(14,36,71,.55) 60%,rgba(6,16,31,.85) 100%),
-    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=80') center/cover;
+  background:#163E73 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=80') center/cover;
   color:#fff;
   display:flex;align-items:center;
   overflow:hidden;
 }
 .hero::before{content:"";position:absolute;inset:24px;border:1px solid rgba(201,169,97,.35);pointer-events:none}
+/* 頁首照片輪播（當月旅遊靈感照片） */
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.4s ease,transform 7s ease-out}
+.hero-slides img.on{opacity:1;transform:scale(1)}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(10,26,51,.62) 0%,rgba(10,26,51,.30) 55%,rgba(10,26,51,.08) 100%)}
+.hero-cap{position:absolute;right:48px;top:44px;z-index:3;display:flex;align-items:center;gap:12px;font-family:"Inter","Noto Serif TC",sans-serif}
+.hero-cap a{color:#fff;font-size:14px;letter-spacing:.06em;padding:8px 16px;background:rgba(10,26,51,.45);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);transition:.2s}
+.hero-cap a:hover{background:rgba(10,26,51,.7)}
+.hero-dots{display:flex;gap:6px}
+.hero-dots button{width:9px;height:9px;padding:0;border-radius:50%;border:1px solid #fff;background:transparent;cursor:pointer}
+.hero-dots button.on{background:#fff}
+@media (max-width:600px){.hero-cap{left:36px;right:36px;top:36px;justify-content:space-between}.hero-cap a{font-size:12.5px;padding:6px 12px}}
+@media (prefers-reduced-motion:reduce){.hero-slides img{transition:opacity .3s;transform:none!important}}
 .hero-inner{position:relative;z-index:2;padding:0 32px;max-width:1280px;margin:0 auto;width:100%}
 .eyebrow{
   font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.5em;color:var(--gold-300);
@@ -364,6 +375,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 }
 </style>
 <link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/theme.css">
 </head>
 <body>
 
@@ -383,7 +395,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 <header class="site">
   <div class="nav">
     <a href="#" class="brand">
-      <img src="logo-gold.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
+      <img src="logo-blue.png" alt="詮達旅遊 Chyuan Dar Travel" class="brand-logo">
     </a>
     <nav class="menu" id="siteMenu">
       <a href="#products">旅遊商品</a>
@@ -411,6 +423,9 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-slides" id="heroSlides" aria-hidden="true"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-cap" id="heroCap"></div>
   <div class="hero-inner">
     <span class="eyebrow">SINCE 1995 ‧ TAINAN</span>
     <h1>讓世界的風景<br/>成為您的<em>下一段故事</em></h1>
@@ -563,7 +578,7 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
         </div>
         <div class="contact-bar-item">
           <div class="k">服務時間</div>
-          <div class="v" style="font-size:17px">週一至週五 09:00 – 18:00</div>
+          <div class="v">週一至週五 09:00 – 18:00</div>
         </div>
       </div>
       <div class="contact-bar-actions">
@@ -684,6 +699,32 @@ function renderBranches(){
 
 </script>
 <script src="assets/calendar.js"></script>
+<script>
+/* 頁首輪播：自動帶入「旅遊靈感月曆」當月 6 張照片，每月自動更換 */
+(function(){
+  const M = window.CDT_MONTHS; if(!M) return;
+  const m = new Date().getMonth() + 1, list = M[m - 1].ideas;
+  const box = document.getElementById("heroSlides"), cap = document.getElementById("heroCap");
+  const w = window.innerWidth <= 600 ? 1200 : 2400;
+  box.innerHTML = list.map((i, k) => `<img ${k ? 'loading="lazy"' : ''} src="https://images.unsplash.com/${i.img}?auto=format&fit=crop&w=${w}&q=75" alt="${i.n}：${i.tags.join("、")}">`).join("");
+  cap.innerHTML = `<a href="#calendar" id="heroLink"></a><span class="hero-dots">${list.map((_, k) => `<button type="button" aria-label="第 ${k+1} 張"></button>`).join("")}</span>`;
+  const imgs = box.querySelectorAll("img"), dots = cap.querySelectorAll(".hero-dots button"), link = document.getElementById("heroLink");
+  let cur = 0, timer;
+  function show(k){
+    cur = k;
+    imgs.forEach((im, n) => im.classList.toggle("on", n === k));
+    dots.forEach((d, n) => d.classList.toggle("on", n === k));
+    link.textContent = `${m} 月推薦｜${list[k].f} ${list[k].n} →`;
+    // 預先載入下一張
+    const nx = imgs[(k + 1) % imgs.length]; if(nx.loading === "lazy") nx.loading = "eager";
+  }
+  function next(){ show((cur + 1) % imgs.length); }
+  function start(){ clearInterval(timer); if(!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(next, 6000); }
+  dots.forEach((d, n) => d.addEventListener("click", () => { show(n); start(); }));
+  imgs[0].addEventListener("load", () => document.querySelector(".hero").style.backgroundImage = "none", {once:true});
+  show(0); start();
+})();
+</script>
 <script src="assets/nav.js"></script>
 <script>
 /* 行銷輪播文字（要改文案就改這裡）；第一則會依當月自動帶入「旅遊靈感月曆」的主題 */
