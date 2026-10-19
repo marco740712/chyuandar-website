@@ -38,7 +38,7 @@ html .menu .menu-drop-panel a:hover{background:var(--sky-50);color:var(--navy-80
   html .nav-open .menu{background:#fff;border-color:var(--gray-100)}
   html .nav-open .menu>a,html .nav-open .menu-drop>a{border-color:var(--gray-100)}
 }
-@media (max-width:600px){ html .brand-logo{height:38px} }
+/* 頁首與頁尾 Logo 一律 42px，手機也一樣 */
 
 /* 首頁大圖：遮罩變淡（照片由輪播帶入） */
 html .hero{background-color:#163E73}
