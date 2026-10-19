@@ -23,40 +23,61 @@
 <link rel="stylesheet" href="../../assets/nav.css">
 <link rel="stylesheet" href="../../assets/theme.css">
 <style>
-.progress-box{position:sticky;top:var(--hdr,72px);z-index:5;background:var(--gray-50);padding:14px 0 18px;margin-bottom:8px}
-.progress-row{display:flex;justify-content:space-between;align-items:baseline;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;margin-bottom:8px}
-.progress-row b{font-size:20px;color:var(--navy-900)}
-.progress{height:8px;background:var(--gray-100);overflow:hidden}
-.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-500),var(--gold-300));transition:width .35s}
+/* 進度條（黏在頁首下方） */
+.progress-box{position:sticky;top:var(--hdr,72px);z-index:5;background:var(--gray-50);padding:14px 0 16px;margin-bottom:10px}
+.progress-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;margin-bottom:8px}
+.progress-row b{font-size:22px;color:var(--navy-900)}
+.progress{height:8px;background:var(--gray-100);overflow:hidden;border-radius:99px}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy-700),var(--gold-500));transition:width .35s}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;padding:8px 14px;border:1px solid var(--gray-200);background:#fff;cursor:pointer;color:var(--navy-800)}
+.tools button:hover{border-color:var(--navy-700)}
+.tools button[aria-pressed="true"]{background:var(--navy-800);border-color:var(--navy-800);color:#fff}
 
-.ck-group{background:#fff;border:1px solid var(--gray-100);margin-bottom:20px}
-.ck-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;border-bottom:1px solid var(--gray-100)}
-.ck-head h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;letter-spacing:.06em}
-.ck-head .count{font-family:"Inter",sans-serif;font-size:13px;color:var(--gray-600);white-space:nowrap}
+/* 分類卡片：多欄瀑布排列 */
+.ck-board{columns:3 300px;column-gap:18px}
+.ck-group{break-inside:avoid;background:#fff;border:1px solid var(--gray-100);border-radius:10px;margin-bottom:18px;overflow:hidden;box-shadow:0 8px 24px -18px rgba(15,42,79,.3)}
+.ck-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px 10px}
+.ck-head h3{display:inline-flex;align-items:center;gap:8px;font-family:"Noto Serif TC",serif;font-weight:600;font-size:18px;padding:5px 12px;border-radius:6px;background:var(--c,#EEF4FB);color:#2A2E35}
+.ck-head .count{font-family:"Inter",sans-serif;font-size:13.5px;color:#7A8494;white-space:nowrap}
 .ck-head.done .count{color:#1F7A3A;font-weight:600}
-.ck-item{display:flex;align-items:flex-start;gap:14px;padding:15px 24px;border-bottom:1px dashed var(--gray-100);cursor:pointer;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15.5px;line-height:1.7;transition:background .15s}
-.ck-item:last-child{border-bottom:none}
+.ck-note{padding:0 16px 6px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:13.5px;color:#7A8494;line-height:1.6}
+.ck-list{padding:2px 6px 8px}
+.ck-item{display:flex;align-items:flex-start;gap:12px;padding:9px 10px;border-radius:6px;cursor:pointer;font-family:"Inter","Noto Serif TC",sans-serif;font-size:16px;line-height:1.6;transition:background .15s}
 .ck-item:hover{background:var(--gray-50)}
-.ck-item input{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;margin-top:2px;border:1.5px solid var(--navy-700);background:#fff;cursor:pointer;position:relative}
-.ck-item input:checked{background:var(--navy-900);border-color:var(--navy-900)}
-.ck-item input:checked::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid var(--gold-300);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.ck-item input{appearance:none;-webkit-appearance:none;flex:0 0 20px;width:20px;height:20px;margin-top:3px;border:1.5px solid #9AA6B5;border-radius:4px;background:#fff;cursor:pointer;position:relative}
+.ck-item input:checked{background:var(--navy-800);border-color:var(--navy-800)}
+.ck-item input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .ck-item input:focus-visible{outline:2px solid var(--gold-500);outline-offset:2px}
-.ck-item input:checked + span{color:var(--gray-400);text-decoration:line-through}
-.ck-item .warn{display:block;font-size:13px;color:#B3261E;text-decoration:none}
-.ck-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ck-item input:checked + span{color:#9AA6B5;text-decoration:line-through}
+.ck-item .warn{display:block;font-size:13px;color:#B3261E}
+.ck-item a{color:var(--navy-700);text-decoration:underline}
+.ck-item .del{margin-left:auto;flex:0 0 auto;border:none;background:none;color:#B0B8C4;font-size:16px;cursor:pointer;padding:0 4px}
+.ck-item .del:hover{color:#B3261E}
+.hide-done .ck-item.is-done{display:none}
+.ck-add{display:flex;gap:6px;padding:4px 14px 14px}
+.ck-add input{flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 10px;border:1px dashed var(--gray-200);border-radius:6px;background:var(--gray-50);outline:none}
+.ck-add input:focus{border-style:solid;border-color:var(--navy-700);background:#fff}
+.ck-add button{flex:0 0 auto;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;padding:0 12px;border:none;border-radius:6px;background:var(--sky-50,#EEF4FB);color:var(--navy-800);cursor:pointer}
+.ck-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
 .print-title{display:none}
 
 @media (max-width:600px){
-  .ck-head{padding:16px 18px}
-  .ck-item{padding:14px 18px}
+  .ck-board{columns:1}
+  .tools{width:100%}
+  .tools button{flex:1;white-space:nowrap;font-size:13px;padding:7px 6px}
+  .progress-box{padding:10px 0 12px}
   .ck-actions>*{width:100%}
 }
 @media print{
-  .progress-box{position:static}
-  .print-title{display:block;font-family:"Noto Serif TC",serif;font-size:22px;margin-bottom:10px}
-  .ck-group{break-inside:avoid;margin-bottom:12px}
-  .ck-item{padding:8px 16px;font-size:13.5px}
-  .ck-item input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .progress-box,.ck-add,.ck-item .del,.tools{display:none!important}
+  .print-title{display:block;font-family:"Noto Serif TC",serif;font-size:20px;margin-bottom:10px}
+  .ck-board{columns:3;column-gap:10px}
+  .ck-group{box-shadow:none;margin-bottom:8px;border-color:#ccc}
+  .ck-item{padding:3px 6px;font-size:11.5px}
+  .ck-item input{width:13px;height:13px;flex-basis:13px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ck-head{padding:8px 10px 4px}.ck-head h3{font-size:13px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ck-note{display:none}
 }
 </style>
 </head>
@@ -110,25 +131,27 @@
     <div class="crumbs"><a href="../../index.html">首頁</a> ／ <a href="../">出國行前指南</a> ／ 行前打包清單</div>
     <span class="page-eyebrow">PACKING CHECKLIST</span>
     <h1>行前<em>打包檢查表</em></h1>
-    <p>邊打包邊勾選，進度會自動保存在這支手機上。<br/>也可以下載 PDF 印出來，貼在行李箱上。</p>
+    <p>依類別一項項勾選，進度會自動保存在這支手機上。<br/>每一類都能自己新增項目，也可以下載 PDF 印出來。</p>
   </div>
 </div>
 
 <section class="page-sec">
-  <div class="container" style="max-width:820px">
-    <h2 class="print-title">詮達旅行社 ‧ 出國行前打包檢查表</h2>
+  <div class="container" style="max-width:1120px">
+    <h2 class="print-title">詮達旅行社 ‧ 出國行前打包清單</h2>
 
     <div class="progress-box no-print">
-      <div class="progress-row"><span>打包進度</span><span><b id="doneCount">0</b> / <span id="totalCount">0</span> 項</span></div>
+      <div class="progress-row">
+        <span>打包進度 <b id="doneCount">0</b> / <span id="totalCount">0</span> 項</span>
+        <span class="tools">
+          <button type="button" id="hideDone" aria-pressed="false">隱藏已完成</button>
+          <button type="button" id="printBtn">📄 下載 PDF</button>
+          <button type="button" id="resetBtn">↺ 全部重設</button>
+        </span>
+      </div>
       <div class="progress" role="progressbar" aria-label="打包進度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="bar"></span></div>
     </div>
 
-    <div id="checklist"></div>
-
-    <div class="ck-actions no-print">
-      <button class="btn-navy" type="button" id="printBtn">📄 下載 PDF 打包清單</button>
-      <button class="btn-outline" type="button" id="resetBtn">↺ 全部重設</button>
-    </div>
+    <div class="ck-board" id="checklist"></div>
   </div>
 </section>
 
@@ -192,75 +215,171 @@
 
 <script src="../../assets/nav.js"></script>
 <script>
-/* ── 清單內容（要新增項目，照格式加一行即可；id 不要重複） ── */
+/* ── 打包清單內容（要增減項目，照格式修改即可；id 不要重複）──
+   c：標題底色　note：分類小提醒　warn：紅字注意事項 */
 const GROUPS = [
-  {title:"🪪 核心證件與財物", items:[
-    {id:"passport", text:"護照正本（效期 6 個月以上）"},
-    {id:"idcopy",   text:"身分證正本／影本、護照影本（分開放置）"},
-    {id:"cards",    text:"信用卡（建議帶 2 張以上，並預先開通海外刷卡功能）"},
-    {id:"cash",     text:"當地外幣現鈔與台幣現鈔"},
-    {id:"tickets",  text:"機票電子憑證／飯店預訂單"}
+  {id:"docs", icon:"🪪", title:"證件與財物", c:"#E1EBF7", items:[
+    {id:"passport", t:"護照（效期 6 個月以上）"},
+    {id:"idcopy",   t:"身分證／護照影本（和正本分開放）"},
+    {id:"visa",     t:'簽證、電子入境資料（ESTA、電子簽、入境卡 QR Code）', link:["../visa/","查各國規定"]},
+    {id:"tickets",  t:"機票電子憑證、飯店訂房確認單"},
+    {id:"cards",    t:"信用卡 2 張以上（先開通海外刷卡）"},
+    {id:"cash",     t:"外幣現鈔＋少量台幣（回國搭車用）"},
+    {id:"wallet",   t:"錢包、零錢包"}
   ]},
-  {title:"📱 電子產品與通訊", items:[
-    {id:"phone",    text:"手機與充電線"},
-    {id:"sim",      text:"海外網卡／eSIM 兌換券／漫遊開通確認"},
-    {id:"powerbank",text:"行動電源", warn:"※ 必須放手提行李，不可託運！"},
-    {id:"adapter",  text:"各國萬用轉接頭與變壓器"}
+  {id:"bag", icon:"🎒", title:"隨身包包", c:"#FBEFD9", items:[
+    {id:"phone",    t:"手機"},
+    {id:"powerbank",t:"行動電源", warn:"※ 必須隨身攜帶，不可託運！"},
+    {id:"earphone", t:"耳機（有線／無線）"},
+    {id:"tissue",   t:"面紙、濕紙巾"},
+    {id:"bottle",   t:"水壺（過安檢前要清空）"},
+    {id:"umbrella", t:"折疊傘"},
+    {id:"shopbag",  t:"摺疊購物袋"},
+    {id:"minibag",  t:"出門逛街用的小包"}
   ]},
-  {title:"💊 個人藥品與護理", items:[
-    {id:"rx",       text:"個人慢性病藥物（隨身攜帶，附英文處方箋）"},
-    {id:"meds",     text:"常備藥（感冒藥、止瀉藥、暈車藥、OK 繃）"},
-    {id:"care",     text:"防曬用品／保濕保養品／個人衛生用品"}
+  {id:"plane", icon:"✈️", title:"飛機上", c:"#E3F2F0", note:"長途航班特別需要", items:[
+    {id:"pillow",   t:"頸枕"},
+    {id:"eyemask",  t:"眼罩、耳塞"},
+    {id:"jacket",   t:"薄外套（機艙冷氣強）"},
+    {id:"lipbalm",  t:"護唇膏、保濕噴霧"},
+    {id:"cable",    t:"充電線（機上 USB 充電用）"},
+    {id:"toothkit", t:"牙刷、漱口水"},
+    {id:"offline",  t:"先下載好影片、電子書"}
   ]},
-  {title:"👕 衣物與隨身物品", items:[
-    {id:"clothes",  text:"依目的地氣候準備衣物（以洋蔥式穿法為主）"},
-    {id:"shoes",    text:"舒適好走的鞋子／折疊傘／保溫瓶"}
+  {id:"tech", icon:"📱", title:"3C 與拍攝", c:"#EDE7F6", items:[
+    {id:"charger",  t:"手機充電器、充電線"},
+    {id:"adapter",  t:"萬用轉接頭（依目的地確認插座）", link:["../destinations/","查各國電壓"]},
+    {id:"sim",      t:"網卡／eSIM（先確認開通方式）"},
+    {id:"camera",   t:"相機、記憶卡、充電座"},
+    {id:"battery",  t:"相機備用電池", warn:"※ 鋰電池必須隨身，不可託運"},
+    {id:"laptop",   t:"筆電、充電器"},
+    {id:"maps",     t:"下載離線地圖、翻譯 App"}
+  ]},
+  {id:"meds", icon:"💊", title:"藥品與個人用品", c:"#FBE3E1", items:[
+    {id:"rx",       t:"個人慢性病藥物（附英文處方箋，隨身帶）"},
+    {id:"common",   t:"常備藥：感冒、腸胃、暈車、止痛"},
+    {id:"bandaid",  t:"OK 繃、蚊蟲藥膏"},
+    {id:"sunscreen",t:"防曬乳、墨鏡"},
+    {id:"lens",     t:"隱形眼鏡、藥水、眼鏡"},
+    {id:"period",   t:"生理用品"},
+    {id:"teeth",    t:"牙刷、牙膏、牙線"}
+  ]},
+  {id:"care", icon:"🧴", title:"保養與化妝", c:"#FDE9F1", note:"隨身液體每瓶不超過 100ml，並裝入透明夾鏈袋", items:[
+    {id:"cleanser", t:"洗面乳、卸妝用品"},
+    {id:"skincare", t:"化妝水、乳液、精華液"},
+    {id:"mask",     t:"面膜"},
+    {id:"makeup",   t:"化妝品、刷具"},
+    {id:"hair",     t:"梳子、髮圈、髮夾"},
+    {id:"mirror",   t:"小鏡子"}
+  ]},
+  {id:"clothes", icon:"👕", title:"衣物鞋帽", c:"#E7F1E3", note:"依目的地氣候準備，以洋蔥式穿法為主", items:[
+    {id:"tops",     t:"上衣"},
+    {id:"bottoms",  t:"褲子、裙子"},
+    {id:"under",    t:"內衣褲、襪子"},
+    {id:"pajamas",  t:"睡衣"},
+    {id:"coat",     t:"外套"},
+    {id:"shoes",    t:"好走的鞋子、拖鞋"},
+    {id:"hat",      t:"帽子"},
+    {id:"swim",     t:"泳衣、蛙鏡（海島行程）"},
+    {id:"winter",   t:"冬季：手套、圍巾、發熱衣、厚襪"}
+  ]},
+  {id:"extra", icon:"📌", title:"實用小物", c:"#F3EEE4", items:[
+    {id:"ziplock",  t:"夾鏈袋（分裝、裝液體）"},
+    {id:"laundry",  t:"髒衣袋"},
+    {id:"cup",      t:"環保杯、餐具"},
+    {id:"scissors", t:"小剪刀、指甲剪", warn:"※ 只能放託運行李"},
+    {id:"rubber",   t:"橡皮筋、曬衣夾"},
+    {id:"tea",      t:"茶包、沖泡飲品"}
+  ]},
+  {id:"check", icon:"⚠️", title:"出發前確認", c:"#FFF1CC", note:"這些不用打包，但記得先處理好", items:[
+    {id:"c_sim",    t:"網卡／eSIM 已開通"},
+    {id:"c_card",   t:"信用卡海外刷卡已開通"},
+    {id:"c_cash",   t:"外幣已換好"},
+    {id:"c_entry",  t:"入境規定、電子入境卡已完成"},
+    {id:"c_ins",    t:"旅平險已投保", link:["../insurance/","看保險說明"]},
+    {id:"c_flight", t:"確認班機時間、航廈"},
+    {id:"c_airport",t:"機場接送或交通已安排", link:["../links/","機場交通"]},
+    {id:"c_contact",t:"緊急聯絡人、行程資訊已告知家人"}
   ]}
 ];
 
-const KEY = "cdt-checklist-v1";
-let state = {};
-try{ state = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){}
+const KEY = "cdt-checklist-v2";
+let state = {done:{}, custom:{}};
+try{ state = Object.assign(state, JSON.parse(localStorage.getItem(KEY)) || {}); }catch(e){}
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+const esc = t => t.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 const root = document.getElementById("checklist");
-root.innerHTML = GROUPS.map((g, gi) => `
-  <div class="ck-group" data-g="${gi}">
-    <div class="ck-head"><h3>${g.title}</h3><span class="count"></span></div>
-    ${g.items.map(i => `
-      <label class="ck-item">
-        <input type="checkbox" data-id="${i.id}" ${state[i.id] ? "checked" : ""}>
-        <span>${i.text}${i.warn ? `<em class="warn">${i.warn}</em>` : ""}</span>
-      </label>`).join("")}
-  </div>`).join("");
-
+function itemHTML(i, custom){
+  const extra = (i.warn ? `<em class="warn">${i.warn}</em>` : "") ;
+  const link = i.link ? ` <a href="${i.link[0]}">${i.link[1]} →</a>` : "";
+  return `<label class="ck-item${state.done[i.id] ? " is-done" : ""}">
+    <input type="checkbox" data-id="${i.id}" ${state.done[i.id] ? "checked" : ""}>
+    <span>${custom ? esc(i.t) : i.t}${link}${extra}</span>
+    ${custom ? `<button type="button" class="del" data-del="${i.id}" aria-label="刪除">✕</button>` : ""}
+  </label>`;
+}
+function render(){
+  root.innerHTML = GROUPS.map(g => {
+    const mine = state.custom[g.id] || [];
+    return `<div class="ck-group" data-g="${g.id}">
+      <div class="ck-head"><h3 style="--c:${g.c}">${g.icon} ${g.title}</h3><span class="count"></span></div>
+      ${g.note ? `<p class="ck-note">${g.note}</p>` : ""}
+      <div class="ck-list">${g.items.map(i => itemHTML(i)).join("")}${mine.map(i => itemHTML(i, true)).join("")}</div>
+      <form class="ck-add" data-add="${g.id}"><input placeholder="＋ 新增自己的項目" maxlength="40" aria-label="新增${g.title}項目"><button>新增</button></form>
+    </div>`;
+  }).join("");
+  update();
+}
 function update(){
-  const all = root.querySelectorAll("input");
-  const done = root.querySelectorAll("input:checked").length;
+  const all = root.querySelectorAll(".ck-item input");
+  const done = root.querySelectorAll(".ck-item input:checked").length;
   document.getElementById("doneCount").textContent = done;
   document.getElementById("totalCount").textContent = all.length;
-  const pct = Math.round(done / all.length * 100);
+  const pct = all.length ? Math.round(done / all.length * 100) : 0;
   document.getElementById("bar").style.width = pct + "%";
   document.querySelector(".progress").setAttribute("aria-valuenow", pct);
   root.querySelectorAll(".ck-group").forEach(g => {
-    const n = g.querySelectorAll("input").length, c = g.querySelectorAll("input:checked").length;
+    const n = g.querySelectorAll(".ck-item input").length, c = g.querySelectorAll(".ck-item input:checked").length;
     const head = g.querySelector(".ck-head");
     head.querySelector(".count").textContent = c === n ? "✓ 完成" : `${c} / ${n}`;
     head.classList.toggle("done", c === n);
   });
 }
 root.addEventListener("change", e => {
-  state[e.target.dataset.id] = e.target.checked;
+  if(!e.target.dataset.id) return;
+  state.done[e.target.dataset.id] = e.target.checked;
+  e.target.closest(".ck-item").classList.toggle("is-done", e.target.checked);
   save(); update();
 });
+root.addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, input = f.querySelector("input"), t = input.value.trim();
+  if(!t) return;
+  const g = f.dataset.add;
+  (state.custom[g] = state.custom[g] || []).push({id: "u" + Date.now(), t});
+  save(); render();
+  root.querySelector(`[data-add="${g}"] input`).focus();
+});
+root.addEventListener("click", e => {
+  const id = e.target.dataset && e.target.dataset.del;
+  if(!id) return;
+  e.preventDefault();
+  Object.keys(state.custom).forEach(g => state.custom[g] = state.custom[g].filter(i => i.id !== id));
+  delete state.done[id];
+  save(); render();
+});
 document.getElementById("resetBtn").addEventListener("click", () => {
-  if(!confirm("確定要清除所有勾選嗎？")) return;
-  state = {}; save();
-  root.querySelectorAll("input").forEach(i => i.checked = false);
-  update();
+  if(!confirm("確定要清除所有勾選嗎？（自己新增的項目會保留）")) return;
+  state.done = {}; save(); render();
+});
+const hideBtn = document.getElementById("hideDone");
+hideBtn.addEventListener("click", () => {
+  const on = root.classList.toggle("hide-done");
+  hideBtn.setAttribute("aria-pressed", on ? "true" : "false");
 });
 document.getElementById("printBtn").addEventListener("click", () => window.print());
-update();
+render();
 </script>
 </body>
 </html>
