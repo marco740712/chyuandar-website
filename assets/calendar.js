@@ -174,6 +174,8 @@ const MONTHS = [
 /* Unsplash 圖片網址（依需要的大小裁切、壓縮） */
 const pic = (id, w, h) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
 
+window.CDT_MONTHS = MONTHS; // 首頁輪播也會用到
+
 const EN = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 const monthsEl = document.getElementById("months");
 if(!monthsEl) return;
