@@ -13,7 +13,25 @@
     hanoi:   {n:"河內",   lat:21.0278, lon:105.8342, tz:"Asia/Ho_Chi_Minh"},
     hcmc:    {n:"胡志明市", lat:10.8231, lon:106.6297, tz:"Asia/Ho_Chi_Minh"},
     paris:   {n:"巴黎",   lat:48.8566, lon:2.3522,   tz:"Europe/Paris"},
-    rome:    {n:"羅馬",   lat:41.9028, lon:12.4964,  tz:"Europe/Rome"}
+    rome:    {n:"羅馬",   lat:41.9028, lon:12.4964,  tz:"Europe/Rome"},
+    shanghai:{n:"上海",   lat:31.2304, lon:121.4737, tz:"Asia/Shanghai"},
+    beijing: {n:"北京",   lat:39.9042, lon:116.4074, tz:"Asia/Shanghai"},
+    hongkong:{n:"香港",   lat:22.3193, lon:114.1694, tz:"Asia/Hong_Kong"},
+    macau:   {n:"澳門",   lat:22.1987, lon:113.5439, tz:"Asia/Macau"},
+    singapore:{n:"新加坡", lat:1.3521,  lon:103.8198, tz:"Asia/Singapore"},
+    kualalumpur:{n:"吉隆坡", lat:3.1390, lon:101.6869, tz:"Asia/Kuala_Lumpur"},
+    penang:  {n:"檳城",   lat:5.4141,  lon:100.3288, tz:"Asia/Kuala_Lumpur"},
+    denpasar:{n:"峇里島", lat:-8.6705, lon:115.2126, tz:"Asia/Makassar"},
+    newyork: {n:"紐約",   lat:40.7128, lon:-74.0060, tz:"America/New_York"},
+    losangeles:{n:"洛杉磯", lat:34.0522, lon:-118.2437, tz:"America/Los_Angeles"},
+    vancouver:{n:"溫哥華", lat:49.2827, lon:-123.1207, tz:"America/Vancouver"},
+    toronto: {n:"多倫多", lat:43.6532, lon:-79.3832, tz:"America/Toronto"},
+    sydney:  {n:"雪梨",   lat:-33.8688, lon:151.2093, tz:"Australia/Sydney"},
+    melbourne:{n:"墨爾本", lat:-37.8136, lon:144.9631, tz:"Australia/Melbourne"},
+    auckland:{n:"奧克蘭", lat:-36.8485, lon:174.7633, tz:"Pacific/Auckland"},
+    queenstown:{n:"皇后鎮", lat:-45.0312, lon:168.6626, tz:"Pacific/Auckland"},
+    istanbul:{n:"伊斯坦堡", lat:41.0082, lon:28.9784, tz:"Europe/Istanbul"},
+    goreme:  {n:"卡帕多奇亞", lat:38.6431, lon:34.8289, tz:"Europe/Istanbul"}
   };
 
   /* 天氣代碼 → 圖示與中文 */
@@ -91,7 +109,7 @@
   }
 
   const boxes = document.querySelectorAll(".live[data-cities]");
-  boxes.forEach(b => { b.innerHTML = b.dataset.cities.split(",").map(chipHTML).join(""); });
+  boxes.forEach(b => { const list = b.dataset.cities.split(","); b.classList.toggle("one", list.length === 1); b.innerHTML = list.map(chipHTML).join(""); });
 
   // 每 30 秒更新當地時間
   setInterval(() => {

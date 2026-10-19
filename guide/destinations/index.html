@@ -4,12 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>目的地實用指南與飲食卡 ｜ 詮達旅行社 CHYUAN DAR TRAVEL</title>
-<meta name="description" content="日本、韓國、泰國、越南、歐洲的電壓插頭、小費、付款習慣、簽證與氣候一次看懂，另附日韓英特殊飲食點餐卡，可存手機出示給店家。" />
+<meta name="description" content="日本、韓國、東南亞、中國、港澳、歐美、紐澳、土耳其等 15 個目的地的電壓插頭、小費、付款、簽證、氣候與即時天氣一次看懂，另附日韓英特殊飲食點餐卡，可存手機出示給店家。" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="詮達旅行社 CHYUAN DAR TRAVEL" />
 <meta property="og:locale" content="zh_TW" />
 <meta property="og:title" content="目的地實用指南與飲食卡 ｜ 詮達旅行社 CHYUAN DAR TRAVEL" />
-<meta property="og:description" content="日本、韓國、泰國、越南、歐洲的電壓插頭、小費、付款習慣、簽證與氣候一次看懂，另附日韓英特殊飲食點餐卡，可存手機出示給店家。" />
+<meta property="og:description" content="日本、韓國、東南亞、中國、港澳、歐美、紐澳、土耳其等 15 個目的地的電壓插頭、小費、付款、簽證、氣候與即時天氣一次看懂，另附日韓英特殊飲食點餐卡，可存手機出示給店家。" />
 <meta property="og:url" content="https://www.chyuandar.com.tw/guide/destinations/" />
 <meta property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&h=630&q=75" />
 <meta property="og:image:width" content="1200" />
@@ -51,6 +51,20 @@
 .emergency-item span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gray-200)}
 .emergency-item a{font-family:"Inter",sans-serif;font-size:18px;letter-spacing:.06em;color:var(--gold-300);font-weight:500}
 
+/* 兩排分類國家頁籤 */
+.dest-tabs{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.dest-row{display:flex;align-items:flex-start;gap:8px}
+.dest-chips{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.dest-label{flex:0 0 132px;padding-top:9px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;font-weight:600;letter-spacing:.06em;color:#C9A961}
+.dest-tabs .chip{padding:8px 16px;font-size:15px}
+@media (max-width:760px){
+  .dest-row{flex-direction:column;gap:6px}
+  .dest-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:100%;padding-bottom:2px}
+  .dest-chips::-webkit-scrollbar{display:none}
+  .dest-label{flex:0 0 auto;font-size:13px;padding-top:0}
+  .dest-tabs .chip{flex:0 0 auto;white-space:nowrap}
+}
+
 /* 即時天氣與當地時間 */
 .live{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-6px 0 20px}
 .live-city{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;background:linear-gradient(120deg,#EEF4FB,#F8FAFD);border:1px solid #E1EBF7;border-radius:8px;font-family:"Inter","Noto Serif TC",sans-serif}
@@ -63,6 +77,7 @@
 .live-city .lw .tp{font-size:20px;font-weight:600;color:#163E73}
 .wx-credit{margin-top:14px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:#7A8494}
 .wx-credit a{color:#2459A6;text-decoration:underline}
+.live.one{grid-template-columns:1fr}
 @media (max-width:760px){.live{grid-template-columns:1fr}}
 
 /* 飲食卡 */
@@ -166,19 +181,37 @@
     <div class="crumbs"><a href="../../index.html">首頁</a> ／ <a href="../">出國行前指南</a> ／ 目的地實用指南</div>
     <span class="page-eyebrow">DESTINATION GUIDE</span>
     <h1>目的地<em>實用指南</em></h1>
-    <p>電壓插頭、小費、付款習慣、入境規定與氣候，<br/>出發前看一眼，到當地不慌張。</p>
+    <p>亞洲、歐美紐澳 15 個熱門目的地：電壓插頭、小費、付款、入境規定與氣候，<br/>還有即時天氣與當地時間，出發前看一眼，到當地不慌張。</p>
   </div>
 </div>
 
 <!-- 模組 B：國家資訊 -->
 <section class="page-sec" id="countries">
   <div class="container">
-    <div class="chips" role="tablist" aria-label="選擇目的地" data-hash>
-      <button class="chip" role="tab" id="c-jp" aria-controls="japan" aria-selected="true">🇯🇵 日本</button>
-      <button class="chip" role="tab" id="c-kr" aria-controls="korea">🇰🇷 韓國</button>
-      <button class="chip" role="tab" id="c-th" aria-controls="thailand">🇹🇭 泰國</button>
-      <button class="chip" role="tab" id="c-vn" aria-controls="vietnam">🇻🇳 越南</button>
-      <button class="chip" role="tab" id="c-eu" aria-controls="europe">🇪🇺 歐洲</button>
+    <div class="dest-tabs" role="tablist" aria-label="選擇目的地" data-hash>
+      <div class="dest-row"><span class="dest-label">熱門亞洲</span>
+        <div class="dest-chips">
+        <button class="chip" role="tab" id="c-jp" aria-controls="japan" aria-selected="true">🇯🇵 日本</button>
+        <button class="chip" role="tab" id="c-kr" aria-controls="korea">🇰🇷 韓國</button>
+        <button class="chip" role="tab" id="c-th" aria-controls="thailand">🇹🇭 泰國</button>
+        <button class="chip" role="tab" id="c-vn" aria-controls="vietnam">🇻🇳 越南</button>
+        <button class="chip" role="tab" id="c-sg" aria-controls="singapore">🇸🇬 新加坡</button>
+        <button class="chip" role="tab" id="c-my" aria-controls="malaysia">🇲🇾 馬來西亞</button>
+        <button class="chip" role="tab" id="c-id" aria-controls="bali">🇮🇩 峇里島</button>
+        <button class="chip" role="tab" id="c-cn" aria-controls="china">🇨🇳 中國大陸</button>
+        <button class="chip" role="tab" id="c-hk" aria-controls="hkmo">🇭🇰 香港／澳門</button>
+        </div>
+      </div>
+      <div class="dest-row"><span class="dest-label">長程・歐美紐澳</span>
+        <div class="dest-chips">
+        <button class="chip" role="tab" id="c-eu" aria-controls="europe">🇪🇺 歐洲</button>
+        <button class="chip" role="tab" id="c-us" aria-controls="usa">🇺🇸 美國</button>
+        <button class="chip" role="tab" id="c-ca" aria-controls="canada">🇨🇦 加拿大</button>
+        <button class="chip" role="tab" id="c-au" aria-controls="australia">🇦🇺 澳洲</button>
+        <button class="chip" role="tab" id="c-nz" aria-controls="newzealand">🇳🇿 紐西蘭</button>
+        <button class="chip" role="tab" id="c-tr" aria-controls="turkey">🇹🇷 土耳其</button>
+        </div>
+      </div>
     </div>
 
     <div class="card" role="tabpanel" id="japan" aria-labelledby="c-jp">
@@ -242,6 +275,127 @@
         <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡極普及，現金不必帶太多（防扒竊）</p></div></div>
         <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>申根區免簽（護照效期 6 個月以上）</p></div></div>
         <div class="info wide"><span class="ico">⛅</span><div><b>氣候</b><p>夏季乾爽、日照長；冬季寒冷日短，北歐可低於 -10°C，需完整保暖裝備。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+
+    <div class="card" role="tabpanel" id="china" aria-labelledby="c-cn" hidden>
+      <h3>中國大陸</h3><span class="card-en">China</span>
+      <div class="live" data-cities="shanghai,beijing" aria-label="中國大陸即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙平腳 A 型或三孔八字 I 型（多數飯店有通用插座）</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>高度電子支付，以微信支付、支付寶為主（出發前先綁定信用卡並完成身分驗證），現金與實體信用卡使用率低</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>需持有效期內的卡式台胞證</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>幅員廣大：北方四季分明，冬季乾冷、夏季炎熱；南方濕熱。建議依前往地區（華東、新疆、雲南等）準備洋蔥式穿搭。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="hkmo" aria-labelledby="c-hk" hidden>
+      <h3>香港／澳門</h3><span class="card-en">Hong Kong / Macao</span>
+      <div class="live" data-cities="hongkong,macau" aria-label="香港／澳門即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，英規三孔扁平 G 型（澳門部分為圓形三孔），需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>餐廳多已含 10% 服務費，茶餐廳不需另給；飯店行李、床頭可給 10–20 港幣／澳門幣</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡普及，香港八達通非常方便；茶餐廳、路邊攤仍需準備港幣／澳門幣現鈔</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>香港：線上免費填寫「台灣居民預辦入境登記」，或持有效台胞證入境；澳門：免簽，可停留 30 天（護照效期 6 個月以上）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>與台灣氣候相近，夏季炎熱多雨、室內冷氣很強（請帶薄外套）；冬季涼爽宜人。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="singapore" aria-labelledby="c-sg" hidden>
+      <h3>新加坡</h3><span class="card-en">Singapore</span>
+      <div class="live" data-cities="singapore" aria-label="新加坡即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>230V，英規三孔扁平 G 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>多數餐廳已含 10% 服務費與消費稅，不需另給小費</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡極普及；熟食中心（小販中心）可用現金或電子支付</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>免簽，最多停留 30 天；出發前 3 天內線上填寫新加坡電子入境卡（SG Arrival Card）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>全年熱帶氣候，高溫多雨（約 25–32°C），穿著透氣夏裝，備折疊傘與室內薄外套。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="malaysia" aria-labelledby="c-my" hidden>
+      <h3>馬來西亞</h3><span class="card-en">Malaysia</span>
+      <div class="live" data-cities="kualalumpur,penang" aria-label="馬來西亞即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>240V，英規三孔扁平 G 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無硬性規定，高級餐廳已含 10% 服務費；飯店床頭可給 2–5 令吉</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>大商場、連鎖店可刷卡；夜市、小吃店、計程車需準備馬幣現金</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>免簽，最多停留 30 天；出發前 3 天內線上填寫馬來西亞數位入境卡（MDAC）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>全年皆夏（約 23–33°C），常有短暫陣雨；雲頂高原、金馬崙高原較涼，需帶長袖。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="bali" aria-labelledby="c-id" hidden>
+      <h3>印尼／峇里島</h3><span class="card-en">Indonesia / Bali</span>
+      <div class="live" data-cities="denpasar" aria-label="印尼／峇里島即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>230V，雙圓孔 C／F 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>有小費習慣：包車司機約 5–10 萬印尼盾／天，按摩約 1–2 萬，床頭約 1 萬印尼盾</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>飯店、大型餐廳可刷卡；小店、市集與小費需準備印尼盾現金</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>需辦落地簽（VOA）或預先申請電子落地簽（e-VOA），約 50 萬印尼盾；入境峇里島另需繳觀光稅</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>熱帶氣候：4–10 月乾季最適合旅遊，11–3 月雨季。穿著涼爽度假服，備防曬與防蚊液。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="usa" aria-labelledby="c-us" hidden>
+      <h3>美國</h3><span class="card-en">USA</span>
+      <div class="live" data-cities="newyork,losangeles" aria-label="美國即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>120V，雙平腳或三孔 A／B 型，與台灣相同，不需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>小費文化很強：餐廳內用約 15–22%，計程車約 15%，床頭每天 2–5 美元</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>高度刷卡化（信用卡、Apple Pay 通用），只需準備少量 1、5、10 元美金付小費</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>適用免簽計畫，出發前需線上申請 ESTA（效期 2 年）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>各地差異大：美西日夜溫差大、乾爽；美東四季分明，冬季嚴寒需厚羽絨衣。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="canada" aria-labelledby="c-ca" hidden>
+      <h3>加拿大</h3><span class="card-en">Canada</span>
+      <div class="live" data-cities="vancouver,toronto" aria-label="加拿大即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>120V，雙平腳或三孔 A／B 型，與台灣相同，不需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>與美國相同：餐廳內用約 15–20%，床頭約 2–5 加幣</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡與感應支付非常普及，現金不需準備太多</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>搭機入境需預先線上申請 eTA（效期最長 5 年）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>夏季（6–8 月）舒適；秋季（9–10 月）賞楓；冬季（11–3 月）漫長寒冷，落磯山脈與加東需極地保暖裝備。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="australia" aria-labelledby="c-au" hidden>
+      <h3>澳洲</h3><span class="card-en">Australia</span>
+      <div class="live" data-cities="sydney,melbourne" aria-label="澳洲即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>230V，三孔八字 I 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無強制小費文化，服務特別好時可隨意給</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>幾乎全面無現金，信用卡與手機支付極普及</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>需申請澳洲 ETA（Subclass 601），可用官方 App 申辦或由詮達代辦</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>南半球季節與台灣相反（12–2 月夏季、6–8 月冬季），紫外線強，四季都要做好防曬。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="newzealand" aria-labelledby="c-nz" hidden>
+      <h3>紐西蘭</h3><span class="card-en">New Zealand</span>
+      <div class="live" data-cities="auckland,queenstown" aria-label="紐西蘭即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>230V，三孔八字 I 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>信用卡極普及，絕大多數地方都能刷卡</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>需預先申請 NZeTA，並同時繳交國際旅客保育及旅遊稅（IVL）</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>南半球季節相反，天氣多變、溫差大，一天可能經歷四季；洋蔥式穿搭，備防風防水外套。</p></div></div>
+      </div>
+      <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    </div>
+    <div class="card" role="tabpanel" id="turkey" aria-labelledby="c-tr" hidden>
+      <h3>土耳其</h3><span class="card-en">Türkiye</span>
+      <div class="live" data-cities="istanbul,goreme" aria-label="土耳其即時天氣與當地時間"></div>
+      <div class="info-grid sans">
+        <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>230V，雙圓頭 C／F 型，需轉接頭</p></div></div>
+        <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>有小費習慣：餐廳約 5–10%，床頭與行李約 1–2 美元或等值里拉</p></div></div>
+        <div class="info"><span class="ico">💳</span><div><b>支付與外幣</b><p>大城市與景點可刷卡；小店、市集（大巴扎）與小費需準備里拉，或美金、歐元現鈔</p></div></div>
+        <div class="info"><span class="ico">🛂</span><div><b>簽證／入境</b><p>線上申請電子簽證（需付費），最多停留 30 天，詮達可代辦</p></div></div>
+        <div class="info wide"><span class="ico">⛅</span><div><b>氣候與穿搭</b><p>四季分明：夏季乾熱需防曬；冬季寒冷，卡帕多奇亞等地會下雪，搭熱氣球請穿厚外套與防風裝備。</p></div></div>
       </div>
       <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
     </div>
