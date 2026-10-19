@@ -207,6 +207,11 @@ section{padding:100px 0;position:relative}
 .khh-card:hover .khh-btn{background:#F6E7C1}
 @media (max-width:600px){.khh-card{padding:22px 18px;min-height:0}.khh-text em{font-size:14.5px}.khh-btn{width:100%;text-align:center}}
 
+/* 成團、郵輪：三欄特色卡（沿用地區照片卡樣式） */
+.special-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.region-card.special{aspect-ratio:2/1}
+@media (max-width:600px){.special-grid{grid-template-columns:1fr;gap:10px;margin-bottom:10px}.region-card.special{aspect-ratio:3/1}}
+
 /* 地區方塊：小張照片卡（每列四個），文字壓在照片上 */
 .region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .region-card{
@@ -632,6 +637,27 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
       </span>
       <span class="khh-btn">查看高雄直飛行程 →</span>
     </a>
+
+    <div class="special-grid">
+      <a class="region-card special" href="https://event.gounitravel.com/zh-tw/guarantee/outbound?fr=cg5149mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1727836674703-7d3d26af17c3?auto=format&fit=crop&w=800&h=400&q=70" alt="✅ 國外已成團" loading="lazy">
+        <span class="region-tag">GUARANTEED ‧ 國外</span>
+        <h4>✅ 國外已成團</h4>
+        <span class="region-arrow">保證出發，說走就走 →</span>
+      </a>
+      <a class="region-card special" href="https://event.gounitravel.com/zh-tw/guarantee/index?fr=cg5149mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1600280693299-995a89b302c0?auto=format&fit=crop&w=800&h=400&q=70" alt="✅ 國內已成團" loading="lazy">
+        <span class="region-tag">GUARANTEED ‧ 國內</span>
+        <h4>✅ 國內已成團</h4>
+        <span class="region-arrow">保證出發，說走就走 →</span>
+      </a>
+      <a class="region-card special" href="https://travel.gounitravel.com/category/zh-tw/cruise/index?fr=cg7033mega" target="_blank" rel="noopener">
+        <img class="region-bg" src="https://images.unsplash.com/photo-1583157048761-ac1dba033233?auto=format&fit=crop&w=800&h=400&q=70" alt="🚢 郵輪旅遊" loading="lazy">
+        <span class="region-tag">CRUISE</span>
+        <h4>🚢 郵輪旅遊</h4>
+        <span class="region-arrow">查看郵輪行程 →</span>
+      </a>
+    </div>
 
     <div class="region-grid">
       <a class="region-card" href="https://travel.gounitravel.com/category/zh-tw/japan/index?fr=cg7033mega" target="_blank" rel="noopener">
