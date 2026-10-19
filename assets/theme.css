@@ -22,7 +22,7 @@ html .topbar a:hover{color:var(--navy-950)}
 
 /* 頁首：白底、品牌藍 Logo */
 html header.site{background:rgba(255,255,255,.97);border-bottom:1px solid var(--gray-100);box-shadow:0 4px 20px -14px rgba(15,42,79,.35)}
-html .brand-logo{mix-blend-mode:multiply;height:48px;margin:-7px 0}
+html .brand-logo{mix-blend-mode:multiply;height:42px;margin:0}
 html .menu{color:#2A2E35}
 html .menu a:hover,html .menu a.active{color:var(--navy-800)}
 html .menu a::after{background:var(--navy-800)}
@@ -38,7 +38,7 @@ html .menu .menu-drop-panel a:hover{background:var(--sky-50);color:var(--navy-80
   html .nav-open .menu{background:#fff;border-color:var(--gray-100)}
   html .nav-open .menu>a,html .nav-open .menu-drop>a{border-color:var(--gray-100)}
 }
-@media (max-width:420px){ html .brand-logo{height:42px;margin:-6px 0} }
+@media (max-width:600px){ html .brand-logo{height:38px} }
 
 /* 首頁大圖：遮罩變淡（照片由輪播帶入） */
 html .hero{background-color:#163E73}
@@ -208,3 +208,7 @@ html .line-float{font-size:15px}
   html .faq summary{font-size:17px}
 }
 @media (min-width:981px) and (max-width:1180px){ html .menu{gap:22px;letter-spacing:.06em} }
+
+/* 簽證等資訊的參考聲明 */
+html .disclaimer{margin-top:14px;padding:10px 14px;background:#F6F8FB;border-left:3px solid #9AA6B5;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;line-height:1.7;color:#5C6470}
+html .disclaimer a{color:var(--navy-700);text-decoration:underline;font-weight:500}

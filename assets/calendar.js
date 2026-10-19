@@ -222,7 +222,7 @@ function openIdea(idx){
       ${i.r === "line" ? "" : `<a class="dlg-btn" href="${link}" target="_blank" rel="noopener">查看${i.n}行程 →</a>`}
       <a class="dlg-line" href="${LINE}" target="_blank" rel="noopener">💬 LINE 詢問這個行程</a>
     </div>
-    <p class="dlg-note">季節與活動日期每年略有不同，出發前請向小幫手確認。</p>`;
+    <p class="dlg-note">季節與活動日期每年略有不同；簽證與入境資訊僅供參考，請依照最新規定辦理，如有疑問請加入 LINE 洽詢。</p>`;
   if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
 }
 document.getElementById("ideas").addEventListener("click", e => {
