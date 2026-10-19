@@ -29,20 +29,13 @@
   document.querySelectorAll('.cy').forEach(function(e){ e.textContent = y; });
 })();
 
-/* 右下角浮動按鈕：「回頂端」（往下捲才出現），內頁另有「回首頁」 */
+/* 右下角浮動按鈕「回頂端」（往下捲才出現） */
 (function(){
-  var brand = document.querySelector('header.site .brand');
-  var homeHref = brand ? brand.getAttribute('href') : '/';
-  var path = location.pathname.replace(/index\.html$/, '');
-  var isHome = path === '/' || path === '';
   var box = document.createElement('div');
   box.className = 'fab';
-  box.innerHTML =
-    (isHome ? '' : '<a class="fab-btn" href="' + homeHref + '" aria-label="回首頁"><span>🏠</span><small>首頁</small></a>') +
-    '<button type="button" class="fab-btn fab-top" aria-label="回到頁面頂端"><span>↑</span><small>頂端</small></button>';
+  box.innerHTML = '<button type="button" class="fab-btn fab-top" aria-label="回到頁面頂端"><span>↑</span><small>頂端</small></button>';
   document.body.appendChild(box);
-  var topBtn = box.querySelector('.fab-top');
-  topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  box.querySelector('.fab-top').addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
   function onScroll(){ box.classList.toggle('show', window.scrollY > 600); }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
