@@ -425,8 +425,8 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 <!-- 行銷輪播：每則都導向 LINE -->
 <a class="promo" id="promo" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener" aria-live="polite">
   <span class="promo-inner">
-    <span class="promo-text" id="promoText">💰 看到喜歡的行程？LINE 洽詢專員，享有優惠價格</span>
-    <span class="promo-btn">LINE 問專員 →</span>
+    <span class="promo-text" id="promoText">💰 看到喜歡的行程？LINE 洽詢小幫手，享有優惠價格</span>
+    <span class="promo-btn">LINE 問小幫手 →</span>
   </span>
   <span class="promo-dots" id="promoDots" aria-hidden="true"></span>
 </a>
@@ -691,10 +691,10 @@ function renderBranches(){
   const m = new Date().getMonth() + 1;
   const cur = (window.CDT_MONTHS || [])[m - 1];
   const msgs = [
-    cur ? `📅 ${m} 月出發去哪玩？${cur.title}，${cur.ideas.slice(0,3).map(i => i.n).join("、")}正當季` : "📅 這個月去哪玩？LINE 問專員推薦當季行程",
-    "💰 看到喜歡的行程？LINE 洽詢專員，享有優惠價格",
+    cur ? `📅 ${m} 月出發去哪玩？${cur.title}，${cur.ideas.slice(0,3).map(i => i.n).join("、")}正當季` : "📅 這個月去哪玩？LINE 問小幫手推薦當季行程",
+    "💰 看到喜歡的行程？LINE 洽詢小幫手，享有優惠價格",
     "🛂 護照快到期了嗎？拍照傳 LINE，免費幫您檢查效期",
-    "✈️ 機票價格天天變，把日期傳給我們，專員幫您找票",
+    "✈️ 機票價格天天變，把日期傳給我們，小幫手幫您找票",
     "👨‍👩‍👧 家族旅遊、公司旅遊，人數預算您決定，免費客製報價",
     "🇨🇳 第一次去中國大陸？台胞證代辦，LINE 免費幫您審核資料"
   ];
@@ -716,6 +716,6 @@ function renderBranches(){
   setInterval(() => { if(!paused) show((i + 1) % msgs.length); }, 4500);
 })();
 </script>
-<a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市專員</a>
+<a class="line-float" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問台南門市小幫手</a>
 </body>
 </html>
