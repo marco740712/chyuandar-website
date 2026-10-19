@@ -51,6 +51,20 @@
 .emergency-item span{font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--gray-200)}
 .emergency-item a{font-family:"Inter",sans-serif;font-size:18px;letter-spacing:.06em;color:var(--gold-300);font-weight:500}
 
+/* 即時天氣與當地時間 */
+.live{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-6px 0 20px}
+.live-city{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;background:linear-gradient(120deg,#EEF4FB,#F8FAFD);border:1px solid #E1EBF7;border-radius:8px;font-family:"Inter","Noto Serif TC",sans-serif}
+.live-city b{font-size:15.5px;color:#163E73;font-weight:600}
+.live-city .lt{display:flex;align-items:baseline;gap:6px}
+.live-city .lt-time{font-size:20px;font-weight:600;color:#163E73;font-variant-numeric:tabular-nums}
+.live-city small{font-size:12.5px;color:#6B7684}
+.live-city .lw{display:flex;align-items:center;gap:6px;margin-left:auto;font-size:13.5px;color:#6B7684}
+.live-city .lw .ico{font-size:22px;line-height:1}
+.live-city .lw .tp{font-size:20px;font-weight:600;color:#163E73}
+.wx-credit{margin-top:14px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:#7A8494}
+.wx-credit a{color:#2459A6;text-decoration:underline}
+@media (max-width:760px){.live{grid-template-columns:1fr}}
+
 /* 飲食卡 */
 .food-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:36px;align-items:start}
 .food-pick{background:#fff;border:1px solid var(--gray-100);padding:28px 26px}
@@ -169,6 +183,7 @@
 
     <div class="card" role="tabpanel" id="japan" aria-labelledby="c-jp">
       <h3>日本</h3><span class="card-en">Japan</span>
+      <div class="live" data-cities="tokyo,sapporo" aria-label="日本即時天氣與當地時間"></div>
       <div class="info-grid sans">
         <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>100V，雙平腳 A 型（台灣插頭可直接用）</p></div></div>
         <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
@@ -181,6 +196,7 @@
 
     <div class="card" role="tabpanel" id="korea" aria-labelledby="c-kr" hidden>
       <h3>韓國</h3><span class="card-en">Korea</span>
+      <div class="live" data-cities="seoul,busan" aria-label="韓國即時天氣與當地時間"></div>
       <div class="info-grid sans">
         <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙圓孔 F 型（需轉接頭）</p></div></div>
         <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>無小費文化</p></div></div>
@@ -193,6 +209,7 @@
 
     <div class="card" role="tabpanel" id="thailand" aria-labelledby="c-th" hidden>
       <h3>泰國</h3><span class="card-en">Thailand</span>
+      <div class="live" data-cities="bangkok,chiangmai" aria-label="泰國即時天氣與當地時間"></div>
       <div class="info-grid sans">
         <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙平腳／雙圓孔通用</p></div></div>
         <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>床頭與按摩需小費（約 20–100 泰銖）</p></div></div>
@@ -205,6 +222,7 @@
 
     <div class="card" role="tabpanel" id="vietnam" aria-labelledby="c-vn" hidden>
       <h3>越南</h3><span class="card-en">Vietnam</span>
+      <div class="live" data-cities="hanoi,hcmc" aria-label="越南即時天氣與當地時間"></div>
       <div class="info-grid sans">
         <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙平腳／雙圓孔通用</p></div></div>
         <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>非強制；按摩、床頭可給約 20,000–50,000 越南盾</p></div></div>
@@ -217,6 +235,7 @@
 
     <div class="card" role="tabpanel" id="europe" aria-labelledby="c-eu" hidden>
       <h3>歐洲</h3><span class="card-en">Europe</span>
+      <div class="live" data-cities="paris,rome" aria-label="歐洲即時天氣與當地時間"></div>
       <div class="info-grid sans">
         <div class="info"><span class="ico">🔌</span><div><b>電壓與插頭</b><p>220V，雙圓頭 C／E／F 型（需轉接頭）</p></div></div>
         <div class="info"><span class="ico">💁</span><div><b>小費文化</b><p>餐廳服務費多已含；床頭約 1–2 歐元</p></div></div>
@@ -226,6 +245,8 @@
       </div>
       <p class="disclaimer">※ 資訊僅供參考，請依照最新規定辦理，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
     </div>
+
+    <p class="wx-credit">🌤 即時天氣僅供參考，出發前請再查詢最新預報。天氣資料來源：<a href="https://api.met.no/" target="_blank" rel="noopener">挪威氣象局 MET Norway</a>，依 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> 授權使用，本站僅轉換為中文與圖示呈現。當地時間依您裝置的時鐘計算。</p>
 
     <!-- 外交部旅遊警示 -->
     <div class="alert-lv">
@@ -465,6 +486,7 @@ document.getElementById("printCard").addEventListener("click", () => {
 });
 window.addEventListener("afterprint", () => document.body.classList.remove("print-food"));
 </script>
+<script src="../../assets/live-weather.js"></script>
 <script src="../../assets/guide.js"></script>
 </body>
 </html>
