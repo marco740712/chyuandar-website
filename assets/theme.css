@@ -119,3 +119,95 @@ html footer{background:var(--navy-950)}
   html .topbar a{margin:0}
   html .topbar a[href^="tel:"]::before{content:"｜";margin:0 12px;color:rgba(26,74,142,.35)}
 }
+
+/* ── 字級加大（全站閱讀更舒服）──
+   內文約放大 1–2px，小標籤、按鈕、頁尾一併放大 */
+html .topbar{font-size:13.5px}
+html .menu{font-size:15.5px}
+html .cta{font-size:14px}
+html .menu .menu-drop-panel a{font-size:15px}
+html .menu .menu-drop-panel a small{font-size:12.5px}
+
+/* 首頁 */
+html .about-strip-text p{font-size:16.5px}
+html .about-strip-link{font-size:14px}
+html .sec-eyebrow{font-size:12px}
+html .sec-sub{font-size:18.5px}
+html .more-banner-text em{font-size:16.5px}
+html .region-tag{font-size:12.5px}
+html .region-arrow{font-size:14px}
+html .month{font-size:16px}
+html .month small{font-size:11px}
+html .season span{font-size:14px}
+html .idea-top b{font-size:20px}
+html .idea p{font-size:16px;line-height:1.8}
+html .idea-tags span{font-size:13.5px;padding:4px 12px}
+html .idea .go{font-size:14.5px}
+html .dlg-lead,html .dlg-body ul{font-size:16.5px}
+html .dlg-tip,html .dlg-when{font-size:15px}
+html .guide-link b{font-size:18px}
+html .guide-link small{font-size:14px}
+html .branch .label{font-size:12px}
+html .branch ul{font-size:15px}
+html .branch ul li .k{font-size:13px}
+html .branch-map{font-size:14.5px}
+html .contact-bar-item .k{font-size:12px}
+html .btn-line,html .btn-tel{font-size:14px}
+
+/* 內頁共用 */
+html .crumbs{font-size:13.5px}
+html .page-hero p{font-size:16.5px}
+html .card p,html .card ol,html .card ul{font-size:16px}
+html .card h4{font-size:14px}
+html .meta{font-size:15px}
+html .tip{font-size:15.5px}
+html .note{font-size:14px}
+html .updated{font-size:13px}
+html .line-banner span{font-size:15px}
+html .btn-line,html .btn-navy,html .btn-outline{font-size:15px}
+
+/* 各頁專屬 */
+html .faq summary{font-size:18px}
+html .faq .a{font-size:16px}
+html .kw,html .kw button{font-size:14px}
+html .country .name b{font-size:19px}
+html .country .name small{font-size:14px}
+html .country .body{font-size:16px}
+html .country .incl{font-size:14.5px}
+html .country .cta-line{font-size:15.5px}
+html .guide-block>summary{font-size:18px}
+html .guide-block .body{font-size:16px}
+html .days{font-size:15.5px}
+html .warn-box{font-size:15px}
+html .alert ol{font-size:16px}
+html .quick button{font-size:15px}
+html .badge{font-size:13px}
+html .info p{font-size:16px}
+html .info b{font-size:13px}
+html .emergency-item span{font-size:15px}
+html .pick{font-size:16px}
+html .ck-item{font-size:16.5px}
+html .ins-card p,html .ins-card li,html .qa-item p,html .pr p,html .scam p,html .step p,html .who-txt p{font-size:15.5px}
+html .check div{font-size:15.5px}
+html .co b{font-size:16.5px}
+html .co span{font-size:13.5px}
+html .how{font-size:15.5px}
+html .t-link b{font-size:17px}
+html .flow p{font-size:14.5px}
+html .need span,html .svc div{font-size:15.5px}
+
+/* 頁尾 */
+html .footer-col ul{font-size:14.5px}
+html .footer-col h6{font-size:13px}
+html .footer-brand p,html .footer-links{font-size:14.5px}
+html .footer-bot,html .footer-legal{font-size:13px!important}
+
+/* LINE 浮動按鈕 */
+html .line-float{font-size:15px}
+
+@media (max-width:600px){
+  html .idea-top b{font-size:19px}
+  html .sec-sub{font-size:17px}
+  html .faq summary{font-size:17px}
+}
+@media (min-width:981px) and (max-width:1180px){ html .menu{gap:22px;letter-spacing:.06em} }
