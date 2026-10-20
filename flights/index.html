@@ -41,7 +41,7 @@
 .fl-sec>h2 small{font-family:"Inter",sans-serif;font-size:14px;color:#7A8494;font-weight:400}
 .grp h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;color:var(--navy-800);margin:22px 0 10px}
 .al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.al{display:flex;flex-direction:column;gap:8px;padding:14px 14px 12px;background:#fff;border:1px solid var(--gray-100);border-radius:8px;transition:.2s}
+.al{display:flex;flex-direction:column;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-100);border-radius:8px;transition:.2s}
 .al:hover{border-color:var(--navy-700);transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(15,42,79,.4)}
 .al-logo{height:44px;display:flex;align-items:center}
 .al-logo img{max-height:40px;max-width:150px;object-fit:contain}
@@ -49,7 +49,6 @@
 .al-name{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .al-name b{font-family:"Inter","Noto Serif TC",sans-serif;font-size:15.5px;font-weight:600;color:#2A2E35}
 .al-code{flex:0 0 auto;font-family:"Inter",sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:4px;background:var(--navy-800);color:#fff}
-.al-go{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;color:var(--navy-700)}
 .ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
 .ap{display:flex;align-items:center;gap:14px;padding:10px 14px;background:#fff;border:1px solid var(--gray-100);border-radius:8px;font-family:"Inter","Noto Serif TC",sans-serif}
 .ap-code{flex:0 0 62px;text-align:center;font-family:"Inter",sans-serif;font-size:19px;font-weight:700;letter-spacing:.08em;padding:6px 0;border-radius:6px;background:var(--sky-50,#EEF4FB);color:var(--navy-800)}
@@ -57,6 +56,14 @@
 .ap-city b{font-size:15.5px;color:#2A2E35;font-weight:600}
 .ap-city small{font-size:12.5px;color:#7A8494}
 .ap-name{font-size:14.5px;color:#3C424C;line-height:1.5}
+.ap{position:relative;cursor:help}
+.ap::after{content:"🗺️";margin-left:auto;font-size:14px;opacity:.45;transition:.2s}
+.ap:hover,.ap:focus,.ap.open{border-color:var(--navy-700);outline:none;z-index:4}
+.ap:hover::after,.ap:focus::after,.ap.open::after{opacity:1}
+.ap-tip{position:absolute;left:10px;right:10px;top:calc(100% + 8px);z-index:4;padding:11px 14px;background:var(--navy-900);color:#fff;border-radius:8px;font-size:14.5px;line-height:1.7;box-shadow:0 14px 30px -12px rgba(15,42,79,.55);opacity:0;visibility:hidden;transform:translateY(-4px);transition:.18s;pointer-events:none}
+.ap-tip::before{content:"";position:absolute;left:28px;top:-6px;border:6px solid transparent;border-top:0;border-bottom-color:var(--navy-900)}
+.ap-tip b{display:block;font-size:12px;letter-spacing:.12em;color:#F6E7C1;font-weight:500;margin-bottom:2px}
+.ap:hover .ap-tip,.ap:focus .ap-tip,.ap.open .ap-tip{opacity:1;visibility:visible;transform:none}
 .fl-empty{display:none;text-align:center;padding:30px 16px;background:#fff;border:1px dashed var(--gray-200);margin-top:20px;font-family:"Inter","Noto Serif TC",sans-serif}
 .fl-empty p{margin-bottom:14px;color:#5C6470}
 .fl-credit{font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:#7A8494;line-height:1.8;margin-top:10px}
@@ -151,44 +158,37 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
     <div class="fl-tip">💡 <span><b>航班號碼前 2 碼就是航空公司代碼</b>，例如 BR198 是長榮航空、JX800 是星宇航空；<b>機場代碼是 3 個英文字母</b>，例如 TPE 是桃園、NRT 是東京成田。看懂代碼，查機票、看登機證都更快！</span></div>
 
     <div class="fl-sec" id="airlines">
-      <h2>✈️ 航空公司官網 <small>點卡片前往官方網站</small></h2>
+      <h2>✈️ 航空公司官網 <small>點 Logo 卡片直接前往官方網站</small></h2>
       <div class="grp" data-grp>
         <h3>台灣國籍航空公司</h3>
         <div class="al-grid">
         <a class="al" href="https://www.china-airlines.com/" target="_blank" rel="noopener" data-q="中華航空 CI ci">
           <span class="al-logo"><img src="../assets/airlines/CI.png" alt="中華航空標誌" loading="lazy"></span>
           <span class="al-name"><b>中華航空</b><span class="al-code">CI</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.evaair.com/" target="_blank" rel="noopener" data-q="長榮航空 BR br">
           <span class="al-logo"><img src="../assets/airlines/BR.png" alt="長榮航空標誌" loading="lazy"></span>
           <span class="al-name"><b>長榮航空</b><span class="al-code">BR</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.starlux-airlines.com/" target="_blank" rel="noopener" data-q="星宇航空 JX jx">
           <span class="al-logo"><img src="../assets/airlines/JX.png" alt="星宇航空標誌" loading="lazy"></span>
           <span class="al-name"><b>星宇航空</b><span class="al-code">JX</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.tigerairtw.com/" target="_blank" rel="noopener" data-q="台灣虎航 IT it">
           <span class="al-logo"><img src="../assets/airlines/IT.png" alt="台灣虎航標誌" loading="lazy"></span>
           <span class="al-name"><b>台灣虎航</b><span class="al-code">IT</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.uniair.com.tw/" target="_blank" rel="noopener" data-q="立榮航空 B7 b7">
           <span class="al-logo"><img src="../assets/airlines/B7.png" alt="立榮航空標誌" loading="lazy"></span>
           <span class="al-name"><b>立榮航空</b><span class="al-code">B7</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.mandarin-airlines.com/" target="_blank" rel="noopener" data-q="華信航空 AE ae">
           <span class="al-logo"><span class="al-badge">AE</span></span>
           <span class="al-name"><b>華信航空</b><span class="al-code">AE</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.dailyair.com.tw/" target="_blank" rel="noopener" data-q="德安航空 DA da">
           <span class="al-logo"><img src="../assets/airlines/DA.png" alt="德安航空標誌" loading="lazy"></span>
           <span class="al-name"><b>德安航空</b><span class="al-code">DA</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         </div>
       </div>
@@ -198,67 +198,54 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a class="al" href="https://www.jal.co.jp/" target="_blank" rel="noopener" data-q="日本航空 JL jl">
           <span class="al-logo"><img src="../assets/airlines/JL.png" alt="日本航空標誌" loading="lazy"></span>
           <span class="al-name"><b>日本航空</b><span class="al-code">JL</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.ana.co.jp/" target="_blank" rel="noopener" data-q="全日空 NH nh">
           <span class="al-logo"><img src="../assets/airlines/NH.png" alt="全日空標誌" loading="lazy"></span>
           <span class="al-name"><b>全日空</b><span class="al-code">NH</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.flypeach.com/" target="_blank" rel="noopener" data-q="樂桃航空 MM mm">
           <span class="al-logo"><img src="../assets/airlines/MM.png" alt="樂桃航空標誌" loading="lazy"></span>
           <span class="al-name"><b>樂桃航空</b><span class="al-code">MM</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.jetstar.com/jp/ja/home" target="_blank" rel="noopener" data-q="捷星日本 GK gk">
           <span class="al-logo"><img src="../assets/airlines/GK.png" alt="捷星日本標誌" loading="lazy"></span>
           <span class="al-name"><b>捷星日本</b><span class="al-code">GK</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.koreanair.com/" target="_blank" rel="noopener" data-q="大韓航空 KE ke">
           <span class="al-logo"><img src="../assets/airlines/KE.png" alt="大韓航空標誌" loading="lazy"></span>
           <span class="al-name"><b>大韓航空</b><span class="al-code">KE</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://flyasiana.com/" target="_blank" rel="noopener" data-q="韓亞航空 OZ oz">
           <span class="al-logo"><img src="../assets/airlines/OZ.png" alt="韓亞航空標誌" loading="lazy"></span>
           <span class="al-name"><b>韓亞航空</b><span class="al-code">OZ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.twayair.com/" target="_blank" rel="noopener" data-q="德威航空 TW tw">
           <span class="al-logo"><img src="../assets/airlines/TW.png" alt="德威航空標誌" loading="lazy"></span>
           <span class="al-name"><b>德威航空</b><span class="al-code">TW</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.jejuair.net/" target="_blank" rel="noopener" data-q="濟州航空 7C 7c">
           <span class="al-logo"><img src="../assets/airlines/7C.png" alt="濟州航空標誌" loading="lazy"></span>
           <span class="al-name"><b>濟州航空</b><span class="al-code">7C</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.jinair.com/" target="_blank" rel="noopener" data-q="真航空 LJ lj">
-          <span class="al-logo"><span class="al-badge">LJ</span></span>
+          <span class="al-logo"><img src="../assets/airlines/LJ.png" alt="真航空標誌" loading="lazy"></span>
           <span class="al-name"><b>真航空</b><span class="al-code">LJ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.airbusan.com/" target="_blank" rel="noopener" data-q="釜山航空 BX bx">
           <span class="al-logo"><img src="../assets/airlines/BX.png" alt="釜山航空標誌" loading="lazy"></span>
           <span class="al-name"><b>釜山航空</b><span class="al-code">BX</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://flyairseoul.com/" target="_blank" rel="noopener" data-q="首爾航空 RS rs">
           <span class="al-logo"><img src="../assets/airlines/RS.png" alt="首爾航空標誌" loading="lazy"></span>
           <span class="al-name"><b>首爾航空</b><span class="al-code">RS</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.eastarjet.com/" target="_blank" rel="noopener" data-q="易斯達航空 ZE ze">
           <span class="al-logo"><img src="../assets/airlines/ZE.png" alt="易斯達航空標誌" loading="lazy"></span>
           <span class="al-name"><b>易斯達航空</b><span class="al-code">ZE</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.aerok.com/" target="_blank" rel="noopener" data-q="可可航空 RF rf">
           <span class="al-logo"><img src="../assets/airlines/RF.png" alt="可可航空標誌" loading="lazy"></span>
           <span class="al-name"><b>可可航空</b><span class="al-code">RF</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         </div>
       </div>
@@ -268,72 +255,58 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a class="al" href="https://www.singaporeair.com/" target="_blank" rel="noopener" data-q="新加坡航空 SQ sq">
           <span class="al-logo"><img src="../assets/airlines/SQ.png" alt="新加坡航空標誌" loading="lazy"></span>
           <span class="al-name"><b>新加坡航空</b><span class="al-code">SQ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.flyscoot.com/" target="_blank" rel="noopener" data-q="酷航 TR tr">
           <span class="al-logo"><img src="../assets/airlines/TR.png" alt="酷航標誌" loading="lazy"></span>
           <span class="al-name"><b>酷航</b><span class="al-code">TR</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.malaysiaairlines.com/" target="_blank" rel="noopener" data-q="馬來西亞航空 MH mh">
           <span class="al-logo"><span class="al-badge">MH</span></span>
           <span class="al-name"><b>馬來西亞航空</b><span class="al-code">MH</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.airasia.com/" target="_blank" rel="noopener" data-q="亞洲航空 AK ak">
           <span class="al-logo"><img src="../assets/airlines/AK.png" alt="亞洲航空標誌" loading="lazy"></span>
           <span class="al-name"><b>亞洲航空</b><span class="al-code">AK</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.batikair.com.my/" target="_blank" rel="noopener" data-q="巴迪航空 OD od">
           <span class="al-logo"><span class="al-badge">OD</span></span>
           <span class="al-name"><b>巴迪航空</b><span class="al-code">OD</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.thaiairways.com/" target="_blank" rel="noopener" data-q="泰國國際航空 TG tg">
           <span class="al-logo"><img src="../assets/airlines/TG.png" alt="泰國國際航空標誌" loading="lazy"></span>
           <span class="al-name"><b>泰國國際航空</b><span class="al-code">TG</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://th.vietjetair.com/" target="_blank" rel="noopener" data-q="泰越捷航空 VZ vz">
           <span class="al-logo"><img src="../assets/airlines/VZ.png" alt="泰越捷航空標誌" loading="lazy"></span>
           <span class="al-name"><b>泰越捷航空</b><span class="al-code">VZ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.lionairthai.com/" target="_blank" rel="noopener" data-q="泰獅航 SL sl">
           <span class="al-logo"><span class="al-badge">SL</span></span>
           <span class="al-name"><b>泰獅航</b><span class="al-code">SL</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.vietnamairlines.com/" target="_blank" rel="noopener" data-q="越南航空 VN vn">
           <span class="al-logo"><img src="../assets/airlines/VN.png" alt="越南航空標誌" loading="lazy"></span>
           <span class="al-name"><b>越南航空</b><span class="al-code">VN</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.vietjetair.com/" target="_blank" rel="noopener" data-q="越捷航空 VJ vj">
           <span class="al-logo"><img src="../assets/airlines/VJ.png" alt="越捷航空標誌" loading="lazy"></span>
           <span class="al-name"><b>越捷航空</b><span class="al-code">VJ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.bambooairways.com/" target="_blank" rel="noopener" data-q="竹子航空 QH qh">
           <span class="al-logo"><img src="../assets/airlines/QH.png" alt="竹子航空標誌" loading="lazy"></span>
           <span class="al-name"><b>竹子航空</b><span class="al-code">QH</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.philippineairlines.com/" target="_blank" rel="noopener" data-q="菲律賓航空 PR pr">
           <span class="al-logo"><img src="../assets/airlines/PR.png" alt="菲律賓航空標誌" loading="lazy"></span>
           <span class="al-name"><b>菲律賓航空</b><span class="al-code">PR</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.cebupacificair.com/" target="_blank" rel="noopener" data-q="宿霧太平洋航空 5J 5j">
           <span class="al-logo"><img src="../assets/airlines/5J.png" alt="宿霧太平洋航空標誌" loading="lazy"></span>
           <span class="al-name"><b>宿霧太平洋航空</b><span class="al-code">5J</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.flyroyalbrunei.com/" target="_blank" rel="noopener" data-q="皇家汶萊航空 BI bi">
           <span class="al-logo"><img src="../assets/airlines/BI.png" alt="皇家汶萊航空標誌" loading="lazy"></span>
           <span class="al-name"><b>皇家汶萊航空</b><span class="al-code">BI</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         </div>
       </div>
@@ -343,67 +316,54 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a class="al" href="https://www.cathaypacific.com/" target="_blank" rel="noopener" data-q="國泰航空 CX cx">
           <span class="al-logo"><img src="../assets/airlines/CX.png" alt="國泰航空標誌" loading="lazy"></span>
           <span class="al-name"><b>國泰航空</b><span class="al-code">CX</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.hkexpress.com/" target="_blank" rel="noopener" data-q="香港快運 UO uo">
           <span class="al-logo"><img src="../assets/airlines/UO.png" alt="香港快運標誌" loading="lazy"></span>
           <span class="al-name"><b>香港快運</b><span class="al-code">UO</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.hongkongairlines.com/" target="_blank" rel="noopener" data-q="香港航空 HX hx">
           <span class="al-logo"><span class="al-badge">HX</span></span>
           <span class="al-name"><b>香港航空</b><span class="al-code">HX</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.greaterbay-airlines.com/" target="_blank" rel="noopener" data-q="大灣區航空 HB hb">
           <span class="al-logo"><span class="al-badge">HB</span></span>
           <span class="al-name"><b>大灣區航空</b><span class="al-code">HB</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.airmacau.com.mo/" target="_blank" rel="noopener" data-q="澳門航空 NX nx">
           <span class="al-logo"><img src="../assets/airlines/NX.png" alt="澳門航空標誌" loading="lazy"></span>
           <span class="al-name"><b>澳門航空</b><span class="al-code">NX</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.airchina.com.tw/" target="_blank" rel="noopener" data-q="中國國際航空 CA ca">
           <span class="al-logo"><img src="../assets/airlines/CA.png" alt="中國國際航空標誌" loading="lazy"></span>
           <span class="al-name"><b>中國國際航空</b><span class="al-code">CA</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.ceair.com/" target="_blank" rel="noopener" data-q="中國東方航空 MU mu">
           <span class="al-logo"><span class="al-badge">MU</span></span>
           <span class="al-name"><b>中國東方航空</b><span class="al-code">MU</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.csair.com/" target="_blank" rel="noopener" data-q="中國南方航空 CZ cz">
           <span class="al-logo"><img src="../assets/airlines/CZ.png" alt="中國南方航空標誌" loading="lazy"></span>
           <span class="al-name"><b>中國南方航空</b><span class="al-code">CZ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.xiamenair.com/" target="_blank" rel="noopener" data-q="廈門航空 MF mf">
           <span class="al-logo"><span class="al-badge">MF</span></span>
           <span class="al-name"><b>廈門航空</b><span class="al-code">MF</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.hnair.com/" target="_blank" rel="noopener" data-q="海南航空 HU hu">
           <span class="al-logo"><span class="al-badge">HU</span></span>
           <span class="al-name"><b>海南航空</b><span class="al-code">HU</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.shenzhenair.com/" target="_blank" rel="noopener" data-q="深圳航空 ZH zh">
           <span class="al-logo"><span class="al-badge">ZH</span></span>
           <span class="al-name"><b>深圳航空</b><span class="al-code">ZH</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.ch.com/" target="_blank" rel="noopener" data-q="春秋航空 9C 9c">
           <span class="al-logo"><img src="../assets/airlines/9C.jpg" alt="春秋航空標誌" loading="lazy"></span>
           <span class="al-name"><b>春秋航空</b><span class="al-code">9C</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.juneyaoair.com/" target="_blank" rel="noopener" data-q="吉祥航空 HO ho">
           <span class="al-logo"><span class="al-badge">HO</span></span>
           <span class="al-name"><b>吉祥航空</b><span class="al-code">HO</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         </div>
       </div>
@@ -413,168 +373,162 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a class="al" href="https://www.united.com/" target="_blank" rel="noopener" data-q="聯合航空 UA ua">
           <span class="al-logo"><span class="al-badge">UA</span></span>
           <span class="al-name"><b>聯合航空</b><span class="al-code">UA</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.delta.com/" target="_blank" rel="noopener" data-q="達美航空 DL dl">
           <span class="al-logo"><img src="../assets/airlines/DL.png" alt="達美航空標誌" loading="lazy"></span>
           <span class="al-name"><b>達美航空</b><span class="al-code">DL</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.emirates.com/" target="_blank" rel="noopener" data-q="阿聯酋航空 EK ek">
           <span class="al-logo"><img src="../assets/airlines/EK.png" alt="阿聯酋航空標誌" loading="lazy"></span>
           <span class="al-name"><b>阿聯酋航空</b><span class="al-code">EK</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.turkishairlines.com/" target="_blank" rel="noopener" data-q="土耳其航空 TK tk">
           <span class="al-logo"><img src="../assets/airlines/TK.png" alt="土耳其航空標誌" loading="lazy"></span>
           <span class="al-name"><b>土耳其航空</b><span class="al-code">TK</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.klm.com.tw/" target="_blank" rel="noopener" data-q="荷蘭皇家航空 KL kl">
           <span class="al-logo"><img src="../assets/airlines/KL.png" alt="荷蘭皇家航空標誌" loading="lazy"></span>
           <span class="al-name"><b>荷蘭皇家航空</b><span class="al-code">KL</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         <a class="al" href="https://www.airnewzealand.com.tw/" target="_blank" rel="noopener" data-q="紐西蘭航空 NZ nz">
           <span class="al-logo"><img src="../assets/airlines/NZ.png" alt="紐西蘭航空標誌" loading="lazy"></span>
           <span class="al-name"><b>紐西蘭航空</b><span class="al-code">NZ</span></span>
-          <span class="al-go">官網 ↗</span>
         </a>
         </div>
       </div>
     </div>
 
     <div class="fl-sec" id="airports">
-      <h2>🛫 機場代碼 <small>台灣直飛的主要航點</small></h2>
+      <h2>🛫 機場代碼 <small>滑鼠移到機場上（手機點一下）可看周邊旅遊城市</small></h2>
       <div class="grp" data-grp>
         <h3>🇹🇼 台灣出發機場</h3>
         <div class="ap-grid">
-          <div class="ap" data-q="台灣 台北 臺灣桃園國際機場 TPE tpe"><span class="ap-code">TPE</span><span class="ap-city"><b>台北</b><small>台灣</small></span><span class="ap-name">臺灣桃園國際機場</span></div>
-          <div class="ap" data-q="台灣 台北 臺北松山機場 TSA tsa"><span class="ap-code">TSA</span><span class="ap-city"><b>台北</b><small>台灣</small></span><span class="ap-name">臺北松山機場</span></div>
-          <div class="ap" data-q="台灣 高雄 高雄國際機場（小港） KHH khh"><span class="ap-code">KHH</span><span class="ap-city"><b>高雄</b><small>台灣</small></span><span class="ap-name">高雄國際機場（小港）</span></div>
-          <div class="ap" data-q="台灣 台中 臺中國際機場（清泉崗） RMQ rmq"><span class="ap-code">RMQ</span><span class="ap-city"><b>台中</b><small>台灣</small></span><span class="ap-name">臺中國際機場（清泉崗）</span></div>
-          <div class="ap" data-q="台灣 台南 臺南機場（國內線） TNN tnn"><span class="ap-code">TNN</span><span class="ap-city"><b>台南</b><small>台灣</small></span><span class="ap-name">臺南機場（國內線）</span></div>
-          <div class="ap" data-q="台灣 花蓮 花蓮機場 HUN hun"><span class="ap-code">HUN</span><span class="ap-city"><b>花蓮</b><small>台灣</small></span><span class="ap-name">花蓮機場</span></div>
-          <div class="ap" data-q="台灣 台東 臺東豐年機場 TTT ttt"><span class="ap-code">TTT</span><span class="ap-city"><b>台東</b><small>台灣</small></span><span class="ap-name">臺東豐年機場</span></div>
-          <div class="ap" data-q="台灣 澎湖 澎湖馬公機場 MZG mzg"><span class="ap-code">MZG</span><span class="ap-city"><b>澎湖</b><small>台灣</small></span><span class="ap-name">澎湖馬公機場</span></div>
-          <div class="ap" data-q="台灣 金門 金門尚義機場 KNH knh"><span class="ap-code">KNH</span><span class="ap-city"><b>金門</b><small>台灣</small></span><span class="ap-name">金門尚義機場</span></div>
-          <div class="ap" data-q="台灣 馬祖 南竿機場 LZN lzn"><span class="ap-code">LZN</span><span class="ap-city"><b>馬祖</b><small>台灣</small></span><span class="ap-name">南竿機場</span></div>
-          <div class="ap" data-q="台灣 馬祖 北竿機場 MFK mfk"><span class="ap-code">MFK</span><span class="ap-city"><b>馬祖</b><small>台灣</small></span><span class="ap-name">北竿機場</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 台北 臺灣桃園國際機場 TPE tpe 台北、新北、桃園、新竹（北部各地）"><span class="ap-code">TPE</span><span class="ap-city"><b>台北</b><small>台灣</small></span><span class="ap-name">臺灣桃園國際機場</span><span class="ap-tip"><b>周邊旅遊</b>台北、新北、桃園、新竹（北部各地）</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 台北 臺北松山機場 TSA tsa 台北市區、新北、基隆、宜蘭"><span class="ap-code">TSA</span><span class="ap-city"><b>台北</b><small>台灣</small></span><span class="ap-name">臺北松山機場</span><span class="ap-tip"><b>周邊旅遊</b>台北市區、新北、基隆、宜蘭</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 高雄 高雄小港國際機場 KHH khh 高雄、台南、屏東、墾丁"><span class="ap-code">KHH</span><span class="ap-city"><b>高雄</b><small>台灣</small></span><span class="ap-name">高雄小港國際機場</span><span class="ap-tip"><b>周邊旅遊</b>高雄、台南、屏東、墾丁</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 台中 臺中清泉崗國際機場 RMQ rmq 台中、彰化、南投日月潭、苗栗"><span class="ap-code">RMQ</span><span class="ap-city"><b>台中</b><small>台灣</small></span><span class="ap-name">臺中清泉崗國際機場</span><span class="ap-tip"><b>周邊旅遊</b>台中、彰化、南投日月潭、苗栗</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 台南 臺南機場 TNN tnn 台南、嘉義"><span class="ap-code">TNN</span><span class="ap-city"><b>台南</b><small>台灣</small></span><span class="ap-name">臺南機場</span><span class="ap-tip"><b>周邊旅遊</b>台南、嘉義</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 花蓮 花蓮機場 HUN hun 花蓮、太魯閣、瑞穗"><span class="ap-code">HUN</span><span class="ap-city"><b>花蓮</b><small>台灣</small></span><span class="ap-name">花蓮機場</span><span class="ap-tip"><b>周邊旅遊</b>花蓮、太魯閣、瑞穗</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 台東 臺東豐年機場 TTT ttt 台東、知本、池上；綠島、蘭嶼（轉機或轉船）"><span class="ap-code">TTT</span><span class="ap-city"><b>台東</b><small>台灣</small></span><span class="ap-name">臺東豐年機場</span><span class="ap-tip"><b>周邊旅遊</b>台東、知本、池上；綠島、蘭嶼（轉機或轉船）</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 澎湖 澎湖馬公機場 MZG mzg 澎湖馬公、七美、望安"><span class="ap-code">MZG</span><span class="ap-city"><b>澎湖</b><small>台灣</small></span><span class="ap-name">澎湖馬公機場</span><span class="ap-tip"><b>周邊旅遊</b>澎湖馬公、七美、望安</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 金門 金門尚義機場 KNH knh 金門、小金門"><span class="ap-code">KNH</span><span class="ap-city"><b>金門</b><small>台灣</small></span><span class="ap-name">金門尚義機場</span><span class="ap-tip"><b>周邊旅遊</b>金門、小金門</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 馬祖 南竿機場 LZN lzn 南竿；東引（轉船）"><span class="ap-code">LZN</span><span class="ap-city"><b>馬祖</b><small>台灣</small></span><span class="ap-name">南竿機場</span><span class="ap-tip"><b>周邊旅遊</b>南竿；東引（轉船）</span></div>
+          <div class="ap" tabindex="0" data-q="台灣 馬祖 北竿機場 MFK mfk 北竿、芹壁聚落"><span class="ap-code">MFK</span><span class="ap-city"><b>馬祖</b><small>台灣</small></span><span class="ap-name">北竿機場</span><span class="ap-tip"><b>周邊旅遊</b>北竿、芹壁聚落</span></div>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>東亞</h3>
         <div class="ap-grid">
-          <div class="ap" data-q="日本 東京 成田國際機場 NRT nrt"><span class="ap-code">NRT</span><span class="ap-city"><b>東京</b><small>日本</small></span><span class="ap-name">成田國際機場</span></div>
-          <div class="ap" data-q="日本 東京 羽田機場 HND hnd"><span class="ap-code">HND</span><span class="ap-city"><b>東京</b><small>日本</small></span><span class="ap-name">羽田機場</span></div>
-          <div class="ap" data-q="日本 大阪 關西國際機場 KIX kix"><span class="ap-code">KIX</span><span class="ap-city"><b>大阪</b><small>日本</small></span><span class="ap-name">關西國際機場</span></div>
-          <div class="ap" data-q="日本 神戶 神戶機場 UKB ukb"><span class="ap-code">UKB</span><span class="ap-city"><b>神戶</b><small>日本</small></span><span class="ap-name">神戶機場</span></div>
-          <div class="ap" data-q="日本 福岡 福岡機場 FUK fuk"><span class="ap-code">FUK</span><span class="ap-city"><b>福岡</b><small>日本</small></span><span class="ap-name">福岡機場</span></div>
-          <div class="ap" data-q="日本 札幌 新千歲機場 CTS cts"><span class="ap-code">CTS</span><span class="ap-city"><b>札幌</b><small>日本</small></span><span class="ap-name">新千歲機場</span></div>
-          <div class="ap" data-q="日本 沖繩 那霸機場 OKA oka"><span class="ap-code">OKA</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">那霸機場</span></div>
-          <div class="ap" data-q="日本 仙台 仙台機場 SDJ sdj"><span class="ap-code">SDJ</span><span class="ap-city"><b>仙台</b><small>日本</small></span><span class="ap-name">仙台機場</span></div>
-          <div class="ap" data-q="日本 熊本 熊本機場 KMJ kmj"><span class="ap-code">KMJ</span><span class="ap-city"><b>熊本</b><small>日本</small></span><span class="ap-name">熊本機場</span></div>
-          <div class="ap" data-q="日本 函館 函館機場 HKD hkd"><span class="ap-code">HKD</span><span class="ap-city"><b>函館</b><small>日本</small></span><span class="ap-name">函館機場</span></div>
-          <div class="ap" data-q="日本 旭川 旭川機場 AKJ akj"><span class="ap-code">AKJ</span><span class="ap-city"><b>旭川</b><small>日本</small></span><span class="ap-name">旭川機場</span></div>
-          <div class="ap" data-q="日本 鳥取 米子機場 YGJ ygj"><span class="ap-code">YGJ</span><span class="ap-city"><b>鳥取</b><small>日本</small></span><span class="ap-name">米子機場</span></div>
-          <div class="ap" data-q="日本 大分 大分機場 OIT oit"><span class="ap-code">OIT</span><span class="ap-city"><b>大分</b><small>日本</small></span><span class="ap-name">大分機場</span></div>
-          <div class="ap" data-q="日本 富山 富山機場 TOY toy"><span class="ap-code">TOY</span><span class="ap-city"><b>富山</b><small>日本</small></span><span class="ap-name">富山機場</span></div>
-          <div class="ap" data-q="日本 石川 小松機場 KMQ kmq"><span class="ap-code">KMQ</span><span class="ap-city"><b>石川</b><small>日本</small></span><span class="ap-name">小松機場</span></div>
-          <div class="ap" data-q="日本 香川 高松機場 TAK tak"><span class="ap-code">TAK</span><span class="ap-city"><b>香川</b><small>日本</small></span><span class="ap-name">高松機場</span></div>
-          <div class="ap" data-q="日本 茨城 茨城機場 IBR ibr"><span class="ap-code">IBR</span><span class="ap-city"><b>茨城</b><small>日本</small></span><span class="ap-name">茨城機場</span></div>
-          <div class="ap" data-q="日本 愛媛 松山機場 MYJ myj"><span class="ap-code">MYJ</span><span class="ap-city"><b>愛媛</b><small>日本</small></span><span class="ap-name">松山機場</span></div>
-          <div class="ap" data-q="日本 宮崎 宮崎機場 KMI kmi"><span class="ap-code">KMI</span><span class="ap-city"><b>宮崎</b><small>日本</small></span><span class="ap-name">宮崎機場</span></div>
-          <div class="ap" data-q="日本 鹿兒島 鹿兒島機場 KOJ koj"><span class="ap-code">KOJ</span><span class="ap-city"><b>鹿兒島</b><small>日本</small></span><span class="ap-name">鹿兒島機場</span></div>
-          <div class="ap" data-q="日本 沖繩 宮古機場 MMY mmy"><span class="ap-code">MMY</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">宮古機場</span></div>
-          <div class="ap" data-q="日本 沖繩 石垣機場 ISG isg"><span class="ap-code">ISG</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">石垣機場</span></div>
-          <div class="ap" data-q="韓國 首爾 仁川國際機場 ICN icn"><span class="ap-code">ICN</span><span class="ap-city"><b>首爾</b><small>韓國</small></span><span class="ap-name">仁川國際機場</span></div>
-          <div class="ap" data-q="韓國 首爾 金浦國際機場 GMP gmp"><span class="ap-code">GMP</span><span class="ap-city"><b>首爾</b><small>韓國</small></span><span class="ap-name">金浦國際機場</span></div>
-          <div class="ap" data-q="韓國 釜山 金海國際機場 PUS pus"><span class="ap-code">PUS</span><span class="ap-city"><b>釜山</b><small>韓國</small></span><span class="ap-name">金海國際機場</span></div>
-          <div class="ap" data-q="韓國 濟州 濟州國際機場 CJU cju"><span class="ap-code">CJU</span><span class="ap-city"><b>濟州</b><small>韓國</small></span><span class="ap-name">濟州國際機場</span></div>
-          <div class="ap" data-q="韓國 大邱 大邱國際機場 TAE tae"><span class="ap-code">TAE</span><span class="ap-city"><b>大邱</b><small>韓國</small></span><span class="ap-name">大邱國際機場</span></div>
-          <div class="ap" data-q="韓國 清州 清州國際機場 CJJ cjj"><span class="ap-code">CJJ</span><span class="ap-city"><b>清州</b><small>韓國</small></span><span class="ap-name">清州國際機場</span></div>
-          <div class="ap" data-q="香港 香港 香港國際機場 HKG hkg"><span class="ap-code">HKG</span><span class="ap-city"><b>香港</b><small>香港</small></span><span class="ap-name">香港國際機場</span></div>
-          <div class="ap" data-q="澳門 澳門 澳門國際機場 MFM mfm"><span class="ap-code">MFM</span><span class="ap-city"><b>澳門</b><small>澳門</small></span><span class="ap-name">澳門國際機場</span></div>
-          <div class="ap" data-q="中國大陸 上海 浦東國際機場 PVG pvg"><span class="ap-code">PVG</span><span class="ap-city"><b>上海</b><small>中國大陸</small></span><span class="ap-name">浦東國際機場</span></div>
-          <div class="ap" data-q="中國大陸 上海 虹橋國際機場 SHA sha"><span class="ap-code">SHA</span><span class="ap-city"><b>上海</b><small>中國大陸</small></span><span class="ap-name">虹橋國際機場</span></div>
-          <div class="ap" data-q="中國大陸 北京 首都國際機場 PEK pek"><span class="ap-code">PEK</span><span class="ap-city"><b>北京</b><small>中國大陸</small></span><span class="ap-name">首都國際機場</span></div>
-          <div class="ap" data-q="中國大陸 北京 大興國際機場 PKX pkx"><span class="ap-code">PKX</span><span class="ap-city"><b>北京</b><small>中國大陸</small></span><span class="ap-name">大興國際機場</span></div>
-          <div class="ap" data-q="中國大陸 廣州 白雲國際機場 CAN can"><span class="ap-code">CAN</span><span class="ap-city"><b>廣州</b><small>中國大陸</small></span><span class="ap-name">白雲國際機場</span></div>
-          <div class="ap" data-q="中國大陸 深圳 寶安國際機場 SZX szx"><span class="ap-code">SZX</span><span class="ap-city"><b>深圳</b><small>中國大陸</small></span><span class="ap-name">寶安國際機場</span></div>
-          <div class="ap" data-q="中國大陸 廈門 高崎國際機場 XMN xmn"><span class="ap-code">XMN</span><span class="ap-city"><b>廈門</b><small>中國大陸</small></span><span class="ap-name">高崎國際機場</span></div>
-          <div class="ap" data-q="中國大陸 成都 天府國際機場 TFU tfu"><span class="ap-code">TFU</span><span class="ap-city"><b>成都</b><small>中國大陸</small></span><span class="ap-name">天府國際機場</span></div>
-          <div class="ap" data-q="中國大陸 重慶 江北國際機場 CKG ckg"><span class="ap-code">CKG</span><span class="ap-city"><b>重慶</b><small>中國大陸</small></span><span class="ap-name">江北國際機場</span></div>
-          <div class="ap" data-q="中國大陸 杭州 蕭山國際機場 HGH hgh"><span class="ap-code">HGH</span><span class="ap-city"><b>杭州</b><small>中國大陸</small></span><span class="ap-name">蕭山國際機場</span></div>
-          <div class="ap" data-q="中國大陸 南京 祿口國際機場 NKG nkg"><span class="ap-code">NKG</span><span class="ap-city"><b>南京</b><small>中國大陸</small></span><span class="ap-name">祿口國際機場</span></div>
-          <div class="ap" data-q="中國大陸 寧波 櫟社國際機場 NGB ngb"><span class="ap-code">NGB</span><span class="ap-city"><b>寧波</b><small>中國大陸</small></span><span class="ap-name">櫟社國際機場</span></div>
-          <div class="ap" data-q="中國大陸 福州 長樂國際機場 FOC foc"><span class="ap-code">FOC</span><span class="ap-city"><b>福州</b><small>中國大陸</small></span><span class="ap-name">長樂國際機場</span></div>
-          <div class="ap" data-q="中國大陸 青島 膠東國際機場 TAO tao"><span class="ap-code">TAO</span><span class="ap-city"><b>青島</b><small>中國大陸</small></span><span class="ap-name">膠東國際機場</span></div>
-          <div class="ap" data-q="中國大陸 武漢 天河國際機場 WUH wuh"><span class="ap-code">WUH</span><span class="ap-city"><b>武漢</b><small>中國大陸</small></span><span class="ap-name">天河國際機場</span></div>
-          <div class="ap" data-q="中國大陸 鄭州 新鄭國際機場 CGO cgo"><span class="ap-code">CGO</span><span class="ap-city"><b>鄭州</b><small>中國大陸</small></span><span class="ap-name">新鄭國際機場</span></div>
+          <div class="ap" tabindex="0" data-q="日本 東京 成田國際機場 NRT nrt 東京、千葉、成田山、東京迪士尼"><span class="ap-code">NRT</span><span class="ap-city"><b>東京</b><small>日本</small></span><span class="ap-name">成田國際機場</span><span class="ap-tip"><b>周邊旅遊</b>東京、千葉、成田山、東京迪士尼</span></div>
+          <div class="ap" tabindex="0" data-q="日本 東京 羽田機場 HND hnd 東京市區、橫濱、鎌倉、箱根"><span class="ap-code">HND</span><span class="ap-city"><b>東京</b><small>日本</small></span><span class="ap-name">羽田機場</span><span class="ap-tip"><b>周邊旅遊</b>東京市區、橫濱、鎌倉、箱根</span></div>
+          <div class="ap" tabindex="0" data-q="日本 大阪 關西國際機場 KIX kix 大阪、京都、奈良、神戶、和歌山"><span class="ap-code">KIX</span><span class="ap-city"><b>大阪</b><small>日本</small></span><span class="ap-name">關西國際機場</span><span class="ap-tip"><b>周邊旅遊</b>大阪、京都、奈良、神戶、和歌山</span></div>
+          <div class="ap" tabindex="0" data-q="日本 神戶 神戶機場 UKB ukb 神戶、有馬溫泉、姬路、大阪"><span class="ap-code">UKB</span><span class="ap-city"><b>神戶</b><small>日本</small></span><span class="ap-name">神戶機場</span><span class="ap-tip"><b>周邊旅遊</b>神戶、有馬溫泉、姬路、大阪</span></div>
+          <div class="ap" tabindex="0" data-q="日本 福岡 福岡機場 FUK fuk 福岡、太宰府、門司港、佐賀、長崎（陸路）"><span class="ap-code">FUK</span><span class="ap-city"><b>福岡</b><small>日本</small></span><span class="ap-name">福岡機場</span><span class="ap-tip"><b>周邊旅遊</b>福岡、太宰府、門司港、佐賀、長崎（陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="日本 札幌 新千歲機場 CTS cts 札幌、小樽、登別、洞爺湖、富良野、美瑛"><span class="ap-code">CTS</span><span class="ap-city"><b>札幌</b><small>日本</small></span><span class="ap-name">新千歲機場</span><span class="ap-tip"><b>周邊旅遊</b>札幌、小樽、登別、洞爺湖、富良野、美瑛</span></div>
+          <div class="ap" tabindex="0" data-q="日本 沖繩 那霸機場 OKA oka 那霸、沖繩本島、恩納、美麗海水族館"><span class="ap-code">OKA</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">那霸機場</span><span class="ap-tip"><b>周邊旅遊</b>那霸、沖繩本島、恩納、美麗海水族館</span></div>
+          <div class="ap" tabindex="0" data-q="日本 仙台 仙台機場 SDJ sdj 仙台、松島、山形藏王、平泉"><span class="ap-code">SDJ</span><span class="ap-city"><b>仙台</b><small>日本</small></span><span class="ap-name">仙台機場</span><span class="ap-tip"><b>周邊旅遊</b>仙台、松島、山形藏王、平泉</span></div>
+          <div class="ap" tabindex="0" data-q="日本 熊本 熊本機場 KMJ kmj 熊本、阿蘇、黑川溫泉、天草"><span class="ap-code">KMJ</span><span class="ap-city"><b>熊本</b><small>日本</small></span><span class="ap-name">熊本機場</span><span class="ap-tip"><b>周邊旅遊</b>熊本、阿蘇、黑川溫泉、天草</span></div>
+          <div class="ap" tabindex="0" data-q="日本 函館 函館機場 HKD hkd 函館、大沼公園、湯之川溫泉"><span class="ap-code">HKD</span><span class="ap-city"><b>函館</b><small>日本</small></span><span class="ap-name">函館機場</span><span class="ap-tip"><b>周邊旅遊</b>函館、大沼公園、湯之川溫泉</span></div>
+          <div class="ap" tabindex="0" data-q="日本 旭川 旭川機場 AKJ akj 旭川、美瑛、富良野、層雲峽"><span class="ap-code">AKJ</span><span class="ap-city"><b>旭川</b><small>日本</small></span><span class="ap-name">旭川機場</span><span class="ap-tip"><b>周邊旅遊</b>旭川、美瑛、富良野、層雲峽</span></div>
+          <div class="ap" tabindex="0" data-q="日本 鳥取 米子機場 YGJ ygj 米子、鳥取砂丘、松江、出雲大社、境港"><span class="ap-code">YGJ</span><span class="ap-city"><b>鳥取</b><small>日本</small></span><span class="ap-name">米子機場</span><span class="ap-tip"><b>周邊旅遊</b>米子、鳥取砂丘、松江、出雲大社、境港</span></div>
+          <div class="ap" tabindex="0" data-q="日本 大分 大分機場 OIT oit 大分、別府、由布院"><span class="ap-code">OIT</span><span class="ap-city"><b>大分</b><small>日本</small></span><span class="ap-name">大分機場</span><span class="ap-tip"><b>周邊旅遊</b>大分、別府、由布院</span></div>
+          <div class="ap" tabindex="0" data-q="日本 富山 富山機場 TOY toy 富山、立山黑部、五箇山、金澤"><span class="ap-code">TOY</span><span class="ap-city"><b>富山</b><small>日本</small></span><span class="ap-name">富山機場</span><span class="ap-tip"><b>周邊旅遊</b>富山、立山黑部、五箇山、金澤</span></div>
+          <div class="ap" tabindex="0" data-q="日本 石川 小松機場 KMQ kmq 金澤、白川鄉、加賀溫泉、能登"><span class="ap-code">KMQ</span><span class="ap-city"><b>石川</b><small>日本</small></span><span class="ap-name">小松機場</span><span class="ap-tip"><b>周邊旅遊</b>金澤、白川鄉、加賀溫泉、能登</span></div>
+          <div class="ap" tabindex="0" data-q="日本 香川 高松機場 TAK tak 高松、小豆島、直島、琴平"><span class="ap-code">TAK</span><span class="ap-city"><b>香川</b><small>日本</small></span><span class="ap-name">高松機場</span><span class="ap-tip"><b>周邊旅遊</b>高松、小豆島、直島、琴平</span></div>
+          <div class="ap" tabindex="0" data-q="日本 茨城 茨城機場 IBR ibr 水戶、日立海濱公園、筑波、東京（巴士約 2 小時）"><span class="ap-code">IBR</span><span class="ap-city"><b>茨城</b><small>日本</small></span><span class="ap-name">茨城機場</span><span class="ap-tip"><b>周邊旅遊</b>水戶、日立海濱公園、筑波、東京（巴士約 2 小時）</span></div>
+          <div class="ap" tabindex="0" data-q="日本 愛媛 松山機場 MYJ myj 松山、道後溫泉、今治、內子"><span class="ap-code">MYJ</span><span class="ap-city"><b>愛媛</b><small>日本</small></span><span class="ap-name">松山機場</span><span class="ap-tip"><b>周邊旅遊</b>松山、道後溫泉、今治、內子</span></div>
+          <div class="ap" tabindex="0" data-q="日本 宮崎 宮崎機場 KMI kmi 宮崎、青島、高千穗、日南海岸"><span class="ap-code">KMI</span><span class="ap-city"><b>宮崎</b><small>日本</small></span><span class="ap-name">宮崎機場</span><span class="ap-tip"><b>周邊旅遊</b>宮崎、青島、高千穗、日南海岸</span></div>
+          <div class="ap" tabindex="0" data-q="日本 鹿兒島 鹿兒島機場 KOJ koj 鹿兒島、櫻島、指宿、霧島"><span class="ap-code">KOJ</span><span class="ap-city"><b>鹿兒島</b><small>日本</small></span><span class="ap-name">鹿兒島機場</span><span class="ap-tip"><b>周邊旅遊</b>鹿兒島、櫻島、指宿、霧島</span></div>
+          <div class="ap" tabindex="0" data-q="日本 沖繩 宮古機場 MMY mmy 宮古島、伊良部島、來間島"><span class="ap-code">MMY</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">宮古機場</span><span class="ap-tip"><b>周邊旅遊</b>宮古島、伊良部島、來間島</span></div>
+          <div class="ap" tabindex="0" data-q="日本 沖繩 石垣機場 ISG isg 石垣島、竹富島、西表島、小濱島"><span class="ap-code">ISG</span><span class="ap-city"><b>沖繩</b><small>日本</small></span><span class="ap-name">石垣機場</span><span class="ap-tip"><b>周邊旅遊</b>石垣島、竹富島、西表島、小濱島</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 首爾 仁川國際機場 ICN icn 首爾、仁川、水原、京畿道"><span class="ap-code">ICN</span><span class="ap-city"><b>首爾</b><small>韓國</small></span><span class="ap-name">仁川國際機場</span><span class="ap-tip"><b>周邊旅遊</b>首爾、仁川、水原、京畿道</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 首爾 金浦國際機場 GMP gmp 首爾市區、弘大、汝矣島"><span class="ap-code">GMP</span><span class="ap-city"><b>首爾</b><small>韓國</small></span><span class="ap-name">金浦國際機場</span><span class="ap-tip"><b>周邊旅遊</b>首爾市區、弘大、汝矣島</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 釜山 金海國際機場 PUS pus 釜山、海雲台、慶州、蔚山"><span class="ap-code">PUS</span><span class="ap-city"><b>釜山</b><small>韓國</small></span><span class="ap-name">金海國際機場</span><span class="ap-tip"><b>周邊旅遊</b>釜山、海雲台、慶州、蔚山</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 濟州 濟州國際機場 CJU cju 濟州島、西歸浦、城山日出峰"><span class="ap-code">CJU</span><span class="ap-city"><b>濟州</b><small>韓國</small></span><span class="ap-name">濟州國際機場</span><span class="ap-tip"><b>周邊旅遊</b>濟州島、西歸浦、城山日出峰</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 大邱 大邱國際機場 TAE tae 大邱、慶州、安東"><span class="ap-code">TAE</span><span class="ap-city"><b>大邱</b><small>韓國</small></span><span class="ap-name">大邱國際機場</span><span class="ap-tip"><b>周邊旅遊</b>大邱、慶州、安東</span></div>
+          <div class="ap" tabindex="0" data-q="韓國 清州 清州國際機場 CJJ cjj 清州、大田、丹陽、忠清道"><span class="ap-code">CJJ</span><span class="ap-city"><b>清州</b><small>韓國</small></span><span class="ap-name">清州國際機場</span><span class="ap-tip"><b>周邊旅遊</b>清州、大田、丹陽、忠清道</span></div>
+          <div class="ap" tabindex="0" data-q="香港 香港 香港國際機場 HKG hkg 香港、九龍、大嶼山、深圳（跨境）"><span class="ap-code">HKG</span><span class="ap-city"><b>香港</b><small>香港</small></span><span class="ap-name">香港國際機場</span><span class="ap-tip"><b>周邊旅遊</b>香港、九龍、大嶼山、深圳（跨境）</span></div>
+          <div class="ap" tabindex="0" data-q="澳門 澳門 澳門國際機場 MFM mfm 澳門、路氹、珠海（跨境）"><span class="ap-code">MFM</span><span class="ap-city"><b>澳門</b><small>澳門</small></span><span class="ap-name">澳門國際機場</span><span class="ap-tip"><b>周邊旅遊</b>澳門、路氹、珠海（跨境）</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 上海 浦東國際機場 PVG pvg 上海、上海迪士尼、蘇州、崇明島"><span class="ap-code">PVG</span><span class="ap-city"><b>上海</b><small>中國大陸</small></span><span class="ap-name">浦東國際機場</span><span class="ap-tip"><b>周邊旅遊</b>上海、上海迪士尼、蘇州、崇明島</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 上海 虹橋國際機場 SHA sha 上海市區、蘇州、無錫、杭州（高鐵）"><span class="ap-code">SHA</span><span class="ap-city"><b>上海</b><small>中國大陸</small></span><span class="ap-name">虹橋國際機場</span><span class="ap-tip"><b>周邊旅遊</b>上海市區、蘇州、無錫、杭州（高鐵）</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 北京 首都國際機場 PEK pek 北京、萬里長城、天津"><span class="ap-code">PEK</span><span class="ap-city"><b>北京</b><small>中國大陸</small></span><span class="ap-name">首都國際機場</span><span class="ap-tip"><b>周邊旅遊</b>北京、萬里長城、天津</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 北京 大興國際機場 PKX pkx 北京、天津、河北"><span class="ap-code">PKX</span><span class="ap-city"><b>北京</b><small>中國大陸</small></span><span class="ap-name">大興國際機場</span><span class="ap-tip"><b>周邊旅遊</b>北京、天津、河北</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 廣州 白雲國際機場 CAN can 廣州、佛山、桂林（高鐵）"><span class="ap-code">CAN</span><span class="ap-city"><b>廣州</b><small>中國大陸</small></span><span class="ap-name">白雲國際機場</span><span class="ap-tip"><b>周邊旅遊</b>廣州、佛山、桂林（高鐵）</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 深圳 寶安國際機場 SZX szx 深圳、東莞、香港（跨境）"><span class="ap-code">SZX</span><span class="ap-city"><b>深圳</b><small>中國大陸</small></span><span class="ap-name">寶安國際機場</span><span class="ap-tip"><b>周邊旅遊</b>深圳、東莞、香港（跨境）</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 廈門 高崎國際機場 XMN xmn 廈門、鼓浪嶼、泉州、福建土樓"><span class="ap-code">XMN</span><span class="ap-city"><b>廈門</b><small>中國大陸</small></span><span class="ap-name">高崎國際機場</span><span class="ap-tip"><b>周邊旅遊</b>廈門、鼓浪嶼、泉州、福建土樓</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 成都 天府國際機場 TFU tfu 成都、樂山大佛、峨眉山、九寨溝（轉機）"><span class="ap-code">TFU</span><span class="ap-city"><b>成都</b><small>中國大陸</small></span><span class="ap-name">天府國際機場</span><span class="ap-tip"><b>周邊旅遊</b>成都、樂山大佛、峨眉山、九寨溝（轉機）</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 重慶 江北國際機場 CKG ckg 重慶、長江三峽、武隆"><span class="ap-code">CKG</span><span class="ap-city"><b>重慶</b><small>中國大陸</small></span><span class="ap-name">江北國際機場</span><span class="ap-tip"><b>周邊旅遊</b>重慶、長江三峽、武隆</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 杭州 蕭山國際機場 HGH hgh 杭州、西湖、烏鎮、千島湖"><span class="ap-code">HGH</span><span class="ap-city"><b>杭州</b><small>中國大陸</small></span><span class="ap-name">蕭山國際機場</span><span class="ap-tip"><b>周邊旅遊</b>杭州、西湖、烏鎮、千島湖</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 南京 祿口國際機場 NKG nkg 南京、揚州、鎮江"><span class="ap-code">NKG</span><span class="ap-city"><b>南京</b><small>中國大陸</small></span><span class="ap-name">祿口國際機場</span><span class="ap-tip"><b>周邊旅遊</b>南京、揚州、鎮江</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 寧波 櫟社國際機場 NGB ngb 寧波、舟山、普陀山"><span class="ap-code">NGB</span><span class="ap-city"><b>寧波</b><small>中國大陸</small></span><span class="ap-name">櫟社國際機場</span><span class="ap-tip"><b>周邊旅遊</b>寧波、舟山、普陀山</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 福州 長樂國際機場 FOC foc 福州、平潭、武夷山"><span class="ap-code">FOC</span><span class="ap-city"><b>福州</b><small>中國大陸</small></span><span class="ap-name">長樂國際機場</span><span class="ap-tip"><b>周邊旅遊</b>福州、平潭、武夷山</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 青島 膠東國際機場 TAO tao 青島、嶗山、煙台"><span class="ap-code">TAO</span><span class="ap-city"><b>青島</b><small>中國大陸</small></span><span class="ap-name">膠東國際機場</span><span class="ap-tip"><b>周邊旅遊</b>青島、嶗山、煙台</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 武漢 天河國際機場 WUH wuh 武漢、黃鶴樓、宜昌三峽"><span class="ap-code">WUH</span><span class="ap-city"><b>武漢</b><small>中國大陸</small></span><span class="ap-name">天河國際機場</span><span class="ap-tip"><b>周邊旅遊</b>武漢、黃鶴樓、宜昌三峽</span></div>
+          <div class="ap" tabindex="0" data-q="中國大陸 鄭州 新鄭國際機場 CGO cgo 鄭州、少林寺、洛陽龍門石窟、開封"><span class="ap-code">CGO</span><span class="ap-city"><b>鄭州</b><small>中國大陸</small></span><span class="ap-name">新鄭國際機場</span><span class="ap-tip"><b>周邊旅遊</b>鄭州、少林寺、洛陽龍門石窟、開封</span></div>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>東南亞</h3>
         <div class="ap-grid">
-          <div class="ap" data-q="泰國 曼谷 蘇凡納布機場 BKK bkk"><span class="ap-code">BKK</span><span class="ap-city"><b>曼谷</b><small>泰國</small></span><span class="ap-name">蘇凡納布機場</span></div>
-          <div class="ap" data-q="泰國 曼谷 廊曼國際機場 DMK dmk"><span class="ap-code">DMK</span><span class="ap-city"><b>曼谷</b><small>泰國</small></span><span class="ap-name">廊曼國際機場</span></div>
-          <div class="ap" data-q="泰國 清邁 清邁國際機場 CNX cnx"><span class="ap-code">CNX</span><span class="ap-city"><b>清邁</b><small>泰國</small></span><span class="ap-name">清邁國際機場</span></div>
-          <div class="ap" data-q="泰國 普吉島 普吉國際機場 HKT hkt"><span class="ap-code">HKT</span><span class="ap-city"><b>普吉島</b><small>泰國</small></span><span class="ap-name">普吉國際機場</span></div>
-          <div class="ap" data-q="越南 河內 內排國際機場 HAN han"><span class="ap-code">HAN</span><span class="ap-city"><b>河內</b><small>越南</small></span><span class="ap-name">內排國際機場</span></div>
-          <div class="ap" data-q="越南 胡志明市 新山一國際機場 SGN sgn"><span class="ap-code">SGN</span><span class="ap-city"><b>胡志明市</b><small>越南</small></span><span class="ap-name">新山一國際機場</span></div>
-          <div class="ap" data-q="越南 峴港 峴港國際機場 DAD dad"><span class="ap-code">DAD</span><span class="ap-city"><b>峴港</b><small>越南</small></span><span class="ap-name">峴港國際機場</span></div>
-          <div class="ap" data-q="越南 富國島 富國國際機場 PQC pqc"><span class="ap-code">PQC</span><span class="ap-city"><b>富國島</b><small>越南</small></span><span class="ap-name">富國國際機場</span></div>
-          <div class="ap" data-q="越南 芽莊 金蘭國際機場 CXR cxr"><span class="ap-code">CXR</span><span class="ap-city"><b>芽莊</b><small>越南</small></span><span class="ap-name">金蘭國際機場</span></div>
-          <div class="ap" data-q="新加坡 新加坡 樟宜國際機場 SIN sin"><span class="ap-code">SIN</span><span class="ap-city"><b>新加坡</b><small>新加坡</small></span><span class="ap-name">樟宜國際機場</span></div>
-          <div class="ap" data-q="馬來西亞 吉隆坡 吉隆坡國際機場 KUL kul"><span class="ap-code">KUL</span><span class="ap-city"><b>吉隆坡</b><small>馬來西亞</small></span><span class="ap-name">吉隆坡國際機場</span></div>
-          <div class="ap" data-q="馬來西亞 檳城 檳城國際機場 PEN pen"><span class="ap-code">PEN</span><span class="ap-city"><b>檳城</b><small>馬來西亞</small></span><span class="ap-name">檳城國際機場</span></div>
-          <div class="ap" data-q="馬來西亞 亞庇（沙巴） 亞庇國際機場 BKI bki"><span class="ap-code">BKI</span><span class="ap-city"><b>亞庇（沙巴）</b><small>馬來西亞</small></span><span class="ap-name">亞庇國際機場</span></div>
-          <div class="ap" data-q="菲律賓 馬尼拉 尼諾伊．艾奎諾國際機場 MNL mnl"><span class="ap-code">MNL</span><span class="ap-city"><b>馬尼拉</b><small>菲律賓</small></span><span class="ap-name">尼諾伊．艾奎諾國際機場</span></div>
-          <div class="ap" data-q="菲律賓 宿霧 麥克坦－宿霧國際機場 CEB ceb"><span class="ap-code">CEB</span><span class="ap-city"><b>宿霧</b><small>菲律賓</small></span><span class="ap-name">麥克坦－宿霧國際機場</span></div>
-          <div class="ap" data-q="菲律賓 克拉克 克拉克國際機場 CRK crk"><span class="ap-code">CRK</span><span class="ap-city"><b>克拉克</b><small>菲律賓</small></span><span class="ap-name">克拉克國際機場</span></div>
-          <div class="ap" data-q="菲律賓 長灘島 卡利博國際機場 KLO klo"><span class="ap-code">KLO</span><span class="ap-city"><b>長灘島</b><small>菲律賓</small></span><span class="ap-name">卡利博國際機場</span></div>
-          <div class="ap" data-q="印尼 雅加達 蘇卡諾－哈達國際機場 CGK cgk"><span class="ap-code">CGK</span><span class="ap-city"><b>雅加達</b><small>印尼</small></span><span class="ap-name">蘇卡諾－哈達國際機場</span></div>
-          <div class="ap" data-q="印尼 峇里島 伍拉．賴國際機場 DPS dps"><span class="ap-code">DPS</span><span class="ap-city"><b>峇里島</b><small>印尼</small></span><span class="ap-name">伍拉．賴國際機場</span></div>
-          <div class="ap" data-q="柬埔寨 金邊 德崇國際機場（2025 年啟用，取代舊金邊機場 PNH） KTI kti"><span class="ap-code">KTI</span><span class="ap-city"><b>金邊</b><small>柬埔寨</small></span><span class="ap-name">德崇國際機場（2025 年啟用，取代舊金邊機場 PNH）</span></div>
-          <div class="ap" data-q="汶萊 斯里巴加灣 汶萊國際機場 BWN bwn"><span class="ap-code">BWN</span><span class="ap-city"><b>斯里巴加灣</b><small>汶萊</small></span><span class="ap-name">汶萊國際機場</span></div>
+          <div class="ap" tabindex="0" data-q="泰國 曼谷 蘇凡納布機場 BKK bkk 曼谷、芭達雅、大城、華欣"><span class="ap-code">BKK</span><span class="ap-city"><b>曼谷</b><small>泰國</small></span><span class="ap-name">蘇凡納布機場</span><span class="ap-tip"><b>周邊旅遊</b>曼谷、芭達雅、大城、華欣</span></div>
+          <div class="ap" tabindex="0" data-q="泰國 曼谷 廊曼國際機場 DMK dmk 曼谷、大城、芭達雅（多為廉價航空）"><span class="ap-code">DMK</span><span class="ap-city"><b>曼谷</b><small>泰國</small></span><span class="ap-name">廊曼國際機場</span><span class="ap-tip"><b>周邊旅遊</b>曼谷、大城、芭達雅（多為廉價航空）</span></div>
+          <div class="ap" tabindex="0" data-q="泰國 清邁 清邁國際機場 CNX cnx 清邁、清萊、拜縣"><span class="ap-code">CNX</span><span class="ap-city"><b>清邁</b><small>泰國</small></span><span class="ap-name">清邁國際機場</span><span class="ap-tip"><b>周邊旅遊</b>清邁、清萊、拜縣</span></div>
+          <div class="ap" tabindex="0" data-q="泰國 普吉島 普吉國際機場 HKT hkt 普吉島、皮皮島、攀牙灣、喀比"><span class="ap-code">HKT</span><span class="ap-city"><b>普吉島</b><small>泰國</small></span><span class="ap-name">普吉國際機場</span><span class="ap-tip"><b>周邊旅遊</b>普吉島、皮皮島、攀牙灣、喀比</span></div>
+          <div class="ap" tabindex="0" data-q="越南 河內 內排國際機場 HAN han 河內、下龍灣、寧平、沙壩"><span class="ap-code">HAN</span><span class="ap-city"><b>河內</b><small>越南</small></span><span class="ap-name">內排國際機場</span><span class="ap-tip"><b>周邊旅遊</b>河內、下龍灣、寧平、沙壩</span></div>
+          <div class="ap" tabindex="0" data-q="越南 胡志明市 新山一國際機場 SGN sgn 胡志明市、湄公河三角洲、頭頓、美奈"><span class="ap-code">SGN</span><span class="ap-city"><b>胡志明市</b><small>越南</small></span><span class="ap-name">新山一國際機場</span><span class="ap-tip"><b>周邊旅遊</b>胡志明市、湄公河三角洲、頭頓、美奈</span></div>
+          <div class="ap" tabindex="0" data-q="越南 峴港 峴港國際機場 DAD dad 峴港、會安、順化、巴拿山"><span class="ap-code">DAD</span><span class="ap-city"><b>峴港</b><small>越南</small></span><span class="ap-name">峴港國際機場</span><span class="ap-tip"><b>周邊旅遊</b>峴港、會安、順化、巴拿山</span></div>
+          <div class="ap" tabindex="0" data-q="越南 富國島 富國國際機場 PQC pqc 富國島"><span class="ap-code">PQC</span><span class="ap-city"><b>富國島</b><small>越南</small></span><span class="ap-name">富國國際機場</span><span class="ap-tip"><b>周邊旅遊</b>富國島</span></div>
+          <div class="ap" tabindex="0" data-q="越南 芽莊 金蘭國際機場 CXR cxr 芽莊、金蘭灣、大叻（車程約 3 小時）"><span class="ap-code">CXR</span><span class="ap-city"><b>芽莊</b><small>越南</small></span><span class="ap-name">金蘭國際機場</span><span class="ap-tip"><b>周邊旅遊</b>芽莊、金蘭灣、大叻（車程約 3 小時）</span></div>
+          <div class="ap" tabindex="0" data-q="新加坡 新加坡 樟宜國際機場 SIN sin 新加坡、聖淘沙；民丹島（渡輪）"><span class="ap-code">SIN</span><span class="ap-city"><b>新加坡</b><small>新加坡</small></span><span class="ap-name">樟宜國際機場</span><span class="ap-tip"><b>周邊旅遊</b>新加坡、聖淘沙；民丹島（渡輪）</span></div>
+          <div class="ap" tabindex="0" data-q="馬來西亞 吉隆坡 吉隆坡國際機場 KUL kul 吉隆坡、雲頂高原、麻六甲、布城"><span class="ap-code">KUL</span><span class="ap-city"><b>吉隆坡</b><small>馬來西亞</small></span><span class="ap-name">吉隆坡國際機場</span><span class="ap-tip"><b>周邊旅遊</b>吉隆坡、雲頂高原、麻六甲、布城</span></div>
+          <div class="ap" tabindex="0" data-q="馬來西亞 檳城 檳城國際機場 PEN pen 檳城、喬治市、怡保"><span class="ap-code">PEN</span><span class="ap-city"><b>檳城</b><small>馬來西亞</small></span><span class="ap-name">檳城國際機場</span><span class="ap-tip"><b>周邊旅遊</b>檳城、喬治市、怡保</span></div>
+          <div class="ap" tabindex="0" data-q="馬來西亞 亞庇（沙巴） 亞庇國際機場 BKI bki 亞庇、神山國家公園、沙巴各離島"><span class="ap-code">BKI</span><span class="ap-city"><b>亞庇（沙巴）</b><small>馬來西亞</small></span><span class="ap-name">亞庇國際機場</span><span class="ap-tip"><b>周邊旅遊</b>亞庇、神山國家公園、沙巴各離島</span></div>
+          <div class="ap" tabindex="0" data-q="菲律賓 馬尼拉 尼諾伊．艾奎諾國際機場 MNL mnl 馬尼拉、大雅台、百勝灘"><span class="ap-code">MNL</span><span class="ap-city"><b>馬尼拉</b><small>菲律賓</small></span><span class="ap-name">尼諾伊．艾奎諾國際機場</span><span class="ap-tip"><b>周邊旅遊</b>馬尼拉、大雅台、百勝灘</span></div>
+          <div class="ap" tabindex="0" data-q="菲律賓 宿霧 麥克坦－宿霧國際機場 CEB ceb 宿霧、麥克坦島；薄荷島、杜馬蓋地（渡輪）"><span class="ap-code">CEB</span><span class="ap-city"><b>宿霧</b><small>菲律賓</small></span><span class="ap-name">麥克坦－宿霧國際機場</span><span class="ap-tip"><b>周邊旅遊</b>宿霧、麥克坦島；薄荷島、杜馬蓋地（渡輪）</span></div>
+          <div class="ap" tabindex="0" data-q="菲律賓 克拉克 克拉克國際機場 CRK crk 克拉克、蘇比克灣、碧瑤"><span class="ap-code">CRK</span><span class="ap-city"><b>克拉克</b><small>菲律賓</small></span><span class="ap-name">克拉克國際機場</span><span class="ap-tip"><b>周邊旅遊</b>克拉克、蘇比克灣、碧瑤</span></div>
+          <div class="ap" tabindex="0" data-q="菲律賓 長灘島 卡利博國際機場 KLO klo 長灘島（陸路加渡船約 2 小時）"><span class="ap-code">KLO</span><span class="ap-city"><b>長灘島</b><small>菲律賓</small></span><span class="ap-name">卡利博國際機場</span><span class="ap-tip"><b>周邊旅遊</b>長灘島（陸路加渡船約 2 小時）</span></div>
+          <div class="ap" tabindex="0" data-q="印尼 雅加達 蘇卡諾－哈達國際機場 CGK cgk 雅加達、萬隆、茂物"><span class="ap-code">CGK</span><span class="ap-city"><b>雅加達</b><small>印尼</small></span><span class="ap-name">蘇卡諾－哈達國際機場</span><span class="ap-tip"><b>周邊旅遊</b>雅加達、萬隆、茂物</span></div>
+          <div class="ap" tabindex="0" data-q="印尼 峇里島 伍拉．賴國際機場 DPS dps 峇里島、烏布、金巴蘭、努沙杜瓦"><span class="ap-code">DPS</span><span class="ap-city"><b>峇里島</b><small>印尼</small></span><span class="ap-name">伍拉．賴國際機場</span><span class="ap-tip"><b>周邊旅遊</b>峇里島、烏布、金巴蘭、努沙杜瓦</span></div>
+          <div class="ap" tabindex="0" data-q="柬埔寨 金邊 德崇國際機場（2025 年啟用，取代舊金邊機場 PNH） KTI kti 金邊；暹粒吳哥窟（轉機或陸路）"><span class="ap-code">KTI</span><span class="ap-city"><b>金邊</b><small>柬埔寨</small></span><span class="ap-name">德崇國際機場（2025 年啟用，取代舊金邊機場 PNH）</span><span class="ap-tip"><b>周邊旅遊</b>金邊；暹粒吳哥窟（轉機或陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="汶萊 斯里巴加灣 汶萊國際機場 BWN bwn 斯里巴加灣、水上村落、淡布隆國家公園"><span class="ap-code">BWN</span><span class="ap-city"><b>斯里巴加灣</b><small>汶萊</small></span><span class="ap-name">汶萊國際機場</span><span class="ap-tip"><b>周邊旅遊</b>斯里巴加灣、水上村落、淡布隆國家公園</span></div>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>北美與大洋洲</h3>
         <div class="ap-grid">
-          <div class="ap" data-q="美國 洛杉磯 洛杉磯國際機場 LAX lax"><span class="ap-code">LAX</span><span class="ap-city"><b>洛杉磯</b><small>美國</small></span><span class="ap-name">洛杉磯國際機場</span></div>
-          <div class="ap" data-q="美國 舊金山 舊金山國際機場 SFO sfo"><span class="ap-code">SFO</span><span class="ap-city"><b>舊金山</b><small>美國</small></span><span class="ap-name">舊金山國際機場</span></div>
-          <div class="ap" data-q="美國 西雅圖 西雅圖－塔科馬國際機場 SEA sea"><span class="ap-code">SEA</span><span class="ap-city"><b>西雅圖</b><small>美國</small></span><span class="ap-name">西雅圖－塔科馬國際機場</span></div>
-          <div class="ap" data-q="美國 紐約 甘迺迪國際機場 JFK jfk"><span class="ap-code">JFK</span><span class="ap-city"><b>紐約</b><small>美國</small></span><span class="ap-name">甘迺迪國際機場</span></div>
-          <div class="ap" data-q="美國 芝加哥 奧黑爾國際機場 ORD ord"><span class="ap-code">ORD</span><span class="ap-city"><b>芝加哥</b><small>美國</small></span><span class="ap-name">奧黑爾國際機場</span></div>
-          <div class="ap" data-q="美國 休士頓 喬治．布希洲際機場 IAH iah"><span class="ap-code">IAH</span><span class="ap-city"><b>休士頓</b><small>美國</small></span><span class="ap-name">喬治．布希洲際機場</span></div>
-          <div class="ap" data-q="美國 鳳凰城 鳳凰城天港國際機場 PHX phx"><span class="ap-code">PHX</span><span class="ap-city"><b>鳳凰城</b><small>美國</small></span><span class="ap-name">鳳凰城天港國際機場</span></div>
-          <div class="ap" data-q="美國 達拉斯 達拉斯－沃斯堡國際機場 DFW dfw"><span class="ap-code">DFW</span><span class="ap-city"><b>達拉斯</b><small>美國</small></span><span class="ap-name">達拉斯－沃斯堡國際機場</span></div>
-          <div class="ap" data-q="美國 關島 關島國際機場 GUM gum"><span class="ap-code">GUM</span><span class="ap-city"><b>關島</b><small>美國</small></span><span class="ap-name">關島國際機場</span></div>
-          <div class="ap" data-q="美國 夏威夷 檀香山國際機場 HNL hnl"><span class="ap-code">HNL</span><span class="ap-city"><b>夏威夷</b><small>美國</small></span><span class="ap-name">檀香山國際機場</span></div>
-          <div class="ap" data-q="加拿大 溫哥華 溫哥華國際機場 YVR yvr"><span class="ap-code">YVR</span><span class="ap-city"><b>溫哥華</b><small>加拿大</small></span><span class="ap-name">溫哥華國際機場</span></div>
-          <div class="ap" data-q="加拿大 多倫多 皮爾遜國際機場 YYZ yyz"><span class="ap-code">YYZ</span><span class="ap-city"><b>多倫多</b><small>加拿大</small></span><span class="ap-name">皮爾遜國際機場</span></div>
-          <div class="ap" data-q="澳洲 雪梨 雪梨機場 SYD syd"><span class="ap-code">SYD</span><span class="ap-city"><b>雪梨</b><small>澳洲</small></span><span class="ap-name">雪梨機場</span></div>
-          <div class="ap" data-q="澳洲 墨爾本 墨爾本機場 MEL mel"><span class="ap-code">MEL</span><span class="ap-city"><b>墨爾本</b><small>澳洲</small></span><span class="ap-name">墨爾本機場</span></div>
-          <div class="ap" data-q="澳洲 布里斯本 布里斯本機場 BNE bne"><span class="ap-code">BNE</span><span class="ap-city"><b>布里斯本</b><small>澳洲</small></span><span class="ap-name">布里斯本機場</span></div>
-          <div class="ap" data-q="紐西蘭 奧克蘭 奧克蘭機場 AKL akl"><span class="ap-code">AKL</span><span class="ap-city"><b>奧克蘭</b><small>紐西蘭</small></span><span class="ap-name">奧克蘭機場</span></div>
+          <div class="ap" tabindex="0" data-q="美國 洛杉磯 洛杉磯國際機場 LAX lax 洛杉磯、好萊塢、聖地牙哥、拉斯維加斯（轉機或自駕）"><span class="ap-code">LAX</span><span class="ap-city"><b>洛杉磯</b><small>美國</small></span><span class="ap-name">洛杉磯國際機場</span><span class="ap-tip"><b>周邊旅遊</b>洛杉磯、好萊塢、聖地牙哥、拉斯維加斯（轉機或自駕）</span></div>
+          <div class="ap" tabindex="0" data-q="美國 舊金山 舊金山國際機場 SFO sfo 舊金山、矽谷、納帕酒鄉、優勝美地"><span class="ap-code">SFO</span><span class="ap-city"><b>舊金山</b><small>美國</small></span><span class="ap-name">舊金山國際機場</span><span class="ap-tip"><b>周邊旅遊</b>舊金山、矽谷、納帕酒鄉、優勝美地</span></div>
+          <div class="ap" tabindex="0" data-q="美國 西雅圖 西雅圖－塔科馬國際機場 SEA sea 西雅圖、雷尼爾山、溫哥華（陸路）"><span class="ap-code">SEA</span><span class="ap-city"><b>西雅圖</b><small>美國</small></span><span class="ap-name">西雅圖－塔科馬國際機場</span><span class="ap-tip"><b>周邊旅遊</b>西雅圖、雷尼爾山、溫哥華（陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="美國 紐約 甘迺迪國際機場 JFK jfk 紐約、費城、波士頓、華盛頓（陸路）"><span class="ap-code">JFK</span><span class="ap-city"><b>紐約</b><small>美國</small></span><span class="ap-name">甘迺迪國際機場</span><span class="ap-tip"><b>周邊旅遊</b>紐約、費城、波士頓、華盛頓（陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="美國 芝加哥 奧黑爾國際機場 ORD ord 芝加哥、密爾瓦基、五大湖"><span class="ap-code">ORD</span><span class="ap-city"><b>芝加哥</b><small>美國</small></span><span class="ap-name">奧黑爾國際機場</span><span class="ap-tip"><b>周邊旅遊</b>芝加哥、密爾瓦基、五大湖</span></div>
+          <div class="ap" tabindex="0" data-q="美國 休士頓 喬治．布希洲際機場 IAH iah 休士頓、NASA 太空中心、聖安東尼奧"><span class="ap-code">IAH</span><span class="ap-city"><b>休士頓</b><small>美國</small></span><span class="ap-name">喬治．布希洲際機場</span><span class="ap-tip"><b>周邊旅遊</b>休士頓、NASA 太空中心、聖安東尼奧</span></div>
+          <div class="ap" tabindex="0" data-q="美國 鳳凰城 鳳凰城天港國際機場 PHX phx 鳳凰城、大峽谷、塞多納、羚羊峽谷"><span class="ap-code">PHX</span><span class="ap-city"><b>鳳凰城</b><small>美國</small></span><span class="ap-name">鳳凰城天港國際機場</span><span class="ap-tip"><b>周邊旅遊</b>鳳凰城、大峽谷、塞多納、羚羊峽谷</span></div>
+          <div class="ap" tabindex="0" data-q="美國 達拉斯 達拉斯－沃斯堡國際機場 DFW dfw 達拉斯、沃斯堡、奧斯汀"><span class="ap-code">DFW</span><span class="ap-city"><b>達拉斯</b><small>美國</small></span><span class="ap-name">達拉斯－沃斯堡國際機場</span><span class="ap-tip"><b>周邊旅遊</b>達拉斯、沃斯堡、奧斯汀</span></div>
+          <div class="ap" tabindex="0" data-q="美國 關島 關島國際機場 GUM gum 關島、杜夢灣、戀人岬"><span class="ap-code">GUM</span><span class="ap-city"><b>關島</b><small>美國</small></span><span class="ap-name">關島國際機場</span><span class="ap-tip"><b>周邊旅遊</b>關島、杜夢灣、戀人岬</span></div>
+          <div class="ap" tabindex="0" data-q="美國 夏威夷 檀香山國際機場 HNL hnl 檀香山、威基基、歐胡島；茂宜島、夏威夷大島（轉機）"><span class="ap-code">HNL</span><span class="ap-city"><b>夏威夷</b><small>美國</small></span><span class="ap-name">檀香山國際機場</span><span class="ap-tip"><b>周邊旅遊</b>檀香山、威基基、歐胡島；茂宜島、夏威夷大島（轉機）</span></div>
+          <div class="ap" tabindex="0" data-q="加拿大 溫哥華 溫哥華國際機場 YVR yvr 溫哥華、維多利亞、惠斯勒；洛磯山脈（轉機）"><span class="ap-code">YVR</span><span class="ap-city"><b>溫哥華</b><small>加拿大</small></span><span class="ap-name">溫哥華國際機場</span><span class="ap-tip"><b>周邊旅遊</b>溫哥華、維多利亞、惠斯勒；洛磯山脈（轉機）</span></div>
+          <div class="ap" tabindex="0" data-q="加拿大 多倫多 皮爾遜國際機場 YYZ yyz 多倫多、尼加拉瀑布、渥太華、蒙特婁"><span class="ap-code">YYZ</span><span class="ap-city"><b>多倫多</b><small>加拿大</small></span><span class="ap-name">皮爾遜國際機場</span><span class="ap-tip"><b>周邊旅遊</b>多倫多、尼加拉瀑布、渥太華、蒙特婁</span></div>
+          <div class="ap" tabindex="0" data-q="澳洲 雪梨 雪梨機場 SYD syd 雪梨、藍山、獵人谷"><span class="ap-code">SYD</span><span class="ap-city"><b>雪梨</b><small>澳洲</small></span><span class="ap-name">雪梨機場</span><span class="ap-tip"><b>周邊旅遊</b>雪梨、藍山、獵人谷</span></div>
+          <div class="ap" tabindex="0" data-q="澳洲 墨爾本 墨爾本機場 MEL mel 墨爾本、大洋路、菲利普島、亞拉河谷"><span class="ap-code">MEL</span><span class="ap-city"><b>墨爾本</b><small>澳洲</small></span><span class="ap-name">墨爾本機場</span><span class="ap-tip"><b>周邊旅遊</b>墨爾本、大洋路、菲利普島、亞拉河谷</span></div>
+          <div class="ap" tabindex="0" data-q="澳洲 布里斯本 布里斯本機場 BNE bne 布里斯本、黃金海岸、陽光海岸"><span class="ap-code">BNE</span><span class="ap-city"><b>布里斯本</b><small>澳洲</small></span><span class="ap-name">布里斯本機場</span><span class="ap-tip"><b>周邊旅遊</b>布里斯本、黃金海岸、陽光海岸</span></div>
+          <div class="ap" tabindex="0" data-q="紐西蘭 奧克蘭 奧克蘭機場 AKL akl 奧克蘭、羅托魯瓦、懷托摩螢火蟲洞；皇后鎮（轉機）"><span class="ap-code">AKL</span><span class="ap-city"><b>奧克蘭</b><small>紐西蘭</small></span><span class="ap-name">奧克蘭機場</span><span class="ap-tip"><b>周邊旅遊</b>奧克蘭、羅托魯瓦、懷托摩螢火蟲洞；皇后鎮（轉機）</span></div>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>歐洲與中東</h3>
         <div class="ap-grid">
-          <div class="ap" data-q="英國 倫敦 希斯洛機場 LHR lhr"><span class="ap-code">LHR</span><span class="ap-city"><b>倫敦</b><small>英國</small></span><span class="ap-name">希斯洛機場</span></div>
-          <div class="ap" data-q="法國 巴黎 戴高樂機場 CDG cdg"><span class="ap-code">CDG</span><span class="ap-city"><b>巴黎</b><small>法國</small></span><span class="ap-name">戴高樂機場</span></div>
-          <div class="ap" data-q="荷蘭 阿姆斯特丹 史基浦機場 AMS ams"><span class="ap-code">AMS</span><span class="ap-city"><b>阿姆斯特丹</b><small>荷蘭</small></span><span class="ap-name">史基浦機場</span></div>
-          <div class="ap" data-q="德國 法蘭克福 法蘭克福機場 FRA fra"><span class="ap-code">FRA</span><span class="ap-city"><b>法蘭克福</b><small>德國</small></span><span class="ap-name">法蘭克福機場</span></div>
-          <div class="ap" data-q="德國 慕尼黑 慕尼黑機場 MUC muc"><span class="ap-code">MUC</span><span class="ap-city"><b>慕尼黑</b><small>德國</small></span><span class="ap-name">慕尼黑機場</span></div>
-          <div class="ap" data-q="奧地利 維也納 維也納國際機場 VIE vie"><span class="ap-code">VIE</span><span class="ap-city"><b>維也納</b><small>奧地利</small></span><span class="ap-name">維也納國際機場</span></div>
-          <div class="ap" data-q="捷克 布拉格 哈維爾國際機場 PRG prg"><span class="ap-code">PRG</span><span class="ap-city"><b>布拉格</b><small>捷克</small></span><span class="ap-name">哈維爾國際機場</span></div>
-          <div class="ap" data-q="義大利 羅馬 菲烏米奇諾機場 FCO fco"><span class="ap-code">FCO</span><span class="ap-city"><b>羅馬</b><small>義大利</small></span><span class="ap-name">菲烏米奇諾機場</span></div>
-          <div class="ap" data-q="義大利 米蘭 馬爾彭薩機場 MXP mxp"><span class="ap-code">MXP</span><span class="ap-city"><b>米蘭</b><small>義大利</small></span><span class="ap-name">馬爾彭薩機場</span></div>
-          <div class="ap" data-q="阿聯 杜拜 杜拜國際機場 DXB dxb"><span class="ap-code">DXB</span><span class="ap-city"><b>杜拜</b><small>阿聯</small></span><span class="ap-name">杜拜國際機場</span></div>
-          <div class="ap" data-q="阿聯 阿布達比 阿布達比國際機場 AUH auh"><span class="ap-code">AUH</span><span class="ap-city"><b>阿布達比</b><small>阿聯</small></span><span class="ap-name">阿布達比國際機場</span></div>
-          <div class="ap" data-q="土耳其 伊斯坦堡 伊斯坦堡機場 IST ist"><span class="ap-code">IST</span><span class="ap-city"><b>伊斯坦堡</b><small>土耳其</small></span><span class="ap-name">伊斯坦堡機場</span></div>
+          <div class="ap" tabindex="0" data-q="英國 倫敦 希斯洛機場 LHR lhr 倫敦、溫莎、牛津、劍橋、科茲窩"><span class="ap-code">LHR</span><span class="ap-city"><b>倫敦</b><small>英國</small></span><span class="ap-name">希斯洛機場</span><span class="ap-tip"><b>周邊旅遊</b>倫敦、溫莎、牛津、劍橋、科茲窩</span></div>
+          <div class="ap" tabindex="0" data-q="法國 巴黎 戴高樂機場 CDG cdg 巴黎、凡爾賽、羅亞爾河古堡、諾曼第"><span class="ap-code">CDG</span><span class="ap-city"><b>巴黎</b><small>法國</small></span><span class="ap-name">戴高樂機場</span><span class="ap-tip"><b>周邊旅遊</b>巴黎、凡爾賽、羅亞爾河古堡、諾曼第</span></div>
+          <div class="ap" tabindex="0" data-q="荷蘭 阿姆斯特丹 史基浦機場 AMS ams 阿姆斯特丹、羊角村、風車村、鹿特丹"><span class="ap-code">AMS</span><span class="ap-city"><b>阿姆斯特丹</b><small>荷蘭</small></span><span class="ap-name">史基浦機場</span><span class="ap-tip"><b>周邊旅遊</b>阿姆斯特丹、羊角村、風車村、鹿特丹</span></div>
+          <div class="ap" tabindex="0" data-q="德國 法蘭克福 法蘭克福機場 FRA fra 法蘭克福、海德堡、萊茵河谷、羅騰堡"><span class="ap-code">FRA</span><span class="ap-city"><b>法蘭克福</b><small>德國</small></span><span class="ap-name">法蘭克福機場</span><span class="ap-tip"><b>周邊旅遊</b>法蘭克福、海德堡、萊茵河谷、羅騰堡</span></div>
+          <div class="ap" tabindex="0" data-q="德國 慕尼黑 慕尼黑機場 MUC muc 慕尼黑、新天鵝堡、薩爾斯堡（陸路）"><span class="ap-code">MUC</span><span class="ap-city"><b>慕尼黑</b><small>德國</small></span><span class="ap-name">慕尼黑機場</span><span class="ap-tip"><b>周邊旅遊</b>慕尼黑、新天鵝堡、薩爾斯堡（陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="奧地利 維也納 維也納國際機場 VIE vie 維也納、哈修塔特、布達佩斯（陸路）"><span class="ap-code">VIE</span><span class="ap-city"><b>維也納</b><small>奧地利</small></span><span class="ap-name">維也納國際機場</span><span class="ap-tip"><b>周邊旅遊</b>維也納、哈修塔特、布達佩斯（陸路）</span></div>
+          <div class="ap" tabindex="0" data-q="捷克 布拉格 哈維爾國際機場 PRG prg 布拉格、庫倫洛夫、卡羅維瓦利"><span class="ap-code">PRG</span><span class="ap-city"><b>布拉格</b><small>捷克</small></span><span class="ap-name">哈維爾國際機場</span><span class="ap-tip"><b>周邊旅遊</b>布拉格、庫倫洛夫、卡羅維瓦利</span></div>
+          <div class="ap" tabindex="0" data-q="義大利 羅馬 菲烏米奇諾機場 FCO fco 羅馬、梵蒂岡、拿坡里、龐貝"><span class="ap-code">FCO</span><span class="ap-city"><b>羅馬</b><small>義大利</small></span><span class="ap-name">菲烏米奇諾機場</span><span class="ap-tip"><b>周邊旅遊</b>羅馬、梵蒂岡、拿坡里、龐貝</span></div>
+          <div class="ap" tabindex="0" data-q="義大利 米蘭 馬爾彭薩機場 MXP mxp 米蘭、科摩湖、維洛那、威尼斯（火車）"><span class="ap-code">MXP</span><span class="ap-city"><b>米蘭</b><small>義大利</small></span><span class="ap-name">馬爾彭薩機場</span><span class="ap-tip"><b>周邊旅遊</b>米蘭、科摩湖、維洛那、威尼斯（火車）</span></div>
+          <div class="ap" tabindex="0" data-q="阿聯 杜拜 杜拜國際機場 DXB dxb 杜拜、沙迦、阿布達比（車程約 1.5 小時）"><span class="ap-code">DXB</span><span class="ap-city"><b>杜拜</b><small>阿聯</small></span><span class="ap-name">杜拜國際機場</span><span class="ap-tip"><b>周邊旅遊</b>杜拜、沙迦、阿布達比（車程約 1.5 小時）</span></div>
+          <div class="ap" tabindex="0" data-q="阿聯 阿布達比 阿布達比國際機場 AUH auh 阿布達比、杜拜（車程約 1.5 小時）"><span class="ap-code">AUH</span><span class="ap-city"><b>阿布達比</b><small>阿聯</small></span><span class="ap-name">阿布達比國際機場</span><span class="ap-tip"><b>周邊旅遊</b>阿布達比、杜拜（車程約 1.5 小時）</span></div>
+          <div class="ap" tabindex="0" data-q="土耳其 伊斯坦堡 伊斯坦堡機場 IST ist 伊斯坦堡、番紅花城；卡帕多奇亞（轉機）"><span class="ap-code">IST</span><span class="ap-city"><b>伊斯坦堡</b><small>土耳其</small></span><span class="ap-name">伊斯坦堡機場</span><span class="ap-tip"><b>周邊旅遊</b>伊斯坦堡、番紅花城；卡帕多奇亞（轉機）</span></div>
         </div>
       </div>
     </div>
@@ -582,7 +536,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
     <div class="fl-empty" id="flEmpty"><p>找不到相關的航空公司或機場，直接問小幫手吧！</p><a class="btn-line" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問小幫手</a></div>
 
     <p class="disclaimer">※ 航線、航點與航空公司營運狀況會隨時調整，部分航點為季節性或包機航班。資訊僅供參考，請依各航空公司最新公告為準，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
-    <p class="fl-credit">航空公司標誌來源：<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>（公有領域）。各標誌為該航空公司之商標，本站僅用於辨識並連結至其官方網站；未提供標誌者以航空代碼顯示。</p>
+    <p class="fl-credit">航空公司標誌來源：<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>（公有領域）。各標誌為該航空公司之商標，本站僅用於辨識並連結至其官方網站；未提供標誌者以航空代碼顯示；真航空標誌由本公司提供。</p>
   </div>
 </section>
 
@@ -638,6 +592,12 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
     grps.forEach(g => g.hidden = !g.querySelector(".al:not([hidden]),.ap:not([hidden])"));
     document.querySelectorAll(".fl-sec").forEach(s => s.hidden = !s.querySelector("[data-grp]:not([hidden])"));
     document.getElementById("flEmpty").style.display = n ? "none" : "block";
+  });
+  /* 手機：點一下機場顯示周邊旅遊城市，再點一下或點別處關閉 */
+  document.addEventListener("click", e => {
+    const ap = e.target.closest(".ap");
+    document.querySelectorAll(".ap.open").forEach(x => { if(x !== ap) x.classList.remove("open"); });
+    if(ap){ ap.classList.toggle("open"); if(!ap.classList.contains("open")) ap.blur(); }
   });
 })();
 </script>
