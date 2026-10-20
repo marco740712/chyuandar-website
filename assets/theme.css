@@ -207,7 +207,10 @@ html .line-float{font-size:15px}
   html .sec-sub{font-size:17px}
   html .faq summary{font-size:17px}
 }
-@media (min-width:981px) and (max-width:1180px){ html .menu{gap:22px;letter-spacing:.06em} }
+/* 選單 8 個項目：中等寬度螢幕縮小間距，文字不折行 */
+html .menu>a,html .menu-drop>a{white-space:nowrap}
+@media (min-width:981px) and (max-width:1240px){ html .menu{gap:18px;letter-spacing:.04em} }
+@media (min-width:981px) and (max-width:1100px){ html .menu{gap:13px;letter-spacing:0;font-size:15px} html .cta{padding-left:14px;padding-right:14px} }
 
 /* 簽證等資訊的參考聲明 */
 html .disclaimer{margin-top:14px;padding:10px 14px;background:#F6F8FB;border-left:3px solid #9AA6B5;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;line-height:1.7;color:#5C6470}
