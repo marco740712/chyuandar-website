@@ -228,11 +228,27 @@ section{padding:100px 0;position:relative}
 .region-card h4{font-family:"Noto Serif TC",serif;font-weight:600;font-size:22px;color:#fff;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.35)}
 .region-arrow{font-family:"Inter","Noto Serif TC",sans-serif;font-size:13px;letter-spacing:.1em;color:#F6E7C1}
 
-/* 主題旅遊：沿用地區照片卡，上方一行文字說明 */
-.theme-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin:40px 0 16px;padding-top:28px;border-top:1px solid var(--gray-100)}
-.theme-label{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:600;letter-spacing:.12em;color:var(--gold-500)}
-.theme-head p{font-family:"Inter","Noto Serif TC",sans-serif;font-size:15.5px;line-height:1.7;color:#5C6470}
-@media (max-width:600px){.theme-head{margin:28px 0 12px;padding-top:20px;gap:6px}.theme-label{font-size:20px}.theme-head p{font-size:14.5px}}
+/* 主題旅遊：高單價精品系列，深藍底＋金色細框 */
+.premium{position:relative;margin-top:44px;padding:44px 40px 40px;background:radial-gradient(120% 140% at 50% 0%,#1A3D6E 0%,#0F2A4F 45%,#0A1A33 100%);color:#fff;overflow:hidden}
+.premium::before{content:"";position:absolute;inset:10px;border:1px solid rgba(201,169,97,.45);pointer-events:none}
+.theme-head{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;margin-bottom:28px}
+.theme-eyebrow{display:flex;align-items:center;gap:14px;font-family:"Inter",sans-serif;font-size:11.5px;letter-spacing:.45em;color:var(--gold-500)}
+.theme-eyebrow::before,.theme-eyebrow::after{content:"";width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-500))}
+.theme-eyebrow::after{transform:scaleX(-1)}
+.theme-label{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:600;letter-spacing:.3em;color:var(--gold-500);background:linear-gradient(180deg,#F6E7C1 0%,#C9A961 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.theme-head p{font-family:"Inter","Noto Serif TC",sans-serif;font-size:15.5px;line-height:1.8;color:rgba(246,231,193,.82);max-width:620px}
+.theme-grid{position:relative;gap:18px}
+.region-card.lux{aspect-ratio:4/5;padding:22px;align-items:center;text-align:center;background:#0A1A33}
+.region-card.lux::after{background:linear-gradient(180deg,rgba(10,26,51,0) 30%,rgba(10,26,51,.72) 58%,rgba(8,20,40,.96) 100%)}
+.region-card.lux::before{content:"";position:absolute;inset:8px;border:1px solid rgba(230,207,149,.55);z-index:2;pointer-events:none;transition:.4s}
+.region-card.lux:hover::before{inset:12px;border-color:#E6CF95}
+.region-card.lux .region-tag{color:var(--gold-300);letter-spacing:.3em}
+.region-card.lux h4{font-size:24px;letter-spacing:.14em;margin:4px 0 6px}
+.region-card.lux h4::after{content:"";display:block;width:28px;height:1px;margin:10px auto 0;background:var(--gold-500)}
+.region-card.lux .region-arrow{color:rgba(246,231,193,.9)}
+.region-card.lux:hover{box-shadow:0 26px 50px -20px rgba(201,169,97,.45)}
+@media (max-width:980px){.premium{padding:36px 22px 26px}.theme-grid{grid-template-columns:repeat(2,1fr)}.region-card.lux{aspect-ratio:4/3}}
+@media (max-width:600px){.premium{margin-top:30px;padding:32px 16px 18px}.premium::before{inset:6px}.theme-head{margin-bottom:20px}.theme-label{font-size:20px}.theme-head p{font-size:14.5px}.theme-grid{grid-template-columns:1fr 1fr;gap:10px}.region-card.lux{aspect-ratio:3/4;padding:14px}.region-card.lux::before{inset:5px}.region-card.lux h4{font-size:18px;letter-spacing:.08em}.region-card.lux .region-tag{font-size:9px;letter-spacing:.15em}}
 
 /* ── CONTACT ── */
 .contact{
@@ -720,35 +736,38 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
       </a>
     </div>
 
+    <div class="premium">
     <div class="theme-head">
+      <span class="theme-eyebrow">PREMIUM COLLECTION</span>
       <span class="theme-label">主題旅遊</span>
       <p>不只是看景點：精緻旅遊、鐵道旅行、海外打球、全包式度假村，找到最適合您的旅行方式。</p>
     </div>
     <div class="region-grid theme-grid">
-      <a class="region-card" href="https://sipincollection.com/" target="_blank" rel="noopener">
+      <a class="region-card lux" href="https://sipincollection.com/" target="_blank" rel="noopener">
         <img class="region-bg" src="assets/themes/sipin.jpg" alt="" loading="lazy">
         <span class="region-tag">SIPIN COLLECTION</span>
         <h4>精緻璽品</h4>
         <span class="region-arrow">精緻小團，質感慢旅 →</span>
       </a>
-      <a class="region-card" href="https://www.liontravel.com/category/zh-tw/railtour/outbound" target="_blank" rel="noopener">
+      <a class="region-card lux" href="https://www.liontravel.com/category/zh-tw/railtour/outbound" target="_blank" rel="noopener">
         <img class="region-bg" src="assets/themes/rail.jpg" alt="" loading="lazy">
         <span class="region-tag">RAIL JOURNEYS</span>
         <h4>國外鐵道</h4>
         <span class="region-arrow">搭火車看世界美景 →</span>
       </a>
-      <a class="region-card" href="https://travel.liontravel.com/category/zh-tw/theme/golf" target="_blank" rel="noopener">
+      <a class="region-card lux" href="https://travel.liontravel.com/category/zh-tw/theme/golf" target="_blank" rel="noopener">
         <img class="region-bg" src="assets/themes/golf.jpg" alt="" loading="lazy">
         <span class="region-tag">GOLF</span>
         <h4>海外高球</h4>
         <span class="region-arrow">球場、住宿一次安排 →</span>
       </a>
-      <a class="region-card" href="https://travel.liontravel.com/category/zh-tw/theme/clubmed" target="_blank" rel="noopener">
+      <a class="region-card lux" href="https://travel.liontravel.com/category/zh-tw/theme/clubmed" target="_blank" rel="noopener">
         <img class="region-bg" src="assets/themes/clubmed.jpg" alt="" loading="lazy">
         <span class="region-tag">CLUB MED</span>
         <h4>Club Med</h4>
         <span class="region-arrow">全包式度假村 →</span>
       </a>
+    </div>
     </div>
   </div>
 </section>
