@@ -375,7 +375,9 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
 .cal-cta{display:flex;justify-content:center;margin-top:36px}
 
 /* ── 行前指南入口 ── */
-.guide-strip{background:var(--gray-50);padding:80px 0}
+.guide-strip{background:var(--gray-50);padding:56px 0}
+.guide-strip .sec-head{margin-bottom:32px}
+.guide-strip + .contact{padding-top:64px}
 .guide-links{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .guide-link{display:flex;flex-direction:column;gap:6px;padding:26px 24px;background:#fff;border:1px solid var(--gray-100);transition:.25s}
 .guide-link:hover{border-color:var(--gold-400);transform:translateY(-3px);box-shadow:0 16px 40px -18px rgba(10,26,51,.2)}
@@ -395,7 +397,8 @@ footer{background:var(--navy-950);color:var(--gray-200);padding:60px 0 28px;font
   .idea{padding:0 0 16px}
   .idea>*:not(.idea-img){margin-left:16px;margin-right:16px}
   .season h3{font-size:21px}
-  .guide-strip{padding:56px 0}
+  .guide-strip{padding:40px 0}
+  .guide-strip + .contact{padding-top:48px}
   .guide-link{padding:20px 16px}
 }
 </style>
@@ -887,7 +890,7 @@ function renderBranches(){
         ${b.傳真?`<li><span class="k">傳真</span><span class="v">${b.傳真}</span></li>`:''}
         <li><span class="k">時間</span><span class="v">${b.營業時間||''}</span></li>
               </ul>
-      ${b["Google Map 連結"]?`<a class="branch-map" href="${b["Google Map 連結"]}" target="_blank" rel="noopener">📍 地圖導航 ‧ ⭐ 看 Google 評價</a>`:''}
+      ${b["Google Map 連結"]?`<a class="branch-map" href="${b["Google Map 連結"]}" target="_blank" rel="noopener">📍 Google 地圖導航</a>`:''}
     </div>
   `).join('');
 }
