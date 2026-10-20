@@ -34,6 +34,12 @@
 .fl-jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .fl-jump a{padding:7px 14px;border:1px solid var(--gray-200);background:#fff;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;color:var(--navy-800)}
 .fl-jump a:hover{border-color:var(--navy-700)}
+/* 搜尋時隱藏不符合的項目（卡片本身有 display 設定，需強制） */
+[hidden]{display:none!important}
+.fl-count{margin-top:10px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;color:#3C424C}
+.fl-count b{color:var(--navy-800);font-size:17px}
+.fl-count button{margin-left:6px;padding:5px 12px;border:1px solid var(--gray-200);background:#fff;font:inherit;font-size:13.5px;color:var(--navy-800);cursor:pointer}
+.fl-count button:hover{border-color:var(--navy-700)}
 .fl-tip{display:flex;gap:12px;align-items:flex-start;margin:6px 0 10px;padding:14px 18px;background:#fff;border:1px solid var(--gray-100);border-left:3px solid var(--gold-500);font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;line-height:1.8;color:#2A2E35}
 .fl-tip b{color:var(--navy-800)}
 .fl-sec{padding-top:30px;scroll-margin-top:calc(var(--hdr,72px) + 130px)}
@@ -160,6 +166,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a href="#airports">🛫 機場代碼（106）</a>
         <a href="../guide/links/">🚆 台灣機場交通 →</a>
       </div>
+      <div class="fl-count" id="flCount" hidden></div>
     </div>
 
     <div class="fl-tip">💡 <span><b>航班號碼前 2 碼就是航空公司代碼</b>，例如 BR198 是長榮航空、JX800 是星宇航空；<b>機場代碼是 3 個英文字母</b>，例如 TPE 是桃園、NRT 是東京成田。看懂代碼，查機票、看登機證都更快！</span></div>
@@ -592,6 +599,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
 /* 航空查詢：搜尋航空公司與機場 */
 (function(){
   const q = document.getElementById("flq"), items = Array.from(document.querySelectorAll(".al,.ap")), grps = Array.from(document.querySelectorAll("[data-grp]"));
+  const cnt = document.getElementById("flCount"), tools = document.querySelector(".fl-tools"); let t;
   q.addEventListener("input", () => {
     const k = q.value.trim().toLowerCase();
     let n = 0;
@@ -599,7 +607,19 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
     grps.forEach(g => g.hidden = !g.querySelector(".al:not([hidden]),.ap:not([hidden])"));
     document.querySelectorAll(".fl-sec").forEach(s => s.hidden = !s.querySelector("[data-grp]:not([hidden])"));
     document.getElementById("flEmpty").style.display = n ? "none" : "block";
+    /* 顯示找到幾筆，並把畫面捲到結果的位置 */
+    const al = document.querySelectorAll(".al:not([hidden])").length, ap = document.querySelectorAll(".ap:not([hidden])").length;
+    document.querySelector(".fl-jump").hidden = !!k;
+    document.querySelector(".fl-tip").hidden = !!k;
+    cnt.hidden = !k;
+    cnt.innerHTML = n ? `找到 <b>${n}</b> 筆：航空公司 ${al}、機場 ${ap}　<button type="button" id="flClear">清除搜尋 ✕</button>` : `找不到「${k.replace(/[<>&"]/g,"")}」　<button type="button" id="flClear">清除搜尋 ✕</button>`;
+    clearTimeout(t);
+    if(k) t = setTimeout(() => {
+      const top = tools.parentElement.getBoundingClientRect().top + scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--hdr")) || 72);
+      if(scrollY < top - 4) window.scrollTo({top, behavior:"smooth"});
+    }, 350);
   });
+  cnt.addEventListener("click", e => { if(e.target.id === "flClear"){ q.value = ""; q.dispatchEvent(new Event("input")); q.focus(); } });
   /* 浮窗照片：第一次顯示時才載入，避免一次下載全部照片 */
   const loadImg = ap => { const im = ap.querySelector("img[data-src]"); if(im){ im.src = im.dataset.src; im.removeAttribute("data-src"); } };
   document.querySelectorAll(".ap").forEach(ap => { ap.addEventListener("mouseenter", () => loadImg(ap)); ap.addEventListener("focus", () => loadImg(ap)); });
