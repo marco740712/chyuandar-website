@@ -15,13 +15,14 @@
     var open = header.classList.toggle('nav-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  /* 手機選單裡的「旅遊指南」：點標題只展開／收合子選單，子選單第一項為總覽 */
+  /* 手機選單裡有下拉的項目（旅遊指南、航空查詢）：點標題只展開／收合子選單，子選單第一項為總覽 */
   header.querySelectorAll('.menu-drop').forEach(function(drop){
     var top = drop.querySelector(':scope > a'), panel = drop.querySelector('.menu-drop-panel');
     if(!top || !panel) return;
     var all = document.createElement('a');
     all.href = top.getAttribute('href'); all.className = 'drop-all';
-    all.innerHTML = '旅遊指南總覽<small>所有出國實用資訊</small>';
+    var label = top.childNodes[0].textContent.trim();
+    all.innerHTML = label + '總覽<small>' + (drop.dataset.allSub || '所有出國實用資訊') + '</small>';
     panel.insertBefore(all, panel.firstChild);
     top.addEventListener('click', function(e){
       if(!header.classList.contains('nav-open')) return;
