@@ -118,10 +118,10 @@
 @media (max-width:600px){.store-tip-box{padding:26px 20px 20px}.store-tip h3{font-size:19px}}
 @media print{.store-tip{display:none!important}}
 
-/* 頁尾：立案認證與付款方式標誌 */
-.trust{padding:20px 0 22px}
-.trust-grp{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-.trust a,.trust .tb{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:5px 9px;background:#fff;border-radius:6px;transition:.2s}
-.trust img{display:block;height:30px;width:auto}
-.trust a:hover{box-shadow:0 0 0 2px #E6CF95;transform:translateY(-1px)}
-@media (max-width:600px){.trust a,.trust .tb{height:36px;padding:4px 7px}.trust img{height:26px}}
+/* 頁尾：立案認證與付款方式標誌（白色單色版，融入深藍頁尾） */
+.trust{padding:22px 0 24px}
+.trust-grp{display:flex;align-items:center;flex-wrap:wrap;gap:16px 30px}
+.trust a,.trust .tb{display:inline-flex;align-items:center;opacity:.72;transition:opacity .2s}
+.trust a:hover{opacity:1}
+.trust img{display:block;height:28px;width:auto}
+@media (max-width:600px){.trust-grp{gap:14px 22px}.trust img{height:22px}}
