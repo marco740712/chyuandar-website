@@ -36,6 +36,23 @@
 .fl-jump a:hover{border-color:var(--navy-700)}
 /* 搜尋時隱藏不符合的項目（卡片本身有 display 設定，需強制） */
 [hidden]{display:none!important}
+/* 航空聯盟：卡片標籤與篩選按鈕 */
+.al-tags{display:flex;align-items:center;gap:5px;flex:0 0 auto;margin-left:auto}
+.al-name{flex-wrap:wrap;row-gap:6px}
+.al-name b{white-space:nowrap}
+.ally{font-family:"Inter","Noto Serif TC",sans-serif;font-size:11px;font-weight:600;letter-spacing:.02em;padding:2px 5px;border-radius:4px;white-space:nowrap;border:1px solid}
+.ally-star{color:#2A2E35;background:#F1F2F4;border-color:#C9CDD3}
+.ally-skyteam{color:#0B5FA5;background:#EAF3FB;border-color:#A9CBEA}
+.ally-oneworld{color:#5A2D82;background:#F3EEF8;border-color:#CDB8E0}
+.fl-allies{display:flex;gap:8px;margin-left:auto}
+.fl-ally{padding:7px 14px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:1px solid;border-radius:0;transition:.2s}
+.fl-ally:hover{filter:brightness(.97)}
+.fl-ally.ally-star[aria-pressed="true"]{background:#2A2E35;color:#fff;border-color:#2A2E35}
+.fl-ally.ally-skyteam[aria-pressed="true"]{background:#0B5FA5;color:#fff;border-color:#0B5FA5}
+.fl-ally.ally-oneworld[aria-pressed="true"]{background:#5A2D82;color:#fff;border-color:#5A2D82}
+.ally-note{margin-top:18px;padding:12px 16px;background:#fff;border:1px solid var(--gray-100);border-left:3px solid var(--navy-700);font-family:"Inter","Noto Serif TC",sans-serif;font-size:14.5px;line-height:1.8;color:#3C424C}
+.ally-note b{color:var(--navy-800)}
+@media (max-width:600px){.fl-tools .fl-jump{flex-wrap:wrap;overflow:visible}.fl-jump>a[href^="../guide/"]{display:none}.fl-jump>a{flex:1 1 0;text-align:center}.fl-allies{margin-left:0;gap:6px;width:100%}.fl-allies .fl-ally{flex:1 1 0}.fl-ally{flex:0 0 auto;padding:6px 11px;font-size:13.5px}.al-tags{gap:4px}.ally{font-size:11px;padding:1px 6px}}
 .fl-count{margin-top:10px;font-family:"Inter","Noto Serif TC",sans-serif;font-size:15px;color:#3C424C}
 .fl-count b{color:var(--navy-800);font-size:17px}
 .fl-count button{margin-left:6px;padding:5px 12px;border:1px solid var(--gray-200);background:#fff;font:inherit;font-size:13.5px;color:var(--navy-800);cursor:pointer}
@@ -165,6 +182,11 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
         <a href="#airlines">✈️ 航空公司（53）</a>
         <a href="#airports">🛫 機場代碼（106）</a>
         <a href="../guide/links/">🚆 台灣機場交通 →</a>
+        <span class="fl-allies" role="group" aria-label="依航空聯盟篩選">
+          <button type="button" class="fl-ally ally-star" data-ally="star" aria-pressed="false">星空聯盟</button>
+          <button type="button" class="fl-ally ally-skyteam" data-ally="skyteam" aria-pressed="false">天合聯盟</button>
+          <button type="button" class="fl-ally ally-oneworld" data-ally="oneworld" aria-pressed="false">寰宇一家</button>
+        </span>
       </div>
       <div class="fl-count" id="flCount" hidden></div>
     </div>
@@ -176,241 +198,243 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
       <div class="grp" data-grp>
         <h3>台灣國籍航空公司</h3>
         <div class="al-grid">
-        <a class="al" href="https://www.china-airlines.com/" target="_blank" rel="noopener" data-q="中華航空 CI ci">
+        <a class="al" data-ally="skyteam" href="https://www.china-airlines.com/" target="_blank" rel="noopener" data-q="中華航空 CI ci 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/CI.png" alt="中華航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>中華航空</b><span class="al-code">CI</span></span>
+          <span class="al-name"><b>中華航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">CI</span></span></span>
         </a>
-        <a class="al" href="https://www.evaair.com/" target="_blank" rel="noopener" data-q="長榮航空 BR br">
+        <a class="al" data-ally="star" href="https://www.evaair.com/" target="_blank" rel="noopener" data-q="長榮航空 BR br 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/BR.png" alt="長榮航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>長榮航空</b><span class="al-code">BR</span></span>
+          <span class="al-name"><b>長榮航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">BR</span></span></span>
         </a>
         <a class="al" href="https://www.starlux-airlines.com/" target="_blank" rel="noopener" data-q="星宇航空 JX jx">
           <span class="al-logo"><img src="../assets/airlines/JX.png" alt="星宇航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>星宇航空</b><span class="al-code">JX</span></span>
+          <span class="al-name"><b>星宇航空</b><span class="al-tags"><span class="al-code">JX</span></span></span>
         </a>
         <a class="al" href="https://www.tigerairtw.com/" target="_blank" rel="noopener" data-q="台灣虎航 IT it">
           <span class="al-logo"><img src="../assets/airlines/IT.png" alt="台灣虎航標誌" loading="lazy"></span>
-          <span class="al-name"><b>台灣虎航</b><span class="al-code">IT</span></span>
+          <span class="al-name"><b>台灣虎航</b><span class="al-tags"><span class="al-code">IT</span></span></span>
         </a>
         <a class="al" href="https://www.uniair.com.tw/" target="_blank" rel="noopener" data-q="立榮航空 B7 b7">
           <span class="al-logo"><img src="../assets/airlines/B7.png" alt="立榮航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>立榮航空</b><span class="al-code">B7</span></span>
+          <span class="al-name"><b>立榮航空</b><span class="al-tags"><span class="al-code">B7</span></span></span>
         </a>
         <a class="al" href="https://www.mandarin-airlines.com/" target="_blank" rel="noopener" data-q="華信航空 AE ae">
           <span class="al-logo"><img src="../assets/airlines/AE.png" alt="華信航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>華信航空</b><span class="al-code">AE</span></span>
+          <span class="al-name"><b>華信航空</b><span class="al-tags"><span class="al-code">AE</span></span></span>
         </a>
         <a class="al" href="https://www.dailyair.com.tw/" target="_blank" rel="noopener" data-q="德安航空 DA da">
           <span class="al-logo"><img src="../assets/airlines/DA.png" alt="德安航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>德安航空</b><span class="al-code">DA</span></span>
+          <span class="al-name"><b>德安航空</b><span class="al-tags"><span class="al-code">DA</span></span></span>
         </a>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>日本與韓國</h3>
         <div class="al-grid">
-        <a class="al" href="https://www.jal.co.jp/" target="_blank" rel="noopener" data-q="日本航空 JL jl">
+        <a class="al" data-ally="oneworld" href="https://www.jal.co.jp/" target="_blank" rel="noopener" data-q="日本航空 JL jl 寰宇一家">
           <span class="al-logo"><img src="../assets/airlines/JL.png" alt="日本航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>日本航空</b><span class="al-code">JL</span></span>
+          <span class="al-name"><b>日本航空</b><span class="al-tags"><span class="ally ally-oneworld">寰宇一家</span><span class="al-code">JL</span></span></span>
         </a>
-        <a class="al" href="https://www.ana.co.jp/" target="_blank" rel="noopener" data-q="全日空 NH nh">
+        <a class="al" data-ally="star" href="https://www.ana.co.jp/" target="_blank" rel="noopener" data-q="全日空 NH nh 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/NH.png" alt="全日空標誌" loading="lazy"></span>
-          <span class="al-name"><b>全日空</b><span class="al-code">NH</span></span>
+          <span class="al-name"><b>全日空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">NH</span></span></span>
         </a>
         <a class="al" href="https://www.flypeach.com/" target="_blank" rel="noopener" data-q="樂桃航空 MM mm">
           <span class="al-logo"><img src="../assets/airlines/MM.png" alt="樂桃航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>樂桃航空</b><span class="al-code">MM</span></span>
+          <span class="al-name"><b>樂桃航空</b><span class="al-tags"><span class="al-code">MM</span></span></span>
         </a>
         <a class="al" href="https://www.jetstar.com/jp/ja/home" target="_blank" rel="noopener" data-q="捷星日本 GK gk">
           <span class="al-logo"><img src="../assets/airlines/GK.png" alt="捷星日本標誌" loading="lazy"></span>
-          <span class="al-name"><b>捷星日本</b><span class="al-code">GK</span></span>
+          <span class="al-name"><b>捷星日本</b><span class="al-tags"><span class="al-code">GK</span></span></span>
         </a>
-        <a class="al" href="https://www.koreanair.com/" target="_blank" rel="noopener" data-q="大韓航空 KE ke">
+        <a class="al" data-ally="skyteam" href="https://www.koreanair.com/" target="_blank" rel="noopener" data-q="大韓航空 KE ke 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/KE.png" alt="大韓航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>大韓航空</b><span class="al-code">KE</span></span>
+          <span class="al-name"><b>大韓航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">KE</span></span></span>
         </a>
-        <a class="al" href="https://flyasiana.com/" target="_blank" rel="noopener" data-q="韓亞航空 OZ oz">
+        <a class="al" data-ally="star" href="https://flyasiana.com/" target="_blank" rel="noopener" data-q="韓亞航空 OZ oz 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/OZ.png" alt="韓亞航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>韓亞航空</b><span class="al-code">OZ</span></span>
+          <span class="al-name"><b>韓亞航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">OZ</span></span></span>
         </a>
         <a class="al" href="https://www.twayair.com/" target="_blank" rel="noopener" data-q="德威航空 TW tw">
           <span class="al-logo"><img src="../assets/airlines/TW.png" alt="德威航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>德威航空</b><span class="al-code">TW</span></span>
+          <span class="al-name"><b>德威航空</b><span class="al-tags"><span class="al-code">TW</span></span></span>
         </a>
         <a class="al" href="https://www.jejuair.net/" target="_blank" rel="noopener" data-q="濟州航空 7C 7c">
           <span class="al-logo"><img src="../assets/airlines/7C.png" alt="濟州航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>濟州航空</b><span class="al-code">7C</span></span>
+          <span class="al-name"><b>濟州航空</b><span class="al-tags"><span class="al-code">7C</span></span></span>
         </a>
         <a class="al" href="https://www.jinair.com/" target="_blank" rel="noopener" data-q="真航空 LJ lj">
           <span class="al-logo"><img src="../assets/airlines/LJ.png" alt="真航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>真航空</b><span class="al-code">LJ</span></span>
+          <span class="al-name"><b>真航空</b><span class="al-tags"><span class="al-code">LJ</span></span></span>
         </a>
         <a class="al" href="https://www.airbusan.com/" target="_blank" rel="noopener" data-q="釜山航空 BX bx">
           <span class="al-logo"><img src="../assets/airlines/BX.png" alt="釜山航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>釜山航空</b><span class="al-code">BX</span></span>
+          <span class="al-name"><b>釜山航空</b><span class="al-tags"><span class="al-code">BX</span></span></span>
         </a>
         <a class="al" href="https://flyairseoul.com/" target="_blank" rel="noopener" data-q="首爾航空 RS rs">
           <span class="al-logo"><img src="../assets/airlines/RS.png" alt="首爾航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>首爾航空</b><span class="al-code">RS</span></span>
+          <span class="al-name"><b>首爾航空</b><span class="al-tags"><span class="al-code">RS</span></span></span>
         </a>
         <a class="al" href="https://www.eastarjet.com/" target="_blank" rel="noopener" data-q="易斯達航空 ZE ze">
           <span class="al-logo"><img src="../assets/airlines/ZE.png" alt="易斯達航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>易斯達航空</b><span class="al-code">ZE</span></span>
+          <span class="al-name"><b>易斯達航空</b><span class="al-tags"><span class="al-code">ZE</span></span></span>
         </a>
         <a class="al" href="https://www.aerok.com/" target="_blank" rel="noopener" data-q="可可航空 RF rf">
           <span class="al-logo"><img src="../assets/airlines/RF.png" alt="可可航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>可可航空</b><span class="al-code">RF</span></span>
+          <span class="al-name"><b>可可航空</b><span class="al-tags"><span class="al-code">RF</span></span></span>
         </a>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>東南亞</h3>
         <div class="al-grid">
-        <a class="al" href="https://www.singaporeair.com/" target="_blank" rel="noopener" data-q="新加坡航空 SQ sq">
+        <a class="al" data-ally="star" href="https://www.singaporeair.com/" target="_blank" rel="noopener" data-q="新加坡航空 SQ sq 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/SQ.png" alt="新加坡航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>新加坡航空</b><span class="al-code">SQ</span></span>
+          <span class="al-name"><b>新加坡航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">SQ</span></span></span>
         </a>
         <a class="al" href="https://www.flyscoot.com/" target="_blank" rel="noopener" data-q="酷航 TR tr">
           <span class="al-logo"><img src="../assets/airlines/TR.png" alt="酷航標誌" loading="lazy"></span>
-          <span class="al-name"><b>酷航</b><span class="al-code">TR</span></span>
+          <span class="al-name"><b>酷航</b><span class="al-tags"><span class="al-code">TR</span></span></span>
         </a>
-        <a class="al" href="https://www.malaysiaairlines.com/" target="_blank" rel="noopener" data-q="馬來西亞航空 MH mh">
+        <a class="al" data-ally="oneworld" href="https://www.malaysiaairlines.com/" target="_blank" rel="noopener" data-q="馬來西亞航空 MH mh 寰宇一家">
           <span class="al-logo"><img src="../assets/airlines/MH.png" alt="馬來西亞航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>馬來西亞航空</b><span class="al-code">MH</span></span>
+          <span class="al-name"><b>馬來西亞航空</b><span class="al-tags"><span class="ally ally-oneworld">寰宇一家</span><span class="al-code">MH</span></span></span>
         </a>
         <a class="al" href="https://www.airasia.com/" target="_blank" rel="noopener" data-q="亞洲航空 AK ak">
           <span class="al-logo"><img src="../assets/airlines/AK.png" alt="亞洲航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>亞洲航空</b><span class="al-code">AK</span></span>
+          <span class="al-name"><b>亞洲航空</b><span class="al-tags"><span class="al-code">AK</span></span></span>
         </a>
         <a class="al" href="https://www.batikair.com.my/" target="_blank" rel="noopener" data-q="峇迪航空 OD od 巴迪 batik">
           <span class="al-logo"><img src="../assets/airlines/OD.png" alt="峇迪航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>峇迪航空</b><span class="al-code">OD</span></span>
+          <span class="al-name"><b>峇迪航空</b><span class="al-tags"><span class="al-code">OD</span></span></span>
         </a>
-        <a class="al" href="https://www.thaiairways.com/" target="_blank" rel="noopener" data-q="泰國國際航空 TG tg">
+        <a class="al" data-ally="star" href="https://www.thaiairways.com/" target="_blank" rel="noopener" data-q="泰國國際航空 TG tg 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/TG.png" alt="泰國國際航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>泰國國際航空</b><span class="al-code">TG</span></span>
+          <span class="al-name"><b>泰國國際航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">TG</span></span></span>
         </a>
         <a class="al" href="https://th.vietjetair.com/" target="_blank" rel="noopener" data-q="泰越捷航空 VZ vz">
           <span class="al-logo"><img src="../assets/airlines/VZ.png" alt="泰越捷航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>泰越捷航空</b><span class="al-code">VZ</span></span>
+          <span class="al-name"><b>泰越捷航空</b><span class="al-tags"><span class="al-code">VZ</span></span></span>
         </a>
         <a class="al" href="https://www.lionairthai.com/" target="_blank" rel="noopener" data-q="泰獅航 SL sl">
           <span class="al-logo"><img src="../assets/airlines/SL.png" alt="泰獅航標誌" loading="lazy"></span>
-          <span class="al-name"><b>泰獅航</b><span class="al-code">SL</span></span>
+          <span class="al-name"><b>泰獅航</b><span class="al-tags"><span class="al-code">SL</span></span></span>
         </a>
-        <a class="al" href="https://www.vietnamairlines.com/" target="_blank" rel="noopener" data-q="越南航空 VN vn">
+        <a class="al" data-ally="skyteam" href="https://www.vietnamairlines.com/" target="_blank" rel="noopener" data-q="越南航空 VN vn 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/VN.png" alt="越南航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>越南航空</b><span class="al-code">VN</span></span>
+          <span class="al-name"><b>越南航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">VN</span></span></span>
         </a>
         <a class="al" href="https://www.vietjetair.com/" target="_blank" rel="noopener" data-q="越捷航空 VJ vj">
           <span class="al-logo"><img src="../assets/airlines/VJ.png" alt="越捷航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>越捷航空</b><span class="al-code">VJ</span></span>
+          <span class="al-name"><b>越捷航空</b><span class="al-tags"><span class="al-code">VJ</span></span></span>
         </a>
         <a class="al" href="https://www.bambooairways.com/" target="_blank" rel="noopener" data-q="竹子航空 QH qh">
           <span class="al-logo"><img src="../assets/airlines/QH.png" alt="竹子航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>竹子航空</b><span class="al-code">QH</span></span>
+          <span class="al-name"><b>竹子航空</b><span class="al-tags"><span class="al-code">QH</span></span></span>
         </a>
         <a class="al" href="https://www.philippineairlines.com/" target="_blank" rel="noopener" data-q="菲律賓航空 PR pr">
           <span class="al-logo"><img src="../assets/airlines/PR.png" alt="菲律賓航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>菲律賓航空</b><span class="al-code">PR</span></span>
+          <span class="al-name"><b>菲律賓航空</b><span class="al-tags"><span class="al-code">PR</span></span></span>
         </a>
         <a class="al" href="https://www.cebupacificair.com/" target="_blank" rel="noopener" data-q="宿霧太平洋航空 5J 5j">
           <span class="al-logo"><img src="../assets/airlines/5J.png" alt="宿霧太平洋航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>宿霧太平洋航空</b><span class="al-code">5J</span></span>
+          <span class="al-name"><b>宿霧太平洋航空</b><span class="al-tags"><span class="al-code">5J</span></span></span>
         </a>
         <a class="al" href="https://www.flyroyalbrunei.com/" target="_blank" rel="noopener" data-q="皇家汶萊航空 BI bi">
           <span class="al-logo"><img src="../assets/airlines/BI.png" alt="皇家汶萊航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>皇家汶萊航空</b><span class="al-code">BI</span></span>
+          <span class="al-name"><b>皇家汶萊航空</b><span class="al-tags"><span class="al-code">BI</span></span></span>
         </a>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>中國大陸與港澳</h3>
         <div class="al-grid">
-        <a class="al" href="https://www.cathaypacific.com/" target="_blank" rel="noopener" data-q="國泰航空 CX cx">
+        <a class="al" data-ally="oneworld" href="https://www.cathaypacific.com/" target="_blank" rel="noopener" data-q="國泰航空 CX cx 寰宇一家">
           <span class="al-logo"><img src="../assets/airlines/CX.png" alt="國泰航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>國泰航空</b><span class="al-code">CX</span></span>
+          <span class="al-name"><b>國泰航空</b><span class="al-tags"><span class="ally ally-oneworld">寰宇一家</span><span class="al-code">CX</span></span></span>
         </a>
         <a class="al" href="https://www.hkexpress.com/" target="_blank" rel="noopener" data-q="香港快運 UO uo">
           <span class="al-logo"><img src="../assets/airlines/UO.png" alt="香港快運標誌" loading="lazy"></span>
-          <span class="al-name"><b>香港快運</b><span class="al-code">UO</span></span>
+          <span class="al-name"><b>香港快運</b><span class="al-tags"><span class="al-code">UO</span></span></span>
         </a>
         <a class="al" href="https://www.hongkongairlines.com/" target="_blank" rel="noopener" data-q="香港航空 HX hx">
           <span class="al-logo"><img src="../assets/airlines/HX.png" alt="香港航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>香港航空</b><span class="al-code">HX</span></span>
+          <span class="al-name"><b>香港航空</b><span class="al-tags"><span class="al-code">HX</span></span></span>
         </a>
         <a class="al" href="https://www.greaterbay-airlines.com/" target="_blank" rel="noopener" data-q="大灣區航空 HB hb">
           <span class="al-logo"><img src="../assets/airlines/HB.png" alt="大灣區航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>大灣區航空</b><span class="al-code">HB</span></span>
+          <span class="al-name"><b>大灣區航空</b><span class="al-tags"><span class="al-code">HB</span></span></span>
         </a>
         <a class="al" href="https://www.airmacau.com.mo/" target="_blank" rel="noopener" data-q="澳門航空 NX nx">
           <span class="al-logo"><img src="../assets/airlines/NX.png" alt="澳門航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>澳門航空</b><span class="al-code">NX</span></span>
+          <span class="al-name"><b>澳門航空</b><span class="al-tags"><span class="al-code">NX</span></span></span>
         </a>
-        <a class="al" href="https://www.airchina.com.tw/" target="_blank" rel="noopener" data-q="中國國際航空 CA ca">
+        <a class="al" data-ally="star" href="https://www.airchina.com.tw/" target="_blank" rel="noopener" data-q="中國國際航空 CA ca 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/CA.png" alt="中國國際航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>中國國際航空</b><span class="al-code">CA</span></span>
+          <span class="al-name"><b>中國國際航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">CA</span></span></span>
         </a>
-        <a class="al" href="https://www.ceair.com/" target="_blank" rel="noopener" data-q="中國東方航空 MU mu">
+        <a class="al" data-ally="skyteam" href="https://www.ceair.com/" target="_blank" rel="noopener" data-q="中國東方航空 MU mu 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/MU.png" alt="中國東方航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>中國東方航空</b><span class="al-code">MU</span></span>
+          <span class="al-name"><b>中國東方航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">MU</span></span></span>
         </a>
         <a class="al" href="https://www.csair.com/" target="_blank" rel="noopener" data-q="中國南方航空 CZ cz">
           <span class="al-logo"><img src="../assets/airlines/CZ.png" alt="中國南方航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>中國南方航空</b><span class="al-code">CZ</span></span>
+          <span class="al-name"><b>中國南方航空</b><span class="al-tags"><span class="al-code">CZ</span></span></span>
         </a>
-        <a class="al" href="https://www.xiamenair.com/" target="_blank" rel="noopener" data-q="廈門航空 MF mf">
+        <a class="al" data-ally="skyteam" href="https://www.xiamenair.com/" target="_blank" rel="noopener" data-q="廈門航空 MF mf 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/MF.png" alt="廈門航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>廈門航空</b><span class="al-code">MF</span></span>
+          <span class="al-name"><b>廈門航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">MF</span></span></span>
         </a>
         <a class="al" href="https://www.hnair.com/" target="_blank" rel="noopener" data-q="海南航空 HU hu">
           <span class="al-logo"><img src="../assets/airlines/HU.png" alt="海南航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>海南航空</b><span class="al-code">HU</span></span>
+          <span class="al-name"><b>海南航空</b><span class="al-tags"><span class="al-code">HU</span></span></span>
         </a>
-        <a class="al" href="https://www.shenzhenair.com/" target="_blank" rel="noopener" data-q="深圳航空 ZH zh">
+        <a class="al" data-ally="star" href="https://www.shenzhenair.com/" target="_blank" rel="noopener" data-q="深圳航空 ZH zh 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/ZH.png" alt="深圳航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>深圳航空</b><span class="al-code">ZH</span></span>
+          <span class="al-name"><b>深圳航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">ZH</span></span></span>
         </a>
         <a class="al" href="https://www.ch.com/" target="_blank" rel="noopener" data-q="春秋航空 9C 9c">
           <span class="al-logo"><img src="../assets/airlines/9C.jpg" alt="春秋航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>春秋航空</b><span class="al-code">9C</span></span>
+          <span class="al-name"><b>春秋航空</b><span class="al-tags"><span class="al-code">9C</span></span></span>
         </a>
         <a class="al" href="https://www.juneyaoair.com/" target="_blank" rel="noopener" data-q="吉祥航空 HO ho">
           <span class="al-logo"><img src="../assets/airlines/HO.png" alt="吉祥航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>吉祥航空</b><span class="al-code">HO</span></span>
+          <span class="al-name"><b>吉祥航空</b><span class="al-tags"><span class="al-code">HO</span></span></span>
         </a>
         </div>
       </div>
       <div class="grp" data-grp>
         <h3>歐美、中東與紐澳</h3>
         <div class="al-grid">
-        <a class="al" href="https://www.united.com/" target="_blank" rel="noopener" data-q="聯合航空 UA ua">
+        <a class="al" data-ally="star" href="https://www.united.com/" target="_blank" rel="noopener" data-q="聯合航空 UA ua 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/UA.png" alt="聯合航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>聯合航空</b><span class="al-code">UA</span></span>
+          <span class="al-name"><b>聯合航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">UA</span></span></span>
         </a>
-        <a class="al" href="https://www.delta.com/" target="_blank" rel="noopener" data-q="達美航空 DL dl">
+        <a class="al" data-ally="skyteam" href="https://www.delta.com/" target="_blank" rel="noopener" data-q="達美航空 DL dl 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/DL.png" alt="達美航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>達美航空</b><span class="al-code">DL</span></span>
+          <span class="al-name"><b>達美航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">DL</span></span></span>
         </a>
         <a class="al" href="https://www.emirates.com/" target="_blank" rel="noopener" data-q="阿聯酋航空 EK ek">
           <span class="al-logo"><img src="../assets/airlines/EK.png" alt="阿聯酋航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>阿聯酋航空</b><span class="al-code">EK</span></span>
+          <span class="al-name"><b>阿聯酋航空</b><span class="al-tags"><span class="al-code">EK</span></span></span>
         </a>
-        <a class="al" href="https://www.turkishairlines.com/" target="_blank" rel="noopener" data-q="土耳其航空 TK tk">
+        <a class="al" data-ally="star" href="https://www.turkishairlines.com/" target="_blank" rel="noopener" data-q="土耳其航空 TK tk 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/TK.png" alt="土耳其航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>土耳其航空</b><span class="al-code">TK</span></span>
+          <span class="al-name"><b>土耳其航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">TK</span></span></span>
         </a>
-        <a class="al" href="https://www.klm.com.tw/" target="_blank" rel="noopener" data-q="荷蘭皇家航空 KL kl">
+        <a class="al" data-ally="skyteam" href="https://www.klm.com.tw/" target="_blank" rel="noopener" data-q="荷蘭皇家航空 KL kl 天合聯盟">
           <span class="al-logo"><img src="../assets/airlines/KL.png" alt="荷蘭皇家航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>荷蘭皇家航空</b><span class="al-code">KL</span></span>
+          <span class="al-name"><b>荷蘭皇家航空</b><span class="al-tags"><span class="ally ally-skyteam">天合聯盟</span><span class="al-code">KL</span></span></span>
         </a>
-        <a class="al" href="https://www.airnewzealand.com.tw/" target="_blank" rel="noopener" data-q="紐西蘭航空 NZ nz">
+        <a class="al" data-ally="star" href="https://www.airnewzealand.com.tw/" target="_blank" rel="noopener" data-q="紐西蘭航空 NZ nz 星空聯盟">
           <span class="al-logo"><img src="../assets/airlines/NZ.png" alt="紐西蘭航空標誌" loading="lazy"></span>
-          <span class="al-name"><b>紐西蘭航空</b><span class="al-code">NZ</span></span>
+          <span class="al-name"><b>紐西蘭航空</b><span class="al-tags"><span class="ally ally-star">星空聯盟</span><span class="al-code">NZ</span></span></span>
         </a>
         </div>
       </div>
     </div>
+
+    <p class="ally-note">✈️ <b>航空聯盟與里程：</b>同一聯盟的航空公司，通常可以互相累積與兌換里程，例如搭長榮（星空聯盟）累積的里程，可以兌換全日空、新加坡航空的機票。未加入聯盟的航空公司，也可能有自己的合作夥伴。實際累積比例與兌換規則，請以各航空公司里程計畫的最新公告為準。</p>
 
     <div class="fl-sec" id="airports">
       <h2>🛫 機場代碼 <small>滑鼠移到機場上（手機點一下）可看景點照片與周邊旅遊城市</small></h2>
@@ -549,7 +573,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
 
     <div class="fl-empty" id="flEmpty"><p>找不到相關的航空公司或機場，直接問小幫手吧！</p><a class="btn-line" href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">💬 加 LINE 詢問小幫手</a></div>
 
-    <p class="disclaimer">※ 航線、航點與航空公司營運狀況會隨時調整，部分航點為季節性或包機航班。資訊僅供參考，請依各航空公司最新公告為準，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
+    <p class="disclaimer">※ 航線、航點、航空聯盟成員與航空公司營運狀況會隨時調整，部分航點為季節性或包機航班。資訊僅供參考，請依各航空公司最新公告為準，如有疑問請<a href="https://lin.ee/WuWR8hU" target="_blank" rel="noopener">加入 LINE 洽詢</a>。</p>
     <p class="fl-credit">航空公司標誌來源：<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>（公有領域）。各標誌為該航空公司之商標，本站僅用於辨識並連結至其官方網站；部分航空公司標誌由本公司提供。機場代表照片來自 Wikimedia Commons，依各照片標示之創用 CC 等授權使用，作者與授權標示於每張照片下方。</p>
   </div>
 </section>
@@ -600,26 +624,40 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
 (function(){
   const q = document.getElementById("flq"), items = Array.from(document.querySelectorAll(".al,.ap")), grps = Array.from(document.querySelectorAll("[data-grp]"));
   const cnt = document.getElementById("flCount"), tools = document.querySelector(".fl-tools"); let t;
-  q.addEventListener("input", () => {
+  const allyBtns = Array.from(document.querySelectorAll(".fl-ally"));
+  const ALLY = {star:"星空聯盟", skyteam:"天合聯盟", oneworld:"寰宇一家"};
+  let ally = "";
+  function apply(scroll){
     const k = q.value.trim().toLowerCase();
     let n = 0;
-    items.forEach(el => { const hit = !k || el.dataset.q.toLowerCase().includes(k); el.hidden = !hit; if(hit) n++; });
+    items.forEach(el => {
+      const hit = (!k || el.dataset.q.toLowerCase().includes(k)) && (!ally || el.dataset.ally === ally);
+      el.hidden = !hit; if(hit) n++;
+    });
     grps.forEach(g => g.hidden = !g.querySelector(".al:not([hidden]),.ap:not([hidden])"));
     document.querySelectorAll(".fl-sec").forEach(s => s.hidden = !s.querySelector("[data-grp]:not([hidden])"));
+    document.querySelector(".ally-note").hidden = !!k && !ally;
     document.getElementById("flEmpty").style.display = n ? "none" : "block";
     /* 顯示找到幾筆，並把畫面捲到結果的位置 */
     const al = document.querySelectorAll(".al:not([hidden])").length, ap = document.querySelectorAll(".ap:not([hidden])").length;
-    document.querySelector(".fl-jump").hidden = !!k;
-    document.querySelector(".fl-tip").hidden = !!k;
-    cnt.hidden = !k;
-    cnt.innerHTML = n ? `找到 <b>${n}</b> 筆：航空公司 ${al}、機場 ${ap}　<button type="button" id="flClear">清除搜尋 ✕</button>` : `找不到「${k.replace(/[<>&"]/g,"")}」　<button type="button" id="flClear">清除搜尋 ✕</button>`;
+    const on = !!(k || ally);
+    document.querySelector(".fl-tip").hidden = on;
+    cnt.hidden = !on;
+    const what = ally && !k ? `${ALLY[ally]}共 <b>${n}</b> 家航空公司` : n ? `找到 <b>${n}</b> 筆：航空公司 ${al}、機場 ${ap}` : `找不到「${k.replace(/[<>&"]/g,"")}」`;
+    cnt.innerHTML = `${what}　<button type="button" id="flClear">清除${ally ? "篩選" : "搜尋"} ✕</button>`;
     clearTimeout(t);
-    if(k) t = setTimeout(() => {
+    if(on && scroll) t = setTimeout(() => {
       const top = tools.parentElement.getBoundingClientRect().top + scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--hdr")) || 72);
       if(scrollY < top - 4) window.scrollTo({top, behavior:"smooth"});
     }, 350);
-  });
-  cnt.addEventListener("click", e => { if(e.target.id === "flClear"){ q.value = ""; q.dispatchEvent(new Event("input")); q.focus(); } });
+  }
+  q.addEventListener("input", () => apply(true));
+  allyBtns.forEach(b => b.addEventListener("click", () => {
+    ally = ally === b.dataset.ally ? "" : b.dataset.ally;
+    allyBtns.forEach(x => x.setAttribute("aria-pressed", x.dataset.ally === ally ? "true" : "false"));
+    apply(true);
+  }));
+  cnt.addEventListener("click", e => { if(e.target.id === "flClear"){ q.value = ""; ally = ""; allyBtns.forEach(x => x.setAttribute("aria-pressed", "false")); apply(false); q.focus(); } });
   /* 浮窗照片：第一次顯示時才載入，避免一次下載全部照片 */
   const loadImg = ap => { const im = ap.querySelector("img[data-src]"); if(im){ im.src = im.dataset.src; im.removeAttribute("data-src"); } };
   document.querySelectorAll(".ap").forEach(ap => { ap.addEventListener("mouseenter", () => loadImg(ap)); ap.addEventListener("focus", () => loadImg(ap)); });
