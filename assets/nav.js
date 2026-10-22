@@ -124,7 +124,7 @@
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href*="gounitravel.com"]');
-    if(!a || a.classList.contains('store-tip-go') || skip() || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if(!a || a.classList.contains('store-tip-go') || a.closest('.trust') || skip() || e.ctrlKey || e.metaKey || e.shiftKey) return;
     e.preventDefault();
     open(a.href);
   });
