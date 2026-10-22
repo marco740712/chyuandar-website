@@ -27,11 +27,20 @@
     if(f !== '' || row.length){ row.push(f); rows.push(row); }
     return rows;
   }
-  // 「2026/10/22 08:00」「2026-10-22」等格式，視為台灣時間（UTC+8）
+  // 「2026/10/22 08:00」「2026/10/22 下午 3:00:00」「2026-10-22」等格式，視為台灣時間（UTC+8）
   function toTime(s){
-    var m = String(s || '').trim().match(/^(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})(?:\D+(\d{1,2})(?::(\d{2}))?)?/);
+    var t = String(s || '').trim();
+    var m = t.match(/^(\d{4})[\/\-.](\d{1,2})[\/\-.](\d{1,2})/);
     if(!m) return null;
-    return Date.UTC(+m[1], +m[2] - 1, +m[3], (m[4] ? +m[4] : 0) - 8, m[5] ? +m[5] : 0);
+    var hm = t.slice(m[0].length).match(/(上午|下午|AM|PM)?\s*(\d{1,2}):(\d{2})\s*(?::\d{2})?\s*(上午|下午|AM|PM)?/i);
+    var h = 0, mi = 0;
+    if(hm){
+      h = +hm[2]; mi = +hm[3];
+      var ap = (hm[1] || hm[4] || '').toUpperCase();
+      if((ap === '下午' || ap === 'PM') && h < 12) h += 12;
+      if((ap === '上午' || ap === 'AM') && h === 12) h = 0;
+    }
+    return Date.UTC(+m[1], +m[2] - 1, +m[3], h - 8, mi);
   }
   function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
@@ -45,7 +54,7 @@
         var msg = (r[0] || '').trim();
         if(!msg) return;
         var s = toTime(r[1]), e = toTime(r[2]);
-        if(r[2] && /^\d{4}[\/\-.]\d{1,2}[\/\-.]\d{1,2}$/.test(String(r[2]).trim())) e += 86400000 - 60000; // 只填日期：到當天 23:59
+        if(e !== null && !/\d:\d/.test(r[2])) e += 86400000 - 60000; // 只填日期（沒有時間）：到當天 23:59
         if(s !== null && now < s) return;
         if(e !== null && now > e) return;
         if(/^\s*y/i.test(r[3] || '')) urgent = true;
