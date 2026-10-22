@@ -2,7 +2,12 @@
 (function(){
   var h = document.querySelector('header.site');
   if(!h) return;
-  function set(){ document.documentElement.style.setProperty('--hdr', h.offsetHeight + 'px'); }
+  function set(){
+    // 有跑馬燈時，跑馬燈固定在最上方，頁首接在它下面
+    var tk = document.querySelector('.ticker'), th = tk ? tk.offsetHeight : 0;
+    document.documentElement.style.setProperty('--tk', th + 'px');
+    document.documentElement.style.setProperty('--hdr', (h.offsetHeight + th) + 'px');
+  }
   set(); window.addEventListener('resize', set);
 })();
 
