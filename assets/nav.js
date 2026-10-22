@@ -58,9 +58,12 @@
 })();
 
 /* 點旅天下商品連結時，先提醒客人下單要指定詮達門市
-   （旅天下網站禁止被嵌入，所以改在離開前提醒；勾選後本次瀏覽不再顯示） */
+   （旅天下網站禁止被嵌入，所以改在離開前提醒）
+   - 按「我知道了，前往選購」：前往商品頁，本次瀏覽不再提醒
+   - 沒有操作：3 秒後自動關閉並前往商品頁，下次點商品仍會提醒
+   - 按 ✕ 或點旁邊空白處：取消，留在本站 */
 (function(){
-  var KEY = 'cdt-store-tip', dlg = null, pending = '';
+  var KEY = 'cdt-store-tip', WAIT = 3000, dlg = null, pending = '', timer = 0;
   function skip(){ try{ return sessionStorage.getItem(KEY) === '1'; }catch(e){ return false; } }
   function build(){
     dlg = document.createElement('div');
@@ -71,9 +74,8 @@
     dlg.innerHTML =
       '<div class="store-tip-box">' +
         '<button type="button" class="store-tip-x" aria-label="關閉">✕</button>' +
-        '<span class="store-tip-eyebrow">ORDER REMINDER</span>' +
-        '<h3 id="storeTipTitle">📍 下單時請指定詮達門市</h3>' +
-        '<p>即將前往旅天下官網選購。填寫訂單時，在 <b>Step3 選擇服務據點</b>：</p>' +
+        '<h3 id="storeTipTitle">📍 下單時請指定台南唯一三間門市的詮達旅行社</h3>' +
+        '<p>前往旅天下官網選購選擇服務據點：</p>' +
         '<ol>' +
           '<li>服務地區選 <b>雲嘉南</b></li>' +
           '<li>門市選以下任一間：' +
@@ -85,17 +87,15 @@
           '</li>' +
         '</ol>' +
         '<p class="store-tip-why">指定詮達門市，出發前後都由我們的小幫手一路服務您。</p>' +
-        '<label class="store-tip-skip"><input type="checkbox"> 本次瀏覽不再提醒</label>' +
-        '<div class="store-tip-btns">' +
-          '<button type="button" class="store-tip-go">我知道了，前往選購 →</button>' +
-        '</div>' +
+        '<a class="store-tip-go" target="_blank" rel="noopener">我知道了，前往選購 →</a>' +
+        '<span class="store-tip-bar" aria-hidden="true"></span>' +
       '</div>';
     document.body.appendChild(dlg);
     dlg.addEventListener('click', function(e){ if(e.target === dlg || e.target.closest('.store-tip-x')) close(); });
+    // 主動按下：照常開新分頁，並記住本次瀏覽不再提醒
     dlg.querySelector('.store-tip-go').addEventListener('click', function(){
-      if(dlg.querySelector('.store-tip-skip input').checked){ try{ sessionStorage.setItem(KEY, '1'); }catch(e){} }
-      var url = pending; close();
-      window.open(url, '_blank', 'noopener');
+      try{ sessionStorage.setItem(KEY, '1'); }catch(e){}
+      close();
     });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && dlg.classList.contains('show')) close(); });
   }
@@ -104,18 +104,26 @@
     // 月曆的行程視窗是最上層彈窗，會蓋住提醒，先關掉
     document.querySelectorAll('dialog[open]').forEach(function(d){ if(d.close) d.close(); });
     pending = url;
-    dlg.querySelector('.store-tip-skip input').checked = false;
+    dlg.querySelector('.store-tip-go').href = url;
+    dlg.classList.remove('show'); void dlg.offsetWidth;   // 讓倒數條重新開始
     dlg.classList.add('show');
     document.documentElement.classList.add('store-tip-lock');
-    dlg.querySelector('.store-tip-go').focus();
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      close();
+      // 3 秒內仍可開新分頁；若被瀏覽器擋下，就在本頁前往
+      var w = window.open(pending, '_blank');
+      if(w){ try{ w.opener = null; }catch(e){} } else { location.href = pending; }
+    }, WAIT);
   }
   function close(){
+    clearTimeout(timer);
     dlg.classList.remove('show');
     document.documentElement.classList.remove('store-tip-lock');
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href*="gounitravel.com"]');
-    if(!a || skip() || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if(!a || a.classList.contains('store-tip-go') || skip() || e.ctrlKey || e.metaKey || e.shiftKey) return;
     e.preventDefault();
     open(a.href);
   });
