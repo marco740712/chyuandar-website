@@ -111,9 +111,9 @@
 .store-tip-why{font-size:14px!important;color:#5C6470}
 .store-tip-go{display:block;margin-top:16px;text-align:center;text-decoration:none;width:100%;padding:15px 18px;border:none;background:#1A4A8E;color:#fff;font:inherit;font-size:16px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:.2s}
 .store-tip-go:hover{background:#0F2A4F}
-/* 5 秒自動前往的倒數條 */
+/* 4.5 秒自動前往的倒數條 */
 .store-tip-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:#C9A961;transform-origin:left;transform:scaleX(1)}
-.store-tip.show .store-tip-bar{animation:storeTipBar 5s linear forwards}
+.store-tip.show .store-tip-bar{animation:storeTipBar 4.5s linear forwards}
 @keyframes storeTipBar{to{transform:scaleX(0)}}
 @media (max-width:600px){.store-tip-box{padding:26px 20px 20px}.store-tip h3{font-size:19px}}
 @media print{.store-tip{display:none!important}}

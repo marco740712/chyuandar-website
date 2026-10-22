@@ -60,10 +60,10 @@
 /* 點旅天下商品連結時，先提醒客人下單要指定詮達門市
    （旅天下網站禁止被嵌入，所以改在離開前提醒）
    - 按「我知道了，前往選購」：前往商品頁，本次瀏覽不再提醒
-   - 沒有操作：5 秒後自動關閉並前往商品頁，下次點商品仍會提醒
+   - 沒有操作：4.5 秒後自動關閉並前往商品頁，下次點商品仍會提醒
    - 按 ✕ 或點旁邊空白處：取消，留在本站 */
 (function(){
-  var KEY = 'cdt-store-tip', WAIT = 5000, dlg = null, pending = '', timer = 0;
+  var KEY = 'cdt-store-tip', WAIT = 4500, dlg = null, pending = '', timer = 0;
   function skip(){ try{ return sessionStorage.getItem(KEY) === '1'; }catch(e){ return false; } }
   function build(){
     dlg = document.createElement('div');
@@ -111,7 +111,7 @@
     clearTimeout(timer);
     timer = setTimeout(function(){
       close();
-      // 5 秒內仍可開新分頁；若被瀏覽器擋下，就在本頁前往
+      // 4.5 秒內仍可開新分頁；若被瀏覽器擋下，就在本頁前往
       var w = window.open(pending, '_blank');
       if(w){ try{ w.opener = null; }catch(e){} } else { location.href = pending; }
     }, WAIT);
