@@ -91,6 +91,17 @@
 .ap-cr{font-size:11.5px;color:#9AA6B5;line-height:1.4}
 .ap-cr:hover{color:var(--navy-700);text-decoration:underline}
 .ap:hover .ap-tip,.ap:focus .ap-tip,.ap.open .ap-tip{opacity:1;visibility:visible;transform:none}
+/* 機場代碼：依地區使用不同色調（與品牌藍金配色協調的低彩度色） */
+.rg-tw{--rc:#1A4A8E;--rb:#EEF4FB}
+.rg-ea{--rc:#A2453F;--rb:#FBF0EE}
+.rg-sea{--rc:#1F7468;--rb:#EAF5F2}
+.rg-am{--rc:#9A6E1C;--rb:#FBF4E3}
+.rg-eu{--rc:#68427A;--rb:#F4EEF7}
+#airports .grp h3{display:flex;align-items:center;gap:10px;color:var(--rc,var(--navy-800))}
+#airports .grp h3::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--rc,var(--navy-800))}
+#airports .grp .ap{border-left:3px solid var(--rc,var(--gray-100))}
+#airports .grp .ap-code{background:var(--rb,var(--sky-50));color:var(--rc,var(--navy-800))}
+#airports .grp .ap:hover,#airports .grp .ap:focus,#airports .grp .ap.open{border-color:var(--rc);border-left-color:var(--rc)}
 .fl-empty{display:none;text-align:center;padding:30px 16px;background:#fff;border:1px dashed var(--gray-200);margin-top:20px;font-family:"Inter","Noto Serif TC",sans-serif}
 .fl-empty p{margin-bottom:14px;color:#5C6470}
 .fl-credit{font-family:"Inter","Noto Serif TC",sans-serif;font-size:12.5px;color:#7A8494;line-height:1.8;margin-top:10px}
@@ -442,7 +453,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
 
     <div class="fl-sec" id="airports">
       <h2>🛫 機場代碼 <small>滑鼠移到機場上（手機點一下）可看景點照片與周邊旅遊城市</small></h2>
-      <div class="grp" data-grp>
+      <div class="grp rg-tw" data-grp>
         <h3>🇹🇼 台灣出發機場</h3>
         <div class="ap-grid">
           <div class="ap" tabindex="0" data-q="台灣 台北 臺灣桃園國際機場 TPE tpe 台北、新北、桃園、新竹（北部各地）"><span class="ap-code">TPE</span><span class="ap-city"><b>台北</b><small>台灣</small></span><span class="ap-name">臺灣桃園國際機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/TPE.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">台灣最大國際門戶，搭機場捷運約 35 分鐘到台北車站，北部各地都方便轉乘。</span><span class="ap-near"><i>周邊旅遊</i>台北、新北、桃園、新竹（北部各地）</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Taipei_Taiwan_Taipei-101-Tower-01.jpg" target="_blank" rel="noopener">照片：CEphoto, Uwe Aranas／CC BY-SA 3.0</a></span></span></span></div>
@@ -458,7 +469,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
           <div class="ap" tabindex="0" data-q="台灣 馬祖 北竿機場 MFK mfk 北竿、芹壁聚落"><span class="ap-code">MFK</span><span class="ap-city"><b>馬祖</b><small>台灣</small></span><span class="ap-name">北竿機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/MFK.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">北竿芹壁聚落的石頭屋依山面海，被譽為「地中海式」漁村。</span><span class="ap-near"><i>周邊旅遊</i>北竿、芹壁聚落</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Qinbi_Village_%E8%8A%B9%E5%A3%81%E6%9D%91_-_panoramio_(5).jpg" target="_blank" rel="noopener">照片：lienyuan lee／CC BY 3.0</a></span></span></span></div>
         </div>
       </div>
-      <div class="grp" data-grp>
+      <div class="grp rg-ea" data-grp>
         <h3>東亞</h3>
         <div class="ap-grid">
           <div class="ap" tabindex="0" data-q="日本 東京 成田國際機場 NRT nrt 東京、千葉、成田山、東京迪士尼"><span class="ap-code">NRT</span><span class="ap-city"><b>東京</b><small>日本</small></span><span class="ap-name">成田國際機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/NRT.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">東京主要國際機場之一，搭 Skyliner 約 40 分到上野，迪士尼樂園也方便前往。</span><span class="ap-near"><i>周邊旅遊</i>東京、千葉、成田山、東京迪士尼</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Sensoji_2023.jpg" target="_blank" rel="noopener">照片：Akonnchiroll／CC0</a></span></span></span></div>
@@ -509,7 +520,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
           <div class="ap" tabindex="0" data-q="中國大陸 鄭州 新鄭國際機場 CGO cgo 鄭州、少林寺、洛陽龍門石窟、開封"><span class="ap-code">CGO</span><span class="ap-city"><b>鄭州</b><small>中國大陸</small></span><span class="ap-name">新鄭國際機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/CGO.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">中原門戶鄭州，少林寺、洛陽龍門石窟與開封古城。</span><span class="ap-near"><i>周邊旅遊</i>鄭州、少林寺、洛陽龍門石窟、開封</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:27427-Luoyang_(49067744628).jpg" target="_blank" rel="noopener">照片：xiquinhosilva／CC BY 2.0</a></span></span></span></div>
         </div>
       </div>
-      <div class="grp" data-grp>
+      <div class="grp rg-sea" data-grp>
         <h3>東南亞</h3>
         <div class="ap-grid">
           <div class="ap" tabindex="0" data-q="泰國 曼谷 蘇凡納布機場 BKK bkk 曼谷、芭達雅、大城、華欣"><span class="ap-code">BKK</span><span class="ap-city"><b>曼谷</b><small>泰國</small></span><span class="ap-name">蘇凡納布機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/BKK.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">泰國主要國際機場，大皇宮、水上市場與芭達雅海灘。</span><span class="ap-near"><i>周邊旅遊</i>曼谷、芭達雅、大城、華欣</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:0005574_-_Wat_Phra_Kaew_006.jpg" target="_blank" rel="noopener">照片：Preecha.MJ／CC BY-SA 4.0</a></span></span></span></div>
@@ -535,7 +546,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
           <div class="ap" tabindex="0" data-q="汶萊 斯里巴加灣 汶萊國際機場 BWN bwn 斯里巴加灣、水上村落、淡布隆國家公園"><span class="ap-code">BWN</span><span class="ap-city"><b>斯里巴加灣</b><small>汶萊</small></span><span class="ap-name">汶萊國際機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/BWN.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">汶萊首都，金頂清真寺與全世界最大的水上村落。</span><span class="ap-near"><i>周邊旅遊</i>斯里巴加灣、水上村落、淡布隆國家公園</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Sultan_Omar_Ali_Saifuddin_Mosque_with_the_ceremonial_ship.jpg" target="_blank" rel="noopener">照片：Abdullah Geelah／CC BY-SA 3.0</a></span></span></span></div>
         </div>
       </div>
-      <div class="grp" data-grp>
+      <div class="grp rg-am" data-grp>
         <h3>北美與大洋洲</h3>
         <div class="ap-grid">
           <div class="ap" tabindex="0" data-q="美國 洛杉磯 洛杉磯國際機場 LAX lax 洛杉磯、好萊塢、聖地牙哥、拉斯維加斯（轉機或自駕）"><span class="ap-code">LAX</span><span class="ap-city"><b>洛杉磯</b><small>美國</small></span><span class="ap-name">洛杉磯國際機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/LAX.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">美西大門，好萊塢、環球影城，自駕可往拉斯維加斯。</span><span class="ap-near"><i>周邊旅遊</i>洛杉磯、好萊塢、聖地牙哥、拉斯維加斯（轉機或自駕）</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Hollywood_sign_(8485145044).jpg" target="_blank" rel="noopener">照片：Gnaphron／CC BY-SA 2.0</a></span></span></span></div>
@@ -556,7 +567,7 @@ mark{background:#FFF1CC;color:inherit;padding:0 1px}
           <div class="ap" tabindex="0" data-q="紐西蘭 奧克蘭 奧克蘭機場 AKL akl 奧克蘭、羅托魯瓦、懷托摩螢火蟲洞；皇后鎮（轉機）"><span class="ap-code">AKL</span><span class="ap-city"><b>奧克蘭</b><small>紐西蘭</small></span><span class="ap-name">奧克蘭機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/AKL.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">紐西蘭最大城奧克蘭，羅托魯瓦地熱與螢火蟲洞。</span><span class="ap-near"><i>周邊旅遊</i>奧克蘭、羅托魯瓦、懷托摩螢火蟲洞；皇后鎮（轉機）</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Auckland_Skyline_as_seen_from_Devonport_20100128_3.jpg" target="_blank" rel="noopener">照片：DXR／CC BY-SA 4.0</a></span></span></span></div>
         </div>
       </div>
-      <div class="grp" data-grp>
+      <div class="grp rg-eu" data-grp>
         <h3>歐洲與中東</h3>
         <div class="ap-grid">
           <div class="ap" tabindex="0" data-q="英國 倫敦 希斯洛機場 LHR lhr 倫敦、溫莎、牛津、劍橋、科茲窩"><span class="ap-code">LHR</span><span class="ap-city"><b>倫敦</b><small>英國</small></span><span class="ap-name">希斯洛機場</span><span class="ap-tip"><span class="ap-box"><img alt="" data-src="../assets/airports/LHR.jpg" width="640" height="360"><span class="ap-tb"><span class="ap-desc">倫敦大笨鐘、大英博物館，可延伸至科茲窩與牛津。</span><span class="ap-near"><i>周邊旅遊</i>倫敦、溫莎、牛津、劍橋、科茲窩</span><a class="ap-cr" href="https://commons.wikimedia.org/wiki/File:Westminster_palace.jpg" target="_blank" rel="noopener">照片：DaniKauf／CC BY-SA 3.0</a></span></span></span></div>
