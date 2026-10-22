@@ -118,10 +118,13 @@
 @media (max-width:600px){.store-tip-box{padding:26px 20px 20px}.store-tip h3{font-size:19px}}
 @media print{.store-tip{display:none!important}}
 
-/* 頁尾：立案認證與付款方式標誌（白色單色版，融入深藍頁尾） */
+/* 頁尾：立案認證與付款方式標誌（白色單色版，游標移上去變金色） */
 .trust{padding:22px 0 24px}
 .trust-grp{display:flex;align-items:center;flex-wrap:wrap;gap:16px 30px}
-.trust a,.trust .tb{display:inline-flex;align-items:center;opacity:.72;transition:opacity .2s}
-.trust a:hover{opacity:1}
-.trust img{display:block;height:28px;width:auto}
+.trust a,.trust .tb{position:relative;display:inline-flex;align-items:center;opacity:.72;transition:opacity .25s}
+.trust .g{position:absolute;left:0;top:0;opacity:0;transition:opacity .25s}
+.trust a:hover,.trust .tb:hover{opacity:1}
+.trust a:hover .g,.trust .tb:hover .g{opacity:1}
+.trust a:hover img:not(.g),.trust .tb:hover img:not(.g){opacity:0}
+.trust img{display:block;height:28px;width:auto;transition:opacity .25s}
 @media (max-width:600px){.trust-grp{gap:14px 22px}.trust img{height:22px}}
