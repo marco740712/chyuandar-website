@@ -127,4 +127,5 @@
 .trust a:hover .g,.trust .tb:hover .g{opacity:1}
 .trust a:hover img:not(.g),.trust .tb:hover img:not(.g){opacity:0}
 .trust img{display:block;height:28px;width:auto;transition:opacity .25s}
-@media (max-width:600px){.trust-grp{gap:14px 22px}.trust img{height:22px}}
+.trust .tb[title="Mastercard"] img{height:36px}
+@media (max-width:600px){.trust-grp{gap:14px 22px}.trust img{height:22px}.trust .tb[title="Mastercard"] img{height:28px}}
