@@ -67,7 +67,7 @@
     gallery.setAttribute('aria-label', '公告圖片');
     gallery.setAttribute('aria-roledescription', '輪播');
     gallery.tabIndex = 0;
-    gallery.innerHTML = '<div class="ha-stage"></div><div class="ha-gallery-controls">' +
+    gallery.innerHTML = '<div class="ha-stage"></div><p class="ha-image-hint">點圖片看大圖 ↗</p><div class="ha-gallery-controls">' +
       '<button type="button" class="ha-prev" aria-label="上一張圖片">‹</button>' +
       '<span class="ha-count" aria-live="off"></span>' +
       '<button type="button" class="ha-next" aria-label="下一張圖片">›</button>' +
@@ -87,7 +87,9 @@
       current = slides.length ? (index + slides.length) % slides.length : 0;
       slides.forEach(function(img, i){
         img.hidden = i !== current;
+        img.parentElement.hidden = i !== current;
         img.alt = notice.title + '（第 ' + (i + 1) + ' 張，共 ' + slides.length + ' 張）';
+        img.parentElement.setAttribute('aria-label', img.alt + '，在新分頁開啟原圖');
         if(i === current || i === (current + 1) % slides.length) img.loading = 'eager';
       });
       gallery.classList.toggle('ha-multiple', slides.length > 1);
@@ -104,14 +106,21 @@
       image.className = 'ha-image';
       image.loading = slides.length ? 'lazy' : 'eager';
       image.hidden = slides.length > 0;
+      var fullImage = document.createElement('a');
+      fullImage.className = 'ha-image-link';
+      fullImage.href = url;
+      fullImage.target = '_blank';
+      fullImage.rel = 'noopener noreferrer';
+      fullImage.hidden = image.hidden;
+      fullImage.appendChild(image);
       image.addEventListener('error', function(){
         if(destroyed) return;
         var index = slides.indexOf(image);
         if(index < 0) return;
-        slides.splice(index, 1); image.remove();
+        slides.splice(index, 1); fullImage.remove();
         render(index < current ? current - 1 : Math.min(current, slides.length - 1));
       });
-      slides.push(image); stage.appendChild(image); image.src = url;
+      slides.push(image); stage.appendChild(fullImage); image.src = url;
     });
     gallery.querySelector('.ha-prev').addEventListener('click', function(){ move(-1); });
     gallery.querySelector('.ha-next').addEventListener('click', function(){ move(1); });
@@ -129,17 +138,23 @@
     gallery.addEventListener('mouseleave', function(){ hovered = false; schedule(); });
     gallery.addEventListener('focusin', function(){ focused = true; schedule(); });
     gallery.addEventListener('focusout', function(e){ focused = gallery.contains(e.relatedTarget); schedule(); });
-    var swipe = null;
+    var swipe = null, swiped = false;
     stage.addEventListener('pointerdown', function(e){
+      swiped = false;
       if(e.pointerType === 'touch') swipe = {x:e.clientX, y:e.clientY, id:e.pointerId};
     });
     stage.addEventListener('pointerup', function(e){
       if(!swipe || swipe.id !== e.pointerId) return;
       var dx = e.clientX - swipe.x, dy = e.clientY - swipe.y;
       swipe = null;
-      if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) move(dx < 0 ? 1 : -1);
+      if(Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5){
+        swiped = true; move(dx < 0 ? 1 : -1);
+      }
     });
     stage.addEventListener('pointercancel', function(){ swipe = null; });
+    stage.addEventListener('click', function(e){
+      if(swiped){ e.preventDefault(); swiped = false; }
+    });
     function onMotion(){ if(motion.matches){ paused = true; render(current); } }
     document.addEventListener('visibilitychange', schedule);
     motion.addEventListener('change', onMotion);

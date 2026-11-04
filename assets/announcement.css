@@ -8,10 +8,13 @@ html.ha-lock{overflow:hidden}
 .home-announcement .ha-content{padding:28px 32px 32px}
 .home-announcement .ha-gallery{margin:0 0 26px;padding:0;border-radius:4px}
 .home-announcement .ha-image{display:block;width:100%;height:auto;margin:0;border-radius:4px}
-.home-announcement .ha-image[hidden],.home-announcement .ha-gallery[hidden],.home-announcement .ha-gallery-controls[hidden]{display:none}
+.home-announcement .ha-image-link{display:block;width:100%;border-radius:4px;cursor:zoom-in}
+.home-announcement .ha-image-hint{margin:8px 0 0;text-align:right;font-size:13px;color:#52657C}
+.home-announcement .ha-image[hidden],.home-announcement .ha-image-link[hidden],.home-announcement .ha-gallery[hidden],.home-announcement .ha-gallery-controls[hidden]{display:none}
 .home-announcement .ha-stage{touch-action:pan-y pinch-zoom}
 .home-announcement .ha-multiple .ha-stage{width:100%;aspect-ratio:4/3;max-height:48vh;max-height:48dvh;background:#F6F9FC;border-radius:4px;overflow:hidden}
 .home-announcement .ha-multiple .ha-image{height:100%;object-fit:contain}
+.home-announcement .ha-multiple .ha-image-link{height:100%}
 .home-announcement .ha-gallery-controls{display:flex;align-items:center;justify-content:center;gap:8px;padding-top:10px;font-size:14px;font-variant-numeric:tabular-nums}
 .home-announcement .ha-gallery-controls button{min-width:44px;min-height:44px;padding:6px 12px;border:1px solid #D5E1EF;border-radius:4px;background:#fff;color:#1A4A8E;font:inherit;cursor:pointer}
 .home-announcement .ha-gallery-controls button:hover{background:#EEF4FB}
