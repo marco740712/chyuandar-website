@@ -1,5 +1,5 @@
 /* 首頁限時公告：沿用跑馬燈的公開試算表，A–E 欄維持原樣。
-   F 彈窗啟用（Y）｜G 彈窗標題｜H 彈窗說明｜I 彈窗圖片
+   F 彈窗啟用（Y）｜G 彈窗標題｜H 彈窗說明｜I 彈窗圖片／影片
    J 彈窗開始時間｜K 彈窗結束時間（必填）；L、M 舊欄位保留但不顯示按鈕。
    設定方式與範例見「首頁彈窗使用說明.md」。 */
 (function(){
@@ -58,6 +58,60 @@
   function parseImages(value){
     return value.split(/\r?\n/).map(function(line){ return safeURL(line.trim()); })
       .filter(function(url, index, urls){ return url && urls.indexOf(url) === index; });
+  }
+
+  function isVideo(url){ return /\.mp4$/i.test(new URL(url).pathname); }
+
+  function buildVideo(dialog, notice){
+    var section = document.createElement('section');
+    section.className = 'ha-video-section';
+    section.setAttribute('aria-label', '公告影片');
+    var video = document.createElement('video');
+    video.className = 'ha-video';
+    video.controls = true;
+    video.playsInline = true;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.preload = 'metadata';
+    video.autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    video.setAttribute('aria-label', notice.title);
+    if(notice.images.length) video.poster = notice.images[0];
+    var hint = document.createElement('p');
+    hint.className = 'ha-video-hint';
+    hint.textContent = video.autoplay ? '影片自動靜音播放，可使用播放器暫停、重播或開啟聲音。' : '按播放觀看影片，可使用播放器開啟聲音。';
+    section.appendChild(video); section.appendChild(hint);
+    dialog.querySelector('.ha-content').prepend(section);
+    var destroyed = false, destroyFallback = function(){};
+    function pauseWhenHidden(){ if(document.hidden) video.pause(); }
+    document.addEventListener('visibilitychange', pauseWhenHidden);
+    video.addEventListener('error', function(){
+      if(destroyed) return;
+      video.hidden = true;
+      hint.textContent = notice.images.length ? '影片暫時無法播放，請參考圖文說明。' : '影片暫時無法播放，請稍後重新載入。';
+      destroyFallback = buildGallery(dialog, notice);
+    }, {once:true});
+    video.src = notice.video;
+    // 中文字幕與 MP4 同檔名；僅為本站這支影片附加已上傳的字幕檔。
+    var path = new URL(notice.video).pathname;
+    if(/\/japan-tax-refund-2026\.mp4$/i.test(path)){
+      var cover = new URL(notice.video); cover.pathname = path.replace(/\.mp4$/i, '-video-poster.jpg');
+      video.poster = cover.href;
+      var track = document.createElement('track');
+      var captions = new URL(notice.video); captions.pathname = path.replace(/\.mp4$/i, '.vtt');
+      track.kind = 'captions'; track.srclang = 'zh-Hant'; track.label = '繁體中文字幕'; track.src = captions.href;
+      video.appendChild(track);
+    }
+    if(video.autoplay){
+      var playing = video.play();
+      if(playing) playing.catch(function(){
+        if(!destroyed && !video.hidden) hint.textContent = '按播放觀看影片，可使用播放器開啟聲音。';
+      });
+    }
+    return function(){
+      destroyed = true; destroyFallback();
+      document.removeEventListener('visibilitychange', pauseWhenHidden);
+      video.pause(); video.removeAttribute('src'); video.load();
+    };
   }
 
   function buildGallery(dialog, notice){
@@ -176,10 +230,12 @@
       if(!/^y$/i.test(r[0] || '')) continue;
       var start = toTime(r[4] || '', false), end = toTime(r[5] || '', true);
       if(Number.isNaN(start) || !Number.isFinite(end) || start >= end || now < start || now >= end) continue;
-      var images = parseImages(r[3] || '');
-      if(!r[1] && !r[2] && !images.length) continue;
+      var media = parseImages(r[3] || '');
+      var video = media.find(isVideo) || '';
+      var images = media.filter(function(url){ return !isVideo(url); });
+      if(!r[1] && !r[2] && !images.length && !video) continue;
       return {id: JSON.stringify(r.slice(0, 6)), title: r[1] || '最新公告', description: r[2] || '', images: images,
-        end: end};
+        video: video, end: end};
     }
     return null;
   }
@@ -223,7 +279,7 @@
     document.body.appendChild(dialog);
     if(Date.now() >= notice.end){ dialog.remove(); return; }
     dialog.showModal();
-    destroyGallery = buildGallery(dialog, notice);
+    destroyGallery = notice.video ? buildVideo(dialog, notice) : buildGallery(dialog, notice);
     document.documentElement.classList.add('ha-lock');
     try{ sessionStorage.setItem(KEY, notice.id); }catch(e){}
     document.addEventListener('visibilitychange', checkExpiry);
